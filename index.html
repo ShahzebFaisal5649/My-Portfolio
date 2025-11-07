@@ -1,152 +1,143 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
-
-    <head>
-
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <title>Charlie Ashton - Personal Site</title>
-
-        <link rel="stylesheet" href="Styles/Main.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&display=swap">
-
-    </head>
-
-    <body>
-
-        <canvas id="Canvas3D"></canvas>
-
-        <div id="MainDiv">
-
-            <div id="MouseGlow"></div>
-            <div id="MouseGlowBlur"></div>
-                
-            <div id="RightPanel">
-
-                <div id="Section1" class="Section">
-                    <h2>About</h2>
-                    <p>I’m an aspiring <m>software developer</m> with a passion for exploring the vast possibilities of programming. I’ve been coding since I was 12, starting with <m>small games in Python</m> and evolving into a diverse range of projects. Over the years, I’ve delved into <m>AI</m>, <m>machine learning</m>, <m>graphics programming</m>, <m>cybersecurity</m>, and <m>web development</m>.<br><br>My experience spans from creating <m>virtual assistants</m> and <m>VR applications</m> to developing <m>shaders</m> and <m>procedurally generated visuals</m>. I’m driven by a love for technology and a desire to <m>learn</m>, <m>create</m>, and <m>solve complex problems</m>. I’m proficient in <m>Python</m>, <m>C++</m>, <m>JavaScript</m>, and <m>C#</m>, with Python being my strongest language.</p>
-                </div>
-                
-                <div id="Section2" class="Section">
-                    
-                    <h2>Projects</h2>
-                    <p>Below are some of the projects I have developed over my <m>6+ years of coding</m>. This is just a <m>small selection</m> of the many projects I've worked on, with several others not making the list. Please note that some of these projects are <m>unfinished</m>—either because I lacked the necessary skills at the time or simply moved on to <m>more interesting challenges</m>. However, rest assured I plan to revisit and polish these projects in the future, <m>improving their code</m> with my current level of expertise.</p>
-                    <br>
-
-                    <a href="https://github.com/LuckeyDuckey/Pygame_Lighting_Engine" target="_blank" class="Project">
-                        <p data-value="Lighting Engine " style="color: white; font-weight: bold; white-space: pre;">Lighting Engine </p>
-                        <p data-value="2D Lighting Framework Pygame">2D Lighting Framework Pygame</p>
-                        <div class="Separator"></div>
-                        <p data-value="2023">2023</p>
-                    </a>
-
-                    <a href="https://github.com/LuckeyDuckey/Python-Wake-Word-Engine" target="_blank" class="Project">
-                        <p data-value="WakeWord Engine " style="color: white; font-weight: bold; white-space: pre;">WakeWord Engine </p>
-                        <p data-value="TensorFlow Wakeword Engine Python">TensorFlow Wakeword Engine Python</p>
-                        <div class="Separator"></div>
-                        <p data-value="2022">2022</p>
-                    </a>
-                    
-                    <a href="https://github.com/LuckeyDuckey/Square-Game-Halloween" target="_blank" class="Project">
-                        <p data-value="Square Game Halloween " style="color: white; font-weight: bold; white-space: pre;">Square Game Halloween </p>
-                        <p data-value="Pygame Arcade Game">Pygame Arcade Game</p>
-                        <div class="Separator"></div>
-                        <p data-value="2022">2022</p>
-                    </a>
-
-                    <a href="https://github.com/LuckeyDuckey/luckeyduckey.github.io/tree/main" target="_blank" class="Project">
-                        <p data-value="Personal Website " style="color: white; font-weight: bold; white-space: pre;">Personal Website </p>
-                        <p data-value="WebGL2 Portfolio Website">WebGL2 Portfolio Website</p>
-                        <div class="Separator"></div>
-                        <p data-value="2024">2024</p>
-                    </a>
-
-                    <a href="https://github.com/LuckeyDuckey/Password-Vault" target="_blank" class="Project">
-                        <p data-value="Password Vault " style="color: white; font-weight: bold; white-space: pre;">Password Vault </p>
-                        <p data-value="Python Password Locker Fernet Encryption">Python Password Locker Fernet Encryption</p>
-                        <div class="Separator"></div>
-                        <p data-value="2022">2022</p>
-                    </a>
-
-                    <a href="https://github.com/LuckeyDuckey/Jarvis" target="_blank" class="Project">
-                        <p data-value="Jarvis " style="color: white; font-weight: bold; white-space: pre;">Jarvis </p>
-                        <p data-value="AI Personal Assistant Python">AI Personal Assistant Python</p>
-                        <div class="Separator"></div>
-                        <p data-value="2021">2021</p>
-                    </a>
-
-                </div>
-
-                <div id="Section3" class="Section">
-                    <h2>Experience</h2>
-                    <p><m>Error 404</m> not found. That's right I have no professional in industry experience, however I still bring over <m>6 years</m> of hands-on experience in <m>coding</m> and <m>software development</m> from personal projects and self-driven learning. I’ve tackled a wide range of challenges, from developing <m>AI-powered</m> virtual assistants and <m>machine learning</m> models to creating <m>graphics</m> and <m>VR</m> applications.<br><br>My projects have allowed me to build strong skills in <m>Python</m>, <m>C++</m>, <m>JavaScript</m>, and <m>C#</m>, and I’ve gained a solid foundation in <m>problem-solving</m>, <m>collaboration</m>, and <m>adaptability</m>. I’m eager to apply my knowledge and passion for technology in a professional setting, where I can continue to learn and grow as a <m>software developer</m>.</p>
-                </div>
-
-                <p style="padding-bottom: 95.0vh; font-size: 1.25vh;">Developed by <m>Charlie Ashton</m> in <m>Visual Studio Code</m>, built with raw <m>WebGL2</m>, <m>HTML</m>, <m>CSS</m> and <m>JavaScript</m> no extra libraries or tools needed.</p>
-
-            </div>
-
-            <div id="LeftPanel">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-                <h1>Charlie Ashton</h1>
-                <h2>Aspiring Software Developer</h2>
-                <p>With a deep passion for programming and<br>a diverse portfolio of innovative and self<br>driven projects.</p>
-                
-                <nav class="NavContainer">
+    <title>Sohaib Ahmed - Data Scientist Portfolio</title>
+    
+    <link rel="stylesheet" href="Styles/Main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+</head>
 
-                  <div class="NavItem" DataSection="Section1">
-                      <div class="NavItemDot"></div>
-                      <span class="NavItemText">About</span>
-                  </div>
+<body>
+    <canvas id="Canvas3D"></canvas>
 
-                  <div class="NavItem" DataSection="Section2">
-                      <div class="NavItemDot"></div>
-                      <span class="NavItemText">Projects</span>
-                  </div>
-
-                  <div class="NavItem" DataSection="Section3">
-                      <div class="NavItemDot"></div>
-                      <span class="NavItemText">Experience</span>
-                  </div>
-
-                </nav>
-
-                <div id="SocialsContainer">
-                    
-                    <a href="https://github.com/LuckeyDuckey" target="_blank" title="Github">
-                        <img src="Images/GithubIcon.png" alt="Github" style="width:30px;height:30px;">
-                    </a>
-
-                    <a href="mailto:charlieashtond@gmail.com" target="_blank" title="Email">
-                        <img src="Images/EmailIcon.png" alt="Email" style="width:30px;height:30px;">
-                    </a>
-
-                    <a href="CV_Charlie_Ashton.pdf" target="_blank" title="CV">
-                        <img src="Images/CVIcon.png" alt="CV" style="width:30px;height:30px;">
-                    </a>
-
-                </div>
+    <div id="MainDiv">
+        <div id="MouseGlow"></div>
+        <div id="MouseGlowBlur"></div>
             
+        <div id="RightPanel">
+            <div id="Section1" class="Section">
+                <h2>About</h2>
+                <p>I'm a passionate <m>Data Scientist</m> with 3+ years of experience transforming complex data into actionable insights. My expertise spans <m>Machine Learning</m>, <m>Deep Learning</m>, <m>MLOps</m>, and <m>Data Engineering</m>.<br><br>I've built production ML systems, created <m>PyPI packages</m>, and developed models for <m>stock prediction</m>, <m>climate impact analysis</m>, and <m>speech recognition</m>. I combine technical expertise in <m>Python</m>, <m>TensorFlow</m>, and <m>cloud platforms</m> with strong communication skills to deliver data-driven solutions that drive business value.</p>
+            </div>
+            
+            <div id="Section2" class="Section">
+                <h2>Projects</h2>
+                <p>Below are some of the <m>machine learning projects</m> I have developed, showcasing my experience in <m>end-to-end ML pipelines</m>, from data preprocessing to model deployment. Each project demonstrates different aspects of the <m>data science lifecycle</m>.</p>
+                <br>
+
+                <a href="https://github.com/LeoRigasaki/InSightAI" target="_blank" class="Project">
+                    <p data-value="InSightAI " style="color: white; font-weight: bold; white-space: pre;">InSightAI </p>
+                    <p data-value="PyPI Package for ML Insights">PyPI Package for ML Insights</p>
+                    <div class="Separator"></div>
+                    <p data-value="2024">2024</p>
+                </a>
+
+                <a href="https://github.com/LeoRigasaki/stock-market-prediction-engine" target="_blank" class="Project">
+                    <p data-value="Stock Prediction Engine " style="color: white; font-weight: bold; white-space: pre;">Stock Prediction Engine </p>
+                    <p data-value="LSTM Neural Network for Market Analysis">LSTM Market Analysis</p>
+                    <div class="Separator"></div>
+                    <p data-value="2024">2024</p>
+                </a>
+
+                <a href="https://github.com/LeoRigasaki/climate-change-impact-predictor" target="_blank" class="Project">
+                    <p data-value="Climate Impact Predictor " style="color: white; font-weight: bold; white-space: pre;">Climate Impact Predictor </p>
+                    <p data-value="ML Model for Environmental Analysis">Environmental ML Model</p>
+                    <div class="Separator"></div>
+                    <p data-value="2023">2023</p>
+                </a>
+
+                <a href="https://huggingface.co/leorigasaki54/whisper-small-urdu/tree/main" target="_blank" class="Project">
+                    <p data-value="Urdu Speech Recognition " style="color: white; font-weight: bold; white-space: pre;">Urdu Speech Recognition </p>
+                    <p data-value="Fine-tuned Whisper Model">Fine-tuned Whisper Model</p>
+                    <div class="Separator"></div>
+                    <p data-value="2024">2024</p>
+                </a>
+
+                <a href="https://github.com/LeoRigasaki/dqn-atari" target="_blank" class="Project">
+                    <p data-value="DQN Atari Agent " style="color: white; font-weight: bold; white-space: pre;">DQN Atari Agent </p>
+                    <p data-value="Deep Q-Learning Implementation">Deep Q-Learning Implementation</p>
+                    <div class="Separator"></div>
+                    <p data-value="2023">2023</p>
+                </a>
+
+                <a href="https://github.com/LeoRigasaki/ecommerce-warehouse-ml" target="_blank" class="Project">
+                    <p data-value="Ecommerce ML System " style="color: white; font-weight: bold; white-space: pre;">Ecommerce ML System </p>
+                    <p data-value="Production ML Pipeline">Production ML Pipeline</p>
+                    <div class="Separator"></div>
+                    <p data-value="2023">2023</p>
+                </a>
             </div>
 
+            <div id="Section3" class="Section">
+                <h2>Experience</h2>
+                <p>With <m>3+ years of experience</m> in data science and machine learning, I've developed expertise across the entire <m>ML lifecycle</m>. My work spans from <m>research and experimentation</m> to <m>production deployment</m> and <m>MLOps</m>.<br><br>I've built scalable <m>data pipelines</m>, deployed models in <m>cloud environments</m>, and created tools that are actively used by the community. My technical writing on <m>Medium</m> and contributions to <m>open source</m> demonstrate my commitment to knowledge sharing and continuous learning in the rapidly evolving field of <m>artificial intelligence</m>.</p>
+            </div>
+
+            <p style="padding-bottom: 95.0vh; font-size: 1.25vh;">Developed by <m>Sohaib Ahmed</m> using <m>WebGL2</m>, <m>HTML</m>, <m>CSS</m> and <m>JavaScript</m>. Optimized for data visualization and interactive ML demonstrations.</p>
         </div>
 
-        <button id="MainButton">🠛</button>
+        <div id="LeftPanel">
+            <h1>Sohaib Ahmed</h1>
+            <h2>Data Scientist & ML Engineer</h2>
+            <p>Transforming data into actionable insights<br>through advanced machine learning and<br>production-ready AI solutions.</p>
+            
+            <nav class="NavContainer">
+                <div class="NavItem" DataSection="Section1">
+                    <div class="NavItemDot"></div>
+                    <span class="NavItemText">About</span>
+                    <div class="NavItemProgress"></div>
+                </div>
 
-        <audio id="ComputerBoot" src="Sounds/ComputerBoot.mp3"></audio>
-        <audio id="ComputerAmbient" src="Sounds/ComputerAmbient.mp3"></audio>
-        <audio id="ComputerBeep" src="Sounds/ComputerBeep.mp3"></audio>
-        <audio id="KeyboardPressed" src="Sounds/KeyboardPressed.mp3"></audio>
+                <div class="NavItem" DataSection="Section2">
+                    <div class="NavItemDot"></div>
+                    <span class="NavItemText">Projects</span>
+                    <div class="NavItemProgress"></div>
+                </div>
 
-        <script src="Scripts/ModelFiles.js"></script>
-        <script src="Scripts/RenderingFunctions.js"></script>
-        <script src="Scripts/TerminalFunction.js"></script>
-        <script src="Scripts/Main.js"></script>
+                <div class="NavItem" DataSection="Section3">
+                    <div class="NavItemDot"></div>
+                    <span class="NavItemText">Experience</span>
+                    <div class="NavItemProgress"></div>
+                </div>
+            </nav>
 
-    </body>
+            <div id="SocialsContainer">
+                <a href="https://github.com/LeoRigasaki" target="_blank" title="GitHub">
+                    <img src="Images/GithubIcon.png" alt="GitHub" style="width:30px;height:30px;">
+                </a>
 
+                <a href="https://huggingface.co/leorigasaki54" target="_blank" title="HuggingFace">
+                    <img src="Images/HuggingFaceIcon.png" alt="HuggingFace" style="width:30px;height:30px;">
+                </a>
+
+                <a href="https://medium.com/@sohaibahmedDS" target="_blank" title="Medium">
+                    <img src="Images/MediumIcon.png" alt="Medium" style="width:30px;height:30px;">
+                </a>
+
+                <a href="mailto:riorigasaki65@gmail.com" target="_blank" title="Email">
+                    <img src="Images/EmailIcon.png" alt="Email" style="width:30px;height:30px;">
+                </a>
+
+                <a href="resume.pdf" target="_blank" title="Resume">
+                    <img src="Images/CVIcon.png" alt="Resume" style="width:30px;height:30px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <button id="MainButton">🠛</button>
+
+    <audio id="ComputerBoot" src="Sounds/ComputerBoot.mp3"></audio>
+    <audio id="ComputerAmbient" src="Sounds/ComputerAmbient.mp3"></audio>
+    <audio id="ComputerBeep" src="Sounds/ComputerBeep.mp3"></audio>
+    <audio id="KeyboardPressed" src="Sounds/KeyboardPressed.mp3"></audio>
+
+    <script src="Scripts/ModelFiles.js"></script>
+    <script src="Scripts/RenderingFunctions.js"></script>
+    <script src="Scripts/TerminalFunction.js"></script>
+    <script src="Scripts/Main.js"></script>
+</body>
 </html>
