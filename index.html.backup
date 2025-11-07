@@ -135,7 +135,7 @@
     <audio id="ComputerBeep" src="Sounds/ComputerBeep.mp3"></audio>
     <audio id="KeyboardPressed" src="Sounds/KeyboardPressed.mp3"></audio>
 
-    <script src="Scripts/env.js"></script>    <script src="Scripts/ModelFiles.js"></script>
+    <script src="Scripts/ModelFiles.js"></script>
     <script src="Scripts/RenderingFunctions.js"></script>
     <script src="Scripts/TerminalFunction.js"></script>
     <script src="Scripts/Main.js"></script>

@@ -19,7 +19,7 @@ let ChatHistory = [];
 let IsProcessingChat = false;
 
 // Your GroqCloud API key - replace with your actual key
-const GROQ_API_KEY = window.ENV ? window.ENV.GROQ_API_KEY : "YOUR_GROQ_API_KEY_HERE";
+const GROQ_API_KEY = "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";
 
 // Function to give text for rendering
 function GetText()
