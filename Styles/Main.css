@@ -319,3 +319,471 @@ m {
     margin: 0.2vh;
     display: inline-block;
 }
+
+@media screen and (max-width: 1024px) {
+    #LeftPanel {
+        width: 45vh;
+        left: calc(50vw - 45vh);
+    }
+
+    #RightPanel {
+        width: 45vh;
+        padding: 8vh calc(50vw - 45vh) 0 50vw;
+    }
+
+    h1 {
+        font-size: 4.5vh;
+    }
+
+    h2 {
+        font-size: 2.2vh;
+    }
+
+    p {
+        font-size: 1.5vh;
+        line-height: 2.4vh;
+    }
+
+    .Project {
+        padding: 1.8vh;
+    }
+
+    #SocialsContainer {
+        gap: 2vh;
+    }
+
+    .NavItem {
+        margin: 2vh 0;
+    }
+}
+
+/* Tablet Portrait (600px - 768px) */
+@media screen and (max-width: 768px) {
+    #MainDiv {
+        /* Single column layout */
+        display: flex;
+        flex-direction: column;
+    }
+
+    #LeftPanel {
+        width: 90vw;
+        height: auto;
+        left: 5vw;
+        position: relative;
+        margin-top: 5vh;
+        padding: 0;
+    }
+
+    #RightPanel {
+        width: 90vw;
+        height: auto;
+        position: relative;
+        padding: 3vh 5vw;
+        overflow-y: visible;
+    }
+
+    /* Hide WebGL canvas on mobile for better performance */
+    #Canvas3D {
+        display: none;
+    }
+
+    /* Adjust typography for readability */
+    h1 {
+        font-size: 4vh;
+        margin-bottom: 1.5vh;
+    }
+
+    h2 {
+        font-size: 2.5vh;
+        margin-bottom: 2vh;
+    }
+
+    p {
+        font-size: 1.8vh;
+        line-height: 2.8vh;
+    }
+
+    /* Stack navigation horizontally */
+    .NavContainer {
+        position: relative;
+        top: auto;
+        transform: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5vh;
+        margin-bottom: 3vh;
+    }
+
+    .NavItem {
+        margin: 0;
+        flex: 1 1 auto;
+    }
+
+    .NavItemText {
+        font-size: 1.8vh;
+    }
+
+    /* Adjust socials container */
+    #SocialsContainer {
+        position: relative;
+        top: auto;
+        transform: none;
+        margin-top: 4vh;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    #SocialsContainer a img {
+        width: 4vh;
+        height: 4vh;
+    }
+
+    /* Projects more touch-friendly */
+    .Project {
+        padding: 2.5vh;
+        margin-bottom: 2vh;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .Project p {
+        font-size: 1.6vh;
+        margin-bottom: 0.8vh;
+    }
+
+    .Separator {
+        display: none;
+    }
+
+    /* Main button positioning */
+    #MainButton {
+        width: 6vh;
+        height: 6vh;
+        font-size: 2.5vh;
+        left: 50vw;
+        top: 93vh;
+    }
+
+    /* Mouse glow effects - reduce intensity on mobile */
+    #MouseGlow {
+        width: 50vmax;
+        height: 50vmax;
+        opacity: 0.5;
+    }
+
+    #MouseGlowBlur {
+        backdrop-filter: blur(6vmax);
+    }
+
+    /* Sections spacing */
+    .Section {
+        margin-bottom: 6vh;
+    }
+}
+
+/* Mobile Landscape (480px - 600px) */
+@media screen and (max-width: 600px) and (orientation: landscape) {
+    #LeftPanel {
+        margin-top: 3vh;
+    }
+
+    #RightPanel {
+        padding: 2vh 5vw;
+    }
+
+    h1 {
+        font-size: 3.5vh;
+    }
+
+    h2 {
+        font-size: 2.2vh;
+    }
+
+    .NavContainer {
+        margin-bottom: 2vh;
+    }
+
+    .Section {
+        margin-bottom: 4vh;
+    }
+}
+
+/* Mobile Portrait (320px - 480px) */
+@media screen and (max-width: 480px) {
+    #MainDiv {
+        overflow-y: auto;
+    }
+
+    #LeftPanel {
+        width: 92vw;
+        left: 4vw;
+        margin-top: 4vh;
+    }
+
+    #RightPanel {
+        width: 92vw;
+        padding: 2vh 4vw 8vh 4vw;
+    }
+
+    h1 {
+        font-size: 3.8vh;
+        letter-spacing: -0.01em;
+    }
+
+    h2 {
+        font-size: 2.3vh;
+        margin-bottom: 1.8vh;
+    }
+
+    p {
+        font-size: 1.7vh;
+        line-height: 2.7vh;
+    }
+
+    /* Navigation - simplified for mobile */
+    .NavContainer {
+        flex-direction: column;
+        gap: 1vh;
+        margin-bottom: 2.5vh;
+    }
+
+    .NavItem {
+        padding: 1.2vh 0;
+        width: 100%;
+    }
+
+    .NavItemDot {
+        width: 1vh;
+        height: 1vh;
+    }
+
+    .NavItemText {
+        font-size: 1.7vh;
+        margin-left: 1.2vh;
+    }
+
+    .NavItemProgress {
+        margin-left: 1.2vh;
+    }
+
+    /* Socials - better mobile layout */
+    #SocialsContainer {
+        margin-top: 3vh;
+        gap: 2vh;
+    }
+
+    #SocialsContainer a img {
+        width: 4.5vh;
+        height: 4.5vh;
+    }
+
+    /* Projects - optimized for small screens */
+    .Project {
+        padding: 2vh;
+        margin-bottom: 1.8vh;
+        border-radius: 1vh;
+    }
+
+    .Project p {
+        font-size: 1.5vh;
+        margin-bottom: 0.6vh;
+    }
+
+    .Project p[style*="color: white"] {
+        font-size: 1.7vh;
+        margin-bottom: 0.8vh;
+    }
+
+    /* Main button */
+    #MainButton {
+        width: 6.5vh;
+        height: 6.5vh;
+        font-size: 2.8vh;
+        top: 92vh;
+    }
+
+    /* Reduce visual effects on small screens */
+    #MouseGlow {
+        width: 60vmax;
+        height: 60vmax;
+        opacity: 0.3;
+    }
+
+    #MouseGlowBlur {
+        backdrop-filter: blur(4vmax);
+    }
+
+    /* Section spacing */
+    .Section {
+        margin-bottom: 5vh;
+    }
+
+    /* Tech badges */
+    .tech-badge {
+        font-size: 1.1vh;
+        padding: 0.3vh 0.6vh;
+    }
+}
+
+/* Extra Small Mobile (320px and below) */
+@media screen and (max-width: 320px) {
+    h1 {
+        font-size: 3.2vh;
+    }
+
+    h2 {
+        font-size: 2vh;
+    }
+
+    p {
+        font-size: 1.6vh;
+        line-height: 2.5vh;
+    }
+
+    #RightPanel {
+        padding: 2vh 3vw 8vh 3vw;
+    }
+
+    .Project {
+        padding: 1.8vh;
+    }
+
+    #MainButton {
+        width: 6vh;
+        height: 6vh;
+        font-size: 2.5vh;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase tap targets for touch */
+    .NavItem {
+        padding: 1.5vh 0;
+        min-height: 5vh;
+    }
+
+    .Project {
+        padding: 2.5vh;
+        min-height: 8vh;
+    }
+
+    #MainButton {
+        min-width: 7vh;
+        min-height: 7vh;
+    }
+
+    #SocialsContainer a {
+        padding: 1vh;
+        min-width: 5vh;
+        min-height: 5vh;
+    }
+
+    /* Disable hover effects on touch devices */
+    .Project:hover {
+        transform: none;
+    }
+
+    .NavItem:hover .NavItemDot {
+        transform: scale(1);
+    }
+
+    /* Add active/pressed states instead */
+    .Project:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+
+    .NavItem:active {
+        opacity: 0.8;
+    }
+}
+
+/* High Resolution Displays (Retina) */
+@media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
+       screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+    /* Ensure sharp rendering on high-DPI displays */
+    h1 {
+        font-size: 6vh;
+    }
+
+    h2 {
+        font-size: 2.6vh;
+    }
+
+    p {
+        font-size: 1.7vh;
+        line-height: 2.7vh;
+    }
+
+    .Project p {
+        font-size: 1.5vh;
+    }
+
+    .NavItemText {
+        font-size: 1.7vh;
+    }
+}
+
+/* Dark Mode Support (if user prefers dark mode) */
+@media (prefers-color-scheme: dark) {
+    /* Already dark by default, but can add overrides if needed */
+}
+
+/* Light Mode Support (if you want to add this feature later) */
+@media (prefers-color-scheme: light) {
+    /* Optional: Add light mode styles here */
+    /* body {
+        background-color: #FFFFFF;
+        color: #0F172A;
+    } */
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    #MainDiv {
+        transition: none !important;
+    }
+
+    #MouseGlowBlur {
+        backdrop-filter: none;
+    }
+
+    .Project::before {
+        transition: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #Canvas3D,
+    #MainButton,
+    #MouseGlow,
+    #MouseGlowBlur {
+        display: none;
+    }
+
+    #MainDiv {
+        background-color: white;
+        color: black;
+        position: static;
+    }
+
+    #LeftPanel,
+    #RightPanel {
+        width: 100%;
+        padding: 0;
+        position: static;
+    }
+
+    .Project {
+        page-break-inside: avoid;
+        border: 1px solid #000;
+    }
+}
