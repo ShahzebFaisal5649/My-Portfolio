@@ -9,27 +9,27 @@ canvas {
     display: block;
     width: 100%;
     height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 #MainButton {
     width: 7.5vh;
     height: 7.5vh;
-
     position: fixed;
     left: 50vw;
     top: 95vh;
     translate: -50% -50%;
-
     color: white;
     font-size: 3vh;
     text-align: center;
-    
     background-color: #1E293B;
     border: 1px solid #3B82F6;
     border-radius: 50%;
-    
     transition: font-size 0.15s ease, transform 0.25s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    z-index: 1000;
 }
 
 #MainButton:hover {
@@ -40,15 +40,14 @@ canvas {
 #MainDiv {
     width: 100vw;
     height: 100vh;
-
     position: fixed;
     top: 0;
     left: 0;
     overflow: hidden;
-
     background-color: #0F172A;
     transition: transform 0.5s ease-in-out;
     transform: translateY(0%);
+    z-index: 10;
 }
 
 #MainDiv.hidden {
@@ -69,7 +68,6 @@ canvas {
     height: 100%;
     position: absolute;
     padding: 10vh calc(50vw - 50vh) 0 50vw;
-
     overflow-y: scroll;
     overflow-x: hidden;
     -ms-overflow-style: none;
@@ -83,22 +81,21 @@ canvas {
 #MouseGlow {
     width: 30vmax;
     height: 30vmax;
-
     position: absolute;
     left: 50%;
     top: 50%;
     translate: -50% -50%;
-
     background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(59, 130, 246, 0.1) 50%, transparent 100%);
     border-radius: 50%;
+    pointer-events: none;
 }
 
 #MouseGlowBlur {
     width: 100%;
     height: 100%;
-
     position: absolute;
     backdrop-filter: blur(12vmax);
+    pointer-events: none;
 }
 
 h1 {
@@ -224,7 +221,6 @@ m {
     position: absolute;
     top: 80vh;
     transform: translateY(-100%);
-
     display: flex;
     justify-content: flex-start;
     gap: 2.5vh;
@@ -251,7 +247,6 @@ m {
     border-radius: 1.2vh;
     border: 1px solid rgba(59, 130, 246, 0.2);
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(30, 64, 175, 0.03) 100%);
-
     display: flex;
     justify-content: space-between;
     text-decoration: none;
@@ -301,7 +296,6 @@ m {
     margin: 0 0.75vh 0.75em 0.75vh;
 }
 
-/* Add some data science themed styling */
 .metric-highlight {
     color: #3B82F6;
     font-weight: 600;
@@ -320,6 +314,7 @@ m {
     display: inline-block;
 }
 
+/* TABLET BREAKPOINT - 1024px */
 @media screen and (max-width: 1024px) {
     #LeftPanel {
         width: 45vh;
@@ -357,391 +352,385 @@ m {
     }
 }
 
-/* Tablet Portrait (600px - 768px) */
+/* MOBILE BREAKPOINT - 768px and below */
 @media screen and (max-width: 768px) {
-    #MainDiv {
-        /* Single column layout */
-        display: flex;
-        flex-direction: column;
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
-    #LeftPanel {
-        width: 90vw;
-        height: auto;
-        left: 5vw;
-        position: relative;
-        margin-top: 5vh;
-        padding: 0;
-    }
-
-    #RightPanel {
-        width: 90vw;
-        height: auto;
-        position: relative;
-        padding: 3vh 5vw;
-        overflow-y: visible;
-    }
-
-    /* Hide WebGL canvas on mobile for better performance */
-    #Canvas3D {
+    /* Hide canvas on mobile for performance */
+    canvas {
         display: none;
     }
 
-    /* Adjust typography for readability */
+    /* Make MainDiv scrollable container */
+    #MainDiv {
+        position: relative;
+        height: auto;
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: visible;
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+    }
+
+    /* Reset both panels to flow layout */
+    #LeftPanel {
+        position: relative;
+        width: 100%;
+        height: auto;
+        left: 0;
+        margin: 0;
+        padding: 8vh 7vw 4vh 7vw;
+        order: 1;
+        box-sizing: border-box;
+    }
+
+    #RightPanel {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 0 7vw 15vh 7vw;
+        overflow-x: hidden;
+        overflow-y: visible;
+        order: 2;
+        box-sizing: border-box;
+    }
+
+    /* Disable glow effects on mobile */
+    #MouseGlow,
+    #MouseGlowBlur {
+        display: none;
+    }
+
+    /* Typography scaling */
     h1 {
-        font-size: 4vh;
-        margin-bottom: 1.5vh;
+        font-size: 8vw;
+        margin-bottom: 2vh;
     }
 
     h2 {
-        font-size: 2.5vh;
+        font-size: 5.5vw;
         margin-bottom: 2vh;
     }
 
     p {
-        font-size: 1.8vh;
-        line-height: 2.8vh;
+        font-size: 4vw;
+        line-height: 6vw;
     }
 
-    /* Stack navigation horizontally */
+    /* Navigation - horizontal layout */
     .NavContainer {
         position: relative;
         top: auto;
         transform: none;
         display: flex;
+        flex-direction: row;
+        gap: 4vw;
+        margin: 4vh 0;
         flex-wrap: wrap;
-        gap: 1.5vh;
-        margin-bottom: 3vh;
     }
 
     .NavItem {
         margin: 0;
-        flex: 1 1 auto;
+        padding: 1.5vh 0;
+    }
+
+    .NavItemDot {
+        width: 3vw;
+        height: 3vw;
+        min-width: 10px;
+        min-height: 10px;
     }
 
     .NavItemText {
-        font-size: 1.8vh;
+        font-size: 3.8vw;
+        margin-left: 2.5vw;
     }
 
-    /* Adjust socials container */
+    .NavItemProgress {
+        display: none;
+    }
+
+    /* Social icons */
     #SocialsContainer {
         position: relative;
         top: auto;
         transform: none;
-        margin-top: 4vh;
-        justify-content: center;
+        margin-top: 5vh;
+        gap: 5vw;
         flex-wrap: wrap;
+        max-width: 100%;
+    }
+
+    #SocialsContainer a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     #SocialsContainer a img {
-        width: 4vh;
-        height: 4vh;
+        width: 8vw;
+        height: 8vw;
+        min-width: 35px;
+        min-height: 35px;
+        max-width: 45px;
+        max-height: 45px;
     }
 
-    /* Projects more touch-friendly */
+    /* Sections */
+    .Section {
+        margin-bottom: 8vh;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .Section p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Projects */
     .Project {
-        padding: 2.5vh;
-        margin-bottom: 2vh;
+        padding: 5vw;
+        margin-bottom: 3vh;
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
+        box-sizing: border-box;
+        max-width: 100%;
     }
 
     .Project p {
-        font-size: 1.6vh;
-        margin-bottom: 0.8vh;
+        font-size: 3.8vw;
+        margin-bottom: 1vh;
+        line-height: 5.5vw;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+
+    .Project p[style*="color: white"] {
+        font-size: 4.5vw;
+        font-weight: bold;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .Separator {
         display: none;
     }
 
-    /* Main button positioning */
+    /* Main button */
     #MainButton {
-        width: 6vh;
-        height: 6vh;
-        font-size: 2.5vh;
-        left: 50vw;
-        top: 93vh;
+        width: 14vw;
+        height: 14vw;
+        min-width: 55px;
+        min-height: 55px;
+        font-size: 6vw;
+        top: auto;
+        bottom: 5vh;
     }
 
-    /* Mouse glow effects - reduce intensity on mobile */
-    #MouseGlow {
-        width: 50vmax;
-        height: 50vmax;
-        opacity: 0.5;
-    }
-
-    #MouseGlowBlur {
-        backdrop-filter: blur(6vmax);
-    }
-
-    /* Sections spacing */
-    .Section {
-        margin-bottom: 6vh;
+    .tech-badge {
+        font-size: 3vw;
+        padding: 1vw 2vw;
     }
 }
 
-/* Mobile Landscape (480px - 600px) */
-@media screen and (max-width: 600px) and (orientation: landscape) {
-    #LeftPanel {
-        margin-top: 3vh;
-    }
-
-    #RightPanel {
-        padding: 2vh 5vw;
-    }
-
-    h1 {
-        font-size: 3.5vh;
-    }
-
-    h2 {
-        font-size: 2.2vh;
-    }
-
-    .NavContainer {
-        margin-bottom: 2vh;
-    }
-
-    .Section {
-        margin-bottom: 4vh;
-    }
-}
-
-/* Mobile Portrait (320px - 480px) */
+/* MOBILE PORTRAIT - 480px */
 @media screen and (max-width: 480px) {
-    #MainDiv {
-        overflow-y: auto;
-    }
-
     #LeftPanel {
-        width: 92vw;
-        left: 4vw;
-        margin-top: 4vh;
+        padding: 6vh 6vw 3vh 6vw;
+        box-sizing: border-box;
     }
 
     #RightPanel {
-        width: 92vw;
-        padding: 2vh 4vw 8vh 4vw;
+        padding: 0 6vw 12vh 6vw;
+        box-sizing: border-box;
     }
 
     h1 {
-        font-size: 3.8vh;
-        letter-spacing: -0.01em;
+        font-size: 9vw;
+        word-wrap: break-word;
     }
 
     h2 {
-        font-size: 2.3vh;
-        margin-bottom: 1.8vh;
+        font-size: 6vw;
+        word-wrap: break-word;
     }
 
     p {
-        font-size: 1.7vh;
-        line-height: 2.7vh;
-    }
-
-    /* Navigation - simplified for mobile */
-    .NavContainer {
-        flex-direction: column;
-        gap: 1vh;
-        margin-bottom: 2.5vh;
-    }
-
-    .NavItem {
-        padding: 1.2vh 0;
-        width: 100%;
-    }
-
-    .NavItemDot {
-        width: 1vh;
-        height: 1vh;
+        font-size: 4.2vw;
+        line-height: 6.5vw;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .NavItemText {
-        font-size: 1.7vh;
-        margin-left: 1.2vh;
+        font-size: 4vw;
     }
 
-    .NavItemProgress {
-        margin-left: 1.2vh;
-    }
-
-    /* Socials - better mobile layout */
-    #SocialsContainer {
-        margin-top: 3vh;
-        gap: 2vh;
-    }
-
-    #SocialsContainer a img {
-        width: 4.5vh;
-        height: 4.5vh;
-    }
-
-    /* Projects - optimized for small screens */
     .Project {
-        padding: 2vh;
-        margin-bottom: 1.8vh;
-        border-radius: 1vh;
+        padding: 5.5vw;
+        box-sizing: border-box;
     }
 
     .Project p {
-        font-size: 1.5vh;
-        margin-bottom: 0.6vh;
+        font-size: 4vw;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .Project p[style*="color: white"] {
-        font-size: 1.7vh;
-        margin-bottom: 0.8vh;
+        font-size: 5vw;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
-    /* Main button */
-    #MainButton {
-        width: 6.5vh;
-        height: 6.5vh;
-        font-size: 2.8vh;
-        top: 92vh;
-    }
-
-    /* Reduce visual effects on small screens */
-    #MouseGlow {
-        width: 60vmax;
-        height: 60vmax;
-        opacity: 0.3;
-    }
-
-    #MouseGlowBlur {
-        backdrop-filter: blur(4vmax);
-    }
-
-    /* Section spacing */
-    .Section {
-        margin-bottom: 5vh;
-    }
-
-    /* Tech badges */
-    .tech-badge {
-        font-size: 1.1vh;
-        padding: 0.3vh 0.6vh;
+    #SocialsContainer a img {
+        width: 9vw;
+        height: 9vw;
+        min-width: 38px;
+        min-height: 38px;
     }
 }
 
-/* Extra Small Mobile (320px and below) */
+/* EXTRA SMALL - 320px */
 @media screen and (max-width: 320px) {
-    h1 {
-        font-size: 3.2vh;
-    }
-
-    h2 {
-        font-size: 2vh;
-    }
-
-    p {
-        font-size: 1.6vh;
-        line-height: 2.5vh;
+    #LeftPanel {
+        padding: 5vh 5vw 2vh 5vw;
+        box-sizing: border-box;
     }
 
     #RightPanel {
-        padding: 2vh 3vw 8vh 3vw;
+        padding: 0 5vw 10vh 5vw;
+        box-sizing: border-box;
     }
 
-    .Project {
-        padding: 1.8vh;
+    h1 {
+        font-size: 10vw;
+        word-wrap: break-word;
     }
 
-    #MainButton {
-        width: 6vh;
-        height: 6vh;
-        font-size: 2.5vh;
-    }
-}
-
-/* Touch Device Optimizations */
-@media (hover: none) and (pointer: coarse) {
-    /* Increase tap targets for touch */
-    .NavItem {
-        padding: 1.5vh 0;
-        min-height: 5vh;
+    h2 {
+        font-size: 6.5vw;
+        word-wrap: break-word;
     }
 
-    .Project {
-        padding: 2.5vh;
-        min-height: 8vh;
+    p {
+        font-size: 4.5vw;
+        line-height: 7vw;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
-    #MainButton {
-        min-width: 7vh;
-        min-height: 7vh;
+    .Project p {
+        font-size: 4.2vw;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
-    #SocialsContainer a {
-        padding: 1vh;
-        min-width: 5vh;
-        min-height: 5vh;
-    }
-
-    /* Disable hover effects on touch devices */
-    .Project:hover {
-        transform: none;
-    }
-
-    .NavItem:hover .NavItemDot {
-        transform: scale(1);
-    }
-
-    /* Add active/pressed states instead */
-    .Project:active {
-        transform: scale(0.98);
-        opacity: 0.9;
-    }
-
-    .NavItem:active {
-        opacity: 0.8;
+    .Project p[style*="color: white"] {
+        font-size: 5.2vw;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 }
 
-/* High Resolution Displays (Retina) */
-@media screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2),
-       screen and (min-width: 1440px) and (min-resolution: 192dpi) {
-    /* Ensure sharp rendering on high-DPI displays */
+/* LANDSCAPE MODE ON MOBILE */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    #LeftPanel {
+        padding: 4vh 6vw 2vh 6vw;
+    }
+
+    #RightPanel {
+        padding: 0 6vw 8vh 6vw;
+    }
+
     h1 {
         font-size: 6vh;
     }
 
     h2 {
-        font-size: 2.6vh;
+        font-size: 4vh;
     }
 
     p {
-        font-size: 1.7vh;
-        line-height: 2.7vh;
+        font-size: 2.8vh;
+        line-height: 4.2vh;
     }
 
-    .Project p {
-        font-size: 1.5vh;
+    .NavContainer {
+        margin: 2vh 0;
     }
 
-    .NavItemText {
-        font-size: 1.7vh;
+    .Section {
+        margin-bottom: 5vh;
     }
 }
 
-/* Dark Mode Support (if user prefers dark mode) */
-@media (prefers-color-scheme: dark) {
-    /* Already dark by default, but can add overrides if needed */
+/* TOUCH DEVICE OPTIMIZATIONS */
+@media (hover: none) and (pointer: coarse) {
+    .NavItem {
+        padding: 2vh 0;
+        min-height: 6vh;
+    }
+
+    .Project {
+        padding: 6vw;
+        min-height: 12vh;
+    }
+
+    #MainButton {
+        min-width: 60px;
+        min-height: 60px;
+    }
+
+    #SocialsContainer a {
+        padding: 2vw;
+        min-width: 8vh;
+        min-height: 8vh;
+    }
+
+    /* Remove hover effects on touch */
+    .Project:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .NavItem:hover .NavItemDot {
+        transform: none;
+        opacity: 0.3;
+    }
+
+    .NavItem:hover .NavItemText {
+        color: #94A3B8;
+    }
+
+    /* Add active/press states */
+    .Project:active {
+        transform: scale(0.98);
+        opacity: 0.85;
+    }
+
+    .NavItem:active {
+        opacity: 0.7;
+    }
+
+    #MainButton:active {
+        transform: scale(0.95);
+    }
 }
 
-/* Light Mode Support (if you want to add this feature later) */
-@media (prefers-color-scheme: light) {
-    /* Optional: Add light mode styles here */
-    /* body {
-        background-color: #FFFFFF;
-        color: #0F172A;
-    } */
-}
-
-/* Reduced Motion Support */
+/* REDUCED MOTION PREFERENCE */
 @media (prefers-reduced-motion: reduce) {
-    * {
+    *,
+    *::before,
+    *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
@@ -760,30 +749,54 @@ m {
     }
 }
 
-/* Print Styles */
+/* PRINT STYLES */
 @media print {
-    #Canvas3D,
+    canvas,
     #MainButton,
     #MouseGlow,
     #MouseGlowBlur {
-        display: none;
+        display: none !important;
     }
 
     #MainDiv {
         background-color: white;
         color: black;
         position: static;
+        height: auto;
+        transform: none !important;
     }
 
     #LeftPanel,
     #RightPanel {
         width: 100%;
-        padding: 0;
+        padding: 20px;
         position: static;
+    }
+
+    .NavContainer {
+        page-break-after: avoid;
     }
 
     .Project {
         page-break-inside: avoid;
         border: 1px solid #000;
+        margin-bottom: 10px;
+    }
+
+    .Section {
+        page-break-inside: avoid;
+    }
+
+    h1, h2 {
+        color: #000;
+    }
+
+    p {
+        color: #333;
+    }
+
+    a {
+        text-decoration: underline;
+        color: #000;
     }
 }
