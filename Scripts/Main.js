@@ -635,33 +635,91 @@ window.addEventListener("mousemove", (event) => {
     MouseGlow.animate({left: `${event.clientX}px`, top: `${event.clientY}px`}, {duration: 3500, fill: "forwards"});
 });
 
-// Scrollspy logic // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
-
-const RightPanel = document.getElementById("RightPanel")
+const RightPanel = document.getElementById("RightPanel");
 const NavItems = document.querySelectorAll(".NavItem");
 const Sections = document.querySelectorAll(".Section");
 
-// Function to detect which section user is scrolled to currently
-function SetActiveSection()
-{
-    let Index = Sections.length;
-    while(--Index && RightPanel.scrollTop + 150 < Sections[Index].offsetTop) {}
-    NavItems.forEach((item) => item.classList.remove('Active'));
-    NavItems[Index].classList.add('Active');
+// Helper to determine if we're in mobile view (matches your CSS breakpoint)
+function isMobileView() {
+    return window.innerWidth <= 768;
 }
 
-// Function to scroll to selected section when scroll spy clicked
-function ScrollToSection(event)
-{
+// Helper to get the effective scroll top (adjusted for mobile/desktop)
+function getScrollTop() {
+    if (!isMobileView()) {
+        return RightPanel.scrollTop;
+    } else {
+        // On mobile, calculate scroll relative to #RightPanel's position in the document
+        const rightPanelTop = RightPanel.getBoundingClientRect().top + window.scrollY;
+        const relativeScroll = window.scrollY - (rightPanelTop - window.innerHeight * 0.1); // Adjust for padding/offset
+        return Math.max(0, relativeScroll); // Prevent negative values
+    }
+}
+
+// Function to detect which section user is scrolled to currently
+function SetActiveSection() {
+    let Index = Sections.length;
+    const scrollTop = getScrollTop() + 150; // Your original offset for visibility threshold
+    while (--Index && scrollTop < Sections[Index].offsetTop) {}
+    NavItems.forEach((item) => item.classList.remove('Active'));
+    if (Index >= 0) {
+        NavItems[Index].classList.add('Active');
+    }
+}
+
+// Function to scroll to selected section when nav item clicked
+function ScrollToSection(event) {
     const SectionId = event.currentTarget.getAttribute('DataSection');
     const TargetSection = document.getElementById(SectionId);
-    RightPanel.scrollTo({top: TargetSection.offsetTop - window.innerHeight * 0.1, behavior: "smooth"});
+    if (!TargetSection) return;
+
+    const offset = window.innerHeight * 0.1; // Your original 10% viewport offset
+
+    if (!isMobileView()) {
+        // Desktop: Scroll the #RightPanel (relative offset)
+        RightPanel.scrollTo({
+            top: TargetSection.offsetTop - offset,
+            behavior: "smooth"
+        });
+    } else {
+        // Mobile: Scroll the window (absolute document position)
+        const targetTop = TargetSection.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({
+            top: targetTop,
+            behavior: "smooth"
+        });
+    }
 }
 
+// Attach click listeners to nav items
 NavItems.forEach(item => item.addEventListener("click", ScrollToSection));
-RightPanel.addEventListener("scroll", SetActiveSection);
-SetActiveSection();
 
+// Function to update scroll listener based on view (desktop/mobile)
+let currentScrollTarget = null;
+function updateScrollListener() {
+    const scrollTarget = isMobileView() ? window : RightPanel;
+
+    // Remove old listener if it changed
+    if (currentScrollTarget && currentScrollTarget !== scrollTarget) {
+        currentScrollTarget.removeEventListener("scroll", SetActiveSection);
+    }
+
+    // Add new listener
+    scrollTarget.addEventListener("scroll", SetActiveSection);
+    currentScrollTarget = scrollTarget;
+
+    // Trigger once to set initial active state
+    SetActiveSection();
+}
+
+// Initial setup
+updateScrollListener();
+
+// Handle window resize (e.g., device rotation)
+window.addEventListener('resize', updateScrollListener);
+
+// Initial active section
+SetActiveSection();
 // Projects list logic // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
 const Projects = document.querySelectorAll(".Project");
