@@ -1,4 +1,4 @@
-# Data Science Portfolio - Sohaib Ahmed
+# Data Science Portfolio - Shahzeb Faisal
 
 ![Portfolio Preview](https://img.shields.io/badge/Portfolio-Live-brightgreen) ![Tech Stack](https://img.shields.io/badge/Tech-WebGL2%20%7C%20JavaScript%20%7C%20HTML5-blue) ![AI Powered](https://img.shields.io/badge/AI-GroqCloud%20Enabled-purple)
 
