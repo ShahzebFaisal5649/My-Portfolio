@@ -175,15 +175,6 @@ models
 
 ## 🎨 Customization
 
-### **Color Scheme**
-```css
-/* Primary blue palette in Styles/Main.css */
---accent-primary: #3B82F6;
---accent-secondary: #1D4ED8;
---accent-light: #93C5FD;
---text-primary: #FFFFFF;
---text-secondary: #94A3B8;
-```
 
 ### **Personal Information**
 Update your details in `index.html`:
