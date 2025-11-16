@@ -2,13 +2,15 @@
 
 ![Portfolio Preview](https://img.shields.io/badge/Portfolio-Live-brightgreen) ![Tech Stack](https://img.shields.io/badge/Tech-WebGL2%20%7C%20JavaScript%20%7C%20HTML5-blue) ![AI Powered](https://img.shields.io/badge/AI-GroqCloud%20Enabled-purple)
 
-Welcome to my interactive data science portfolio! This project showcases my work as a **Data Scientist & ML Engineer** through a unique dual-interface design featuring modern web aesthetics and an AI-powered terminal interface.
+Welcome to my interactive data science portfolio! This project showcases my work as a **Data Science Student & ML Engineer** at FAST NUCES Lahore through a unique dual-interface design featuring modern web aesthetics and an AI-powered terminal interface.
 
 ![Portfolio Banner](Images/portfolio-preview.png)
 
 ## 🚀 Live Demo
 
-**Portfolio URL:** [View Live Portfolio](https://your-username.github.io)
+**Portfolio URL:** [https://my-portfolio-hazel-seven-40.vercel.app](https://my-portfolio-hazel-seven-40.vercel.app)
+
+**GitHub Repository:** [https://github.com/ShahzebFaisal5649/My-Portfolio](https://github.com/ShahzebFaisal5649/My-Portfolio)
 
 ## ✨ Features
 
@@ -29,7 +31,7 @@ Welcome to my interactive data science portfolio! This project showcases my work
 - **Performance Optimized**: Smooth 60fps rendering with efficient WebGL2
 
 ### **Data Science Focus**
-- **Project Showcase**: ML models, PyPI packages, and production systems
+- **Project Showcase**: ML models, full-stack applications, and blockchain projects
 - **Technical Metrics**: Model accuracy, performance stats, and deployment info
 - **Interactive Elements**: Hover effects with data science terminology
 - **Professional Branding**: Clean design optimized for technical recruiters
@@ -74,10 +76,10 @@ my-portfolio/
 │   └── KeyboardPressed.mp3   # Typing sound effects
 └── Images/
     ├── GithubIcon.png        # Social media icons
-    ├── HuggingFaceIcon.png
-    ├── MediumIcon.png
-    ├── KaggleIcon.png
+    ├── LinkedInIcon.png
+    ├── FacebookIcon.png
     ├── EmailIcon.png
+    ├── PhoneIcon.png
     └── CVIcon.png
 ```
 
@@ -87,8 +89,8 @@ my-portfolio/
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/your-username/portfolio.git
-cd portfolio
+git clone https://github.com/ShahzebFaisal5649/My-Portfolio.git
+cd My-Portfolio
 ```
 
 2. **Start local server:**
@@ -133,19 +135,22 @@ models
 ## 💼 Portfolio Highlights
 
 ### **Featured Projects**
-- **InSightAI**: PyPI package for ML model insights and analysis
-- **Stock Predictor**: LSTM neural network achieving 94.2% accuracy
-- **Climate Predictor**: Random Forest model for environmental impact analysis
-- **Urdu Speech Recognition**: Fine-tuned Whisper model on HuggingFace
-- **DQN Atari Agent**: Deep Q-Learning for game playing AI
-- **Ecommerce ML System**: Production ML pipeline for recommendation systems
+- **Nexium Resume Tailor**: AI-powered resume optimization with GPT-4 and Next.js 15
+- **Blog Summarizer**: Full-stack AI app with NLP summarization and dual database architecture
+- **Environmental Impact Analysis**: Satellite data processing with NDVI analysis
+- **Lahore Smart City Management**: Real-time pipeline processing 13.5M+ vehicle registrations
+- **Election DApp**: Blockchain voting system on Ethereum
+- **Edu Connect**: Full-stack tutor-student platform with WebSocket chat
+- **Image Captioning with LSTM**: Deep learning model achieving 0.875 BLEU score
+- **Music Sentiment Analysis**: NLP-powered emotional trend analysis
 
 ### **Technical Achievements**
-- 📊 **12 Models Deployed** in production environments
-- 🎯 **91.7% Average Accuracy** across ML models
-- 📈 **2.1TB Data Processed** through ML pipelines
-- ⭐ **89 GitHub Stars** across open source projects
-- 📦 **1.2K Downloads** on PyPI and HuggingFace
+- 🎓 **FAST NUCES Lahore** - Bachelor's in Data Science (2021-2025)
+- 💼 **3 Professional Internships** - Nexium, CodeAlpha, Kashf Foundation
+- 📊 **16+ Production Projects** across ML, Web Dev, and Blockchain
+- 🔬 **Active Researcher** - LLM-based conversational chatbots
+- ⭐ **GitHub Profile** - Consistent contributions and well-documented repos
+- 📈 **Measurable Impact** - 25%, 30%, 40% improvements in internship projects
 
 ## 🎮 Terminal Commands
 
@@ -225,6 +230,17 @@ curl -I http://localhost:8000/resume.pdf
 
 ## 🚀 Deployment
 
+### **Vercel (Current Deployment)**
+**Live URL:** [https://my-portfolio-hazel-seven-40.vercel.app](https://my-portfolio-hazel-seven-40.vercel.app)
+
+```bash
+# Deploy to Vercel
+npm install -g vercel
+vercel
+
+# Or connect GitHub repository for auto-deployment
+```
+
 ### **GitHub Pages**
 ```bash
 # Push to main branch
@@ -233,18 +249,13 @@ git commit -m "Deploy portfolio"
 git push origin main
 
 # Enable GitHub Pages in repository settings
-# Your site: https://username.github.io
+# Your site: https://shahzebfaisal5649.github.io/My-Portfolio
 ```
 
 ### **Netlify**
 1. Connect GitHub repository to Netlify
 2. Auto-deploy on every commit
 3. Custom domain support available
-
-### **Vercel**
-1. Import from GitHub
-2. Zero-configuration deployment
-3. Edge function support for API calls
 
 ## 🤝 Contributing
 
@@ -256,17 +267,33 @@ While this is a personal portfolio, feedback and suggestions are welcome:
 4. Push branch (`git push origin feature/improvement`)
 5. Open Pull Request
 
+## 🎓 About Me
+
+I'm **Shahzeb Faisal**, a Data Science student at FAST NUCES Lahore with expertise in:
+- **Machine Learning & AI**: TensorFlow, PyTorch, LSTM, NLP, Computer Vision
+- **Full-Stack Development**: Next.js, React, Node.js, TypeScript
+- **Data Science**: Predictive Modeling, Big Data Analytics, Visualization
+- **Blockchain**: Solidity, Web3.js, Smart Contracts
+- **Cloud Computing**: Azure, AKS, Bicep, Vercel
+
+Currently conducting research on "Exploring Publicly Available LLMs for Conversational Chatbots" under Dr. Esha Tur Razia Babar.
+
 ## 📜 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ## 📞 Contact
 
-- **Email**: [riorigasaki65@gmail.com](mailto:riorigasaki65@gmail.com)
-- **GitHub**: [LeoRigasaki](https://github.com/LeoRigasaki)
-- **HuggingFace**: [leorigasaki54](https://huggingface.co/leorigasaki54)
-- **Medium**: [@sohaibahmedDS](https://medium.com/@sohaibahmedDS)
+- **Email**: [shahzebfaisal5649@gmail.com](mailto:shahzebfaisal5649@gmail.com)
+- **University Email**: [l215649@lhr.nu.edu.pk](mailto:l215649@lhr.nu.edu.pk)
+- **Phone**: [+92 302 0418510](tel:+923020418510)
+- **Location**: Lahore, Pakistan
+- **GitHub**: [ShahzebFaisal5649](https://github.com/ShahzebFaisal5649)
+- **LinkedIn**: [shahzeb-faisal-8b9190321](https://www.linkedin.com/in/shahzeb-faisal-8b9190321/)
+- **Portfolio**: [https://my-portfolio-hazel-seven-40.vercel.app](https://my-portfolio-hazel-seven-40.vercel.app)
 
 ---
 
-**Built with ❤️ by Sohaib Ahmed** | *Transforming data into actionable insights through advanced machine learning*
+**Built with ❤️ by Shahzeb Faisal** | *Transforming data into insights through machine learning and innovative AI solutions*
+
+**Original Template by Sohaib Ahmed** | *Customized for Data Science Portfolio Showcase*
