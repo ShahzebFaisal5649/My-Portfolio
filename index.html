@@ -3,2589 +3,896 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Shahzeb Faisal - Elite Data Scientist & ML Engineer | AI Innovation Excellence">
-    <title>Shahzeb Faisal | Elite Data Scientist & ML Engineer ✨</title>
+    <meta name="description" content="Shahzeb Faisal - Data Scientist & ML Engineer Portfolio">
+    <meta name="author" content="Shahzeb Faisal">
+    <meta name="theme-color" content="#6366f1">
+    <title>Shahzeb Faisal | Data Scientist & ML Engineer</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <style>
-        /* ═══════════════════════════════════════════════════════════
-           BASE STYLES & RESET
-           ═══════════════════════════════════════════════════════════ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="Styles/Main.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-wrapper">
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <span class="loader-text">Loading...</span>
+        </div>
+    </div>
 
-        :root {
-            /* Luxury Gold Colors */
-            --gold: #d4af37;
-            --rose-gold: #b76e79;
-            --platinum: #e5e4e2;
-            --champagne: #f7e7ce;
-            --glow-gold: rgba(212, 175, 55, 0.6);
+    <!-- Particle Canvas -->
+    <canvas id="particles"></canvas>
+    
+    <!-- Gradient Background Blobs -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- Terminal Easter Egg -->
+    <div id="terminal" class="terminal-hidden">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-btns">
+                    <span class="t-btn red" id="close-terminal"></span>
+                    <span class="t-btn yellow"></span>
+                    <span class="t-btn green"></span>
+                </div>
+                <span class="terminal-title">shahzeb@portfolio ~ zsh</span>
+            </div>
+            <div class="terminal-body" id="terminal-body">
+                <div id="terminal-output">
+                    <pre class="ascii-logo">
+███████╗███████╗
+██╔════╝██╔════╝
+███████╗█████╗  
+╚════██║██╔══╝  
+███████║██║     
+╚══════╝╚═╝     
+                    </pre>
+                    <p class="welcome-text">Welcome! Type <span class="hl">help</span> for commands</p>
+                </div>
+                <div class="input-line">
+                    <span class="prompt">❯</span>
+                    <input type="text" id="term-input" autocomplete="off" spellcheck="false" placeholder="Type a command...">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terminal Toggle Button (Visible on all devices) -->
+    <button id="terminal-toggle" class="terminal-toggle-btn" aria-label="Open Terminal">
+        <i class="fas fa-terminal"></i>
+        <span class="toggle-hint">Ctrl + .</span>
+    </button>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <header id="navbar">
+        <nav class="nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-icon">SF</span>
+            </a>
             
-            /* Original Premium Colors */
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #818cf8;
-            --secondary: #8b5cf6;
-            --accent: #06b6d4;
-            --accent-pink: #ec4899;
-            --accent-orange: #f97316;
-            --success: #10b981;
-            
-            /* Background Colors */
-            --bg-dark: #0a0e27;
-            --bg-darker: #050814;
-            --bg-card: #141b3d;
-            
-            /* Text Colors */
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --text-muted: #64748b;
-            
-            /* Effects */
-            --card-border: rgba(148, 163, 184, 0.12);
-            --glow: rgba(99, 102, 241, 0.4);
-            --glow-strong: rgba(99, 102, 241, 0.6);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-darker);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.7;
-            position: relative;
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           ANIMATIONS & KEYFRAMES
-           ═══════════════════════════════════════════════════════════ */
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            50%, 100% { left: 200%; }
-        }
-
-        @keyframes bgPulse {
-            0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
-            50% { opacity: 0.85; transform: scale(1.05) rotate(2deg); }
-        }
-
-        @keyframes gridMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 100px 100px; }
-        }
-
-        @keyframes megaPulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
-            50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.15; }
-        }
-
-        @keyframes heroGlow {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.8; }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-70px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes float3D {
-            0%, 100% { 
-                transform: translateY(0) rotateY(0deg) rotateX(0deg); 
-            }
-            25% { 
-                transform: translateY(-25px) rotateY(8deg) rotateX(3deg); 
-            }
-            50% { 
-                transform: translateY(-35px) rotateY(-8deg) rotateX(-3deg); 
-            }
-            75% { 
-                transform: translateY(-25px) rotateY(5deg) rotateX(2deg); 
-            }
-        }
-
-        @keyframes pulseTimeline {
-            0%, 100% { 
-                transform: scale(1); 
-                box-shadow: 0 0 35px rgba(99, 102, 241, 0.8),
-                           0 0 20px rgba(236, 72, 153, 0.6);
-            }
-            50% { 
-                transform: scale(1.25); 
-                box-shadow: 0 0 50px rgba(99, 102, 241, 1),
-                           0 0 30px rgba(236, 72, 153, 0.8);
-            }
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           BACKGROUND ANIMATION
-           ═══════════════════════════════════════════════════════════ */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: 
-                radial-gradient(ellipse at 15% 25%, rgba(99, 102, 241, 0.3) 0%, transparent 40%),
-                radial-gradient(ellipse at 85% 75%, rgba(139, 92, 246, 0.3) 0%, transparent 40%),
-                radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.2) 0%, transparent 50%),
-                radial-gradient(ellipse at 25% 80%, rgba(236, 72, 153, 0.2) 0%, transparent 35%);
-            animation: bgPulse 20s ease-in-out infinite;
-        }
-
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(45deg, transparent 48%, rgba(99, 102, 241, 0.05) 50%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, rgba(139, 92, 246, 0.05) 50%, transparent 52%);
-            background-size: 100px 100px;
-            animation: gridMove 30s linear infinite;
-        }
-
-        .bg-animation::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 1000px;
-            height: 1000px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            animation: megaPulse 8s ease-in-out infinite;
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           SCROLLBAR STYLING
-           ═══════════════════════════════════════════════════════════ */
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
-            border-left: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--gold), var(--rose-gold), var(--primary));
-            border-radius: 6px;
-            border: 2px solid var(--bg-dark);
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, var(--gold), var(--primary-light), var(--accent-pink));
-            box-shadow: 0 0 10px var(--glow-gold);
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           NAVIGATION BAR
-           ═══════════════════════════════════════════════════════════ */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(10, 14, 39, 0.6);
-            backdrop-filter: blur(40px) saturate(180%);
-            -webkit-backdrop-filter: blur(40px) saturate(180%);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(99, 102, 241, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        nav.scrolled {
-            background: rgba(10, 14, 39, 0.95);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(99, 102, 241, 0.3);
-            border-bottom: 1px solid rgba(99, 102, 241, 0.4);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.4rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--rose-gold) 50%, var(--platinum) 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 1px;
-            filter: drop-shadow(0 0 30px var(--glow-gold));
-            transition: all 0.4s ease;
-            cursor: pointer;
-            animation: gradientShift 10s ease infinite;
-            position: relative;
-        }
-
-        .logo:hover {
-            transform: scale(1.08) translateY(-3px);
-            filter: drop-shadow(0 0 40px var(--glow-strong));
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 650;
-            font-size: 0.98rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            padding: 0.7rem 0;
-            display: inline-block;
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--gold), var(--rose-gold));
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateX(-50%);
-            border-radius: 2px;
-            box-shadow: 0 2px 10px var(--glow-gold);
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-            transform: translateY(-3px);
-        }
-
-        .nav-links a:hover::before {
-            width: 100%;
-        }
-
-        .nav-links a.active {
-            color: var(--gold);
-        }
-
-        .nav-links a.active::before {
-            width: 100%;
-        }
-
-        /* RESUME BUTTON IN NAV - Location 1 */
-        .nav-resume-btn {
-            padding: 0.8rem 1.8rem !important;
-            background: linear-gradient(135deg, var(--gold), var(--rose-gold), var(--champagne)) !important;
-            background-size: 200% 200% !important;
-            border-radius: 50px !important;
-            color: var(--bg-darker) !important;
-            font-weight: 900 !important;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 30px var(--glow-gold) !important;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            position: relative;
-            overflow: hidden;
-            animation: gradientShift 6s ease infinite !important;
-            border: 2px solid rgba(255, 255, 255, 0.3) !important;
-        }
-
-        .nav-resume-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-            animation: shimmer 3s ease infinite;
-        }
-
-        .nav-resume-btn:hover {
-            transform: translateY(-4px) scale(1.05) !important;
-            box-shadow: 0 18px 45px var(--glow-gold) !important;
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 0.4rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--gold);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           HERO SECTION
-           ═══════════════════════════════════════════════════════════ */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 3rem;
-            margin-top: 90px;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at top left, rgba(99, 102, 241, 0.2), transparent 60%),
-                radial-gradient(ellipse at bottom right, rgba(139, 92, 246, 0.2), transparent 60%);
-            animation: heroGlow 15s ease-in-out infinite;
-        }
-
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 6rem;
-            align-items: center;
-            z-index: 1;
-            position: relative;
-        }
-
-        .hero-text h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            color: var(--accent);
-            margin-bottom: 1.3rem;
-            font-weight: 700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .hero-text h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 6rem;
-            font-weight: 700;
-            line-height: 1.05;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, 
-                var(--platinum) 0%, 
-                var(--gold) 30%, 
-                var(--rose-gold) 60%,
-                var(--primary-light) 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards,
-                      gradientShift 10s ease infinite;
-            filter: drop-shadow(0 4px 20px var(--glow-gold));
-        }
-
-        .hero-text h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.6rem;
-            background: linear-gradient(90deg, var(--gold), var(--rose-gold), var(--accent-pink));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 2rem;
-            font-weight: 700;
-            animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s backwards,
-                      gradientShift 10s ease infinite;
-        }
-
-        .hero-text p {
-            font-size: 1.35rem;
-            color: var(--text-secondary);
-            margin-bottom: 3.5rem;
-            line-height: 1.9;
-            animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s backwards;
-            max-width: 650px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 2rem;
-            animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.8s backwards;
-            flex-wrap: wrap;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
-.menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-.menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-}
-
-.nav-links.mobile-menu {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: rgba(10, 14, 39, 0.98);
-    backdrop-filter: blur(40px);
-    padding: 2rem;
-    transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.nav-links.mobile-menu.active {
-    transform: translateX(0);
-}
-
-        /* ═══════════════════════════════════════════════════════════
-           BUTTONS - Universal Styles
-           ═══════════════════════════════════════════════════════════ */
-        .btn {
-            padding: 1.3rem 3.2rem;
-            border-radius: 18px;
-            font-weight: 750;
-            text-decoration: none;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.08rem;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold), var(--rose-gold), var(--primary));
-            background-size: 200% 200%;
-            color: white;
-            box-shadow: 0 20px 50px var(--glow-gold),
-                       0 8px 20px rgba(212, 175, 55, 0.4);
-            animation: gradientShift 8s ease infinite;
-        }
-
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            animation: shimmer 3s ease infinite;
-            z-index: 1;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 30px 70px var(--glow-gold),
-                       0 15px 30px rgba(212, 175, 55, 0.6);
-        }
-
-        .btn-secondary {
-            background: rgba(20, 27, 61, 0.6);
-            backdrop-filter: blur(15px);
-            color: var(--text-primary);
-            border: 2px solid var(--gold);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(212, 175, 55, 0.25);
-            border-color: var(--rose-gold);
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 20px 50px var(--glow-gold);
-        }
-
-        .btn span:last-child {
-            transition: transform 0.3s ease;
-            font-size: 1.3rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .btn:hover span:last-child {
-            transform: translateX(8px);
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           FLOATING CARDS (Hero Visual)
-           ═══════════════════════════════════════════════════════════ */
-        .hero-visual {
-            position: relative;
-            height: 650px;
-            animation: fadeIn 1s ease-out 1s backwards;
-            perspective: 1500px;
-        }
-
-        .floating-card {
-            position: absolute;
-            background: rgba(20, 27, 61, 0.5);
-            backdrop-filter: blur(40px) saturate(180%);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            border-radius: 32px;
-            padding: 2.8rem;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4),
-                       0 8px 25px rgba(99, 102, 241, 0.3);
-            animation: float3D 8s ease-in-out infinite;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-
-        .floating-card:hover {
-            transform: translateY(-20px) scale(1.08);
-            border-color: rgba(99, 102, 241, 0.6);
-        }
-
-        .card-1 { top: 8%; left: 8%; animation-delay: 0s; }
-        .card-2 { top: 30%; right: 8%; animation-delay: 2.5s; }
-        .card-3 { bottom: 8%; left: 8%; animation-delay: 5s; }
-
-        .stat-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--gold), var(--rose-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.8rem;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            font-weight: 650;
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           SECTION COMMON STYLES
-           ═══════════════════════════════════════════════════════════ */
-        section {
-            position: relative;
-            padding: 10rem 3rem;
-            z-index: 1;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 7rem;
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 4.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, 
-                var(--platinum) 0%, 
-                var(--gold) 35%, 
-                var(--rose-gold) 75%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 10s ease infinite;
-            filter: drop-shadow(0 3px 20px var(--glow-gold));
-        }
-
-        .section-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            font-weight: 550;
-            max-width: 750px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           PROJECT CARDS
-           ═══════════════════════════════════════════════════════════ */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 3.5rem;
-        }
-
-        .project-card {
-            background: rgba(20, 27, 61, 0.35);
-            backdrop-filter: blur(35px);
-            border: 1px solid rgba(148, 163, 184, 0.15);
-            border-radius: 32px;
-            padding: 3.2rem;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-18px) scale(1.02);
-            border-color: rgba(99, 102, 241, 0.6);
-            box-shadow: 0 35px 90px rgba(0, 0, 0, 0.5),
-                       0 20px 50px rgba(99, 102, 241, 0.4);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 2.2rem;
-        }
-
-        .project-icon {
-            width: 75px;
-            height: 75px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent-pink));
-            border-radius: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            box-shadow: 0 18px 40px rgba(99, 102, 241, 0.5);
-        }
-
-        .project-year {
-            color: var(--text-muted);
-            font-size: 0.98rem;
-            font-weight: 750;
-            background: rgba(99, 102, 241, 0.15);
-            padding: 0.7rem 1.4rem;
-            border-radius: 14px;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-        }
-
-        .project-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 1.4rem;
-            color: var(--text-primary);
-        }
-
-        .project-desc {
-            color: var(--text-secondary);
-            margin-bottom: 2.2rem;
-            line-height: 1.85;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.85rem;
-            margin-bottom: 2.2rem;
-        }
-
-        .tag {
-            padding: 0.7rem 1.5rem;
-            background: rgba(99, 102, 241, 0.15);
-            border: 1px solid rgba(99, 102, 241, 0.35);
-            border-radius: 35px;
-            font-size: 0.92rem;
-            color: var(--primary-light);
-            font-weight: 680;
-        }
-
-        .project-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 750;
-            transition: all 0.4s ease;
-        }
-
-        .project-link:hover {
-            color: var(--accent-pink);
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           SKILLS SECTION
-           ═══════════════════════════════════════════════════════════ */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 3.5rem;
-        }
-
-        .skill-category {
-            background: rgba(20, 27, 61, 0.4);
-            backdrop-filter: blur(35px);
-            border: 1px solid rgba(148, 163, 184, 0.15);
-            border-radius: 32px;
-            padding: 3.5rem;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .skill-category:hover {
-            border-color: rgba(99, 102, 241, 0.6);
-            transform: translateY(-12px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-        }
-
-        .skill-category-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.9rem;
-            font-weight: 800;
-            margin-bottom: 2.5rem;
-            background: linear-gradient(90deg, var(--primary), var(--accent-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.1rem;
-        }
-
-        .skill-item {
-            padding: 0.9rem 1.7rem;
-            background: rgba(148, 163, 184, 0.15);
-            border: 1px solid rgba(148, 163, 184, 0.25);
-            border-radius: 16px;
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            font-weight: 670;
-            transition: all 0.4s ease;
-        }
-
-        .skill-item:hover {
-            background: rgba(99, 102, 241, 0.3);
-            border-color: var(--primary);
-            color: var(--text-primary);
-            transform: scale(1.1) translateY(-3px);
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           TIMELINE (Experience & Education)
-           ═══════════════════════════════════════════════════════════ */
-        .timeline {
-            position: relative;
-            padding-left: 4.5rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 5px;
-            background: linear-gradient(180deg, 
-                var(--primary) 0%, 
-                var(--secondary) 30%,
-                var(--accent-pink) 65%,
-                var(--accent) 100%);
-            border-radius: 3px;
-            box-shadow: 0 0 25px rgba(99, 102, 241, 0.6);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 4.5rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -5rem;
-            top: 0;
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, var(--primary), var(--accent-pink));
-            border-radius: 50%;
-            border: 5px solid var(--bg-darker);
-            box-shadow: 0 0 35px rgba(99, 102, 241, 0.8);
-            animation: pulseTimeline 3.5s ease-in-out infinite;
-        }
-
-        .timeline-content {
-            background: rgba(20, 27, 61, 0.4);
-            backdrop-filter: blur(35px);
-            border: 1px solid rgba(148, 163, 184, 0.15);
-            border-radius: 32px;
-            padding: 3.5rem;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .timeline-content:hover {
-            border-color: rgba(99, 102, 241, 0.6);
-            transform: translateX(25px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-        }
-
-        .timeline-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 1.2rem;
-            color: var(--text-primary);
-        }
-
-        .timeline-company {
-            background: linear-gradient(90deg, var(--primary), var(--accent-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 1.45rem;
-            margin-bottom: 1.2rem;
-            font-weight: 800;
-        }
-
-        .timeline-date {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 1.8rem;
-            font-weight: 650;
-        }
-
-        .timeline-description {
-            color: var(--text-secondary);
-            line-height: 2;
-            font-size: 1.1rem;
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           CONTACT SECTION
-           ═══════════════════════════════════════════════════════════ */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4.5rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2.8rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 2.2rem;
-            padding: 2.2rem;
-            background: rgba(20, 27, 61, 0.4);
-            backdrop-filter: blur(35px);
-            border: 1px solid rgba(148, 163, 184, 0.15);
-            border-radius: 28px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .contact-item:hover {
-            border-color: rgba(99, 102, 241, 0.6);
-            transform: translateX(20px);
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
-        }
-
-        .contact-icon {
-            width: 75px;
-            height: 75px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent-pink));
-            border-radius: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            box-shadow: 0 18px 40px rgba(99, 102, 241, 0.5);
-            flex-shrink: 0;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.8rem;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            width: 75px;
-            height: 75px;
-            background: rgba(20, 27, 61, 0.4);
-            backdrop-filter: blur(35px);
-            border: 1px solid rgba(148, 163, 184, 0.15);
-            border-radius: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 1.7rem;
-        }
-
-        .social-link:hover {
-            transform: translateY(-12px) scale(1.08);
-            border-color: var(--primary);
-            box-shadow: 0 25px 60px rgba(99, 102, 241, 0.6);
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           FOOTER
-           ═══════════════════════════════════════════════════════════ */
-        footer {
-            background: rgba(10, 14, 39, 0.9);
-            backdrop-filter: blur(35px);
-            border-top: 1px solid rgba(148, 163, 184, 0.15);
-            padding: 4.5rem 3rem;
-            text-align: center;
-            color: var(--text-muted);
-        }
-
-        footer p {
-            font-size: 1.12rem;
-            margin: 0.7rem 0;
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-   RESPONSIVE DESIGN - MOBILE FRIENDLY
-   ═══════════════════════════════════════════════════════════ */
-
-/* Desktop/Tablet Landscape - 1200px */
-@media (max-width: 1200px) {
-    .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 4rem;
-    }
-
-    .hero-text h1 {
-        font-size: 5rem;
-    }
-
-    .hero-text p {
-        max-width: 100%;
-    }
-
-    .hero-visual {
-        display: none;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-
-    .projects-grid {
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    }
-}
-
-/* Tablet Portrait - 968px */
-@media (max-width: 968px) {
-    .nav-links:not(.mobile-menu) {
-        display: none;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    .hero-text h1 {
-        font-size: 3.5rem;
-    }
-
-    .hero-text h3 {
-        font-size: 2rem;
-    }
-
-    .hero-text p {
-        font-size: 1.2rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title {
-        font-size: 3.2rem;
-    }
-
-    section {
-        padding: 6rem 1.8rem;
-    }
-
-    .timeline {
-        padding-left: 3rem;
-    }
-
-    .timeline-item::before {
-        left: -3.5rem;
-    }
-
-    .skills-container {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-
-    /* Make buttons full width on tablets */
-    .hero-buttons {
-        width: 100%;
-    }
-
-    .btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-/* Mobile - 640px */
-@media (max-width: 640px) {
-    .nav-container {
-        padding: 1rem 1.2rem;
-    }
-
-    .logo {
-        font-size: 1.4rem;
-        letter-spacing: 0.5px;
-    }
-
-    .hero {
-        padding: 0 1.2rem;
-        min-height: 90vh;
-        margin-top: 70px;
-    }
-
-    .hero-text h1 {
-        font-size: 2.5rem;
-        line-height: 1.15;
-        margin-bottom: 1.5rem;
-    }
-
-    .hero-text h2 {
-        font-size: 1.1rem;
-        letter-spacing: 2px;
-        margin-bottom: 1rem;
-    }
-
-    .hero-text h3 {
-        font-size: 1.6rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .hero-text p {
-        font-size: 1.05rem;
-        margin-bottom: 2.5rem;
-        line-height: 1.7;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        gap: 1.2rem;
-        width: 100%;
-    }
-
-    .btn {
-        padding: 1rem 1.8rem;
-        font-size: 0.95rem;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .section-title {
-        font-size: 2.2rem;
-        margin-bottom: 1.2rem;
-    }
-
-    .section-subtitle {
-        font-size: 1.05rem;
-        padding: 0 1rem;
-    }
-
-    .section-header {
-        margin-bottom: 4rem;
-    }
-
-    section {
-        padding: 5rem 1.2rem;
-    }
-
-    .project-card,
-    .skill-category,
-    .timeline-content {
-        padding: 2rem;
-    }
-
-    .project-icon,
-    .contact-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.8rem;
-    }
-
-    .project-title,
-    .timeline-title {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .project-desc,
-    .timeline-description {
-        font-size: 0.98rem;
-        line-height: 1.7;
-    }
-
-    .project-year {
-        font-size: 0.85rem;
-        padding: 0.5rem 1rem;
-    }
-
-    .tag,
-    .skill-item {
-        font-size: 0.85rem;
-        padding: 0.6rem 1.2rem;
-    }
-
-    .timeline-company {
-        font-size: 1.2rem;
-        margin-bottom: 0.8rem;
-    }
-
-    .timeline-date {
-        font-size: 0.95rem;
-        margin-bottom: 1.2rem;
-    }
-
-    .skill-category-title {
-        font-size: 1.5rem;
-        margin-bottom: 1.8rem;
-    }
-
-    .contact-container {
-        gap: 2rem;
-    }
-
-    .contact-item {
-        padding: 1.5rem;
-        gap: 1.5rem;
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .social-links {
-        justify-content: center;
-        gap: 1.2rem;
-    }
-
-    .social-link {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .timeline {
-        padding-left: 2.5rem;
-    }
-
-    .timeline::before {
-        width: 3px;
-    }
-
-    .timeline-item::before {
-        width: 20px;
-        height: 20px;
-        left: -3rem;
-    }
-
-    .timeline-content:hover {
-        transform: translateX(10px);
-    }
-
-    .stat-number {
-        font-size: 2.8rem;
-    }
-
-    .stat-label {
-        font-size: 0.95rem;
-    }
-
-    footer {
-        padding: 3rem 1.2rem;
-    }
-
-    footer p {
-        font-size: 0.95rem;
-    }
-
-    /* Mobile-specific nav button styling */
-    .nav-resume-btn {
-        padding: 0.6rem 1.2rem !important;
-        font-size: 0.85rem !important;
-        letter-spacing: 0.5px;
-    }
-
-    /* Better mobile card hover effects */
-    .project-card:hover,
-    .skill-category:hover {
-        transform: translateY(-8px) scale(1.01);
-    }
-}
-
-/* Extra Small Mobile - 400px */
-@media (max-width: 400px) {
-    /* Navigation */
-    .nav-container {
-        padding: 0.9rem 1rem;
-    }
-
-    .logo {
-        font-size: 1.2rem;
-        letter-spacing: 0.3px;
-    }
-
-    .menu-toggle {
-        padding: 0.3rem;
-    }
-
-    .menu-toggle span {
-        width: 22px;
-        height: 2.5px;
-    }
-
-    /* Hero Section */
-    .hero {
-        padding: 0 1rem;
-        min-height: 85vh;
-        margin-top: 65px;
-    }
-
-    .hero-text h2 {
-        font-size: 1rem;
-        letter-spacing: 1.5px;
-        margin-bottom: 0.8rem;
-    }
-
-    .hero-text h1 {
-        font-size: 2.2rem;
-        line-height: 1.2;
-        margin-bottom: 1.2rem;
-    }
-
-    .hero-text h3 {
-        font-size: 1.4rem;
-        margin-bottom: 1.2rem;
-    }
-
-    .hero-text p {
-        font-size: 0.98rem;
-        margin-bottom: 2rem;
-        line-height: 1.65;
-    }
-
-    .hero-buttons {
-        gap: 1rem;
-    }
-
-    /* Buttons */
-    .btn {
-        padding: 0.9rem 1.5rem;
-        font-size: 0.9rem;
-        border-radius: 14px;
-    }
-
-    .btn span:last-child {
-        font-size: 1.1rem;
-    }
-
-    .nav-resume-btn {
-        padding: 0.5rem 1rem !important;
-        font-size: 0.75rem !important;
-        letter-spacing: 0.3px;
-        border-radius: 40px !important;
-    }
-
-    /* Sections */
-    section {
-        padding: 4rem 1rem;
-    }
-
-    .section-header {
-        margin-bottom: 3rem;
-    }
-
-    .section-title {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
-
-    .section-subtitle {
-        font-size: 1rem;
-        padding: 0 0.5rem;
-        line-height: 1.6;
-    }
-
-    /* Project Cards */
-    .projects-grid {
-        gap: 1.5rem;
-    }
-
-    .project-card {
-        padding: 1.5rem;
-        border-radius: 24px;
-    }
-
-    .project-header {
-        margin-bottom: 1.5rem;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    .project-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-        border-radius: 16px;
-    }
-
-    .project-year {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.9rem;
-        border-radius: 10px;
-    }
-
-    .project-title {
-        font-size: 1.4rem;
-        margin-bottom: 0.9rem;
-        line-height: 1.3;
-    }
-
-    .project-desc {
-        font-size: 0.92rem;
-        margin-bottom: 1.5rem;
-        line-height: 1.65;
-    }
-
-    .project-tags {
-        gap: 0.6rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .tag {
-        font-size: 0.8rem;
-        padding: 0.5rem 1rem;
-        border-radius: 30px;
-    }
-
-    .project-link {
-        font-size: 0.92rem;
-    }
-
-    /* Timeline */
-    .timeline {
-        padding-left: 2rem;
-    }
-
-    .timeline::before {
-        width: 2.5px;
-        left: -1px;
-    }
-
-    .timeline-item {
-        margin-bottom: 3rem;
-    }
-
-    .timeline-item::before {
-        width: 18px;
-        height: 18px;
-        left: -2.5rem;
-        border-width: 4px;
-    }
-
-    .timeline-content {
-        padding: 1.5rem;
-        border-radius: 24px;
-    }
-
-    .timeline-content:hover {
-        transform: translateX(8px);
-    }
-
-    .timeline-title {
-        font-size: 1.4rem;
-        margin-bottom: 0.8rem;
-        line-height: 1.3;
-    }
-
-    .timeline-company {
-        font-size: 1.1rem;
-        margin-bottom: 0.7rem;
-    }
-
-    .timeline-date {
-        font-size: 0.88rem;
-        margin-bottom: 1rem;
-    }
-
-    .timeline-description {
-        font-size: 0.92rem;
-        line-height: 1.7;
-    }
-
-    /* Skills Section */
-    .skills-container {
-        gap: 1.5rem;
-    }
-
-    .skill-category {
-        padding: 1.8rem;
-        border-radius: 24px;
-    }
-
-    .skill-category-title {
-        font-size: 1.4rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .skill-list {
-        gap: 0.7rem;
-    }
-
-    .skill-item {
-        font-size: 0.8rem;
-        padding: 0.55rem 1.1rem;
-        border-radius: 12px;
-    }
-
-    /* Contact Section */
-    .contact-container {
-        gap: 1.5rem;
-    }
-
-    .contact-item {
-        padding: 1.3rem;
-        gap: 1.2rem;
-        border-radius: 20px;
-    }
-
-    .contact-item h4 {
-        font-size: 1rem !important;
-        margin-bottom: 0.4rem !important;
-    }
-
-    .contact-item a,
-    .contact-item p {
-        font-size: 0.92rem !important;
-    }
-
-    .contact-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-        border-radius: 16px;
-    }
-
-    .social-links {
-        gap: 1rem;
-    }
-
-    .social-link {
-        width: 55px;
-        height: 55px;
-        font-size: 1.3rem;
-        border-radius: 16px;
-    }
-
-    /* Contact CTA Box */
-    .contact-container > div:last-child {
-        padding: 2rem !important;
-        border-radius: 20px !important;
-    }
-
-    .contact-container > div:last-child > div {
-        width: 110px !important;
-        height: 110px !important;
-        font-size: 3rem !important;
-        margin-bottom: 1.8rem !important;
-    }
-
-    .contact-container > div:last-child h3 {
-        font-size: 1.6rem !important;
-        margin-bottom: 1.2rem !important;
-    }
-
-    .contact-container > div:last-child p {
-        font-size: 0.98rem !important;
-        margin-bottom: 1.8rem !important;
-        line-height: 1.7 !important;
-    }
-
-    /* Certifications in Experience Section */
-    .skill-category h3 {
-        font-size: 1.3rem !important;
-    }
-
-    .skill-category > div[style*="color"] {
-        font-size: 0.92rem !important;
-        margin-bottom: 0.7rem !important;
-    }
-
-    .skill-category p {
-        font-size: 0.92rem !important;
-        line-height: 1.7 !important;
-    }
-
-    /* Floating Cards (if visible) */
-    .floating-card {
-        padding: 1.5rem;
-        border-radius: 20px;
-    }
-
-    .stat-number {
-        font-size: 2.5rem;
-        margin-bottom: 0.6rem;
-    }
-
-    .stat-label {
-        font-size: 0.88rem;
-    }
-
-    /* Footer */
-    footer {
-        padding: 2.5rem 1rem;
-    }
-
-    footer p {
-        font-size: 0.88rem;
-    }
-
-    footer p:first-child {
-        font-size: 0.95rem !important;
-    }
-
-    /* Mobile Menu Adjustments */
-    .nav-links.mobile-menu {
-        top: 65px;
-        padding: 1.5rem;
-        max-height: calc(100vh - 65px);
-    }
-
-    .nav-links.mobile-menu a {
-        padding: 1rem 0;
-        font-size: 1rem;
-    }
-
-    .nav-links.mobile-menu .nav-resume-btn {
-        margin-top: 0.8rem;
-        padding: 0.7rem 1.3rem !important;
-        font-size: 0.85rem !important;
-    }
-
-    /* Optimize hover effects for small screens */
-    .project-card:hover,
-    .skill-category:hover,
-    .timeline-content:hover {
-        transform: translateY(-5px) scale(1.01);
-    }
-
-    .social-link:hover {
-        transform: translateY(-8px) scale(1.05);
-    }
-
-    /* Reduce animation intensity */
-    .floating-card {
-        animation-duration: 10s;
-    }
-
-    @keyframes float3D {
-        0%, 100% { 
-            transform: translateY(0) rotateY(0deg) rotateX(0deg); 
-        }
-        50% { 
-            transform: translateY(-20px) rotateY(5deg) rotateX(2deg); 
-        }
-    }
-
-    /* Typography fine-tuning */
-    body {
-        font-size: 14px;
-        line-height: 1.6;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        word-break: break-word;
-    }
-
-    /* Improve readability */
-    * {
-        -webkit-tap-highlight-color: rgba(212, 175, 55, 0.2);
-    }
-
-    /* Scrollbar adjustments */
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        border-width: 1px;
-    }
-}
-
-/* Selection Colors */
-::selection {
-    background: rgba(99, 102, 241, 0.4);
-    color: var(--text-primary);
-}
-    </style>
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">SHAHZEB FAISAL</div>
-            <ul class="nav-links">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li><a href="resume.pdf" class="nav-resume-btn" download>Resume 📄</a></li>
             </ul>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            
+            <div class="nav-actions">
+                <a href="resume.pdf" class="nav-btn" download>
+                    <span>Resume</span>
+                    <i class="fas fa-download"></i>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- ═══════════════════════════════════════════════════════════
-         HERO SECTION (with Resume Button - Location 2)
-         ═══════════════════════════════════════════════════════════ -->
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+
+    <!-- ==================== HERO SECTION ==================== -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h2>Hi, I'm</h2>
-                <h1>Shahzeb Faisal</h1>
-                <h3>Data Scientist & ML Engineer</h3>
-                <p>Transforming data into actionable insights through machine learning, predictive modeling, and innovative AI solutions. Passionate about leveraging cutting-edge technologies to solve real-world problems.</p>
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="pulse-dot"></span>
+                    <span>Available for Opportunities</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="greeting">Hello, I'm</span>
+                    <span class="name" data-text="Shahzeb Faisal">Shahzeb Faisal</span>
+                </h1>
+                
+                <div class="hero-tagline">
+                    <span>I build</span>
+                    <span class="typed-wrapper">
+                        <span id="typed-text"></span>
+                        <span class="typed-cursor">|</span>
+                    </span>
+                </div>
+                
+                <p class="hero-description">
+                    Data Scientist & ML Engineer transforming complex data into 
+                    <strong>intelligent solutions</strong>. Specializing in machine learning, 
+                    deep learning, NLP, and full-stack development.
+                </p>
+                
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">
-                        <span>View My Work</span>
-                        <span>→</span>
+                        <span>View Projects</span>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="resume.pdf" class="btn btn-secondary" download>
-                        <span>Download Resume</span>
-                        <span>📄</span>
+                    <a href="#contact" class="btn btn-outline">
+                        <span>Get in Touch</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </a>
+                </div>
+                
+                <div class="hero-social">
+                    <a href="https://github.com/ShahzebFaisal5649" target="_blank" class="social-btn" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/shahzeb-faisal-8b9190321/" target="_blank" class="social-btn" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:shahzebfaisal5649@gmail.com" class="social-btn" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
                     </a>
                 </div>
             </div>
+            
             <div class="hero-visual">
-                <div class="floating-card card-1">
-                    <div class="stat-number">1+</div>
-                    <div class="stat-label">Years Experience</div>
+                <div class="visual-container">
+                    <!-- Animated Code Window -->
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="file-name">portfolio.py</span>
+                        </div>
+                        <div class="code-body">
+                            <pre><code><span class="keyword">class</span> <span class="class-name">DataScientist</span>:
+    <span class="keyword">def</span> <span class="func">__init__</span>(self):
+        self.name = <span class="string">"Shahzeb"</span>
+        self.skills = [<span class="string">"ML"</span>, <span class="string">"AI"</span>, <span class="string">"Web"</span>]
+        self.passion = <span class="number">100</span>
+    
+    <span class="keyword">def</span> <span class="func">create_impact</span>(self):
+        <span class="keyword">return</span> <span class="string">"Building the future"</span></code></pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Tech Icons -->
+                    <div class="floating-icons">
+                        <div class="float-icon icon-1"><i class="fab fa-python"></i></div>
+                        <div class="float-icon icon-2"><i class="fab fa-react"></i></div>
+                        <div class="float-icon icon-3"><i class="fas fa-brain"></i></div>
+                        <div class="float-icon icon-4"><i class="fab fa-node-js"></i></div>
+                        <div class="float-icon icon-5"><i class="fas fa-database"></i></div>
+                    </div>
+                    
+                    <!-- Stats Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
+                            <div class="stat-value"><span class="counter" data-target="16">0</span>+</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+                            <div class="stat-value"><span class="counter" data-target="4">0</span></div>
+                            <div class="stat-label">Certifications</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                            <div class="stat-value"><span class="counter" data-target="1">0</span>+</div>
+                            <div class="stat-label">Years Exp</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="floating-card card-2">
-                    <div class="stat-number">16+</div>
-                    <div class="stat-label">Projects Completed</div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">About Me</span>
+                <h2 class="section-title">Who I Am</h2>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user-astronaut"></i>
+                        </div>
+                        <div class="image-border"></div>
+                        <div class="experience-tag">
+                            <span class="tag-number">1+</span>
+                            <span class="tag-text">Years<br>Experience</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="floating-card card-3">
-                    <div class="stat-number">4</div>
-                    <div class="stat-label">Certifications</div>
+                
+                <div class="about-content">
+                    <h3 class="about-subtitle">Data Scientist & ML Engineer based in Lahore, Pakistan</h3>
+                    
+                    <p class="about-text">
+                        I'm a <strong>BS Data Science student at FAST NUCES Lahore</strong>, passionate about 
+                        building intelligent systems that solve real-world problems. My expertise spans 
+                        machine learning, deep learning, NLP, and full-stack web development.
+                    </p>
+                    
+                    <p class="about-text">
+                        Currently working as a <strong>Research Assistant</strong> exploring LLM-based 
+                        conversational chatbots, with hands-on experience from internships at 
+                        <strong>Nexium</strong>, <strong>CodeAlpha</strong>, and <strong>Kashf Foundation</strong>.
+                    </p>
+                    
+                    <div class="about-info-grid">
+                        <div class="info-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <span class="info-label">Education</span>
+                                <span class="info-value">BS Data Science, FAST NUCES</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span class="info-label">Location</span>
+                                <span class="info-value">Lahore, Pakistan</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <span class="info-label">Email</span>
+                                <span class="info-value">shahzebfaisal5649@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-globe"></i>
+                            <div>
+                                <span class="info-label">Languages</span>
+                                <span class="info-value">English, Urdu</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-cta">
+                        <a href="resume.pdf" class="btn btn-primary" download>
+                            <span>Download CV</span>
+                            <i class="fas fa-download"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <span>Contact Me</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="projects">
+
+    <!-- ==================== PROJECTS SECTION ==================== -->
+    <section id="projects" class="projects">
         <div class="container">
             <div class="section-header">
+                <span class="section-tag">My Work</span>
                 <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Showcasing 16+ projects across ML, Data Science, Full-Stack Development & Blockchain</p>
+                <p class="section-desc">Showcasing 16+ projects across ML, Data Science, Web Dev & Blockchain</p>
             </div>
+            
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ml">ML/AI</button>
+                <button class="filter-btn" data-filter="web">Web Dev</button>
+                <button class="filter-btn" data-filter="data">Data Science</button>
+                <button class="filter-btn" data-filter="blockchain">Blockchain</button>
+            </div>
+            
+            <!-- Projects Grid -->
             <div class="projects-grid">
-                <!-- Project 1: Nexium Resume Tailor -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🎯</div>
-                        <div class="project-year">2025</div>
+                <!-- Project 1 -->
+                <article class="project-card" data-category="ml web">
+                    <div class="project-image">
+                        <div class="project-preview preview-ai">
+                            <div class="preview-brain">
+                                <i class="fas fa-brain"></i>
+                                <div class="brain-ring"></div>
+                                <div class="brain-ring delay"></div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Grand_Project" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                        <span class="project-badge">Featured</span>
                     </div>
-                    <h3 class="project-title">Nexium Resume Tailor</h3>
-                    <p class="project-desc">AI-powered resume optimization platform with smart parsing, job matching algorithm, ATS optimization, and keyword suggestions. Features PWA capabilities and comprehensive security.</p>
-                    <div class="project-tags">
-                        <span class="tag">Next.js 15</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">OpenAI GPT-4</span>
-                        <span class="tag">Supabase</span>
-                        <span class="tag">PWA</span>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-year">2025</span>
+                            <span class="project-type">AI Platform</span>
+                        </div>
+                        <h3 class="project-title">Nexium Resume Tailor</h3>
+                        <p class="project-desc">AI-powered resume optimization with GPT-4, achieving 30% accuracy improvement.</p>
+                        <div class="project-tech">
+                            <span>Next.js 15</span>
+                            <span>GPT-4</span>
+                            <span>TypeScript</span>
+                        </div>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Grand_Project" target="_blank" class="project-link">View Project</a>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card" data-category="ml web">
+                    <div class="project-image">
+                        <div class="project-preview preview-nlp">
+                            <div class="nlp-animation">
+                                <div class="text-lines">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign2" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-year">2025</span>
+                            <span class="project-type">NLP App</span>
+                        </div>
+                        <h3 class="project-title">Blog Summarizer</h3>
+                        <p class="project-desc">Full-stack AI web app for intelligent NLP summarization with Urdu translation.</p>
+                        <div class="project-tech">
+                            <span>Next.js</span>
+                            <span>MongoDB</span>
+                            <span>NLP</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card" data-category="data ml">
+                    <div class="project-image">
+                        <div class="project-preview preview-satellite">
+                            <div class="earth"></div>
+                            <div class="satellite"><i class="fas fa-satellite"></i></div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ShahzebFaisal5649/Environmental_Impact_Analysis_using_Satellite_Data" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-year">2024</span>
+                            <span class="project-type">Data Science</span>
+                        </div>
+                        <h3 class="project-title">Environmental Analysis</h3>
+                        <p class="project-desc">Satellite data analysis using NDVI to monitor deforestation and urban sprawl.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>NDVI</span>
+                            <span>GIS</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="project-card" data-category="data">
+                    <div class="project-image">
+                        <div class="project-preview preview-city">
+                            <div class="city-buildings">
+                                <div class="building b1"></div>
+                                <div class="building b2"></div>
+                                <div class="building b3"></div>
+                            </div>
+                            <div class="data-particles">
+                                <span></span><span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ShahzebFaisal5649/smart-city-management-system" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-year">2025</span>
+                            <span class="project-type">Big Data</span>
+                        </div>
+                        <h3 class="project-title">Smart City Management</h3>
+                        <p class="project-desc">Real-time data pipeline processing 13.5M+ vehicle registrations.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Pipeline</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 5 -->
+                <article class="project-card" data-category="blockchain web">
+                    <div class="project-image">
+                        <div class="project-preview preview-blockchain">
+                            <div class="blockchain-chain">
+                                <div class="block"><i class="fas fa-cube"></i></div>
+                                <div class="chain-link"></div>
+                                <div class="block"><i class="fas fa-cube"></i></div>
+                                <div class="chain-link"></div>
+                                <div class="block"><i class="fas fa-cube"></i></div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ShahzebFaisal5649/election-dapp" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-year">2025</span>
+                            <span class="project-type">Blockchain</span>
+                        </div>
+                        <h3 class="project-title">Election DApp</h3>
+                        <p class="project-desc">Decentralized voting application for transparent, tamper-proof elections.</p>
+                        <div class="project-tech">
+                            <span>Solidity</span>
+                            <span>Web3.js</span>
+                            <span>Ethereum</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 6 -->
+                <article class="project-card" data-category="ml">
+                    <div class="project-image">
+                        <div class="project-preview preview-lstm">
+                            <div class="img-to-text">
+                                <i class="fas fa-image"></i>
+                                <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+                                <span class="caption">A cat...</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ShahzebFaisal5649/Visual-Description-Generator-For-Images-Data" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-year">2024</span>
+                            <span class="project-type">Deep Learning</span>
+                        </div>
+                        <h3 class="project-title">Image Captioning LSTM</h3>
+                        <p class="project-desc">Deep learning model generating image captions with 0.875 BLEU score.</p>
+                        <div class="project-tech">
+                            <span>TensorFlow</span>
+                            <span>LSTM</span>
+                            <span>Keras</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="projects-cta">
+                <a href="https://github.com/ShahzebFaisal5649?tab=repositories" target="_blank" class="btn btn-outline">
+                    <span>View All on GitHub</span>
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EXPERIENCE SECTION ==================== -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">My Journey</span>
+                <h2 class="section-title">Work Experience</h2>
+            </div>
+            
+            <div class="timeline">
+                <!-- Experience 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-title">Research Assistant</h3>
+                                <span class="timeline-company">FAST NUCES Lahore</span>
+                            </div>
+                            <span class="timeline-date current">2024 - Present</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Researching "Exploring Publicly Available LLMs for Conversational Chatbots" 
+                            under Dr. Esha Tur Razia Babar. Exploring persona-based architectures and bias mitigation.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>LLMs</span><span>NLP</span><span>Research</span><span>Python</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 2: Blog Summarizer -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">📝</div>
-                        <div class="project-year">2025</div>
+                <!-- Experience 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-robot"></i>
                     </div>
-                    <h3 class="project-title">Blog Summarizer</h3>
-                    <p class="project-desc">Full-stack AI-powered web app extracting blog content, generating intelligent summaries, and providing Urdu translations with dual database architecture (Supabase & MongoDB).</p>
-                    <div class="project-tags">
-                        <span class="tag">Next.js 15</span>
-                        <span class="tag">MongoDB</span>
-                        <span class="tag">Web Scraping</span>
-                        <span class="tag">NLP</span>
-                        <span class="tag">Prisma</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign2" target="_blank" class="project-link">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Project 3: QuoteGen AI -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">💬</div>
-                        <div class="project-year">2025</div>
-                    </div>
-                    <h3 class="project-title">QuoteGen AI</h3>
-                    <p class="project-desc">Professional quote generator with topic-based generation, smart fallback system, WCAG 2.1 AA compliance, and beautiful glassmorphism UI with server-side rendering.</p>
-                    <div class="project-tags">
-                        <span class="tag">Next.js 15</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">Tailwind CSS</span>
-                        <span class="tag">ShadCN UI</span>
-                        <span class="tag">Vercel</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign1" target="_blank" class="project-link">View Project</a>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-title">AI-First Web Dev Intern</h3>
+                                <span class="timeline-company">Nexium</span>
+                            </div>
+                            <span class="timeline-date">Jul - Aug 2025</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Built AI-powered Resume Tailor with GPT-4 achieving 30% accuracy boost. 
+                            Developed full-stack apps using Next.js 15 and TypeScript.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>Next.js</span><span>GPT-4</span><span>TypeScript</span><span>Supabase</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 4: FLEX GYM -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🏋️</div>
-                        <div class="project-year">2025</div>
+                <!-- Experience 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3 class="project-title">FLEX GYM Website</h3>
-                    <p class="project-desc">Modern gym management platform with workout tracking, nutrition panel, AI chatbot trainer, class booking, progress visualization, and community feed with real-time features.</p>
-                    <div class="project-tags">
-                        <span class="tag">HTML/CSS</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Tailwind CSS</span>
-                        <span class="tag">Local Storage</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/GYM-Website" target="_blank" class="project-link">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Project 5: Movie Showcase -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🎬</div>
-                        <div class="project-year">2024</div>
-                    </div>
-                    <h3 class="project-title">Movie Showcase</h3>
-                    <p class="project-desc">Responsive web app for browsing movies with TMDb API integration, live search, genre filtering, sorting options, interactive modals, and graceful error handling.</p>
-                    <div class="project-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Bootstrap 5</span>
-                        <span class="tag">TMDb API</span>
-                        <span class="tag">REST API</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/Movie-Showcase" target="_blank" class="project-link">View Project</a>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-title">Data Science Intern</h3>
+                                <span class="timeline-company">CodeAlpha</span>
+                            </div>
+                            <span class="timeline-date">Jun - Jul 2024</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Developed predictive models improving decision-making by 25%. 
+                            Designed automated pipelines reducing processing time by 30%.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>Python</span><span>ML</span><span>Analytics</span><span>Pandas</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 6: Environmental Impact Analysis -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🌍</div>
-                        <div class="project-year">2024</div>
+                <!-- Experience 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-database"></i>
                     </div>
-                    <h3 class="project-title">Environmental Impact Analysis</h3>
-                    <p class="project-desc">Satellite data analysis tool using NDVI and spectral indices to monitor deforestation, urban sprawl, and water body changes for environmental decision-making.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Satellite Data</span>
-                        <span class="tag">NDVI</span>
-                        <span class="tag">Image Processing</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/Environmental_Impact_Analysis_using_Satellite_Data" target="_blank" class="project-link">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Project 7: Lahore Smart City -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🏙️</div>
-                        <div class="project-year">2025</div>
-                    </div>
-                    <h3 class="project-title">Lahore Smart City Management</h3>
-                    <p class="project-desc">Real-time data pipeline processing 13.5M+ vehicle registrations with synthetic data generation, weather integration, and 98.75% quality score for urban analytics.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Pandas</span>
-                        <span class="tag">Data Pipeline</span>
-                        <span class="tag">Analytics</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/smart-city-management-system" target="_blank" class="project-link">View Project</a>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-title">Data & Software Intern</h3>
+                                <span class="timeline-company">Kashf Foundation</span>
+                            </div>
+                            <span class="timeline-date">Jul - Aug 2024</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Built compliance dashboard with real-time analytics. 
+                            Optimized SQL queries reducing response time by 40%.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>SQL</span><span>Android</span><span>Dashboard</span><span>Analytics</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 8: Election DApp -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🗳️</div>
-                        <div class="project-year">2025</div>
+                <!-- Education -->
+                <div class="timeline-item education">
+                    <div class="timeline-marker edu">
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <h3 class="project-title">Election DApp</h3>
-                    <p class="project-desc">Blockchain-based decentralized voting application ensuring transparent, tamper-proof elections using Solidity smart contracts on Ethereum with Web3.js integration.</p>
-                    <div class="project-tags">
-                        <span class="tag">Solidity</span>
-                        <span class="tag">Blockchain</span>
-                        <span class="tag">Web3.js</span>
-                        <span class="tag">Ethereum</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/election-dapp" target="_blank" class="project-link">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Project 9: Azure Bicep -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">☁️</div>
-                        <div class="project-year">2024</div>
-                    </div>
-                    <h3 class="project-title">Azure Bicep Deployment</h3>
-                    <p class="project-desc">Automated Azure infrastructure deployment using modular Bicep templates for VMs, VNets, storage accounts, and monitoring with Azure CLI integration.</p>
-                    <div class="project-tags">
-                        <span class="tag">Azure</span>
-                        <span class="tag">Bicep</span>
-                        <span class="tag">IaC</span>
-                        <span class="tag">DevOps</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/Bicep-Shahzeb-Ass" target="_blank" class="project-link">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Project 10: Edu Connect -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🎓</div>
-                        <div class="project-year">2024</div>
-                    </div>
-                    <h3 class="project-title">Edu Connect</h3>
-                    <p class="project-desc">Full-stack platform connecting students with tutors featuring real-time WebSocket chat, session management, user profiles with ratings, and subject-based tutor matching.</p>
-                    <div class="project-tags">
-                        <span class="tag">React</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">MySQL</span>
-                        <span class="tag">WebSocket</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/DB_Lab_Project" target="_blank" class="project-link">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Project 11: E-Shop -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🛒</div>
-                        <div class="project-year">2023</div>
-                    </div>
-                    <h3 class="project-title">E-Shop Website</h3>
-                    <p class="project-desc">Comprehensive e-commerce platform with product management, shopping cart, user authentication, admin panel, search functionality, and secure payment processing.</p>
-                    <div class="project-tags">
-                        <span class="tag">HTML/CSS</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">SQL Server</span>
-                        <span class="tag">Bootstrap</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/E-Shop" target="_blank" class="project-link">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Project 12: LoginMate -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">📱</div>
-                        <div class="project-year">2023</div>
-                    </div>
-                    <h3 class="project-title">LoginMate</h3>
-                    <p class="project-desc">Sleek Android authentication app with secure credential management using SharedPreferences, password visibility toggle, responsive design, and Material Design UI.</p>
-                    <div class="project-tags">
-                        <span class="tag">Android SDK</span>
-                        <span class="tag">Java</span>
-                        <span class="tag">Material Design</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/LoginMate" target="_blank" class="project-link">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Project 13: Image Captioning -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🖼️</div>
-                        <div class="project-year">2024</div>
-                    </div>
-                    <h3 class="project-title">Image Captioning with LSTM</h3>
-                    <p class="project-desc">Deep learning model generating descriptive captions for images using LSTM architecture, achieving 0.875 BLEU score with TensorFlow and Keras implementation.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">LSTM</span>
-                        <span class="tag">Keras</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/Visual-Description-Generator-For-Images-Data" target="_blank" class="project-link">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Project 14: Student Management -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🗄️</div>
-                        <div class="project-year">2023</div>
-                    </div>
-                    <h3 class="project-title">Student Management System</h3>
-                    <p class="project-desc">SQL Server-based database system managing students, faculties, courses, departments, enrollments, and grades with comprehensive CRUD operations and constraints.</p>
-                    <div class="project-tags">
-                        <span class="tag">SQL Server</span>
-                        <span class="tag">Database Design</span>
-                        <span class="tag">T-SQL</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/StudentManagementSystem" target="_blank" class="project-link">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Project 15: Music Sentiment -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🎵</div>
-                        <div class="project-year">2024</div>
-                    </div>
-                    <h3 class="project-title">Music Sentiment Analysis</h3>
-                    <p class="project-desc">NLP-based analysis of song lyrics sentiment across different music eras using machine learning algorithms, text processing, and sentiment classification techniques.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">NLP</span>
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">Sentiment Analysis</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649" target="_blank" class="project-link">View Project</a>
-                    </div>
-                </div>
-
-                <!-- Project 16: Beginner's Facebook -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">👥</div>
-                        <div class="project-year">2022</div>
-                    </div>
-                    <h3 class="project-title">Beginner's Facebook</h3>
-                    <p class="project-desc">C++ social network simulation with friend management, adjacency matrix visualization, mutual friend discovery, and friend suggestions based on connections.</p>
-                    <div class="project-tags">
-                        <span class="tag">C++</span>
-                        <span class="tag">Data Structures</span>
-                        <span class="tag">Graph Theory</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShahzebFaisal5649/Beginner-s-Facebook" target="_blank" class="project-link">View Project</a>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-title">BS Data Science</h3>
+                                <span class="timeline-company">FAST NUCES Lahore</span>
+                            </div>
+                            <span class="timeline-date edu">2021 - 2025</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Focus on Machine Learning, Deep Learning, NLP, and Big Data Analytics.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>ML</span><span>Deep Learning</span><span>NLP</span><span>Big Data</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience">
+    <!-- ==================== SKILLS SECTION ==================== -->
+    <section id="skills" class="skills">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Professional Experience</h2>
-                <p class="section-subtitle">Internships, research work, and industry certifications</p>
+                <span class="section-tag">Expertise</span>
+                <h2 class="section-title">Skills & Technologies</h2>
             </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Research Assistant</h3>
-                        <div class="timeline-company">FAST NUCES Lahore</div>
-                        <div class="timeline-date">2024 - Present</div>
-                        <p class="timeline-description">
-                            <strong>Research: "Exploring Publicly Available LLMs for Conversational Chatbots"</strong><br><br>
-                            Conducting research under Dr. Esha Tur Razia Babar on LLM-based chatbot systems. Exploring persona-based chatbot architectures, bias mitigation, and future improvements. Discussing applications and challenges in LLM-driven conversations with focus on ethical AI development and real-world implementations.
-                        </p>
+            
+            <div class="skills-grid">
+                <!-- Skill Category 1 -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="fas fa-code"></i></div>
+                        <h3>Languages</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 95%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript/TypeScript</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 90%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">SQL</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 88%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">C++</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 80%;"></div></div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">AI-First Web Development Intern</h3>
-                        <div class="timeline-company">Nexium</div>
-                        <div class="timeline-date">July 2025 - August 2025</div>
-                        <p class="timeline-description">
-                            • Developed full-stack applications using Next.js 15, TypeScript, and modern web technologies<br>
-                            • Built AI-powered Resume Tailor platform with smart parsing, ATS optimization, and job matching algorithms<br>
-                            • Created Blog Summarizer with web scraping, NLP summarization, and Urdu translation capabilities<br>
-                            • Designed QuoteGen AI with server-side rendering and WCAG 2.1 AA accessibility compliance<br>
-                            • Implemented responsive UI/UX with Tailwind CSS, ShadCN UI, and progressive web app features<br>
-                            • Integrated Supabase PostgreSQL, MongoDB, and Prisma ORM for scalable data management<br>
-                            • Earned certification in AI-powered Applications & Full-Stack Development
-                        </p>
+                <!-- Skill Category 2 -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                        <h3>ML & AI</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">TensorFlow</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 92%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">PyTorch</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 85%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Scikit-Learn</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 90%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">NLP & LLMs</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 88%;"></div></div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Software Development Trainee</h3>
-                        <div class="timeline-company">Technology Academy - Bright Network</div>
-                        <div class="timeline-date">September 2024</div>
-                        <p class="timeline-description">
-                            • Completed intensive <strong>Couch to Coder 2024</strong> program focused on software development fundamentals<br>
-                            • Gained hands-on experience in coding practices, software engineering principles, and industry standards<br>
-                            • Participated in collaborative projects and technical workshops to enhance development skills<br>
-                            • Worked on real-world programming challenges and best practices for clean code development<br>
-                            • Earned Certificate of Completion for Couch to Coder 2024 program
-                        </p>
+                <!-- Skill Category 3 -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="fas fa-globe"></i></div>
+                        <h3>Web Development</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">React/Next.js</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 92%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Node.js</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 85%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Tailwind CSS</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 90%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">REST APIs</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 88%;"></div></div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Data Science Intern</h3>
-                        <div class="timeline-company">CodeAlpha</div>
-                        <div class="timeline-date">June 2024 - July 2024</div>
-                        <p class="timeline-description">
-                            • Developed predictive models for business intelligence, improving decision-making accuracy by 25%<br>
-                            • Designed automated data analysis pipelines, reducing processing time by 30%<br>
-                            • Applied SQL and machine learning algorithms to extract actionable insights from large datasets<br>
-                            • Implemented data visualization dashboards using Python libraries (Matplotlib, Seaborn, Plotly)<br>
-                            • Recognized with certification for expertise in predictive modeling and data analytics
-                        </p>
+                <!-- Skill Category 4 -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+                        <h3>Tools & Cloud</h3>
                     </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Data & Software Intern</h3>
-                        <div class="timeline-company">Kashf Foundation</div>
-                        <div class="timeline-date">July 2024 - August 2024</div>
-                        <p class="timeline-description">
-                            • Built compliance system dashboard with real-time analytics and data monitoring<br>
-                            • Optimized SQL queries and database schema, reducing response time by 40%<br>
-                            • Enhanced Android mobile app UI/UX, improving user engagement and satisfaction<br>
-                            • Implemented secure transaction features for e-commerce solutions<br>
-                            • Collaborated with cross-functional teams to deliver high-quality software solutions<br>
-                            • Earned certification in Dashboard Development, App UI, and SQL Databases
-                        </p>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Git/GitHub</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 95%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Docker</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 80%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">MongoDB/PostgreSQL</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 88%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Azure</span>
+                            <div class="skill-bar"><div class="skill-progress" style="--progress: 75%;"></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="section-header" style="margin-top: 5rem;">
-                <h2 class="section-title">Certifications</h2>
-                <p class="section-subtitle">Professional certifications and achievements</p>
-            </div>
-            <div class="skills-container">
-                <!-- Certificate 1: Nexium -->
-                <div class="skill-category">
-                    <div class="contact-icon" style="margin-bottom: 1rem;">🏆</div>
-                    <h3 class="skill-category-title">Nexium AI-First Web Development</h3>
-                    <div style="color: var(--gold); font-weight: 700; margin-bottom: 0.8rem; font-size: 1.05rem;">January 2025</div>
-                    <p style="color: var(--text-secondary); line-height: 1.8;">
-                        Completed comprehensive AI-First Web Development Internship with expertise in Next.js 15, TypeScript, and AI-powered applications. Developed production-ready projects including Resume Tailor (GPT-4), Blog Summarizer, and QuoteGen AI with modern web technologies.
-                    </p>
-                </div>
-
-                <!-- Certificate 2: Technology Academy -->
-                <div class="skill-category">
-                    <div class="contact-icon" style="margin-bottom: 1rem;">🏆</div>
-                    <h3 class="skill-category-title">Technology Academy - Couch to Coder 2024</h3>
-                    <div style="color: var(--gold); font-weight: 700; margin-bottom: 0.8rem; font-size: 1.05rem;">September 2024</div>
-                    <p style="color: var(--text-secondary); line-height: 1.8;">
-                        Successfully completed intensive full-stack development program covering modern web technologies, software engineering principles, and professional development practices.
-                    </p>
-                </div>
-
-                <!-- Certificate 3: CodeAlpha -->
-                <div class="skill-category">
-                    <div class="contact-icon" style="margin-bottom: 1rem;">🏆</div>
-                    <h3 class="skill-category-title">CodeAlpha Data Science Internship</h3>
-                    <div style="color: var(--gold); font-weight: 700; margin-bottom: 0.8rem; font-size: 1.05rem;">June - July 2024</div>
-                    <p style="color: var(--text-secondary); line-height: 1.8;">
-                        Recognized for expertise in predictive modeling, machine learning algorithms, and data analytics. Developed automated analysis pipelines and visualization dashboards with 25% improvement in decision-making accuracy.
-                    </p>
-                </div>
-
-                <!-- Certificate 4: Kashf Foundation -->
-                <div class="skill-category">
-                    <div class="contact-icon" style="margin-bottom: 1rem;">🏆</div>
-                    <h3 class="skill-category-title">Kashf Foundation IT Internship</h3>
-                    <div style="color: var(--gold); font-weight: 700; margin-bottom: 0.8rem; font-size: 1.05rem;">July - August 2024</div>
-                    <p style="color: var(--text-secondary); line-height: 1.8;">
-                        Dashboard development, mobile app UI enhancement, and SQL database optimization. Built compliance system with real-time analytics and optimized queries reducing response time by 40%.
-                    </p>
-                </div>
+            <!-- Tech Cloud -->
+            <div class="tech-cloud">
+                <span>Python</span><span>JavaScript</span><span>React</span><span>Next.js</span>
+                <span>TensorFlow</span><span>PyTorch</span><span>Node.js</span><span>MongoDB</span>
+                <span>PostgreSQL</span><span>Docker</span><span>Git</span><span>Azure</span>
+                <span>NLP</span><span>LLMs</span><span>Deep Learning</span><span>Scikit-Learn</span>
+                <span>Pandas</span><span>NumPy</span><span>Tailwind</span><span>TypeScript</span>
             </div>
         </div>
     </section>
 
-    <section id="education">
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Education</h2>
-                <p class="section-subtitle">Academic achievements and qualifications</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Bachelor's in Data Science</h3>
-                        <div class="timeline-company">FAST NUCES Lahore</div>
-                        <div class="timeline-date">2021 - 2025 (Expected)</div>
-                        <p class="timeline-description">
-                            Pursuing Bachelor's in Data Science with focus on Machine Learning, Deep Learning, NLP, and Big Data Analytics. Conducting research on LLM-based conversational chatbots under Dr. Esha Tur Razia Babar. Developing expertise in predictive modeling, AI innovations, and data-driven solutions.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Intermediate in Computer Science (ICS)</h3>
-                        <div class="timeline-company">Punjab Group of Colleges</div>
-                        <div class="timeline-date">2019 - 2021</div>
-                        <p class="timeline-description">
-                            Completed higher secondary education with specialization in Computer Science, building foundation in programming, mathematics, and computational thinking.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Technical Skills</h2>
-                <p class="section-subtitle">Technologies and tools I work with</p>
-            </div>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3 class="skill-category-title">Programming Languages</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">JavaScript</span>
-                        <span class="skill-item">TypeScript</span>
-                        <span class="skill-item">C++</span>
-                        <span class="skill-item">C</span>
-                        <span class="skill-item">SQL</span>
-                        <span class="skill-item">Java</span>
-                        <span class="skill-item">Solidity</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="skill-category-title">Machine Learning & AI</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">TensorFlow</span>
-                        <span class="skill-item">PyTorch</span>
-                        <span class="skill-item">Scikit-Learn</span>
-                        <span class="skill-item">LSTM</span>
-                        <span class="skill-item">Random Forest</span>
-                        <span class="skill-item">Hugging Face</span>
-                        <span class="skill-item">NLTK</span>
-                        <span class="skill-item">Transformers</span>
-                        <span class="skill-item">LLMs</span>
-                        <span class="skill-item">OpenAI GPT-4</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="skill-category-title">Web Development</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Next.js 15</span>
-                        <span class="skill-item">React</span>
-                        <span class="skill-item">Node.js</span>
-                        <span class="skill-item">Express.js</span>
-                        <span class="skill-item">Tailwind CSS</span>
-                        <span class="skill-item">Bootstrap</span>
-                        <span class="skill-item">HTML/CSS</span>
-                        <span class="skill-item">ShadCN UI</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="skill-category-title">Data Science & Analytics</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Predictive Modeling</span>
-                        <span class="skill-item">Data Visualization</span>
-                        <span class="skill-item">Big Data</span>
-                        <span class="skill-item">NLP</span>
-                        <span class="skill-item">Statistical Analysis</span>
-                        <span class="skill-item">Pandas</span>
-                        <span class="skill-item">NumPy</span>
-                        <span class="skill-item">Matplotlib</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="skill-category-title">Databases & Storage</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">MS SQL Server</span>
-                        <span class="skill-item">MongoDB</span>
-                        <span class="skill-item">PostgreSQL</span>
-                        <span class="skill-item">Supabase</span>
-                        <span class="skill-item">MySQL</span>
-                        <span class="skill-item">Prisma ORM</span>
-                        <span class="skill-item">Redis</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="skill-category-title">Cloud & DevOps</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Azure Cloud</span>
-                        <span class="skill-item">AKS</span>
-                        <span class="skill-item">Bicep</span>
-                        <span class="skill-item">Vercel</span>
-                        <span class="skill-item">Git</span>
-                        <span class="skill-item">Docker</span>
-                        <span class="skill-item">Azure CLI</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="skill-category-title">Blockchain & Web3</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Solidity</span>
-                        <span class="skill-item">Web3.js</span>
-                        <span class="skill-item">Smart Contracts</span>
-                        <span class="skill-item">Truffle</span>
-                        <span class="skill-item">Ganache</span>
-                        <span class="skill-item">Ethereum</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="skill-category-title">Mobile & Other Tools</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Android SDK</span>
-                        <span class="skill-item">Flask</span>
-                        <span class="skill-item">WebSocket</span>
-                        <span class="skill-item">REST APIs</span>
-                        <span class="skill-item">Jupyter</span>
-                        <span class="skill-item">VS Code</span>
-                        <span class="skill-item">PWA</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <div class="section-header">
+                <span class="section-tag">Get in Touch</span>
                 <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">Feel free to reach out for collaborations or opportunities</p>
+                <p class="section-desc">Have a project in mind? Let's discuss it!</p>
             </div>
-            <div class="contact-container">
+            
+            <div class="contact-grid">
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div>
-                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-weight: 700; font-size: 1.1rem;">Email</h4>
-                            <a href="mailto:shahzebfaisal5649@gmail.com" style="color: var(--text-secondary); text-decoration: none; font-size: 1.05rem;">shahzebfaisal5649@gmail.com</a>
+                    <div class="contact-card">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-details">
+                                <span class="contact-label">Email</span>
+                                <a href="mailto:shahzebfaisal5649@gmail.com">shahzebfaisal5649@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="contact-details">
+                                <span class="contact-label">Phone</span>
+                                <a href="tel:+923020418510">+92 302 0418510</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-details">
+                                <span class="contact-label">Location</span>
+                                <span>Lahore, Pakistan</span>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <div>
-                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-weight: 700; font-size: 1.1rem;">Phone</h4>
-                            <a href="tel:+923020418510" style="color: var(--text-secondary); text-decoration: none; font-size: 1.05rem;">+92 302 0418510</a>
-                        </div>
+                    
+                    <div class="availability-badge">
+                        <span class="status-dot"></span>
+                        <span>Available for opportunities</span>
                     </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-weight: 700; font-size: 1.1rem;">Location</h4>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 1.05rem;">Lahore, Pakistan</p>
-                        </div>
+                    
+                    <div class="contact-social">
+                        <a href="https://github.com/ShahzebFaisal5649" target="_blank" class="contact-social-btn">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/shahzeb-faisal-8b9190321/" target="_blank" class="contact-social-btn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="mailto:shahzebfaisal5649@gmail.com" class="contact-social-btn">
+                            <i class="fas fa-envelope"></i>
+                        </a>
                     </div>
-
-                    <div style="margin-top: 1.5rem;">
-                        <h4 style="color: var(--text-primary); margin-bottom: 1.75rem; font-weight: 700; font-size: 1.2rem;">Connect With Me</h4>
-                        <div class="social-links">
-                            <a href="https://github.com/ShahzebFaisal5649" target="_blank" class="social-link" title="GitHub">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
-                            <a href="https://www.linkedin.com/in/shahzeb-faisal-8b9190321/" target="_blank" class="social-link" title="LinkedIn">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                            <a href="https://www.facebook.com/profile.php?id=100092180321641" target="_blank" class="social-link" title="Facebook">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                            </a>
-                            <a href="resume.pdf" target="_blank" class="social-link" title="Download Resume">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.363 2c4.155 0 2.637 6 2.637 6s6-1.65 6 2.457v11.543h-16v-20h7.363zm.826-2h-10.189v24h20v-14.386c0-2.391-6.648-9.614-9.811-9.614zm4.811 13h-2.628v3.686h.907v-1.472h1.49v-.732h-1.49v-.698h1.721v-.784zm-4.9 0h-1.599v3.686h1.599c.537 0 .961-.181 1.262-.535.555-.658.587-2.034-.062-2.692-.298-.3-.712-.459-1.2-.459zm-.692.783h.496c.473 0 .802.173.915.644.064.267.077.679-.021.948-.128.351-.381.528-.754.528h-.637v-2.12zm-2.74-.783h-1.668v3.686h.907v-1.277h.761c.619 0 1.064-.277 1.224-.763.095-.291.095-.597 0-.885-.16-.484-.606-.761-1.224-.761zm-.761.732h.546c.235 0 .467.028.576.228.067.123.067.366 0 .489-.109.199-.341.227-.576.227h-.546v-.944z"/></svg>
-                            </a>
+                </div>
+                
+                <div class="contact-map">
+                    <div class="map-wrapper">
+                        <div class="map-grid"></div>
+                        <div class="map-pin">
+                            <div class="pin-ripple"></div>
+                            <div class="pin-ripple delay"></div>
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="map-label">
+                            <span class="city">Lahore</span>
+                            <span class="country">Pakistan</span>
                         </div>
                     </div>
                 </div>
-
-                <div style="background: rgba(20, 27, 61, 0.6); backdrop-filter: blur(25px); border: 1px solid var(--card-border); border-radius: 24px; padding: 3.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-                    <div style="width: 140px; height: 140px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 4rem; margin-bottom: 2.5rem; box-shadow: 0 25px 70px rgba(99, 102, 241, 0.4);">
-                        👋
-                    </div>
-                    <h3 style="font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--text-primary); font-weight: 800;">Let's Work Together!</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.9; font-size: 1.1rem;">
-                        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Whether you need a data scientist, ML engineer, or full-stack developer, let's connect!
-                    </p>
-                    <a href="mailto:shahzebfaisal5649@gmail.com" class="btn btn-primary">Send Me a Message</a>
-                </div>
+            </div>
+            
+            <div class="contact-cta">
+                <a href="mailto:shahzebfaisal5649@gmail.com" class="btn btn-primary btn-lg">
+                    <span>Send Me a Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <footer>
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
         <div class="container">
-            <p style="font-size: 1.1rem; font-weight: 600;">&copy; 2025 Shahzeb Faisal. All rights reserved.</p>
-            <p style="margin-top: 0.75rem; font-size: 1rem;">Designed with ❤️ using modern web technologies</p>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">SF</span>
+                    <p>Building intelligent solutions</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/ShahzebFaisal5649" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/shahzeb-faisal-8b9190321/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Shahzeb Faisal. Made with <span class="heart">&hearts;</span></p>
+                <p class="terminal-shortcut">Press <kbd>Ctrl</kbd>+<kbd>.</kbd> for terminal</p>
+            </div>
         </div>
     </footer>
 
-    <!-- FLOATING GOLD PARTICLES -->
-    <script>
-        (function() {
-            const container = document.createElement('div');
-            container.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0';
-            document.body.insertBefore(container, document.body.firstChild);
-            
-            for(let i = 0; i < 40; i++) {
-                const particle = document.createElement('div');
-                const left = Math.random() * 100;
-                const duration = 20 + Math.random() * 10;
-                const delay = Math.random() * 5;
-                const drift = (Math.random() - 0.5) * 100;
-                
-                particle.style.cssText = `
-                    position:absolute;
-                    width:4px;
-                    height:4px;
-                    background:#d4af37;
-                    border-radius:50%;
-                    box-shadow:0 0 10px #d4af37, 0 0 20px rgba(212,175,55,0.6);
-                    left:${left}%;
-                    bottom:-10px;
-                    opacity:0;
-                    animation:particle${i} ${duration}s ${delay}s infinite ease-in;
-                `;
-                
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes particle${i} {
-                        0% { transform:translateY(0) translateX(0) scale(0); opacity:0; }
-                        10% { opacity:0.8; transform:translateY(-10vh) translateX(${drift*0.1}px) scale(1); }
-                        90% { opacity:0.8; transform:translateY(-90vh) translateX(${drift}px) scale(1); }
-                        100% { transform:translateY(-100vh) translateX(${drift}px) scale(0.5); opacity:0; }
-                    }
-                `;
-                
-                document.head.appendChild(style);
-                container.appendChild(particle);
-            }
-        })();
-    </script>
+    <!-- Confetti Canvas -->
+    <canvas id="confetti"></canvas>
 
-    <script>
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navigation Active State & Scroll Effects
-        const navbar = document.getElementById('navbar');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('section');
-
-        window.addEventListener('scroll', () => {
-            // Navbar background on scroll
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            // Active navigation link
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Apply animations to elements
-        document.querySelectorAll('.project-card, .timeline-item, .skill-category, .contact-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(40px)';
-            el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-            observer.observe(el);
-        });
-
-        // Add stagger effect to project cards
-        document.querySelectorAll('.project-card').forEach((card, index) => {
-            card.style.transitionDelay = `${index * 0.1}s`;
-        });
-
-        // Add hover effect to floating cards
-        document.querySelectorAll('.floating-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.animationPlayState = 'paused';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.animationPlayState = 'running';
-            });
-        });
-
-        const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-
-menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-    navLinks.classList.toggle('mobile-menu');
-    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
-});
-
-navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
-});
-
-        // Add ripple effect to buttons
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.classList.add('ripple');
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        });
-
-    </script>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="Scripts/Main.js"></script>
 </body>
 </html>
