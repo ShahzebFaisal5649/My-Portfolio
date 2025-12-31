@@ -2255,3 +2255,479 @@ kbd {
         display: none;
     }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   PORTFOLIO ENHANCEMENT - CSS ADDITIONS
+   Add these styles to your Styles/Main.css file
+   ═══════════════════════════════════════════════════════════ */
+
+/* ═══════════ BACK TO TOP BUTTON ═══════════ */
+.back-to-top {
+    position: fixed;
+    bottom: 160px;
+    right: 24px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 998;
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 12px 35px rgba(99, 102, 241, 0.6);
+}
+
+.back-to-top:active {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* ═══════════ HIDE SCROLL INDICATOR ═══════════ */
+.scroll-down {
+    display: none !important;
+}
+
+/* ═══════════ HERO NAME - MOBILE RESPONSIVE ═══════════ */
+.hero-name {
+    font-size: clamp(2rem, 5vw, 3.5rem) !important;
+    word-break: break-word;
+    max-width: 100%;
+    line-height: 1.2 !important;
+}
+
+@media (max-width: 768px) {
+    .hero-name {
+        font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-name {
+        font-size: 1.8rem !important;
+        padding: 0 10px;
+    }
+}
+
+/* ═══════════ SKILLS SECTION IMPROVEMENTS ═══════════ */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.skill-category {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.skill-tags span {
+    padding: 8px 16px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 25px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.skill-tags span:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+}
+
+/* ═══════════ TERMINAL ENHANCEMENTS ═══════════ */
+.terminal-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-actions button {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.terminal-actions button:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.voice-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 50%;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.voice-btn:hover {
+    background: rgba(99, 102, 241, 0.3);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.voice-btn.listening {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #ef4444;
+    animation: voicePulse 1s ease-in-out infinite;
+}
+
+@keyframes voicePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+}
+
+.welcome-box {
+    background: linear-gradient(135deg, 
+        rgba(99, 102, 241, 0.1) 0%, 
+        rgba(139, 92, 246, 0.05) 100%
+    );
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 15px;
+}
+
+.welcome-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+.welcome-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.quick-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.suggestion {
+    padding: 8px 14px;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.suggestion:hover {
+    background: rgba(99, 102, 241, 0.3);
+    border-color: var(--primary);
+    color: var(--text);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(99, 102, 241, 0.3);
+}
+
+/* ═══════════ SPOTLIGHT EFFECT ═══════════ */
+.spotlight {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(99, 102, 241, 0.08) 0%,
+        rgba(139, 92, 246, 0.04) 30%,
+        transparent 70%
+    );
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+}
+
+/* ═══════════ FLOATING SHAPES BACKGROUND ═══════════ */
+.floating-shapes {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.03;
+    animation: floatShape 20s ease-in-out infinite;
+}
+
+.shape:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    background: var(--primary);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.shape:nth-child(2) {
+    width: 120px;
+    height: 120px;
+    background: var(--secondary);
+    border-radius: 50%;
+    top: 60%;
+    right: 15%;
+    animation-delay: -5s;
+}
+
+.shape:nth-child(3) {
+    width: 60px;
+    height: 60px;
+    background: var(--accent);
+    border-radius: 20%;
+    top: 80%;
+    left: 25%;
+    animation-delay: -10s;
+    animation-duration: 25s;
+}
+
+.shape:nth-child(4) {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    top: 10%;
+    right: 30%;
+    animation-delay: -7s;
+}
+
+@keyframes floatShape {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-30px) rotate(90deg); }
+    50% { transform: translateY(0) rotate(180deg); }
+    75% { transform: translateY(30px) rotate(270deg); }
+}
+
+/* ═══════════ NOISE TEXTURE OVERLAY ═══════════ */
+.noise-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.015;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ═══════════ ACCESSIBILITY IMPROVEMENTS ═══════════ */
+/* Better focus states */
+a:focus, button:focus, input:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Skip to main content link */
+.skip-to-main {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100000;
+}
+
+.skip-to-main:focus {
+    top: 0;
+}
+
+/* ═══════════ PERFORMANCE OPTIMIZATIONS ═══════════ */
+/* Use will-change for animated elements */
+.hero-card,
+.project-card,
+.btn,
+.social-link {
+    will-change: transform;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ═══════════ MOBILE RESPONSIVE FIXES ═══════════ */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 140px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .terminal-toggle {
+        bottom: 80px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .quick-actions {
+        bottom: 80px;
+        right: 20px;
+    }
+    
+    .terminal-window {
+        width: 95vw;
+        max-height: 70vh;
+    }
+    
+    .welcome-box {
+        padding: 15px;
+    }
+    
+    .quick-suggestions {
+        flex-direction: column;
+    }
+    
+    .suggestion {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-to-top {
+        width: 42px;
+        height: 42px;
+        bottom: 120px;
+        font-size: 1rem;
+    }
+    
+    .terminal-toggle {
+        width: 45px;
+        height: 45px;
+        bottom: 70px;
+    }
+    
+    .terminal-toggle .hint {
+        display: none;
+    }
+}
+
+/* ═══════════ CONTRAST IMPROVEMENTS ═══════════ */
+/* Ensure all text meets WCAG AA standards */
+.hero-desc,
+.section-desc,
+.project-info p,
+.about-content p {
+    color: #cbd5e1; /* Lighter than original for better contrast */
+}
+
+.nav-link {
+    color: #cbd5e1;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #f1f5f9;
+}
+
+/* Footer text */
+.footer {
+    color: #cbd5e1;
+}
+
+/* ═══════════ PRINT STYLES ═══════════ */
+@media print {
+    #particles,
+    .cursor,
+    .cursor-follower,
+    #terminal,
+    .terminal-toggle,
+    .quick-actions,
+    .scroll-progress,
+    #confetti,
+    .back-to-top,
+    .floating-shapes,
+    .noise-overlay,
+    .spotlight {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    a {
+        color: #0000EE;
+        text-decoration: underline;
+    }
+}

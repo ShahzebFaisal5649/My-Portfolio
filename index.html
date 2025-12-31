@@ -8,11 +8,11 @@
     <meta name="theme-color" content="#6366f1">
     <title>Shahzeb Faisal | Data Scientist & ML Engineer</title>
     
-    <!-- Preconnect -->
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Fonts with display=swap for better performance -->
+    <!-- Optimized Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Font Awesome - Deferred -->
@@ -20,6 +20,14 @@
     
     <!-- Main CSS -->
     <link rel="stylesheet" href="Styles/Main.css">
+    
+    <!-- Critical CSS Inline -->
+    <style>
+        /* Critical CSS for above-the-fold content */
+        body { margin: 0; background: #0a0a0f; color: #f1f5f9; font-family: 'Inter', sans-serif; }
+        #preloader { position: fixed; inset: 0; background: #0a0a0f; z-index: 99999; display: flex; align-items: center; justify-content: center; }
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 0 60px; }
+    </style>
 </head>
 <body>
     <!-- Preloader -->
@@ -37,6 +45,11 @@
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to Top" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Terminal (Ctrl + .) -->
     <div id="terminal" class="terminal-hidden">
         <div class="terminal-window">
@@ -46,7 +59,14 @@
                     <span class="dot yellow"></span>
                     <span class="dot green"></span>
                 </div>
-                <span class="terminal-title">AI Terminal ~ shahzeb</span>
+                <div class="terminal-title">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Terminal ~ shahzeb</span>
+                </div>
+                <div class="terminal-actions">
+                    <button id="terminal-minimize" title="Minimize"><i class="fas fa-minus"></i></button>
+                    <button id="terminal-maximize" title="Maximize"><i class="fas fa-expand"></i></button>
+                </div>
             </div>
             <div class="terminal-body" id="terminal-body">
                 <div id="terminal-output">
@@ -58,18 +78,30 @@
  ____) | |
 |_____/|_|  AI Terminal v2.0
                     </pre>
-                    <p class="welcome-msg">Welcome! Type <span class="hl">help</span> for commands or <span class="hl">ai [question]</span> to chat with AI</p>
+                    <div class="welcome-box">
+                        <div class="welcome-title">👋 Welcome to Shahzeb's AI Portfolio Terminal</div>
+                        <div class="welcome-subtitle">Powered by Gemini AI - Ask me anything about the portfolio!</div>
+                        <div class="quick-suggestions">
+                            <span class="suggestion" data-cmd="ai what ML projects has Shahzeb done?">ML Projects</span>
+                            <span class="suggestion" data-cmd="skills">Skills</span>
+                            <span class="suggestion" data-cmd="ai tell me about blockchain experience">Blockchain</span>
+                            <span class="suggestion" data-cmd="contact">Contact</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="terminal-input-line">
                     <span class="prompt">❯</span>
-                    <input type="text" id="term-input" autocomplete="off" spellcheck="false" placeholder="Type command or 'ai your question'...">
+                    <input type="text" id="term-input" autocomplete="off" spellcheck="false" placeholder="Type 'help' or ask AI anything...">
+                    <button class="voice-btn" id="voice-btn" title="Voice Input (Beta)">
+                        <i class="fas fa-microphone"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Terminal Toggle Button -->
-    <button id="terminal-btn" class="terminal-toggle" aria-label="Open Terminal">
+    <button id="terminal-btn" class="terminal-toggle" aria-label="Open Terminal" title="AI Terminal (Ctrl+.)">
         <i class="fas fa-terminal"></i>
         <span class="hint">Ctrl+.</span>
     </button>
@@ -181,8 +213,8 @@
                                 <div class="profile-icon">
                                     <i class="fas fa-user-astronaut"></i>
                                 </div>
-                                <h3>Shahzeb Faisal</h3>
-                                <p>Data Scientist</p>
+                                <h2 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 4px;">Shahzeb Faisal</h2>
+                                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px;">Data Scientist</p>
                                 <div class="card-stats">
                                     <div class="stat">
                                         <span class="stat-num counter" data-target="16">0</span>+
@@ -211,11 +243,6 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="scroll-down">
-                <div class="mouse"></div>
-                <span>Scroll</span>
-            </div>
         </section>
 
         <!-- ABOUT SECTION -->
@@ -241,9 +268,9 @@
                     </div>
                     
                     <div class="about-content">
-                        <h3>Data Scientist & ML Engineer from Lahore, Pakistan</h3>
+                        <h2>Data Scientist & ML Engineer from Lahore, Pakistan</h2>
                         
-                        <p>I'm a <strong>BS Data Science student grduated from FAST NUCES Lahore</strong>, passionate about building intelligent systems. My expertise spans machine learning, deep learning, NLP, and full-stack development.</p>
+                        <p>I'm a <strong>BS Data Science student graduated from FAST NUCES Lahore</strong>, passionate about building intelligent systems. My expertise spans machine learning, deep learning, NLP, and full-stack development.</p>
                         
                         <p>Currently working as a <strong>Research Assistant</strong> on LLM-based conversational chatbots, with experience from <strong>Nexium</strong>, <strong>CodeAlpha</strong>, and <strong>Kashf Foundation</strong>.</p>
                         
@@ -363,7 +390,8 @@
                         </div>
                     </article>
 
-                    <!-- Project 3 -->
+                    <!-- Additional projects... -->
+                    <!-- Project 3-12 remain the same, keeping original HTML -->
                     <article class="project-card" data-category="web">
                         <div class="project-image">
                             <div class="project-preview">
@@ -389,7 +417,6 @@
                         </div>
                     </article>
 
-                    <!-- Project 4 -->
                     <article class="project-card" data-category="data ml">
                         <div class="project-image">
                             <div class="project-preview">
@@ -415,7 +442,6 @@
                         </div>
                     </article>
 
-                    <!-- Project 5 -->
                     <article class="project-card" data-category="data">
                         <div class="project-image">
                             <div class="project-preview">
@@ -441,7 +467,6 @@
                         </div>
                     </article>
 
-                    <!-- Project 6 -->
                     <article class="project-card" data-category="blockchain web">
                         <div class="project-image">
                             <div class="project-preview">
@@ -467,7 +492,6 @@
                         </div>
                     </article>
 
-                    <!-- Project 7 -->
                     <article class="project-card" data-category="ml">
                         <div class="project-image">
                             <div class="project-preview">
@@ -493,7 +517,6 @@
                         </div>
                     </article>
 
-                    <!-- Project 8 -->
                     <article class="project-card" data-category="web">
                         <div class="project-image">
                             <div class="project-preview">
@@ -519,7 +542,6 @@
                         </div>
                     </article>
 
-                    <!-- Project 9 -->
                     <article class="project-card" data-category="web">
                         <div class="project-image">
                             <div class="project-preview">
@@ -545,7 +567,6 @@
                         </div>
                     </article>
 
-                    <!-- Project 10 -->
                     <article class="project-card" data-category="web data">
                         <div class="project-image">
                             <div class="project-preview">
@@ -571,7 +592,6 @@
                         </div>
                     </article>
 
-                    <!-- Project 11 -->
                     <article class="project-card" data-category="data">
                         <div class="project-image">
                             <div class="project-preview">
@@ -597,7 +617,6 @@
                         </div>
                     </article>
 
-                    <!-- Project 12 -->
                     <article class="project-card" data-category="web">
                         <div class="project-image">
                             <div class="project-preview">
@@ -722,24 +741,25 @@
                 <div class="github-activity">
                     <h3><i class="fab fa-github"></i> GitHub Contributions</h3>
                     <div class="github-chart-wrapper">
-                        <img src="https://ghchart.rshah.org/6366f1/ShahzebFaisal5649" alt="GitHub Contribution Chart" class="github-chart" loading="lazy">
+                        <img src="https://ghchart.rshah.org/6366f1/ShahzebFaisal5649" alt="GitHub Contribution Chart" class="github-chart" loading="lazy" width="800" height="150">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SKILLS SECTION -->
+        <!-- SKILLS SECTION - REORGANIZED -->
         <section id="skills" class="skills">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">Expertise</span>
-                    <h2 class="section-title">Skills & Tech</h2>
+                    <h2 class="section-title">Skills & Technologies</h2>
                 </div>
                 
                 <div class="skills-grid">
+                    <!-- Programming Languages -->
                     <div class="skill-category">
                         <div class="category-icon"><i class="fas fa-code"></i></div>
-                        <h3>Languages</h3>
+                        <h3>Programming Languages</h3>
                         <div class="skill-tags">
                             <span>Python</span>
                             <span>JavaScript</span>
@@ -750,42 +770,104 @@
                         </div>
                     </div>
                     
+                    <!-- ML & AI Frameworks -->
                     <div class="skill-category">
                         <div class="category-icon"><i class="fas fa-brain"></i></div>
-                        <h3>ML & AI</h3>
+                        <h3>ML & AI Frameworks</h3>
                         <div class="skill-tags">
                             <span>TensorFlow</span>
                             <span>PyTorch</span>
                             <span>Scikit-Learn</span>
-                            <span>NLP</span>
-                            <span>LLMs</span>
-                            <span>BERT</span>
+                            <span>Keras</span>
+                            <span>Transformers</span>
+                            <span>Hugging Face</span>
+                            <span>OpenAI</span>
+                            <span>LangChain</span>
                         </div>
                     </div>
                     
+                    <!-- NLP & LLMs -->
+                    <div class="skill-category">
+                        <div class="category-icon"><i class="fas fa-language"></i></div>
+                        <h3>NLP & LLMs</h3>
+                        <div class="skill-tags">
+                            <span>GPT-4</span>
+                            <span>BERT</span>
+                            <span>T5</span>
+                            <span>spaCy</span>
+                            <span>NLTK</span>
+                            <span>Llama</span>
+                            <span>RAG</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Web Development -->
                     <div class="skill-category">
                         <div class="category-icon"><i class="fas fa-globe"></i></div>
-                        <h3>Web Dev</h3>
+                        <h3>Web Development</h3>
                         <div class="skill-tags">
                             <span>React</span>
                             <span>Next.js</span>
                             <span>Node.js</span>
-                            <span>Tailwind</span>
+                            <span>Express</span>
+                            <span>Tailwind CSS</span>
                             <span>REST APIs</span>
-                            <span>HTML/CSS</span>
+                            <span>GraphQL</span>
                         </div>
                     </div>
                     
+                    <!-- Data Science -->
+                    <div class="skill-category">
+                        <div class="category-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Data Science</h3>
+                        <div class="skill-tags">
+                            <span>Pandas</span>
+                            <span>NumPy</span>
+                            <span>Matplotlib</span>
+                            <span>Seaborn</span>
+                            <span>Jupyter</span>
+                            <span>Apache Spark</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Cloud & DevOps -->
                     <div class="skill-category">
                         <div class="category-icon"><i class="fas fa-cloud"></i></div>
-                        <h3>Tools & Cloud</h3>
+                        <h3>Cloud & DevOps</h3>
                         <div class="skill-tags">
                             <span>Git/GitHub</span>
                             <span>Docker</span>
                             <span>Azure</span>
+                            <span>Vercel</span>
+                            <span>Netlify</span>
+                            <span>CI/CD</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Databases -->
+                    <div class="skill-category">
+                        <div class="category-icon"><i class="fas fa-database"></i></div>
+                        <h3>Databases</h3>
+                        <div class="skill-tags">
                             <span>MongoDB</span>
                             <span>PostgreSQL</span>
+                            <span>MySQL</span>
                             <span>Supabase</span>
+                            <span>Firebase</span>
+                            <span>Redis</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Blockchain -->
+                    <div class="skill-category">
+                        <div class="category-icon"><i class="fab fa-ethereum"></i></div>
+                        <h3>Blockchain</h3>
+                        <div class="skill-tags">
+                            <span>Solidity</span>
+                            <span>Web3.js</span>
+                            <span>Truffle</span>
+                            <span>Ethereum</span>
+                            <span>Smart Contracts</span>
                         </div>
                     </div>
                 </div>
@@ -885,14 +967,28 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Shahzeb Faisal</p>
-                <p class="shortcut-hint">Press <kbd>Ctrl</kbd>+<kbd>.</kbd> for terminal</p>
+                <p>&copy; 2025 Shahzeb Faisal. All rights reserved.</p>
+                <p class="shortcut-hint">Press <kbd>Ctrl</kbd>+<kbd>.</kbd> for AI terminal</p>
             </div>
         </div>
     </footer>
 
     <!-- Confetti Canvas -->
     <canvas id="confetti"></canvas>
+
+    <!-- Floating Shapes Background -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Spotlight Effect -->
+    <div class="spotlight" id="spotlight"></div>
 
     <!-- Scripts -->
     <script src="Scripts/Main.js" defer></script>
