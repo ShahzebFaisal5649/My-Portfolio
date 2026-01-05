@@ -1,7 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   SHAHZEB FAISAL PORTFOLIO - ENHANCED WITH GEMINI AI
-   Version 6.0 - Mobile Optimized Ultimate Edition
-   ALL MOBILE FIXES APPLIED
+   Main.js - Portfolio with Certificate Viewer
    ═══════════════════════════════════════════════════════════ */
 
 (function() {
@@ -10,7 +8,8 @@
     // ═══════════ PORTFOLIO DATA (For AI Context) ═══════════
     const PORTFOLIO_DATA = {
         name: "Shahzeb Faisal",
-        title: "Data Scientist & ML Engineer",
+        title: "AI/ML Engineer & Full-Stack AI Developer",
+        summary: "Expert in NLP, LLMs, and Full-Stack Development with 16+ production projects",
         location: "Lahore, Pakistan",
         email: "shahzebfaisal5649@gmail.com",
         phone: "+92 302 0418510",
@@ -62,13 +61,7 @@
         apiUrl: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
         conversationHistory: [],
         
-/*************  ✨ Windsurf Command ⭐  *************/
-/**
- * Returns the system prompt for the AI to generate code based on.
- * This includes information about Shahzeb's personal info, skills, projects, experience, and stats.
- * @returns {string} The system prompt for the AI
- */
-/*******  c087fb5a-8063-47b9-bf2f-f8c409c42c4a  *******/        getSystemPrompt() {
+        getSystemPrompt() {
             return `You are an AI assistant embedded in Shahzeb Faisal's portfolio website. Your role is to help visitors learn about Shahzeb, his skills, projects, and experience.
 
 IMPORTANT: You must ONLY answer questions related to Shahzeb's portfolio. Here is his complete profile:
@@ -1871,6 +1864,137 @@ RULES:
         }
     `;
     document.head.appendChild(mobileAnimStyle);
+     // ═══════════ CERTIFICATE VIEWER FUNCTIONALITY ═══════════
+    function initCertificateViewer() {
+        const modal = document.getElementById('certificate-modal');
+        if (!modal) {
+            console.warn('⚠️ Certificate modal not found in HTML');
+            return;
+        }
+        
+        const img = document.getElementById('certificate-image');
+        const title = document.getElementById('certificate-title');
+        const issuer = document.getElementById('certificate-issuer');
+        const date = document.getElementById('certificate-date');
+        const close = document.querySelector('.certificate-close');
+        const downloadBtn = document.getElementById('download-certificate');
+        
+        // Certificate data mapping
+        const certificates = {
+            'nexium': {
+                file: 'nexium_cert.jpeg',
+                title: 'AI-First Web Development Internship',
+                issuer: 'Nexium',
+                date: 'January 2025'
+            },
+            'codealpha': {
+                file: 'codealpha_cert.jpeg',
+                title: 'Data Science Internship',
+                issuer: 'CodeAlpha',
+                date: 'June - July 2024'
+            },
+            'kashf': {
+                file: 'kashf_cert.jpeg',
+                title: 'Data & Software Internship',
+                issuer: 'Kashf Foundation',
+                date: 'July - August 2024'
+            },
+            'bright': {
+                file: 'bright_cert.jpeg',
+                title: 'Couch to Coder 2024',
+                issuer: 'Technology Academy (BRIGHT Network)',
+                date: 'September 2024'
+            }
+        };
+        
+        // Add buttons to timeline items
+        const timelineItems = document.querySelectorAll('.timeline-content');
+        timelineItems.forEach((item) => {
+            const company = item.querySelector('.company')?.textContent.toLowerCase() || '';
+            let certKey = null;
+            
+            if (company.includes('nexium')) certKey = 'nexium';
+            else if (company.includes('codealpha')) certKey = 'codealpha';
+            else if (company.includes('kashf')) certKey = 'kashf';
+            else if (company.includes('technology academy') || company.includes('bright')) certKey = 'bright';
+            
+            if (certKey && certificates[certKey]) {
+                const btnContainer = document.createElement('div');
+                btnContainer.style.cssText = 'margin-top: 15px;';
+                
+                const certBtn = document.createElement('button');
+                certBtn.className = 'view-certificate-btn';
+                certBtn.innerHTML = '<i class="fas fa-certificate"></i> View Certificate';
+                certBtn.setAttribute('aria-label', `View ${certificates[certKey].title} certificate`);
+                
+                certBtn.onclick = (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showCertificate(certificates[certKey]);
+                    AudioSystem.play('success');
+                };
+                
+                btnContainer.appendChild(certBtn);
+                item.appendChild(btnContainer);
+            }
+        });
+        
+        function showCertificate(cert) {
+            // Update modal content
+            img.src = `Certificates/${cert.file}`;
+            img.alt = `${cert.title} Certificate`;
+            title.textContent = cert.title;
+            issuer.textContent = cert.issuer;
+            date.textContent = cert.date;
+            
+            // Update download button
+            downloadBtn.onclick = () => {
+                const link = document.createElement('a');
+                link.href = img.src;
+                link.download = `${cert.issuer.replace(/\s+/g, '_')}_Certificate.jpg`;
+                link.click();
+                AudioSystem.play('success');
+            };
+            
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        
+        // Close button handler
+        if (close) {
+            close.onclick = closeModal;
+        }
+        
+        // Click outside modal to close
+        modal.onclick = (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        };
+        
+        // ESC key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                closeModal();
+            }
+        });
+        
+        // Prevent modal content clicks from closing modal
+        const modalContent = modal.querySelector('.certificate-modal-content');
+        if (modalContent) {
+            modalContent.onclick = (e) => {
+                e.stopPropagation();
+            };
+        }
+        
+        console.log('✅ Certificate viewer initialized');
+    }
 
     // ═══════════ INITIALIZE EVERYTHING ═══════════
     function init() {
@@ -1898,15 +2022,15 @@ RULES:
         initNetworkStatus();
         initPerformanceMonitor();
         fixMobileButtonPositions();
+        initCertificateViewer(); // ← ADD THIS LINE
         
-        // Re-apply on resize
         window.addEventListener('resize', fixMobileButtonPositions);
         
         window.triggerConfetti = triggerConfetti;
         window.toggleMatrix = toggleMatrix;
         window.Terminal = Terminal;
         
-        console.log('%c✨ Portfolio v6.0 Loaded - Mobile Optimized!', 'color: #6366f1; font-size: 16px; font-weight: bold;');
+        console.log('%c✨ Portfolio v6.0 with Certificates!', 'color: #6366f1; font-size: 16px; font-weight: bold;');
         console.log('%cPress Ctrl+. for AI Terminal', 'color: #10b981; font-size: 12px;');
     }
 
@@ -1918,5 +2042,12 @@ RULES:
 
     window.addEventListener('load', hidePreloader);
     setTimeout(hidePreloader, 3000);
+
+  
+
+// ═══════════ EXPOSE TO WINDOW (Optional) ═══════════
+window.CertificateViewer = {
+    init: initCertificateViewer
+};
 
 })();

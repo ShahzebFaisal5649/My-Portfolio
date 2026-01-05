@@ -1,7 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   PORTFOLIO CSS - OPTIMIZED & PERFORMANCE FOCUSED
-   Version 6.0 - Mobile Optimized with ALL Fixes Applied
-   All PageSpeed Issues Fixed + Mobile Patches Integrated
+   Main.css
    ═══════════════════════════════════════════════════════════ */
 
 /* ═══════════ CSS VARIABLES ═══════════ */
@@ -2033,3 +2031,209 @@ kbd {
     }
     body { background: white; color: black; }
 }
+
+/* Certificate Modal */
+.certificate-modal {
+    display: none;
+    position: fixed;
+    z-index: 10001;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+.certificate-modal-content {
+    position: relative;
+    margin: 3% auto;
+    max-width: 95%;
+    width: 900px;
+    max-height: 90vh;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    animation: slideInDown 0.4s ease;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.certificate-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--text);
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.3s;
+    line-height: 1;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.certificate-close:hover {
+    color: var(--primary);
+    background: rgba(99, 102, 241, 0.2);
+    transform: rotate(90deg);
+}
+
+.certificate-display {
+    width: 100%;
+    margin-bottom: 25px;
+    background: white;
+    padding: 15px;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+#certificate-image {
+    width: 100%;
+    height: auto;
+    max-height: 65vh;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+}
+
+.certificate-info {
+    text-align: center;
+    padding: 20px;
+}
+
+.certificate-info h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 15px;
+}
+
+.certificate-info p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 10px 0;
+}
+
+.certificate-info i {
+    color: var(--primary);
+}
+
+.download-certificate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    margin-top: 20px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.download-certificate-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+}
+
+/* View Certificate Button */
+.view-certificate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.view-certificate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(99, 102, 241, 0.5);
+}
+
+.view-certificate-btn i {
+    animation: certBounce 2s ease-in-out infinite;
+}
+
+@keyframes certBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .certificate-modal-content {
+        margin: 5% auto;
+        padding: 20px 15px;
+        max-width: 98%;
+        width: 98%;
+    }
+    
+    .certificate-close {
+        top: 10px;
+        right: 15px;
+        font-size: 30px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .certificate-display {
+        padding: 10px;
+    }
+    
+    #certificate-image {
+        max-height: 50vh;
+    }
+    
+    .certificate-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .certificate-info p {
+        font-size: 0.9rem;
+    }
+    
+    .download-certificate-btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInDown {
+    from { 
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
