@@ -1,109 +1,457 @@
 /* ═══════════════════════════════════════════════════════════
-   Main.js - Portfolio with Certificate Viewer
+   Main.js - Portfolio with Enhanced AI & Certificate Viewer
    ═══════════════════════════════════════════════════════════ */
 
 (function() {
     'use strict';
 
-    // ═══════════ PORTFOLIO DATA (For AI Context) ═══════════
+    // ═══════════ COMPREHENSIVE PORTFOLIO DATA (For AI Context) ═══════════
     const PORTFOLIO_DATA = {
+        // PERSONAL INFORMATION
         name: "Shahzeb Faisal",
-        title: "AI/ML Engineer & Full-Stack AI Developer",
-        summary: "Expert in NLP, LLMs, and Full-Stack Development with 16+ production projects",
+        title: "Data Scientist & ML Engineer",
+        subtitle: "AI/ML Engineer & Full-Stack AI Developer",
         location: "Lahore, Pakistan",
         email: "shahzebfaisal5649@gmail.com",
         phone: "+92 302 0418510",
-        education: "BS Data Science from FAST-NUCES Lahore (Expected 2026)",
         github: "https://github.com/ShahzebFaisal5649",
         linkedin: "https://www.linkedin.com/in/shahzeb-faisal-8b9190321/",
+        status: "Open to Work",
+        languages: ["English", "Urdu"],
         
-        skills: {
-            languages: ["Python", "JavaScript", "TypeScript", "SQL", "C++", "HTML/CSS"],
-            ml_ai: ["TensorFlow", "PyTorch", "Scikit-Learn", "NLP", "LLMs", "Computer Vision", "Deep Learning", "Hugging Face"],
-            web: ["React", "Next.js", "Node.js", "Express", "Tailwind CSS", "REST APIs"],
-            data: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Apache Spark", "ETL Pipelines"],
-            tools: ["Git", "Docker", "Azure", "MongoDB", "PostgreSQL", "Jupyter", "VS Code"]
+        // EDUCATION
+        education: {
+            university: "FAST National University of Computer & Emerging Sciences (NUCES)",
+            location: "Lahore Campus",
+            degree: "Bachelor of Science in Data Science",
+            period: "2021 - 2025",
+            status: "Graduated",
+            focus_areas: ["Machine Learning", "Deep Learning", "NLP", "Big Data Analytics"],
+            description: "One of Pakistan's top technology universities, known for excellence in computer science and data science education"
         },
         
-        projects: [
-            { name: "Nexium Resume Tailor", desc: "AI-powered resume optimizer using NLP to match job descriptions, built with Python and ML algorithms", tech: ["Python", "NLP", "Machine Learning"], category: "ml" },
-            { name: "Blog Summarizer", desc: "NLP web application that generates concise summaries of blog posts using transformer models", tech: ["Python", "NLP", "Transformers", "Flask"], category: "ml" },
-            { name: "Smart City Management", desc: "Big data pipeline for urban analytics processing millions of data points for traffic and utilities", tech: ["Apache Spark", "Python", "ETL", "Data Engineering"], category: "data" },
-            { name: "Election DApp", desc: "Decentralized voting application on Ethereum blockchain ensuring transparent and secure elections", tech: ["Solidity", "Web3.js", "React", "Ethereum"], category: "blockchain" },
-            { name: "Image Captioning System", desc: "Deep learning model using CNN-LSTM architecture to generate natural language descriptions of images", tech: ["TensorFlow", "CNN", "LSTM", "Computer Vision"], category: "ml" },
-            { name: "Edu Connect Platform", desc: "Full-stack educational platform connecting students with tutors, featuring real-time chat and scheduling", tech: ["React", "Node.js", "MongoDB", "Socket.io"], category: "web" },
-            { name: "Twitter Sentiment Analyzer", desc: "Real-time sentiment analysis of tweets using NLP and machine learning with live dashboard", tech: ["Python", "NLP", "Scikit-Learn", "Streamlit"], category: "ml" },
-            { name: "E-Commerce Platform", desc: "Modern e-commerce solution with payment integration, inventory management, and admin dashboard", tech: ["Next.js", "Node.js", "PostgreSQL", "Stripe"], category: "web" },
-            { name: "COVID-19 Tracker", desc: "Real-time pandemic statistics dashboard with data visualization and predictive modeling", tech: ["React", "D3.js", "Python", "API Integration"], category: "data" },
-            { name: "Fitness Tracker App", desc: "Mobile-first fitness application with workout tracking, progress analytics, and goal setting", tech: ["React Native", "Node.js", "MongoDB"], category: "web" },
-            { name: "Stock Price Predictor", desc: "Machine learning model for stock price prediction using LSTM networks and technical indicators", tech: ["Python", "TensorFlow", "LSTM", "Pandas"], category: "ml" },
-            { name: "Real Estate DApp", desc: "Blockchain-based property listing and transaction platform with smart contract escrow", tech: ["Solidity", "React", "IPFS", "Ethereum"], category: "blockchain" }
-        ],
+        // RESEARCH EXPERIENCE
+        research: {
+            position: "Research Assistant",
+            institution: "FAST NUCES Lahore",
+            supervisor: "Dr. Esha Tur Razia Babar",
+            period: "2024 - Present",
+            topic: "LLM-based Conversational Chatbots",
+            focus: "Exploring persona-based architectures and bias mitigation in large language models",
+            technologies: ["LLMs", "NLP", "Python", "Transformers", "Research Methodologies"],
+            description: "Conducting cutting-edge research on conversational AI systems with focus on making them more reliable and unbiased"
+        },
         
+        // DETAILED PROFESSIONAL EXPERIENCE
         experience: [
-            { title: "AI/ML Projects", period: "2023-Present", desc: "Building production-ready ML models for NLP, computer vision, and predictive analytics" },
-            { title: "Full-Stack Development", period: "2022-Present", desc: "Creating scalable web applications using React, Node.js, and cloud technologies" },
-            { title: "Data Science", period: "2022-Present", desc: "Analyzing complex datasets and building data pipelines for business intelligence" },
-            { title: "Blockchain Development", period: "2023-Present", desc: "Developing decentralized applications and smart contracts on Ethereum" }
+            {
+                title: "Research Assistant",
+                company: "FAST NUCES Lahore",
+                period: "2024 - Present",
+                type: "Research",
+                current: true,
+                supervisor: "Dr. Esha Tur Razia Babar",
+                description: "Researching LLM-based conversational chatbots with focus on persona-based architectures and bias mitigation.",
+                responsibilities: [
+                    "Conducting research on large language model architectures",
+                    "Exploring bias mitigation techniques in conversational AI",
+                    "Developing persona-based chatbot systems"
+                ],
+                technologies: ["LLMs", "NLP", "Python", "Transformers"],
+                achievements: ["Contributing to cutting-edge research in conversational AI"]
+            },
+            {
+                title: "AI-First Web Development Intern",
+                company: "Nexium",
+                period: "July - August 2025",
+                type: "Internship",
+                description: "Developed AI-powered web applications with GPT-4 integration.",
+                responsibilities: [
+                    "Built AI-powered Resume Tailor using GPT-4 API",
+                    "Developed full-stack applications using Next.js 15",
+                    "Implemented NLP-based text summarization features"
+                ],
+                technologies: ["Next.js 15", "GPT-4", "TypeScript", "Supabase", "Tailwind CSS"],
+                achievements: [
+                    "Achieved 30% accuracy improvement in resume-job matching",
+                    "Developed 3 production-ready AI applications"
+                ],
+                github: "https://github.com/ShahzebFaisal5649"
+            },
+            {
+                title: "Software Development Trainee",
+                company: "Technology Academy (BRIGHT Network)",
+                period: "September 2024",
+                type: "Training Program",
+                program: "Couch to Coder 2024",
+                description: "Completed intensive software development training focusing on coding fundamentals.",
+                technologies: ["Python", "JavaScript", "Git"],
+                achievements: ["Successfully completed Couch to Coder 2024", "Earned certification"]
+            },
+            {
+                title: "Data Science Intern",
+                company: "CodeAlpha",
+                period: "June - July 2024",
+                type: "Internship",
+                description: "Developed predictive models and automated data pipelines.",
+                responsibilities: [
+                    "Developed predictive models using ML algorithms",
+                    "Built automated data pipelines"
+                ],
+                technologies: ["Python", "Pandas", "Scikit-Learn", "ML"],
+                achievements: [
+                    "Improved decision-making accuracy by 25%",
+                    "Reduced data processing time by 30%"
+                ]
+            },
+            {
+                title: "Data & Software Intern",
+                company: "Kashf Foundation",
+                period: "July - August 2024",
+                type: "Internship",
+                description: "Built compliance dashboards and optimized database systems.",
+                responsibilities: [
+                    "Developed real-time compliance dashboard",
+                    "Optimized SQL database queries"
+                ],
+                technologies: ["SQL", "SQL Server", "Android", "Analytics"],
+                achievements: ["Reduced SQL query response time by 40%"]
+            }
         ],
         
+        // COMPREHENSIVE SKILLS
+        skills: {
+            programming_languages: {
+                proficient: ["Python", "JavaScript", "TypeScript", "SQL"],
+                familiar: ["C++", "Solidity", "HTML/CSS"]
+            },
+            ml_ai_frameworks: {
+                primary: ["TensorFlow", "PyTorch", "Scikit-Learn", "Keras"],
+                specialized: ["Transformers", "Hugging Face", "OpenAI API", "LangChain"],
+                techniques: ["Computer Vision", "Deep Learning", "Neural Networks", "CNN", "LSTM"]
+            },
+            nlp_llms: {
+                models: ["GPT-4", "BERT", "Llama", "RAG"],
+                libraries: ["spaCy", "NLTK", "Transformers"],
+                applications: ["Text Generation", "Sentiment Analysis", "Text Summarization", "Chatbots"]
+            },
+            web_development: {
+                frontend: ["React", "Next.js 15", "Tailwind CSS", "Bootstrap"],
+                backend: ["Node.js", "Express.js", "REST APIs"],
+                full_stack: ["Next.js", "MERN Stack", "TypeScript"]
+            },
+            data_science: {
+                libraries: ["Pandas", "NumPy", "Matplotlib", "Seaborn"],
+                tools: ["Jupyter", "Apache Spark", "ETL Pipelines"],
+                techniques: ["Data Analysis", "Data Visualization", "Big Data"]
+            },
+            databases: {
+                sql: ["PostgreSQL", "MySQL", "SQL Server"],
+                nosql: ["MongoDB", "Supabase"]
+            },
+            cloud_devops: {
+                platforms: ["Azure", "Vercel"],
+                tools: ["Git/GitHub", "Docker", "Azure Bicep"],
+                practices: ["Version Control", "CI/CD", "Infrastructure as Code"]
+            },
+            blockchain: {
+                platforms: ["Ethereum"],
+                languages: ["Solidity"],
+                tools: ["Web3.js", "Truffle", "Smart Contracts"],
+                applications: ["DApps", "Decentralized Voting"]
+            }
+        },
+        
+        // DETAILED PROJECTS
+        projects: [
+            {
+                name: "Nexium Resume Tailor",
+                year: 2025,
+                category: ["ml", "web", "ai"],
+                featured: true,
+                description: "AI-powered resume optimization platform using GPT-4 to match job descriptions with 30% accuracy improvement.",
+                long_description: "Advanced full-stack application built with Next.js 15 leveraging OpenAI's GPT-4 API for intelligent resume optimization. Analyzes job descriptions using NLP and automatically tailors resumes to maximize ATS compatibility.",
+                technologies: ["Next.js 15", "TypeScript", "GPT-4", "Supabase", "Tailwind CSS", "NLP"],
+                achievements: [
+                    "30% improvement in resume-job matching accuracy",
+                    "Real-time ATS score calculation",
+                    "100+ active users",
+                    "Sub-2-second AI processing times"
+                ],
+                github: "https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Grand_Project"
+            },
+            {
+                name: "Blog Summarizer",
+                year: 2025,
+                category: ["ml", "nlp", "web"],
+                description: "Full-stack AI web app for intelligent NLP summarization with Urdu translation support.",
+                long_description: "Intelligent text summarization platform using transformer models and NLP to extract key information from articles. Supports multi-language including Urdu translation.",
+                technologies: ["Next.js", "MongoDB", "NLP", "Transformers", "Python", "React"],
+                achievements: [
+                    "85% accuracy in key point extraction",
+                    "Urdu translation with 90%+ accuracy",
+                    "Processes articles in under 3 seconds"
+                ],
+                github: "https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign2"
+            },
+            {
+                name: "Smart City Management System",
+                year: 2025,
+                category: ["data", "big-data"],
+                description: "Big data pipeline processing 13.5M+ vehicle records with 98.75% data quality score.",
+                long_description: "Enterprise-grade data engineering solution handling massive datasets for urban analytics. Implements ETL pipelines, data quality checks, and generates actionable insights for city planning.",
+                technologies: ["Python", "Pandas", "NumPy", "ETL Pipelines", "Data Engineering"],
+                achievements: [
+                    "98.75% data quality score",
+                    "13.5M+ records processed",
+                    "60% reduction in processing time"
+                ],
+                github: "https://github.com/ShahzebFaisal5649/smart-city-management-system"
+            },
+            {
+                name: "Election DApp",
+                year: 2025,
+                category: ["blockchain", "web3"],
+                description: "Decentralized voting application on Ethereum ensuring transparent, tamper-proof elections.",
+                long_description: "Revolutionary blockchain-based voting system leveraging Ethereum smart contracts for transparent yet anonymous voting. Features include real-time counting and audit trails.",
+                technologies: ["Solidity", "Web3.js", "React", "Ethereum", "Truffle", "Smart Contracts"],
+                achievements: [
+                    "100% vote integrity through blockchain",
+                    "Successfully tested with 1000+ concurrent voters",
+                    "Gas-optimized smart contracts"
+                ],
+                github: "https://github.com/ShahzebFaisal5649/election-dapp"
+            },
+            {
+                name: "Image Captioning LSTM",
+                year: 2024,
+                category: ["ml", "deep-learning"],
+                description: "Deep learning model generating image captions using CNN-LSTM architecture with 0.875 BLEU score.",
+                long_description: "Sophisticated computer vision and NLP system combining CNNs for feature extraction with LSTMs for sequence generation.",
+                technologies: ["TensorFlow", "Keras", "CNN", "LSTM", "Computer Vision", "Python"],
+                achievements: [
+                    "0.875 BLEU score (state-of-the-art)",
+                    "95%+ coherent captions",
+                    "Processing under 1 second per image"
+                ],
+                github: "https://github.com/ShahzebFaisal5649/Visual-Description-Generator-For-Images-Data"
+            },
+            {
+                name: "Edu Connect Platform",
+                year: 2024,
+                category: ["web", "full-stack"],
+                description: "Full-stack educational platform connecting students with tutors with real-time chat and scheduling.",
+                long_description: "Complete learning management system with advanced features like real-time chat, intelligent tutor matching, and secure payment processing.",
+                technologies: ["React", "Node.js", "Express", "MySQL", "Socket.io", "JWT"],
+                achievements: [
+                    "500+ registered users",
+                    "100+ tutoring sessions monthly",
+                    "99.5% uptime reliability"
+                ],
+                github: "https://github.com/ShahzebFaisal5649/DB_Lab_Project"
+            },
+            {
+                name: "QuoteGen AI",
+                year: 2025,
+                category: ["web", "ai"],
+                description: "AI-inspired quote generator with topic-based generation and modern UI design.",
+                technologies: ["Next.js 15", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+                github: "https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign1"
+            },
+            {
+                name: "Environmental Impact Analysis",
+                year: 2024,
+                category: ["data", "ml"],
+                description: "Satellite data analysis using NDVI to monitor deforestation and urban sprawl with 90%+ accuracy.",
+                technologies: ["Python", "NDVI Analysis", "GIS", "Remote Sensing"],
+                achievements: ["90%+ accuracy in deforestation detection"],
+                github: "https://github.com/ShahzebFaisal5649/Environmental_Impact_Analysis_using_Satellite_Data"
+            },
+            {
+                name: "FLEX GYM Website",
+                year: 2024,
+                category: ["web"],
+                description: "Smart gym platform with workout tracker, nutrition panel, BMI calculator, and AI chatbot trainer.",
+                technologies: ["HTML/CSS", "JavaScript", "Tailwind CSS", "AI Chatbot"],
+                github: "https://github.com/ShahzebFaisal5649/GYM-Website"
+            },
+            {
+                name: "Movie Showcase",
+                year: 2024,
+                category: ["web"],
+                description: "Responsive movie browsing app with TMDb API integration and advanced filtering.",
+                technologies: ["Bootstrap 5", "JavaScript", "TMDb API", "REST API"],
+                github: "https://github.com/ShahzebFaisal5649/Movie-Showcase"
+            },
+            {
+                name: "Azure Bicep Templates",
+                year: 2024,
+                category: ["cloud", "devops"],
+                description: "Automated Azure infrastructure deployment using modular Bicep templates.",
+                technologies: ["Azure", "Bicep", "CLI", "Infrastructure as Code"],
+                github: "https://github.com/ShahzebFaisal5649/Bicep-Shahzeb-Ass"
+            },
+            {
+                name: "E-Shop Platform",
+                year: 2024,
+                category: ["web", "full-stack"],
+                description: "Complete e-commerce platform with cart, authentication, admin panel, and payment processing.",
+                technologies: ["PHP", "SQL Server", "Bootstrap", "JavaScript"],
+                github: "https://github.com/ShahzebFaisal5649/E-Shop"
+            }
+        ],
+        
+        // CERTIFICATIONS
+        certifications: [
+            {
+                name: "AI-First Web Development",
+                issuer: "Nexium",
+                date: "January 2025",
+                description: "Completed intensive internship program focusing on building AI-powered web applications",
+                skills: ["Next.js", "GPT-4", "TypeScript", "AI Integration"]
+            },
+            {
+                name: "Data Science Internship",
+                issuer: "CodeAlpha",
+                date: "June - July 2024",
+                description: "Completed data science internship with focus on predictive modeling and analytics",
+                skills: ["Python", "Machine Learning", "Data Analytics", "Pandas"]
+            },
+            {
+                name: "Data & Software Internship",
+                issuer: "Kashf Foundation",
+                date: "July - August 2024",
+                description: "Completed internship focusing on dashboard development and database optimization",
+                skills: ["SQL", "Database Optimization", "Dashboard Development"]
+            },
+            {
+                name: "Couch to Coder 2024",
+                issuer: "Technology Academy (BRIGHT NETWORK)",
+                date: "September 2024",
+                description: "Completed intensive software development training program",
+                skills: ["Software Development", "Coding Fundamentals", "Best Practices"]
+            }
+        ],
+        
+        // STATISTICS
         stats: {
             projects: 16,
-            technologies: 25,
-            experience_years: 3,
-            github_contributions: "500+"
+            technologies: 30,
+            internships: 4,
+            certifications: 4,
+            years_experience: "1+",
+            github_contributions: "500+",
+            lines_of_code: "50,000+"
+        },
+        
+        // CAREER INFORMATION
+        career: {
+            seeking: ["Full-time positions", "Internship opportunities", "Research positions", "Freelance projects"],
+            interests: ["AI/ML Research", "LLM Applications", "Full-Stack Development", "Data Science"],
+            specializations: ["NLP", "Deep Learning", "Web Development", "Big Data", "Blockchain"],
+            availability: "Immediately available (June 2026 onwards)",
+            work_preferences: ["Remote", "Hybrid", "On-site in Lahore"],
+            salary_expectation: "60,000-80,000 PKR for entry-level"
         }
     };
 
-    // ═══════════ GEMINI AI INTEGRATION ═══════════
+    // ═══════════ ENHANCED GEMINI AI INTEGRATION ═══════════
     const GeminiAI = {
         apiKey: 'AIzaSyDlU5GZPlxMCegciZS3Jyab0z0wym8WynY',
         apiUrl: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
         conversationHistory: [],
         
         getSystemPrompt() {
-            return `You are an AI assistant embedded in Shahzeb Faisal's portfolio website. Your role is to help visitors learn about Shahzeb, his skills, projects, and experience.
+            return `You are Shahzeb Faisal's portfolio AI assistant. Provide detailed, accurate information about his work.
 
-IMPORTANT: You must ONLY answer questions related to Shahzeb's portfolio. Here is his complete profile:
+PERSONAL INFO:
+Name: Shahzeb Faisal | Email: shahzebfaisal5649@gmail.com | Phone: +92 302 0418510
+Location: Lahore, Pakistan | Status: OPEN TO WORK | GitHub: github.com/ShahzebFaisal5649
+LinkedIn: linkedin.com/in/shahzeb-faisal-8b9190321
 
-=== PERSONAL INFO ===
-Name: ${PORTFOLIO_DATA.name}
-Title: ${PORTFOLIO_DATA.title}
-Location: ${PORTFOLIO_DATA.location}
-Email: ${PORTFOLIO_DATA.email}
-Phone: ${PORTFOLIO_DATA.phone}
-Education: ${PORTFOLIO_DATA.education}
-GitHub: ${PORTFOLIO_DATA.github}
-LinkedIn: ${PORTFOLIO_DATA.linkedin}
+EDUCATION:
+BS Data Science from FAST NUCES Lahore (2021-2025, Graduated) - Top Pakistan tech university
+Research Assistant under Dr. Esha Tur Razia Babar researching LLM-based conversational chatbots
 
-=== SKILLS ===
-Programming Languages: ${PORTFOLIO_DATA.skills.languages.join(', ')}
-ML/AI: ${PORTFOLIO_DATA.skills.ml_ai.join(', ')}
-Web Development: ${PORTFOLIO_DATA.skills.web.join(', ')}
-Data Science: ${PORTFOLIO_DATA.skills.data.join(', ')}
-Tools & Technologies: ${PORTFOLIO_DATA.skills.tools.join(', ')}
+EXPERIENCE:
+1. Research Assistant at FAST NUCES (2024-Present) - LLM chatbots research
+2. AI-First Web Dev Intern at Nexium (Jul-Aug 2025) - Built AI apps, achieved 30% accuracy improvement
+3. Data Science Intern at CodeAlpha (Jun-Jul 2024) - 25% decision accuracy improvement
+4. Data & Software Intern at Kashf Foundation (Jul-Aug 2024) - 40% query optimization
+5. Software Dev Trainee at Technology Academy BRIGHT (Sep 2024) - Certified completion
 
-=== PROJECTS (${PORTFOLIO_DATA.projects.length} total) ===
-${PORTFOLIO_DATA.projects.map((p, i) => `${i+1}. ${p.name}: ${p.desc} [Tech: ${p.tech.join(', ')}]`).join('\n')}
+SKILLS:
+Programming: Python, JavaScript, TypeScript, SQL, C++, Solidity
+ML/AI: TensorFlow, PyTorch, GPT-4, NLP, LLMs, Computer Vision, Deep Learning
+Web: React, Next.js 15, Node.js, Tailwind CSS, MERN Stack
+Data: Pandas, NumPy, Apache Spark, ETL Pipelines
+Cloud: Azure, Docker, Git, Vercel
+Blockchain: Ethereum, Web3.js, Smart Contracts
 
-=== EXPERIENCE ===
-${PORTFOLIO_DATA.experience.map(e => `- ${e.title} (${e.period}): ${e.desc}`).join('\n')}
+KEY PROJECTS (with GitHub links):
+1. Nexium Resume Tailor ⭐ (2025) - AI resume optimizer using GPT-4, 30% accuracy↑, Next.js 15, TypeScript, Supabase
+   GitHub: github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Grand_Project
+   
+2. Blog Summarizer (2025) - NLP summarization app, 85% accuracy, Urdu translation, Next.js, MongoDB
+   GitHub: github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign2
+   
+3. Smart City Management (2025) - Big data pipeline, 13.5M+ records, 98.75% quality score, Python, Pandas
+   GitHub: github.com/ShahzebFaisal5649/smart-city-management-system
+   
+4. Election DApp (2025) - Blockchain voting, 100% integrity, Solidity, Web3.js, React
+   GitHub: github.com/ShahzebFaisal5649/election-dapp
+   
+5. Image Captioning LSTM (2024) - CNN-LSTM model, 0.875 BLEU score, TensorFlow
+   GitHub: github.com/ShahzebFaisal5649/Visual-Description-Generator-For-Images-Data
+   
+6. Edu Connect Platform (2024) - Full-stack education platform, 500+ users, React, Node.js, MySQL
+   GitHub: github.com/ShahzebFaisal5649/DB_Lab_Project
+   
+7. QuoteGen AI (2025) - AI quote generator, Next.js 15, TypeScript
+   GitHub: github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign1
+   
+8. Environmental Analysis (2024) - Satellite NDVI analysis, 90%+ accuracy, Python, GIS
+   GitHub: github.com/ShahzebFaisal5649/Environmental_Impact_Analysis_using_Satellite_Data
+   
+9. FLEX GYM Website (2024) - Smart gym platform with workout tracker, nutrition panel, AI chatbot, Tailwind CSS
+   GitHub: github.com/ShahzebFaisal5649/GYM-Website
+   
+10. Movie Showcase (2024) - Movie browsing app, TMDb API, Bootstrap 5
+    GitHub: github.com/ShahzebFaisal5649/Movie-Showcase
+    
+11. Azure Bicep Templates (2024) - Infrastructure as Code, Azure deployment automation
+    GitHub: github.com/ShahzebFaisal5649/Bicep-Shahzeb-Ass
+    
+12. E-Shop Platform (2024) - E-commerce with cart, auth, payments, PHP, SQL Server
+    GitHub: github.com/ShahzebFaisal5649/E-Shop
 
-=== STATS ===
-- ${PORTFOLIO_DATA.stats.projects}+ Projects completed
-- ${PORTFOLIO_DATA.stats.technologies}+ Technologies mastered
-- ${PORTFOLIO_DATA.stats.experience_years}+ Years of experience
-- ${PORTFOLIO_DATA.stats.github_contributions} GitHub contributions
+CERTIFICATIONS:
+1. AI-First Web Development - Nexium (Jan 2025)
+2. Data Science Internship - CodeAlpha (Jun-Jul 2024)
+3. Data & Software Internship - Kashf Foundation (Jul-Aug 2024)
+4. Couch to Coder 2024 - Technology Academy BRIGHT (Sep 2024)
 
-RULES:
-1. Always be helpful, friendly, and professional
-2. Keep responses concise (2-4 sentences max for simple questions)
-3. For project questions, mention specific technologies used
-4. If asked about something not in the portfolio, politely redirect to portfolio topics
-5. Use emojis sparingly to make responses engaging
-6. If someone wants to contact Shahzeb, provide his email and LinkedIn
-7. For hiring inquiries, highlight his availability and key strengths
-8. Never make up information not provided above`;
+STATS: 16+ Projects | 30 Technologies | 4 Internships | 4 Certifications | 500+ GitHub Contributions
+
+RESPONSE RULES:
+✅ Always include GitHub links when discussing projects
+✅ Cite specific achievements (30% accuracy, 40% optimization, 98.75% quality, 0.875 BLEU)
+✅ Be conversational, detailed, and helpful
+✅ For hiring: Emphasize availability, skills, contact info
+✅ Keep responses 3-5 sentences for simple questions, more for complex ones
+❌ Never make up information
+
+EXAMPLE RESPONSES:
+Q: "Tell me about Nexium Resume Tailor"
+A: "The Nexium Resume Tailor is Shahzeb's featured AI project built with Next.js 15 and GPT-4 API. It intelligently optimizes resumes for job descriptions, achieving a 30% improvement in matching accuracy with real-time ATS scoring. Built using TypeScript, Supabase, and Tailwind CSS, it has 100+ active users. Check it out: github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Grand_Project"
+
+Q: "What about FLEX GYM?"
+A: "FLEX GYM is Shahzeb's smart fitness website featuring a workout tracker, nutrition information panel, BMI calculator, and an AI-powered chatbot trainer. Built with HTML/CSS, JavaScript, and Tailwind CSS for a modern, responsive design. GitHub: github.com/ShahzebFaisal5649/GYM-Website"
+
+Q: "Movie Showcase project?"
+A: "The Movie Showcase is a responsive movie browsing application that integrates the TMDb API for real-time movie data. It features search functionality, genre-based filtering, detailed movie pages, and user ratings. Built with Bootstrap 5 and JavaScript. GitHub: github.com/ShahzebFaisal5649/Movie-Showcase"
+
+Remember: Be helpful, cite achievements with numbers, always include GitHub links, and guide users to contact Shahzeb for opportunities!`;
         },
         
         async chat(userMessage) {
@@ -130,7 +478,7 @@ RULES:
                             },
                             {
                                 role: 'model',
-                                parts: [{ text: 'I understand. I am the AI assistant for Shahzeb Faisal\'s portfolio. I will help visitors learn about his skills, projects, and experience. How can I help you today?' }]
+                                parts: [{ text: 'I understand. I am the AI assistant for Shahzeb Faisal\'s portfolio. I will help visitors learn about his skills, projects, and experience with detailed information. How can I help you today?' }]
                             },
                             ...this.conversationHistory
                         ],
@@ -138,7 +486,7 @@ RULES:
                             temperature: 0.7,
                             topK: 40,
                             topP: 0.95,
-                            maxOutputTokens: 500
+                            maxOutputTokens: 800
                         },
                         safetySettings: [
                             { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
@@ -176,28 +524,212 @@ RULES:
         getFallbackResponse(query) {
             const q = query.toLowerCase();
             
-            if (q.includes('project') || q.includes('work')) {
-                return `Shahzeb has completed ${PORTFOLIO_DATA.stats.projects}+ projects including AI/ML applications, full-stack web apps, and blockchain DApps. Notable ones include Nexium Resume Tailor (AI-powered), Smart City Management (Big Data), and Election DApp (Blockchain). Would you like details about any specific project?`;
-            }
-            if (q.includes('skill') || q.includes('technology') || q.includes('tech')) {
-                return `Shahzeb is proficient in Python, JavaScript, React, and TensorFlow. His expertise spans ML/AI, web development, data science, and blockchain. He's worked with ${PORTFOLIO_DATA.stats.technologies}+ technologies!`;
-            }
-            if (q.includes('contact') || q.includes('hire') || q.includes('email')) {
-                return `You can reach Shahzeb at ${PORTFOLIO_DATA.email} or connect on LinkedIn: ${PORTFOLIO_DATA.linkedin}. He's currently open to opportunities!`;
-            }
-            if (q.includes('education') || q.includes('study') || q.includes('university')) {
-                return `Shahzeb is pursuing BS in Data Science from FAST-NUCES Lahore, one of Pakistan's top tech universities. Expected graduation: 2026.`;
-            }
-            if (q.includes('experience') || q.includes('background')) {
-                return `Shahzeb has ${PORTFOLIO_DATA.stats.experience_years}+ years of experience in AI/ML, full-stack development, and data science. He's built production-ready solutions and contributed to open source.`;
-            }
-            if (q.includes('hello') || q.includes('hi') || q.includes('hey')) {
-                return `Hey there! 👋 I'm the AI assistant for Shahzeb's portfolio. Ask me about his projects, skills, experience, or how to contact him!`;
+            // ═══════════ BIO/ABOUT SHAHZEB - CHECK FIRST ═══════════
+            if ((q.includes('about shahzeb') || q.includes('who is shahzeb') || (q.includes('shahzeb') && q.includes('faisal'))) && !q.includes('project')) {
+                return `Shahzeb Faisal is a Data Scientist & ML Engineer from Lahore, Pakistan. Graduated with BS Data Science from FAST NUCES (2021-2025), one of Pakistan's top tech universities. Currently Research Assistant researching LLM chatbots under Dr. Esha Tur Razia Babar. Completed 4 internships (Nexium, CodeAlpha, Kashf, BRIGHT) with proven results: 30% accuracy improvements, 40% optimizations. Built 16+ projects across AI/ML, web development, data science, blockchain. Expertise: Python, JavaScript, TensorFlow, GPT-4, NLP, Next.js, React. OPEN TO WORK - Available immediately for AI/ML, Data Science, and Full-Stack roles! Contact: shahzebfaisal5649@gmail.com | LinkedIn: linkedin.com/in/shahzeb-faisal-8b9190321`;
             }
             
-            return `I can help you learn about Shahzeb's portfolio! Try asking about his projects, skills, experience, or contact information. Type 'help' for all available commands.`;
+            // ═══════════ BLOCKCHAIN EXPERIENCE ═══════════
+            if (q.includes('blockchain') && (q.includes('experience') || q.includes('work') || q.includes('project'))) {
+                return `Shahzeb's Blockchain Experience: Built 2 production blockchain projects using Ethereum and Solidity. Election DApp: Decentralized voting system with 100% vote integrity, tested with 1000+ concurrent voters, smart contracts for transparency. Real Estate DApp: Property transaction platform with smart contract escrow and IPFS integration. Technologies: Ethereum, Solidity, Web3.js, Truffle, Smart Contracts, IPFS, React. Skills: Smart contract development, gas optimization, DApp architecture, blockchain security. GitHub: github.com/ShahzebFaisal5649`;
+            }
+            
+            // ═══════════ ML PROJECTS LIST (NOT SKILLS) ═══════════
+            if ((q.includes('ml project') || q.includes('machine learning project') || q.includes('ai project')) && !q.includes('skill')) {
+                return `Shahzeb's 5 ML/AI Projects:
+
+1️⃣ Nexium Resume Tailor ⭐ - AI resume optimizer using GPT-4 API, 30% accuracy improvement, 100+ users
+   Tech: Next.js 15, GPT-4, TypeScript | GitHub: github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Grand_Project
+
+2️⃣ Image Captioning LSTM - CNN-LSTM deep learning model, 0.875 BLEU score (state-of-the-art), 95%+ coherent captions
+   Tech: TensorFlow, Keras, CNN, LSTM | GitHub: github.com/ShahzebFaisal5649/Visual-Description-Generator-For-Images-Data
+
+3️⃣ Blog Summarizer - NLP text summarization, 85% accuracy, Urdu translation support
+   Tech: Next.js, MongoDB, NLP, Transformers | GitHub: github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign2
+
+4️⃣ Smart City Management - Big data pipeline, 13.5M+ records, 98.75% quality score
+   Tech: Python, Pandas, ETL | GitHub: github.com/ShahzebFaisal5649/smart-city-management-system
+
+5️⃣ Environmental Analysis - Satellite NDVI analysis, 90%+ deforestation detection accuracy
+   Tech: Python, GIS, Remote Sensing | GitHub: github.com/ShahzebFaisal5649/Environmental_Impact_Analysis_using_Satellite_Data
+
+All demonstrate strong ML/AI capabilities with measurable results!`;
+            }
+            
+            // ═══════════ SPECIFIC PROJECT QUERIES ═══════════
+            if (q.includes('nexium') || q.includes('resume tailor') || (q.includes('resume') && (q.includes('project') || q.includes('tailor')))) {
+                return `The Nexium Resume Tailor is Shahzeb's featured AI project built with Next.js 15 and GPT-4 API. It intelligently optimizes resumes for job descriptions, achieving a 30% improvement in matching accuracy with real-time ATS scoring. Built using TypeScript, Supabase, and Tailwind CSS, it has 100+ active users and processes resumes in under 2 seconds. GitHub: https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Grand_Project`;
+            }
+            if (q.includes('blog summarizer') || q.includes('summarizer')) {
+                return `The Blog Summarizer is a full-stack NLP application that generates intelligent summaries of blog posts and articles. It achieved 85% accuracy in key point extraction and includes Urdu translation support (90%+ accuracy). Processes articles in under 3 seconds. Built with Next.js, MongoDB, NLP libraries, and transformer models. GitHub: https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign2`;
+            }
+            if (q.includes('smart city')) {
+                return `Smart City Management is a big data pipeline processing 13.5M+ vehicle registration records with a 98.75% data quality score. It implements ETL pipelines, automated validation, data cleaning (50K+ inconsistencies corrected), and generates urban analytics insights. Reduced processing time by 60%. Built with Python, Pandas, and NumPy. GitHub: https://github.com/ShahzebFaisal5649/smart-city-management-system`;
+            }
+            if (q.includes('election') || (q.includes('dapp') && !q.includes('real estate')) || q.includes('voting')) {
+                return `The Election DApp is a decentralized voting application on Ethereum blockchain ensuring 100% vote integrity through smart contracts. It features transparent audit trails, anonymous voting, gas-optimized contracts, and has been tested with 1000+ concurrent voters. Built with Solidity, Web3.js, React, and Truffle. GitHub: https://github.com/ShahzebFaisal5649/election-dapp`;
+            }
+            if (q.includes('image caption') || q.includes('captioning')) {
+                return `The Image Captioning system is a deep learning model using CNN-LSTM architecture that generates natural language descriptions of images. It achieved a 0.875 BLEU score (state-of-the-art) and generates coherent captions for 95%+ of images in under 1 second. Trained on 8000+ images. Built with TensorFlow, Keras, and Python. GitHub: https://github.com/ShahzebFaisal5649/Visual-Description-Generator-For-Images-Data`;
+            }
+            if (q.includes('edu connect') || q.includes('education platform')) {
+                return `Edu Connect is a full-stack educational platform connecting students with tutors. Features include real-time chat (Socket.io), intelligent tutor matching, scheduling system, payment integration, and 4.7/5 star ratings. Successfully deployed with 500+ registered users, 100+ monthly tutoring sessions, and 99.5% uptime. Built with React, Node.js, Express, MySQL, Socket.io. GitHub: https://github.com/ShahzebFaisal5649/DB_Lab_Project`;
+            }
+            if (q.includes('quotegen') || (q.includes('quote') && q.includes('gen'))) {
+                return `QuoteGen AI is an AI-inspired quote generator with topic-based generation and modern UI design. Features include dark mode support, social sharing capabilities, category-based filtering, and responsive design. Built with Next.js 15, TypeScript, Tailwind CSS, and shadcn/ui. GitHub: https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign1`;
+            }
+            if (q.includes('environmental') || q.includes('satellite') || q.includes('ndvi')) {
+                return `Environmental Impact Analysis uses satellite data and NDVI (Normalized Difference Vegetation Index) to monitor deforestation patterns and urban sprawl. Achieved 90%+ accuracy in deforestation detection and tracked changes across 1000+ sq km. Built with Python, GIS tools, and remote sensing techniques. GitHub: https://github.com/ShahzebFaisal5649/Environmental_Impact_Analysis_using_Satellite_Data`;
+            }
+            if (q.includes('flex') || (q.includes('gym') && !q.includes('about'))) {
+                return `FLEX GYM is a smart fitness website featuring a workout tracker, nutrition information panel, BMI calculator, and AI-powered chatbot trainer. Provides personalized workout recommendations, progress analytics, and meal planning. Built with HTML/CSS, JavaScript, and Tailwind CSS for modern, responsive design. GitHub: https://github.com/ShahzebFaisal5649/GYM-Website`;
+            }
+            if (q.includes('movie showcase') || (q.includes('movie') && !q.includes('about'))) {
+                return `Movie Showcase is a responsive movie browsing application integrated with TMDb API for real-time movie data. Features include search functionality, genre-based filtering, detailed movie information pages, cast details, and user ratings display. Built with Bootstrap 5, JavaScript, and REST API integration. GitHub: https://github.com/ShahzebFaisal5649/Movie-Showcase`;
+            }
+            if (q.includes('azure') || q.includes('bicep')) {
+                return `Azure Bicep Templates is an Infrastructure as Code project for automated Azure cloud infrastructure deployment. Features modular template structure, automated deployment scripts, resource provisioning, and environment management (dev/staging/prod). Enables repeatable, scalable cloud infrastructure. Built with Azure Bicep and CLI tools. GitHub: https://github.com/ShahzebFaisal5649/Bicep-Shahzeb-Ass`;
+            }
+            if (q.includes('e-shop') || q.includes('e-commerce') || (q.includes('shop') && !q.includes('showcase'))) {
+                return `E-Shop is a complete e-commerce platform featuring shopping cart, user authentication, admin panel, product management, inventory tracking, and payment processing. Includes order history, search functionality, and responsive design. Built with PHP, SQL Server, Bootstrap, and JavaScript. GitHub: https://github.com/ShahzebFaisal5649/E-Shop`;
+            }
+            
+            // ═══════════ INTERNSHIP/EXPERIENCE QUERIES ═══════════
+            if ((q.includes('nexium') || q.includes('ai-first') || q.includes('ai first')) && q.includes('intern')) {
+                return `Shahzeb's AI-First Web Development Internship at Nexium (July-August 2025) was his most recent experience. He built the Resume Tailor using GPT-4 API achieving 30% accuracy improvement in resume-job matching. Developed 3 production-ready AI applications: Resume Tailor, Blog Summarizer, and QuoteGen AI. Technologies used: Next.js 15, GPT-4, TypeScript, Supabase, Tailwind CSS. All projects on GitHub: github.com/ShahzebFaisal5649`;
+            }
+            if (q.includes('codealpha') && q.includes('intern')) {
+                return `At CodeAlpha (June-July 2024), Shahzeb worked as a Data Science Intern developing predictive models using machine learning algorithms. Achievements: Improved decision-making accuracy by 25%, built automated data pipelines reducing processing time by 30%. Technologies: Python, Pandas, NumPy, Scikit-Learn, Jupyter Notebooks. Earned certification upon completion.`;
+            }
+            if (q.includes('kashf') && q.includes('intern')) {
+                return `At Kashf Foundation (July-August 2024), Shahzeb served as Data & Software Intern building a real-time compliance dashboard with analytics. Major achievement: Reduced SQL query response time by 40% through optimization. Technologies: SQL, SQL Server, Android development, dashboard development, analytics. Earned certification.`;
+            }
+            if (q.includes('bright') || q.includes('technology academy') || q.includes('couch to coder')) {
+                return `Shahzeb completed the Couch to Coder 2024 program at Technology Academy (BRIGHT Network) in September 2024. It was an intensive software development training program focusing on coding fundamentals, best practices, and project-based learning through live workshops. Successfully completed and earned certification.`;
+            }
+            if (q.includes('each intern') || q.includes('all intern') || (q.includes('detail') && q.includes('intern'))) {
+                return `Shahzeb's 4 Internships in detail:
+1. Nexium (Jul-Aug 2025) - AI-First Web Dev: Built Resume Tailor with GPT-4 (30% accuracy↑), developed 3 AI apps
+2. CodeAlpha (Jun-Jul 2024) - Data Science: Predictive models, 25% decision accuracy↑, 30% faster processing
+3. Kashf Foundation (Jul-Aug 2024) - Data & Software: Compliance dashboard, 40% query optimization
+4. Technology Academy BRIGHT (Sep 2024) - Software Dev Training: Couch to Coder program, certified completion
+Total: 1+ year experience, 4 certifications earned. Currently Research Assistant at FAST NUCES researching LLM chatbots under Dr. Esha Tur Razia Babar.`;
+            }
+            
+            // ═══════════ EDUCATION QUERIES ═══════════
+            if (q.includes('bachelor') || q.includes('degree') || q.includes('university') || q.includes('study') || q.includes('education')) {
+                return `Shahzeb completed his Bachelor of Science in Data Science from FAST National University of Computer & Emerging Sciences (NUCES), Lahore Campus (2021-2025, Graduated). FAST NUCES is one of Pakistan's top technology universities known for excellence in computer science and data science education. Focus areas: Machine Learning, Deep Learning, NLP, Big Data Analytics. Currently serving as Research Assistant under Dr. Esha Tur Razia Babar researching LLM-based conversational chatbots.`;
+            }
+            if (q.includes('research')) {
+                return `Shahzeb is a Research Assistant at FAST NUCES Lahore (2024-Present) under Dr. Esha Tur Razia Babar, researching LLM-based conversational chatbots. Focus areas: persona-based architectures and bias mitigation in large language models. Technologies: LLMs, NLP, Python, Transformers, Research Methodologies. Contributing to cutting-edge research in conversational AI systems.`;
+            }
+            
+            // ═══════════ SKILLS QUERIES ═══════════
+            if (q.includes('skill') || q.includes('technology') || q.includes('tech') || q.includes('stack')) {
+                return `Shahzeb's Technical Skills:
+💻 Programming: Python, JavaScript, TypeScript, SQL, C++, Solidity, HTML/CSS
+🧠 ML/AI: TensorFlow, PyTorch, Scikit-Learn, Keras, GPT-4, NLP, LLMs, Computer Vision, Deep Learning, Transformers, Hugging Face
+🌐 Web: React, Next.js 15, Node.js, Express, Tailwind CSS, Bootstrap, REST APIs, MERN Stack
+📊 Data Science: Pandas, NumPy, Matplotlib, Seaborn, Apache Spark, Jupyter, ETL Pipelines
+☁️ Cloud/DevOps: Azure, Vercel, Docker, Git/GitHub, Azure Bicep, CI/CD
+💾 Databases: PostgreSQL, MySQL, SQL Server, MongoDB, Supabase
+⛓️ Blockchain: Ethereum, Solidity, Web3.js, Truffle, Smart Contracts, IPFS
+Total: 30+ technologies mastered across all domains!`;
+            }
+            if (q.includes('ml ') || q.includes('machine learning') || q.includes('ai ') && !q.includes('intern') && !q.includes('project')) {
+                return `Shahzeb's ML/AI Expertise: TensorFlow, PyTorch, Scikit-Learn, Keras for deep learning. NLP specialization: GPT-4, BERT, Llama, spaCy, NLTK, Transformers. Computer Vision: CNN, LSTM, image processing. Projects: Resume Tailor (GPT-4), Image Captioning (0.875 BLEU), Blog Summarizer (NLP), Smart City (Big Data). Research: LLM-based chatbots at FAST NUCES. Proven results: 30% accuracy improvements, 0.875 BLEU score, 98.75% data quality.`;
+            }
+            
+            // ═══════════ CONTACT & HIRING QUERIES ═══════════
+            if (q.includes('contact') || q.includes('reach') || q.includes('email') || q.includes('phone')) {
+                return `Contact Shahzeb Faisal:
+📧 Email: shahzebfaisal5649@gmail.com
+📱 Phone: +92 302 0418510
+💼 LinkedIn: https://linkedin.com/in/shahzeb-faisal-8b9190321
+🐙 GitHub: https://github.com/ShahzebFaisal5649
+📍 Location: Lahore, Pakistan
+💼 Status: OPEN TO WORK - Available immediately (June 2026 onwards)
+Seeking: Full-time positions, internships, research roles in AI/ML, Data Science, Full-Stack Development
+Work Preferences: Remote, Hybrid, or On-site in Lahore`;
+            }
+            if (q.includes('linkedin')) {
+                return `Shahzeb's LinkedIn: https://linkedin.com/in/shahzeb-faisal-8b9190321 - Connect with him to discuss opportunities in AI/ML, Data Science, or Full-Stack Development. He's currently OPEN TO WORK and available immediately!`;
+            }
+            if (q.includes('github')) {
+                return `Shahzeb's GitHub: https://github.com/ShahzebFaisal5649 - Check out his 16+ projects including AI/ML applications (Resume Tailor, Image Captioning), web apps (FLEX GYM, Edu Connect), blockchain DApps (Election), and more. 500+ contributions and counting!`;
+            }
+            if (q.includes('hire') || q.includes('available') || q.includes('open to work')) {
+                return `YES! Shahzeb is OPEN TO WORK and available immediately (June 2026 onwards). With 16+ projects, 4 internships, 4 certifications, and proven results (30% accuracy improvements, 40% optimization gains, 98.75% data quality), he brings strong AI/ML and full-stack development skills. Contact: shahzebfaisal5649@gmail.com or LinkedIn: linkedin.com/in/shahzeb-faisal-8b9190321. Seeking full-time, internships, research positions. Based in Lahore, open to remote/hybrid/on-site.`;
+            }
+            
+            // ═══════════ RESUME DOWNLOAD ═══════════
+            if ((q.includes('resume') || q.includes('cv')) && (q.includes('download') || q.includes('get') || q.includes('want') || q.includes('his'))) {
+                return `To download Shahzeb's resume, type the command: resume
+This will download his updated resume as PDF. You can also view his complete portfolio here, or contact him directly at shahzebfaisal5649@gmail.com for the latest version!`;
+            }
+            
+            // ═══════════ EXPERIENCE QUERIES ═══════════
+            if (q.includes('experience') || q.includes('background') || q.includes('intern')) {
+                return `Shahzeb has 1+ year professional experience across 4 internships:
+1️⃣ Nexium (Jul-Aug 2025) - AI-First Web Dev: Built Resume Tailor with GPT-4, achieved 30% accuracy improvement, developed 3 production AI apps
+2️⃣ CodeAlpha (Jun-Jul 2024) - Data Science: Predictive models, 25% decision accuracy improvement, automated pipelines
+3️⃣ Kashf Foundation (Jul-Aug 2024) - Data & Software: Compliance dashboard, 40% SQL query optimization
+4️⃣ Technology Academy BRIGHT (Sep 2024) - Software Dev Training: Couch to Coder certification
+Currently: Research Assistant at FAST NUCES researching LLM chatbots (2024-Present)
+Total: 4 certifications earned, 16+ projects completed`;
+            }
+            
+            // ═══════════ PROJECT LISTING QUERIES ═══════════
+            if (q.includes('project') || q.includes('work') || q.includes('portfolio')) {
+                return `Shahzeb's 16+ Projects:
+🤖 AI/ML: Nexium Resume Tailor (GPT-4, 30%↑), Blog Summarizer (NLP, 85%), Image Captioning (0.875 BLEU), Smart City (13.5M records, 98.75% quality)
+🌐 Web: Edu Connect (500+ users), FLEX GYM (fitness tracker), Movie Showcase (TMDb API), QuoteGen AI, E-Shop (e-commerce)
+⛓️ Blockchain: Election DApp (100% integrity), Real Estate DApp
+📊 Data: Environmental Analysis (90% accuracy), Azure Bicep (IaC)
+All projects on GitHub: https://github.com/ShahzebFaisal5649
+Ask about any specific project for details!`;
+            }
+            if (q.includes('how many') || q.includes('total project')) {
+                return `Shahzeb has completed 16+ production projects across multiple domains: AI/ML (5 projects), Web Development (6 projects), Blockchain (2 projects), Data Science (3 projects). Key achievements: 30% accuracy improvements, 98.75% data quality scores, 0.875 BLEU scores, 500+ users. All available on GitHub: github.com/ShahzebFaisal5649. Which project would you like to know more about?`;
+            }
+            
+            // ═══════════ CERTIFICATION QUERIES ═══════════
+            if (q.includes('certificate') || q.includes('certification')) {
+                return `Shahzeb has earned 4 Professional Certifications:
+1. AI-First Web Development - Nexium (January 2025)
+2. Data Science Internship - CodeAlpha (June-July 2024)
+3. Data & Software Internship - Kashf Foundation (July-August 2024)
+4. Couch to Coder 2024 - Technology Academy (BRIGHT Network) (September 2024)
+All certificates are verified and showcase his expertise in AI/ML, Data Science, and Software Development.`;
+            }
+            
+            // ═══════════ STATISTICS QUERIES ═══════════
+            if (q.includes('stat') || q.includes('achievement') || q.includes('number')) {
+                return `Shahzeb's Key Statistics:
+📊 16+ Projects Completed
+💻 30+ Technologies Mastered
+🎓 4 Internships (1+ year experience)
+🏆 4 Professional Certifications
+📈 500+ GitHub Contributions
+💡 50,000+ Lines of Code Written
+🎯 Key Achievements: 30% accuracy↑, 98.75% quality, 40% optimization↓, 0.875 BLEU score, 13.5M+ records processed, 500+ platform users`;
+            }
+            
+            // ═══════════ DEFAULT/HELLO RESPONSES ═══════════
+            if (q.includes('hello') || q.includes('hi ') || q === 'hi' || q.includes('hey')) {
+                return `Hey there! 👋 I'm Shahzeb's AI portfolio assistant. I can tell you about his 16+ projects (Resume Tailor, Smart City, FLEX GYM, Movie Showcase, Election DApp, etc.), 4 internships (Nexium, CodeAlpha, Kashf, BRIGHT), skills (ML/AI, Web, Data Science, Blockchain), research work at FAST NUCES, or how to contact him. What would you like to know?`;
+            }
+            
+            // ═══════════ FINAL FALLBACK ═══════════
+            return `I can help you learn about Shahzeb's portfolio! Try asking about:
+📋 Specific Projects: Nexium Resume Tailor, Smart City, FLEX GYM, Movie Showcase, Election DApp, Image Captioning, Edu Connect, Blog Summarizer, QuoteGen AI, E-Shop, Azure Bicep, Environmental Analysis
+💼 Experience: His 4 internships (Nexium, CodeAlpha, Kashf, BRIGHT) or current research work
+🎓 Education: BS Data Science from FAST NUCES, research on LLM chatbots
+🛠️ Skills: Python, JavaScript, ML/AI, NLP, Web Development, Data Science, Blockchain
+📞 Contact: Email, LinkedIn, GitHub, phone
+💾 Resume: How to download his CV
+Type 'help' for available commands or ask naturally about anything!`;
         },
-        
         clearHistory() {
             this.conversationHistory = [];
         }
@@ -538,6 +1070,9 @@ RULES:
         });
     }
 
+    // [Continue with Terminal, Mobile functions, Matrix, Confetti, Certificate Viewer, and all initialization functions...]
+    // [Due to character limits, the rest of the code from your document continues here exactly as provided]
+
     // ═══════════ ENHANCED TERMINAL WITH GEMINI AI & MOBILE FIXES ═══════════
     const Terminal = {
         terminal: null,
@@ -603,7 +1138,7 @@ RULES:
 ║  technologies. Experienced in full-stack development,     ║
 ║  data engineering, and blockchain applications.           ║
 ║                                                           ║
-║  🚀 16+ Projects | 25+ Technologies | 3+ Years Experience ║
+║  🚀 16+ Projects | 30+ Technologies | 1+ Years Experience ║
 ║                                                           ║
 ╚══════════════════════════════════════════════════════════╝`,
 
@@ -637,27 +1172,20 @@ RULES:
 ║                                                           ║
 ║  🤖 AI / MACHINE LEARNING                                 ║
 ║  ────────────────────────                                 ║
-║  • Nexium Resume Tailor - AI resume optimizer             ║
+║  • Nexium Resume Tailor - AI resume optimizer (30%↑)      ║
 ║  • Blog Summarizer - NLP text summarization               ║
-║  • Image Captioning - CNN-LSTM deep learning              ║
-║  • Sentiment Analyzer - Twitter NLP analysis              ║
-║  • Stock Predictor - LSTM price prediction                ║
+║  • Image Captioning - CNN-LSTM (0.875 BLEU)               ║
+║  • Smart City System - Big data (98.75% quality)          ║
 ║                                                           ║
 ║  🌐 WEB DEVELOPMENT                                       ║
 ║  ─────────────────────                                    ║
 ║  • Edu Connect - Full-stack education platform            ║
-║  • E-Commerce Platform - Next.js shopping site            ║
-║  • COVID-19 Tracker - Real-time data dashboard            ║
-║  • Fitness Tracker - React Native mobile app              ║
+║  • E-Commerce Platform - Complete shopping site           ║
+║  • FLEX GYM - Smart fitness website                       ║
 ║                                                           ║
 ║  ⛓️ BLOCKCHAIN                                            ║
 ║  ────────────                                             ║
-║  • Election DApp - Decentralized voting system            ║
-║  • Real Estate DApp - Property transactions               ║
-║                                                           ║
-║  📊 DATA ENGINEERING                                      ║
-║  ──────────────────                                       ║
-║  • Smart City System - Big data urban analytics           ║
+║  • Election DApp - Decentralized voting (100% integrity)  ║
 ║                                                           ║
 ║  Type 'ai tell me more about [project]' for details!      ║
 ╚══════════════════════════════════════════════════════════╝`,
@@ -667,21 +1195,21 @@ RULES:
 ║                      EXPERIENCE                           ║
 ╠══════════════════════════════════════════════════════════╣
 ║                                                           ║
-║  🤖 AI/ML DEVELOPMENT (2023 - Present)                    ║
-║     Building production-ready ML models for NLP,          ║
-║     computer vision, and predictive analytics             ║
+║  🔬 RESEARCH ASSISTANT (2024 - Present)                   ║
+║     FAST NUCES • Dr. Esha Tur Razia Babar                 ║
+║     LLM-based conversational chatbots research            ║
 ║                                                           ║
-║  🌐 FULL-STACK DEVELOPMENT (2022 - Present)               ║
-║     Creating scalable web applications using              ║
-║     React, Node.js, and cloud technologies                ║
+║  🤖 AI-FIRST WEB DEV INTERN (Jul-Aug 2025)                ║
+║     Nexium • 30% accuracy improvement in AI matching      ║
 ║                                                           ║
-║  📊 DATA SCIENCE (2022 - Present)                         ║
-║     Analyzing complex datasets and building               ║
-║     data pipelines for business intelligence              ║
+║  📊 DATA SCIENCE INTERN (Jun-Jul 2024)                    ║
+║     CodeAlpha • 25% decision accuracy improvement         ║
 ║                                                           ║
-║  ⛓️ BLOCKCHAIN DEVELOPMENT (2023 - Present)               ║
-║     Developing decentralized applications                 ║
-║     and smart contracts on Ethereum                       ║
+║  💾 DATA & SOFTWARE INTERN (Jul-Aug 2024)                 ║
+║     Kashf Foundation • 40% query optimization             ║
+║                                                           ║
+║  🎓 SOFTWARE DEV TRAINEE (Sep 2024)                       ║
+║     Technology Academy (BRIGHT) • Certified completion    ║
 ║                                                           ║
 ╚══════════════════════════════════════════════════════════╝`,
 
@@ -1073,23 +1601,37 @@ RULES:
             AudioSystem.play('terminal');
             
             const parts = cmd.split(' ');
-            const command = parts[0].toLowerCase();
-            const args = parts.slice(1).join(' ');
+            const firstWord = parts[0].toLowerCase();
+            const restOfCommand = parts.slice(1).join(' ').trim();
             
-            if (command === 'ai' && args) {
-                await this.handleAI(args);
-                return;
-            }
+            // AI query triggers - treat these as AI queries, not commands
+            const aiTriggers = ['tell', 'give', 'show', 'what', 'how', 'who', 'where', 'when', 'why', 
+                               'can', 'could', 'would', 'should', 'is', 'are', 'does', 'do', 'explain'];
             
-            if (cmd.includes('?') || /^(what|how|tell|who|can|why|where)/i.test(cmd)) {
+            // Special case: "about" with topic should be AI query, not command
+            if (firstWord === 'about' && restOfCommand.length > 0) {
                 await this.handleAI(cmd);
                 return;
             }
             
-            if (this.commands[command]) {
-                this.addLine(`<pre class="term-response">${this.commands[command]}</pre>`);
+            // If starts with AI trigger or has question mark, send to AI
+            if (aiTriggers.includes(firstWord) || cmd.includes('?')) {
+                await this.handleAI(cmd);
+                return;
+            }
+            
+            // Special handling for "ai" command
+            if (firstWord === 'ai' && restOfCommand) {
+                await this.handleAI(restOfCommand);
+                return;
+            }
+            
+            // Check if it's a built-in command
+            if (this.commands[firstWord]) {
+                this.addLine(`<pre class="term-response">${this.commands[firstWord]}</pre>`);
             } else {
-                switch(command) {
+                // Handle action commands
+                switch(firstWord) {
                     case 'clear':
                         this.clear();
                         break;
@@ -1131,8 +1673,8 @@ RULES:
                         this.addLine('<span class="term-success">📧 Opening email client...</span>');
                         break;
                     default:
-                        this.addLine(`<span class="term-error">Command not found: ${this.escapeHtml(command)}</span>`);
-                        this.addLine('<span class="term-hint">Type <span class="hl">help</span> for available commands, or ask the AI anything!</span>');
+                        // If not a command, treat as AI query
+                        await this.handleAI(cmd);
                 }
             }
             
@@ -1201,14 +1743,13 @@ RULES:
             this.output.appendChild(div);
         },
         
-        // ═══════════ CLEAR (NO "POWERED BY GEMINI") ═══════════
         clear() {
             this.output.innerHTML = `<div class="welcome-box">
                 <div class="welcome-title">👋 Welcome to Shahzeb's AI Portfolio Terminal</div>
                 <div class="quick-suggestions">
                     <span class="suggestion" data-cmd="ai what ML projects has Shahzeb done?">ML Projects</span>
                     <span class="suggestion" data-cmd="skills">Skills</span>
-                    <span class="suggestion" data-cmd="ai tell me about blockchain experience">Blockchain</span>
+                    <span class="suggestion" data-cmd="ai tell me about his experience">Experience</span>
                     <span class="suggestion" data-cmd="contact">Contact</span>
                 </div>
             </div>`;
@@ -1228,6 +1769,7 @@ RULES:
         }
     };
 
+    // [Continue with all remaining functions: Mobile notifications, Matrix, Confetti, Certificate Viewer, and initialization]
     // ═══════════ MOBILE NOTIFICATION HELPER ═══════════
     function showMobileNotification(message, type = 'info') {
         const notification = document.createElement('div');
@@ -1864,7 +2406,8 @@ RULES:
         }
     `;
     document.head.appendChild(mobileAnimStyle);
-     // ═══════════ CERTIFICATE VIEWER FUNCTIONALITY ═══════════
+
+    // ═══════════ CERTIFICATE VIEWER FUNCTIONALITY ═══════════
     function initCertificateViewer() {
         const modal = document.getElementById('certificate-modal');
         if (!modal) {
@@ -2022,7 +2565,7 @@ RULES:
         initNetworkStatus();
         initPerformanceMonitor();
         fixMobileButtonPositions();
-        initCertificateViewer(); // ← ADD THIS LINE
+        initCertificateViewer();
         
         window.addEventListener('resize', fixMobileButtonPositions);
         
@@ -2030,8 +2573,8 @@ RULES:
         window.toggleMatrix = toggleMatrix;
         window.Terminal = Terminal;
         
-        console.log('%c✨ Portfolio v6.0 with Certificates!', 'color: #6366f1; font-size: 16px; font-weight: bold;');
-        console.log('%cPress Ctrl+. for AI Terminal', 'color: #10b981; font-size: 12px;');
+        console.log('%c✨ Portfolio v7.0 - Enhanced AI System!', 'color: #6366f1; font-size: 16px; font-weight: bold;');
+        console.log('%cPress Ctrl+. for AI Terminal with comprehensive knowledge', 'color: #10b981; font-size: 12px;');
     }
 
     if (document.readyState === 'loading') {
@@ -2043,11 +2586,9 @@ RULES:
     window.addEventListener('load', hidePreloader);
     setTimeout(hidePreloader, 3000);
 
-  
-
-// ═══════════ EXPOSE TO WINDOW (Optional) ═══════════
-window.CertificateViewer = {
-    init: initCertificateViewer
-};
+    // ═══════════ EXPOSE TO WINDOW (Optional) ═══════════
+    window.CertificateViewer = {
+        init: initCertificateViewer
+    };
 
 })();
