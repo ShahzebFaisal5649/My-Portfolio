@@ -1,35 +1,71 @@
 <!-- Index.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Shahzeb Faisal - Data Scientist & ML Engineer Portfolio">
+    <meta name="description"
+        content="Shahzeb Faisal - Data Analyst & Full Stack AI Developer Portfolio. Specializing in ML, Deep Learning, and NLP.">
+    <meta name="keywords" content="Data Analyst, AI Developer, ML Engineer, NLP, Full Stack Developer, Shahzeb Faisal">
     <meta name="author" content="Shahzeb Faisal">
-    <meta name="theme-color" content="#6366f1">
-    <title>Shahzeb Faisal | Data Scientist & ML Engineer</title>
-    
+    <meta property="og:title" content="Shahzeb Faisal | Data Analyst & AI Developer">
+    <meta property="og:description"
+        content="Portfolio of Shahzeb Faisal, showcasing projects in AI, ML, and Full Stack Development.">
+    <meta property="og:image" content="Images/profile-pic.png">
+    <meta name="theme-color" content="#cbff00">
+    <title>Shahzeb Faisal | Data Analyst & Full Stack AI Developer</title>
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
     <!-- Optimized Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome - Deferred -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        media="print" onload="this.media='all'">
+
     <!-- Main CSS -->
     <link rel="stylesheet" href="Styles/Main.css">
-    
+
+    <!-- Core Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <!-- Critical CSS Inline -->
     <style>
         /* Critical CSS for above-the-fold content */
-        body { margin: 0; background: #0a0a0f; color: #f1f5f9; font-family: 'Inter', sans-serif; }
-        #preloader { position: fixed; inset: 0; background: #0a0a0f; z-index: 99999; display: flex; align-items: center; justify-content: center; }
-        .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 0 60px; }
+        body {
+            margin: 0;
+            background: #000000;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #000000;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 60px;
+        }
     </style>
 </head>
+
 <body>
     <!-- Preloader -->
     <div id="preloader">
@@ -92,7 +128,8 @@
                 </div>
                 <div class="terminal-input-line">
                     <span class="prompt">❯</span>
-                    <input type="text" id="term-input" autocomplete="off" spellcheck="false" placeholder="Type 'help' or ask AI anything...">
+                    <input type="text" id="term-input" autocomplete="off" spellcheck="false"
+                        placeholder="Type 'help' or ask AI anything...">
                     <button class="voice-btn" id="voice-btn" title="Voice Input (Beta)">
                         <i class="fas fa-microphone"></i>
                     </button>
@@ -130,7 +167,7 @@
             <a href="#home" class="logo">
                 <span class="logo-text">SF</span>
             </a>
-            
+
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
@@ -139,7 +176,7 @@
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            
+
             <div class="nav-right">
                 <a href="resume.pdf" class="nav-cta" download>
                     <span>Resume</span>
@@ -152,6 +189,19 @@
         </nav>
     </header>
 
+    <!-- Vertical Social Sidebar -->
+    <aside class="social-sidebar">
+        <div class="sidebar-line"></div>
+        <div class="social-icons">
+            <a href="https://github.com/ShahzebFaisal5649" target="_blank" aria-label="GitHub"><i
+                    class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/shahzeb-faisal-8b9190321/" target="_blank" aria-label="LinkedIn"><i
+                    class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:shahzebfaisal5649@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="sidebar-text">FOLLOW ME</div>
+    </aside>
+
     <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobile-overlay"></div>
 
@@ -159,146 +209,119 @@
     <main role="main">
         <!-- HERO SECTION -->
         <section id="home" class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <!-- Enhanced "Open to Work" badge (CSS handles green glow) -->
-                    <div class="hero-badge availability">
-                        <span class="badge-dot"></span>
-                        <span>Open to Work</span>
-                    </div>
-                    
-                    <h1 class="hero-title">
-                        <span class="line-1">Hello, I'm</span>
-                        <span class="hero-name">Shahzeb Faisal</span>
-                    </h1>
-                    
-                    <div class="hero-role">
-                        <span>I build</span>
-                        <span id="typed-text" class="typed"></span>
-                        <span class="cursor-blink">|</span>
-                    </div>
-                    
-                    <p class="hero-desc">
-                        Data Analyst & ML Engineer creating intelligent solutions through 
-                        machine learning, deep learning, and full-stack development.
-                    </p>
-                    
-                    <div class="hero-cta">
-                        <a href="#projects" class="btn btn-primary">
-                            <span>View Projects</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="#contact" class="btn btn-secondary">
-                            <span>Contact Me</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="hero-social">
-                        <a href="https://github.com/ShahzebFaisal5649" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/shahzeb-faisal-8b9190321/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="mailto:shahzebfaisal5649@gmail.com" class="social-link" aria-label="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
+            <canvas id="hero-canvas"></canvas>
+
+            <div class="hero-content">
+                <div class="hero-badge availability">
+                    <span class="badge-dot"></span>
+                    <span>Open to Work</span>
                 </div>
-                
-                <div class="hero-visual">
-                    <!-- 3D Card Effect -->
-                    <div class="hero-card" id="hero-card">
-                        <div class="card-inner">
-                            <div class="card-content">
-                                <div class="profile-icon">
-                                    <i class="fas fa-user-astronaut"></i>
-                                </div>
-                                <h2 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 4px;">Shahzeb Faisal</h2>
-                                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px;">Data Scientist</p>
-                                <div class="card-stats">
-                                    <div class="stat">
-                                        <span class="stat-num counter" data-target="16">0</span>+
-                                        <span class="stat-label">Projects</span>
-                                    </div>
-                                    <div class="stat">
-                                        <span class="stat-num counter" data-target="4">0</span>
-                                        <span class="stat-label">Certs</span>
-                                    </div>
-                                    <div class="stat">
-                                        <span class="stat-num counter" data-target="1">0</span>+
-                                        <span class="stat-label">Year Exp</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Floating Elements -->
-                    <div class="floating-elements">
-                        <div class="float-item f1"><i class="fab fa-python"></i></div>
-                        <div class="float-item f2"><i class="fab fa-react"></i></div>
-                        <div class="float-item f3"><i class="fas fa-brain"></i></div>
-                        <div class="float-item f4"><i class="fab fa-node-js"></i></div>
-                        <div class="float-item f5"><i class="fas fa-database"></i></div>
-                    </div>
+
+                <h1 class="hero-title-main">
+                    HI, SHAHZEB<br>FAISAL
+                </h1>
+
+                <p class="hero-subtitle">
+                    Data Analyst & Full Stack AI Developer
+                </p>
+
+                <div class="hero-cta" style="margin-top: 40px;">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>EXPLORE PROJECTS</span>
+                    </a>
                 </div>
             </div>
         </section>
 
+        <!-- TEXT MARQUEE -->
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <span>DATA ANALYST</span>
+                <span>AI DEVELOPER</span>
+                <span>ML ENGINEER</span>
+                <span>FULL STACK</span>
+                <span>NLP EXPERT</span>
+                <!-- Repeat for infinite loop effect -->
+                <span>DATA ANALYST</span>
+                <span>AI DEVELOPER</span>
+                <span>ML ENGINEER</span>
+                <span>FULL STACK</span>
+                <span>NLP EXPERT</span>
+            </div>
+        </div>
+
         <!-- ABOUT SECTION -->
         <section id="about" class="about">
-            <div class="container">
+            <div class="container about-container-centered">
                 <div class="section-header">
                     <span class="section-tag">About Me</span>
                     <h2 class="section-title">Who I Am</h2>
                 </div>
-                
-                <div class="about-grid">
-                    <div class="about-image">
-                        <div class="image-wrapper">
-                            <div class="image-placeholder">
-                                <i class="fas fa-user-astronaut"></i>
+
+                <div class="about-main-centered">
+                    <!-- Profile with Water Ring -->
+                    <div class="about-image-centered">
+                        <div class="profile-img-container">
+                            <img src="Images/profile-pic.png" alt="Shahzeb Faisal" class="profile-img">
+                            <div class="water-ring">
+                                <svg class="water-text" viewBox="0 0 500 500">
+                                    <defs>
+                                        <path id="water-path"
+                                            d="M 250, 250 m -220, 0 a 220,220 0 1,1 440,0 a 220,220 0 1,1 -440,0">
+                                        </path>
+                                    </defs>
+                                    <text fill="#ffffff" font-family="var(--font-mono)" font-size="18"
+                                        font-weight="600">
+                                        <textPath xlink:href="#water-path" startOffset="0%">
+                                            DATA ANALYST AND FULL STACK AI DEVELOPER • DATA ANALYST AND FULL STACK AI
+                                            DEVELOPER •
+                                        </textPath>
+                                    </text>
+                                </svg>
                             </div>
-                            <div class="image-frame"></div>
-                        </div>
-                        <div class="exp-badge">
-                            <span class="exp-num">1+</span>
-                            <span class="exp-text">Years<br>Experience</span>
+                            <!-- Second Water Ring for liquid effect -->
+                            <div class="water-ring-outer"></div>
                         </div>
                     </div>
-                    
-                    <div class="about-content">
-                        <h2>Data Analyst & ML Engineer from Lahore, Pakistan</h2>
-                        
-                        <p>I'm a <strong>BS Data Science student graduated from FAST NUCES Lahore</strong>, passionate about building intelligent systems. My expertise spans machine learning, deep learning, NLP, and full-stack development.</p>
-                        
-                        <p>Currently working as a <strong>Research Assistant</strong> on LLM-based conversational chatbots, with experience from <strong>Nexium</strong>, <strong>CodeAlpha</strong>, and <strong>Kashf Foundation</strong>.</p>
-                        
-                        <div class="about-info">
-                            <div class="info-item">
+
+                    <!-- Description & Content Centered -->
+                    <div class="about-content-centered">
+                        <h3 class="about-subtitle">Data Analyst & ML Engineer from Lahore, Pakistan</h3>
+                        <p class="about-description">
+                            I'm a <strong>BS Data Science student graduated from FAST NUCES Lahore</strong>, passionate
+                            about building intelligent systems. My expertise spans machine learning, deep learning, NLP,
+                            and full-stack development.
+                        </p>
+                        <p class="about-description">
+                            Currently working as a <strong>Research Assistant</strong> on LLM-based conversational
+                            chatbots, with experience from <strong>Nexium</strong>, <strong>CodeAlpha</strong>, and
+                            <strong>Kashf Foundation</strong>.
+                        </p>
+
+                        <!-- Info Cards Grid -->
+                        <div class="about-info-centered">
+                            <div class="info-card">
                                 <i class="fas fa-graduation-cap"></i>
                                 <div>
                                     <span class="info-label">Education</span>
                                     <span class="info-value">BS Data Science, FAST NUCES</span>
                                 </div>
                             </div>
-                            <div class="info-item">
+                            <div class="info-card">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <div>
                                     <span class="info-label">Location</span>
                                     <span class="info-value">Lahore, Pakistan</span>
                                 </div>
                             </div>
-                            <div class="info-item clickable" onclick="window.location.href='mailto:shahzebfaisal5649@gmail.com'">
+                            <div class="info-card">
                                 <i class="fas fa-envelope"></i>
                                 <div>
                                     <span class="info-label">Email</span>
                                     <span class="info-value">shahzebfaisal5649@gmail.com</span>
                                 </div>
                             </div>
-                            <div class="info-item">
+                            <div class="info-card">
                                 <i class="fas fa-globe"></i>
                                 <div>
                                     <span class="info-label">Languages</span>
@@ -306,13 +329,37 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="about-cta">
-                            <a href="resume.pdf" class="btn btn-primary" download>
+
+                        <div class="about-actions-centered">
+                            <a href="#contact" class="btn btn-primary">
                                 <span>Download CV</span>
                                 <i class="fas fa-download"></i>
                             </a>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS SECTION -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="16">0</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="1">0</span>
+                        <span class="stat-label">Year Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="98">0</span>
+                        <span class="stat-label">Data Quality Score %</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="30">0</span>
+                        <span class="stat-label">Inference Optimization %</span>
                     </div>
                 </div>
             </div>
@@ -326,7 +373,7 @@
                     <h2 class="section-title">Featured Projects</h2>
                     <p class="section-desc">16+ projects across ML, Data Science, Web Dev & Blockchain</p>
                 </div>
-                
+
                 <!-- Filter -->
                 <div class="filter-container">
                     <button class="filter-btn active" data-filter="all">All</button>
@@ -335,7 +382,7 @@
                     <button class="filter-btn" data-filter="data">Data Science</button>
                     <button class="filter-btn" data-filter="blockchain">Blockchain</button>
                 </div>
-                
+
                 <!-- Projects Grid -->
                 <div class="projects-grid" id="projects-grid">
                     <!-- Project 1 - Featured -->
@@ -345,7 +392,9 @@
                                 <i class="fas fa-brain"></i>
                             </div>
                             <span class="featured-badge">Featured</span>
-                            <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Grand_Project" target="_blank" rel="noopener" class="project-overlay" aria-label="View Nexium Resume Tailor on GitHub">
+                            <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Grand_Project"
+                                target="_blank" rel="noopener" class="project-overlay"
+                                aria-label="View Nexium Resume Tailor on GitHub">
                                 <i class="fab fa-github"></i>
                                 <span>View on GitHub</span>
                             </a>
@@ -356,7 +405,8 @@
                                 <span class="type">AI Platform</span>
                             </div>
                             <h3>Nexium Resume Tailor</h3>
-                            <p>AI-powered resume optimization with GPT-4 integration, achieving 30% accuracy improvement.</p>
+                            <p>AI-powered resume optimization with GPT-4 integration, achieving 30% accuracy
+                                improvement.</p>
                             <div class="project-tech">
                                 <span>Next.js 15</span>
                                 <span>GPT-4</span>
@@ -372,7 +422,8 @@
                             <div class="project-preview">
                                 <i class="fas fa-file-alt"></i>
                             </div>
-                            <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign2" target="_blank" rel="noopener" class="project-overlay" aria-label="View Blog Summarizer on GitHub">
+                            <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign2" target="_blank"
+                                rel="noopener" class="project-overlay" aria-label="View Blog Summarizer on GitHub">
                                 <i class="fab fa-github"></i>
                                 <span>View on GitHub</span>
                             </a>
@@ -383,7 +434,8 @@
                                 <span class="type">NLP App</span>
                             </div>
                             <h3>Blog Summarizer</h3>
-                            <p>Full-stack AI web app for intelligent NLP summarization with Urdu translation support.</p>
+                            <p>Full-stack AI web app for intelligent NLP summarization with Urdu translation support.
+                            </p>
                             <div class="project-tech">
                                 <span>Next.js</span>
                                 <span>MongoDB</span>
@@ -398,7 +450,8 @@
                             <div class="project-preview">
                                 <i class="fas fa-quote-left"></i>
                             </div>
-                            <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign1" target="_blank" rel="noopener" class="project-overlay" aria-label="View QuoteGen AI on GitHub">
+                            <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign1" target="_blank"
+                                rel="noopener" class="project-overlay" aria-label="View QuoteGen AI on GitHub">
                                 <i class="fab fa-github"></i>
                                 <span>View on GitHub</span>
                             </a>
@@ -423,7 +476,9 @@
                             <div class="project-preview">
                                 <i class="fas fa-satellite"></i>
                             </div>
-                            <a href="https://github.com/ShahzebFaisal5649/Environmental_Impact_Analysis_using_Satellite_Data" target="_blank" rel="noopener" class="project-overlay" aria-label="View Environmental Analysis on GitHub">
+                            <a href="https://github.com/ShahzebFaisal5649/Environmental_Impact_Analysis_using_Satellite_Data"
+                                target="_blank" rel="noopener" class="project-overlay"
+                                aria-label="View Environmental Analysis on GitHub">
                                 <i class="fab fa-github"></i>
                                 <span>View on GitHub</span>
                             </a>
@@ -448,7 +503,8 @@
                             <div class="project-preview">
                                 <i class="fas fa-city"></i>
                             </div>
-                            <a href="https://github.com/ShahzebFaisal5649/smart-city-management-system" target="_blank" rel="noopener" class="project-overlay" aria-label="View Smart City System on GitHub">
+                            <a href="https://github.com/ShahzebFaisal5649/smart-city-management-system" target="_blank"
+                                rel="noopener" class="project-overlay" aria-label="View Smart City System on GitHub">
                                 <i class="fab fa-github"></i>
                                 <span>View on GitHub</span>
                             </a>
@@ -459,7 +515,8 @@
                                 <span class="type">Big Data</span>
                             </div>
                             <h3>Smart City Management</h3>
-                            <p>Real-time data pipeline processing 13.5M+ vehicle registrations with 98.75% quality score.</p>
+                            <p>Real-time data pipeline processing 13.5M+ vehicle registrations with 98.75% quality
+                                score.</p>
                             <div class="project-tech">
                                 <span>Python</span>
                                 <span>Pandas</span>
@@ -473,7 +530,8 @@
                             <div class="project-preview">
                                 <i class="fab fa-ethereum"></i>
                             </div>
-                            <a href="https://github.com/ShahzebFaisal5649/election-dapp" target="_blank" rel="noopener" class="project-overlay" aria-label="View Election DApp on GitHub">
+                            <a href="https://github.com/ShahzebFaisal5649/election-dapp" target="_blank" rel="noopener"
+                                class="project-overlay" aria-label="View Election DApp on GitHub">
                                 <i class="fab fa-github"></i>
                                 <span>View on GitHub</span>
                             </a>
@@ -498,7 +556,9 @@
                             <div class="project-preview">
                                 <i class="fas fa-image"></i>
                             </div>
-                            <a href="https://github.com/ShahzebFaisal5649/Visual-Description-Generator-For-Images-Data" target="_blank" rel="noopener" class="project-overlay" aria-label="View Image Captioning on GitHub">
+                            <a href="https://github.com/ShahzebFaisal5649/Visual-Description-Generator-For-Images-Data"
+                                target="_blank" rel="noopener" class="project-overlay"
+                                aria-label="View Image Captioning on GitHub">
                                 <i class="fab fa-github"></i>
                                 <span>View on GitHub</span>
                             </a>
@@ -523,7 +583,8 @@
                             <div class="project-preview">
                                 <i class="fas fa-dumbbell"></i>
                             </div>
-                            <a href="https://github.com/ShahzebFaisal5649/GYM-Website" target="_blank" rel="noopener" class="project-overlay" aria-label="View GYM Website on GitHub">
+                            <a href="https://github.com/ShahzebFaisal5649/GYM-Website" target="_blank" rel="noopener"
+                                class="project-overlay" aria-label="View GYM Website on GitHub">
                                 <i class="fab fa-github"></i>
                                 <span>View on GitHub</span>
                             </a>
@@ -548,7 +609,8 @@
                             <div class="project-preview">
                                 <i class="fas fa-film"></i>
                             </div>
-                            <a href="https://github.com/ShahzebFaisal5649/Movie-Showcase" target="_blank" rel="noopener" class="project-overlay" aria-label="View Movie Showcase on GitHub">
+                            <a href="https://github.com/ShahzebFaisal5649/Movie-Showcase" target="_blank" rel="noopener"
+                                class="project-overlay" aria-label="View Movie Showcase on GitHub">
                                 <i class="fab fa-github"></i>
                                 <span>View on GitHub</span>
                             </a>
@@ -573,7 +635,8 @@
                             <div class="project-preview">
                                 <i class="fas fa-user-graduate"></i>
                             </div>
-                            <a href="https://github.com/ShahzebFaisal5649/DB_Lab_Project" target="_blank" rel="noopener" class="project-overlay" aria-label="View Edu Connect on GitHub">
+                            <a href="https://github.com/ShahzebFaisal5649/DB_Lab_Project" target="_blank" rel="noopener"
+                                class="project-overlay" aria-label="View Edu Connect on GitHub">
                                 <i class="fab fa-github"></i>
                                 <span>View on GitHub</span>
                             </a>
@@ -598,7 +661,8 @@
                             <div class="project-preview">
                                 <i class="fas fa-cloud"></i>
                             </div>
-                            <a href="https://github.com/ShahzebFaisal5649/Bicep-Shahzeb-Ass" target="_blank" rel="noopener" class="project-overlay" aria-label="View Azure Bicep on GitHub">
+                            <a href="https://github.com/ShahzebFaisal5649/Bicep-Shahzeb-Ass" target="_blank"
+                                rel="noopener" class="project-overlay" aria-label="View Azure Bicep on GitHub">
                                 <i class="fab fa-github"></i>
                                 <span>View on GitHub</span>
                             </a>
@@ -623,7 +687,8 @@
                             <div class="project-preview">
                                 <i class="fas fa-shopping-cart"></i>
                             </div>
-                            <a href="https://github.com/ShahzebFaisal5649/E-Shop" target="_blank" rel="noopener" class="project-overlay" aria-label="View E-Shop on GitHub">
+                            <a href="https://github.com/ShahzebFaisal5649/E-Shop" target="_blank" rel="noopener"
+                                class="project-overlay" aria-label="View E-Shop on GitHub">
                                 <i class="fab fa-github"></i>
                                 <span>View on GitHub</span>
                             </a>
@@ -643,9 +708,10 @@
                         </div>
                     </article>
                 </div>
-                
+
                 <div class="projects-cta">
-                    <a href="https://github.com/ShahzebFaisal5649?tab=repositories" target="_blank" rel="noopener" class="btn btn-secondary">
+                    <a href="https://github.com/ShahzebFaisal5649?tab=repositories" target="_blank" rel="noopener"
+                        class="btn btn-secondary">
                         <span>View All on GitHub</span>
                         <i class="fab fa-github"></i>
                     </a>
@@ -660,7 +726,7 @@
                     <span class="section-tag">Career</span>
                     <h2 class="section-title">Experience</h2>
                 </div>
-                
+
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-marker"><i class="fas fa-microscope"></i></div>
@@ -672,11 +738,13 @@
                                 </div>
                                 <span class="date current">2024 - Present</span>
                             </div>
-                            <p>Researching LLM-based conversational chatbots under Dr. Esha Tur Razia Babar. Exploring persona-based architectures and bias mitigation.</p>
-                            <div class="tags"><span>LLMs</span><span>NLP</span><span>Research</span><span>Python</span></div>
+                            <p>Researching LLM-based conversational chatbots under Dr. Esha Tur Razia Babar. Exploring
+                                persona-based architectures and bias mitigation.</p>
+                            <div class="tags"><span>LLMs</span><span>NLP</span><span>Research</span><span>Python</span>
+                            </div>
                         </div>
                     </div>
-                    
+
                     <div class="timeline-item">
                         <div class="timeline-marker"><i class="fas fa-robot"></i></div>
                         <div class="timeline-content">
@@ -687,8 +755,11 @@
                                 </div>
                                 <span class="date">Jul - Aug 2025</span>
                             </div>
-                            <p>Built AI-powered Resume Tailor with GPT-4 achieving 30% accuracy boost. Developed full-stack apps using Next.js 15 and TypeScript.</p>
-                            <div class="tags"><span>Next.js</span><span>GPT-4</span><span>TypeScript</span><span>Supabase</span></div>
+                            <p>Built AI-powered Resume Tailor with GPT-4 achieving 30% accuracy boost. Developed
+                                full-stack apps using Next.js 15 and TypeScript.</p>
+                            <div class="tags">
+                                <span>Next.js</span><span>GPT-4</span><span>TypeScript</span><span>Supabase</span>
+                            </div>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -701,15 +772,15 @@
                                 </div>
                                 <span class="date">September 2024</span>
                             </div>
-                            <p>Software Development Trainee – Completed the Couch to Coder 2024 programme, learning core coding and software development fundamentals through project-based training, live workshops, and earning a certified completion.</p>
-                        <div class="tags">
-                        <span>Next.js</span>
-                        <span>TypeScript</span>
-                        <span>Supabase</span>
-                        <span>GPT-4</span>
-                        <span>Git</span>
+                            <p>Software Development Trainee – Completed the Couch to Coder 2024 programme, learning core
+                                coding and software development fundamentals through project-based training, live
+                                workshops, and earning a certified completion.</p>
+                            <div class="tags">
+                                <span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>GPT-4</span><span>Git</span>
+                            </div>
                         </div>
                     </div>
+
                     <div class="timeline-item">
                         <div class="timeline-marker"><i class="fas fa-chart-line"></i></div>
                         <div class="timeline-content">
@@ -720,11 +791,14 @@
                                 </div>
                                 <span class="date">Jun - Jul 2024</span>
                             </div>
-                            <p>Developed predictive models improving decision-making by 25%. Designed automated pipelines reducing processing time by 30%.</p>
-                            <div class="tags"><span>Python</span><span>ML</span><span>Analytics</span><span>Pandas</span></div>
+                            <p>Developed predictive models improving decision-making by 25%. Designed automated
+                                pipelines reducing processing time by 30%.</p>
+                            <div class="tags">
+                                <span>Python</span><span>ML</span><span>Analytics</span><span>Pandas</span>
+                            </div>
                         </div>
                     </div>
-                    
+
                     <div class="timeline-item">
                         <div class="timeline-marker"><i class="fas fa-database"></i></div>
                         <div class="timeline-content">
@@ -735,11 +809,14 @@
                                 </div>
                                 <span class="date">Jul - Aug 2024</span>
                             </div>
-                            <p>Built compliance dashboard with real-time analytics. Optimized SQL queries reducing response time by 40%.</p>
-                            <div class="tags"><span>SQL</span><span>Android</span><span>Dashboard</span><span>Analytics</span></div>
+                            <p>Built compliance dashboard with real-time analytics. Optimized SQL queries reducing
+                                response time by 40%.</p>
+                            <div class="tags">
+                                <span>SQL</span><span>Android</span><span>Dashboard</span><span>Analytics</span>
+                            </div>
                         </div>
                     </div>
-                    
+
                     <div class="timeline-item edu">
                         <div class="timeline-marker edu"><i class="fas fa-graduation-cap"></i></div>
                         <div class="timeline-content">
@@ -751,29 +828,33 @@
                                 <span class="date edu">2021 - 2025</span>
                             </div>
                             <p>Focus on Machine Learning, Deep Learning, NLP, and Big Data Analytics.</p>
-                            <div class="tags"><span>ML</span><span>Deep Learning</span><span>NLP</span><span>Big Data</span></div>
+                            <div class="tags">
+                                <span>ML</span><span>Deep Learning</span><span>NLP</span><span>Big Data</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GitHub Activity -->
+                    <div class="github-activity">
+                        <h3><i class="fab fa-github"></i> GitHub Contributions</h3>
+                        <div class="github-chart-wrapper">
+                            <img src="https://ghchart.rshah.org/6366f1/ShahzebFaisal5649"
+                                alt="GitHub Contribution Chart" class="github-chart" loading="lazy" width="800"
+                                height="150">
                         </div>
                     </div>
                 </div>
-                
-                <!-- GitHub Activity -->
-                <div class="github-activity">
-                    <h3><i class="fab fa-github"></i> GitHub Contributions</h3>
-                    <div class="github-chart-wrapper">
-                        <img src="https://ghchart.rshah.org/6366f1/ShahzebFaisal5649" alt="GitHub Contribution Chart" class="github-chart" loading="lazy" width="800" height="150">
-                    </div>
-                </div>
-            </div>
         </section>
 
         <!-- SKILLS SECTION -->
         <section id="skills" class="skills">
+            <canvas id="neural-canvas"></canvas>
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">Expertise</span>
                     <h2 class="section-title">Skills & Technologies</h2>
                 </div>
-                
+
                 <div class="skills-grid">
                     <!-- Programming Languages -->
                     <div class="skill-category">
@@ -788,7 +869,7 @@
                             <span>Solidity</span>
                         </div>
                     </div>
-                    
+
                     <!-- ML & AI Frameworks -->
                     <div class="skill-category">
                         <div class="category-icon"><i class="fas fa-brain"></i></div>
@@ -804,7 +885,7 @@
                             <span>LangChain</span>
                         </div>
                     </div>
-                    
+
                     <!-- NLP & LLMs -->
                     <div class="skill-category">
                         <div class="category-icon"><i class="fas fa-language"></i></div>
@@ -818,7 +899,7 @@
                             <span>RAG</span>
                         </div>
                     </div>
-                    
+
                     <!-- Web Development -->
                     <div class="skill-category">
                         <div class="category-icon"><i class="fas fa-globe"></i></div>
@@ -832,7 +913,7 @@
                             <span>REST APIs</span>
                         </div>
                     </div>
-                    
+
                     <!-- Data Science -->
                     <div class="skill-category">
                         <div class="category-icon"><i class="fas fa-chart-line"></i></div>
@@ -846,7 +927,7 @@
                             <span>Apache Spark</span>
                         </div>
                     </div>
-                    
+
                     <!-- Cloud & DevOps -->
                     <div class="skill-category">
                         <div class="category-icon"><i class="fas fa-cloud"></i></div>
@@ -858,7 +939,7 @@
                             <span>Vercel</span>
                         </div>
                     </div>
-                    
+
                     <!-- Databases -->
                     <div class="skill-category">
                         <div class="category-icon"><i class="fas fa-database"></i></div>
@@ -870,7 +951,7 @@
                             <span>Supabase</span>
                         </div>
                     </div>
-                    
+
                     <!-- Blockchain -->
                     <div class="skill-category">
                         <div class="category-icon"><i class="fab fa-ethereum"></i></div>
@@ -884,6 +965,11 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Skills Radar Chart -->
+                <div class="skills-radar-container">
+                    <div id="skills-radar"></div>
+                </div>
             </div>
         </section>
 
@@ -895,7 +981,7 @@
                     <h2 class="section-title">Get In Touch</h2>
                     <p class="section-desc">Have a project in mind? Let's talk!</p>
                 </div>
-                
+
                 <div class="contact-grid">
                     <div class="contact-info">
                         <a href="mailto:shahzebfaisal5649@gmail.com" class="contact-card clickable-card">
@@ -906,7 +992,7 @@
                             </div>
                             <i class="fas fa-arrow-right card-arrow"></i>
                         </a>
-                        
+
                         <a href="tel:+923020418510" class="contact-card clickable-card">
                             <div class="card-icon"><i class="fas fa-phone-alt"></i></div>
                             <div class="card-content">
@@ -915,7 +1001,7 @@
                             </div>
                             <i class="fas fa-arrow-right card-arrow"></i>
                         </a>
-                        
+
                         <div class="contact-card">
                             <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
                             <div class="card-content">
@@ -923,32 +1009,31 @@
                                 <span class="card-value">Lahore, Pakistan</span>
                             </div>
                         </div>
-                        
+
                         <!-- Enhanced availability badge (CSS handles green glow) -->
                         <div class="availability">
                             <span class="status-dot"></span>
                             <span>Available for opportunities</span>
                         </div>
-                        
+
                         <div class="contact-socials">
-                            <a href="https://github.com/ShahzebFaisal5649" target="_blank" rel="noopener" class="social-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/shahzeb-faisal-8b9190321/" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="mailto:shahzebfaisal5649@gmail.com" class="social-btn" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="https://github.com/ShahzebFaisal5649" target="_blank" rel="noopener"
+                                class="social-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/shahzeb-faisal-8b9190321/" target="_blank"
+                                rel="noopener" class="social-btn" aria-label="LinkedIn"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a href="mailto:shahzebfaisal5649@gmail.com" class="social-btn" aria-label="Email"><i
+                                    class="fas fa-envelope"></i></a>
                         </div>
                     </div>
-                    
+
                     <!-- UPDATED: FAST NUCES Location Map (Professional Choice) -->
                     <div class="contact-map">
                         <div id="map-container" class="map-container">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.4!2d74.2462!3d31.4189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391ecc8ba0000000%3A0x4e6f5c6e7f8b4a3c!2sFAST%20NUCES%20Lahore!5e0!3m2!1sen!2s!4v1703500000000!5m2!1sen!2s" 
-                                width="100%" 
-                                height="100%" 
-                                style="border:0;" 
-                                allowfullscreen="" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade"
-                                title="Location Map - FAST NUCES Lahore">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.4!2d74.2462!3d31.4189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391ecc8ba0000000%3A0x4e6f5c6e7f8b4a3c!2sFAST%20NUCES%20Lahore!5e0!3m2!1sen!2s!4v1703500000000!5m2!1sen!2s"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade" title="Location Map - FAST NUCES Lahore">
                             </iframe>
                             <div class="map-overlay-info">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -961,24 +1046,14 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="footer-logo">SF</span>
-                    <p>Building intelligent solutions</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="footer-social">
-                    <a href="https://github.com/ShahzebFaisal5649" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/shahzeb-faisal-8b9190321/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                </div>
+            <div class="footer-social">
+                <a href="https://github.com/ShahzebFaisal5649" target="_blank" rel="noopener" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/shahzeb-faisal-8b9190321/" target="_blank" rel="noopener"
+                    aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Shahzeb Faisal. All rights reserved.</p>
@@ -986,6 +1061,30 @@
             </div>
         </div>
     </footer>
+
+    <!-- Project Modal -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title">Project Name</h2>
+                    <div class="modal-tech" id="modal-tech">
+                        <!-- Tech tags will be injected here -->
+                    </div>
+                    <p id="modal-desc">Project description goes here.</p>
+                    <div class="modal-links">
+                        <a href="#" class="btn btn-primary" id="modal-github" target="_blank">
+                            <i class="fab fa-github"></i> View GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Confetti Canvas -->
     <canvas id="confetti"></canvas>
@@ -1006,26 +1105,29 @@
 
     <!-- Scripts -->
     <script src="Scripts/Main.js" defer></script>
+    <script src="Scripts/NeuralBackground.js" defer></script>
 
     <!-- ═══════════════════════════════════════════════════════════
      CERTIFICATE MODAL - Add this before </body> in index.html
      ═══════════════════════════════════════════════════════════ -->
 
-<!-- Certificate Modal -->
-<div id="certificate-modal" class="certificate-modal">
+    <!-- Certificate Modal -->
+    <div id="certificate-modal" class="certificate-modal">
         <span class="certificate-close">&times;</span>
         <div class="certificate-modal-content">
-          <img id="certificate-image" alt="Certificate">
-          <div class="certificate-info">
-            <h3 id="certificate-title"></h3>
-            <p id="certificate-issuer"></p>
-            <p id="certificate-date"></p>
-            <button id="download-certificate">
-              <i class="fas fa-download"></i> Download
-            </button>
-          </div>
+            <img id="certificate-image" alt="Certificate">
+            <div class="certificate-info">
+                <h3 id="certificate-title"></h3>
+                <p id="certificate-issuer"></p>
+                <p id="certificate-date"></p>
+                <button id="download-certificate">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
         </div>
-      </div>
+    </div>
 
+    <script src="Scripts/HeroAnimations.js"></script>
 </body>
+
 </html>

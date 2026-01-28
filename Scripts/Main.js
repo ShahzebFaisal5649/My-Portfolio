@@ -2,7 +2,7 @@
    Main.js - Portfolio with Enhanced AI & Certificate Viewer
    ═══════════════════════════════════════════════════════════ */
 
-(function() {
+(function () {
     'use strict';
 
     // ═══════════ COMPREHENSIVE PORTFOLIO DATA (For AI Context) ═══════════
@@ -18,7 +18,7 @@
         linkedin: "https://www.linkedin.com/in/shahzeb-faisal-8b9190321/",
         status: "Open to Work",
         languages: ["English", "Urdu"],
-        
+
         // EDUCATION
         education: {
             university: "FAST National University of Computer & Emerging Sciences (NUCES)",
@@ -29,7 +29,7 @@
             focus_areas: ["Machine Learning", "Deep Learning", "NLP", "Big Data Analytics"],
             description: "One of Pakistan's top technology universities, known for excellence in computer science and data science education"
         },
-        
+
         // RESEARCH EXPERIENCE
         research: {
             position: "Research Assistant",
@@ -41,7 +41,7 @@
             technologies: ["LLMs", "NLP", "Python", "Transformers", "Research Methodologies"],
             description: "Conducting cutting-edge research on conversational AI systems with focus on making them more reliable and unbiased"
         },
-        
+
         // DETAILED PROFESSIONAL EXPERIENCE
         experience: [
             {
@@ -118,7 +118,7 @@
                 achievements: ["Reduced SQL query response time by 40%"]
             }
         ],
-        
+
         // COMPREHENSIVE SKILLS
         skills: {
             programming_languages: {
@@ -161,7 +161,7 @@
                 applications: ["DApps", "Decentralized Voting"]
             }
         },
-        
+
         // DETAILED PROJECTS
         projects: [
             {
@@ -300,7 +300,7 @@
                 github: "https://github.com/ShahzebFaisal5649/E-Shop"
             }
         ],
-        
+
         // CERTIFICATIONS
         certifications: [
             {
@@ -332,7 +332,7 @@
                 skills: ["Software Development", "Coding Fundamentals", "Best Practices"]
             }
         ],
-        
+
         // STATISTICS
         stats: {
             projects: 16,
@@ -343,7 +343,7 @@
             github_contributions: "500+",
             lines_of_code: "50,000+"
         },
-        
+
         // CAREER INFORMATION
         career: {
             seeking: ["Full-time positions", "Internship opportunities", "Research positions", "Freelance projects"],
@@ -360,7 +360,7 @@
         apiKey: 'AIzaSyDlU5GZPlxMCegciZS3Jyab0z0wym8WynY',
         apiUrl: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
         conversationHistory: [],
-        
+
         getSystemPrompt() {
             return `You are Shahzeb Faisal's portfolio AI assistant. Provide detailed, accurate information about his work.
 
@@ -453,17 +453,17 @@ A: "The Movie Showcase is a responsive movie browsing application that integrate
 
 Remember: Be helpful, cite achievements with numbers, always include GitHub links, and guide users to contact Shahzeb for opportunities!`;
         },
-        
+
         async chat(userMessage) {
             this.conversationHistory.push({
                 role: 'user',
                 parts: [{ text: userMessage }]
             });
-            
+
             if (this.conversationHistory.length > 10) {
                 this.conversationHistory = this.conversationHistory.slice(-10);
             }
-            
+
             try {
                 const response = await fetch(`${this.apiUrl}?key=${this.apiKey}`, {
                     method: 'POST',
@@ -496,21 +496,21 @@ Remember: Be helpful, cite achievements with numbers, always include GitHub link
                         ]
                     })
                 });
-                
+
                 if (!response.ok) {
                     throw new Error(`API error: ${response.status}`);
                 }
-                
+
                 const data = await response.json();
-                
+
                 if (data.candidates && data.candidates[0] && data.candidates[0].content) {
                     const aiResponse = data.candidates[0].content.parts[0].text;
-                    
+
                     this.conversationHistory.push({
                         role: 'model',
                         parts: [{ text: aiResponse }]
                     });
-                    
+
                     return aiResponse;
                 } else {
                     throw new Error('Invalid response format');
@@ -520,20 +520,20 @@ Remember: Be helpful, cite achievements with numbers, always include GitHub link
                 return this.getFallbackResponse(userMessage);
             }
         },
-        
+
         getFallbackResponse(query) {
             const q = query.toLowerCase();
-            
+
             // ═══════════ BIO/ABOUT SHAHZEB - CHECK FIRST ═══════════
             if ((q.includes('about shahzeb') || q.includes('who is shahzeb') || (q.includes('shahzeb') && q.includes('faisal'))) && !q.includes('project')) {
                 return `Shahzeb Faisal is a Data Scientist & ML Engineer from Lahore, Pakistan. Graduated with BS Data Science from FAST NUCES (2021-2025), one of Pakistan's top tech universities. Currently Research Assistant researching LLM chatbots under Dr. Esha Tur Razia Babar. Completed 4 internships (Nexium, CodeAlpha, Kashf, BRIGHT) with proven results: 30% accuracy improvements, 40% optimizations. Built 16+ projects across AI/ML, web development, data science, blockchain. Expertise: Python, JavaScript, TensorFlow, GPT-4, NLP, Next.js, React. OPEN TO WORK - Available immediately for AI/ML, Data Science, and Full-Stack roles! Contact: shahzebfaisal5649@gmail.com | LinkedIn: linkedin.com/in/shahzeb-faisal-8b9190321`;
             }
-            
+
             // ═══════════ BLOCKCHAIN EXPERIENCE ═══════════
             if (q.includes('blockchain') && (q.includes('experience') || q.includes('work') || q.includes('project'))) {
                 return `Shahzeb's Blockchain Experience: Built 2 production blockchain projects using Ethereum and Solidity. Election DApp: Decentralized voting system with 100% vote integrity, tested with 1000+ concurrent voters, smart contracts for transparency. Real Estate DApp: Property transaction platform with smart contract escrow and IPFS integration. Technologies: Ethereum, Solidity, Web3.js, Truffle, Smart Contracts, IPFS, React. Skills: Smart contract development, gas optimization, DApp architecture, blockchain security. GitHub: github.com/ShahzebFaisal5649`;
             }
-            
+
             // ═══════════ ML PROJECTS LIST (NOT SKILLS) ═══════════
             if ((q.includes('ml project') || q.includes('machine learning project') || q.includes('ai project')) && !q.includes('skill')) {
                 return `Shahzeb's 5 ML/AI Projects:
@@ -555,7 +555,7 @@ Remember: Be helpful, cite achievements with numbers, always include GitHub link
 
 All demonstrate strong ML/AI capabilities with measurable results!`;
             }
-            
+
             // ═══════════ SPECIFIC PROJECT QUERIES ═══════════
             if (q.includes('nexium') || q.includes('resume tailor') || (q.includes('resume') && (q.includes('project') || q.includes('tailor')))) {
                 return `The Nexium Resume Tailor is Shahzeb's featured AI project built with Next.js 15 and GPT-4 API. It intelligently optimizes resumes for job descriptions, achieving a 30% improvement in matching accuracy with real-time ATS scoring. Built using TypeScript, Supabase, and Tailwind CSS, it has 100+ active users and processes resumes in under 2 seconds. GitHub: https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Grand_Project`;
@@ -593,7 +593,7 @@ All demonstrate strong ML/AI capabilities with measurable results!`;
             if (q.includes('e-shop') || q.includes('e-commerce') || (q.includes('shop') && !q.includes('showcase'))) {
                 return `E-Shop is a complete e-commerce platform featuring shopping cart, user authentication, admin panel, product management, inventory tracking, and payment processing. Includes order history, search functionality, and responsive design. Built with PHP, SQL Server, Bootstrap, and JavaScript. GitHub: https://github.com/ShahzebFaisal5649/E-Shop`;
             }
-            
+
             // ═══════════ INTERNSHIP/EXPERIENCE QUERIES ═══════════
             if ((q.includes('nexium') || q.includes('ai-first') || q.includes('ai first')) && q.includes('intern')) {
                 return `Shahzeb's AI-First Web Development Internship at Nexium (July-August 2025) was his most recent experience. He built the Resume Tailor using GPT-4 API achieving 30% accuracy improvement in resume-job matching. Developed 3 production-ready AI applications: Resume Tailor, Blog Summarizer, and QuoteGen AI. Technologies used: Next.js 15, GPT-4, TypeScript, Supabase, Tailwind CSS. All projects on GitHub: github.com/ShahzebFaisal5649`;
@@ -615,7 +615,7 @@ All demonstrate strong ML/AI capabilities with measurable results!`;
 4. Technology Academy BRIGHT (Sep 2024) - Software Dev Training: Couch to Coder program, certified completion
 Total: 1+ year experience, 4 certifications earned. Currently Research Assistant at FAST NUCES researching LLM chatbots under Dr. Esha Tur Razia Babar.`;
             }
-            
+
             // ═══════════ EDUCATION QUERIES ═══════════
             if (q.includes('bachelor') || q.includes('degree') || q.includes('university') || q.includes('study') || q.includes('education')) {
                 return `Shahzeb completed his Bachelor of Science in Data Science from FAST National University of Computer & Emerging Sciences (NUCES), Lahore Campus (2021-2025, Graduated). FAST NUCES is one of Pakistan's top technology universities known for excellence in computer science and data science education. Focus areas: Machine Learning, Deep Learning, NLP, Big Data Analytics. Currently serving as Research Assistant under Dr. Esha Tur Razia Babar researching LLM-based conversational chatbots.`;
@@ -623,7 +623,7 @@ Total: 1+ year experience, 4 certifications earned. Currently Research Assistant
             if (q.includes('research')) {
                 return `Shahzeb is a Research Assistant at FAST NUCES Lahore (2024-Present) under Dr. Esha Tur Razia Babar, researching LLM-based conversational chatbots. Focus areas: persona-based architectures and bias mitigation in large language models. Technologies: LLMs, NLP, Python, Transformers, Research Methodologies. Contributing to cutting-edge research in conversational AI systems.`;
             }
-            
+
             // ═══════════ SKILLS QUERIES ═══════════
             if (q.includes('skill') || q.includes('technology') || q.includes('tech') || q.includes('stack')) {
                 return `Shahzeb's Technical Skills:
@@ -639,7 +639,7 @@ Total: 30+ technologies mastered across all domains!`;
             if (q.includes('ml ') || q.includes('machine learning') || q.includes('ai ') && !q.includes('intern') && !q.includes('project')) {
                 return `Shahzeb's ML/AI Expertise: TensorFlow, PyTorch, Scikit-Learn, Keras for deep learning. NLP specialization: GPT-4, BERT, Llama, spaCy, NLTK, Transformers. Computer Vision: CNN, LSTM, image processing. Projects: Resume Tailor (GPT-4), Image Captioning (0.875 BLEU), Blog Summarizer (NLP), Smart City (Big Data). Research: LLM-based chatbots at FAST NUCES. Proven results: 30% accuracy improvements, 0.875 BLEU score, 98.75% data quality.`;
             }
-            
+
             // ═══════════ CONTACT & HIRING QUERIES ═══════════
             if (q.includes('contact') || q.includes('reach') || q.includes('email') || q.includes('phone')) {
                 return `Contact Shahzeb Faisal:
@@ -661,13 +661,13 @@ Work Preferences: Remote, Hybrid, or On-site in Lahore`;
             if (q.includes('hire') || q.includes('available') || q.includes('open to work')) {
                 return `YES! Shahzeb is OPEN TO WORK and available immediately (June 2026 onwards). With 16+ projects, 4 internships, 4 certifications, and proven results (30% accuracy improvements, 40% optimization gains, 98.75% data quality), he brings strong AI/ML and full-stack development skills. Contact: shahzebfaisal5649@gmail.com or LinkedIn: linkedin.com/in/shahzeb-faisal-8b9190321. Seeking full-time, internships, research positions. Based in Lahore, open to remote/hybrid/on-site.`;
             }
-            
+
             // ═══════════ RESUME DOWNLOAD ═══════════
             if ((q.includes('resume') || q.includes('cv')) && (q.includes('download') || q.includes('get') || q.includes('want') || q.includes('his'))) {
                 return `To download Shahzeb's resume, type the command: resume
 This will download his updated resume as PDF. You can also view his complete portfolio here, or contact him directly at shahzebfaisal5649@gmail.com for the latest version!`;
             }
-            
+
             // ═══════════ EXPERIENCE QUERIES ═══════════
             if (q.includes('experience') || q.includes('background') || q.includes('intern')) {
                 return `Shahzeb has 1+ year professional experience across 4 internships:
@@ -678,7 +678,7 @@ This will download his updated resume as PDF. You can also view his complete por
 Currently: Research Assistant at FAST NUCES researching LLM chatbots (2024-Present)
 Total: 4 certifications earned, 16+ projects completed`;
             }
-            
+
             // ═══════════ PROJECT LISTING QUERIES ═══════════
             if (q.includes('project') || q.includes('work') || q.includes('portfolio')) {
                 return `Shahzeb's 16+ Projects:
@@ -692,7 +692,7 @@ Ask about any specific project for details!`;
             if (q.includes('how many') || q.includes('total project')) {
                 return `Shahzeb has completed 16+ production projects across multiple domains: AI/ML (5 projects), Web Development (6 projects), Blockchain (2 projects), Data Science (3 projects). Key achievements: 30% accuracy improvements, 98.75% data quality scores, 0.875 BLEU scores, 500+ users. All available on GitHub: github.com/ShahzebFaisal5649. Which project would you like to know more about?`;
             }
-            
+
             // ═══════════ CERTIFICATION QUERIES ═══════════
             if (q.includes('certificate') || q.includes('certification')) {
                 return `Shahzeb has earned 4 Professional Certifications:
@@ -702,7 +702,7 @@ Ask about any specific project for details!`;
 4. Couch to Coder 2024 - Technology Academy (BRIGHT Network) (September 2024)
 All certificates are verified and showcase his expertise in AI/ML, Data Science, and Software Development.`;
             }
-            
+
             // ═══════════ STATISTICS QUERIES ═══════════
             if (q.includes('stat') || q.includes('achievement') || q.includes('number')) {
                 return `Shahzeb's Key Statistics:
@@ -714,12 +714,12 @@ All certificates are verified and showcase his expertise in AI/ML, Data Science,
 💡 50,000+ Lines of Code Written
 🎯 Key Achievements: 30% accuracy↑, 98.75% quality, 40% optimization↓, 0.875 BLEU score, 13.5M+ records processed, 500+ platform users`;
             }
-            
+
             // ═══════════ DEFAULT/HELLO RESPONSES ═══════════
             if (q.includes('hello') || q.includes('hi ') || q === 'hi' || q.includes('hey')) {
                 return `Hey there! 👋 I'm Shahzeb's AI portfolio assistant. I can tell you about his 16+ projects (Resume Tailor, Smart City, FLEX GYM, Movie Showcase, Election DApp, etc.), 4 internships (Nexium, CodeAlpha, Kashf, BRIGHT), skills (ML/AI, Web, Data Science, Blockchain), research work at FAST NUCES, or how to contact him. What would you like to know?`;
             }
-            
+
             // ═══════════ FINAL FALLBACK ═══════════
             return `I can help you learn about Shahzeb's portfolio! Try asking about:
 📋 Specific Projects: Nexium Resume Tailor, Smart City, FLEX GYM, Movie Showcase, Election DApp, Image Captioning, Edu Connect, Blog Summarizer, QuoteGen AI, E-Shop, Azure Bicep, Environmental Analysis
@@ -739,30 +739,30 @@ Type 'help' for available commands or ask naturally about anything!`;
     const AudioSystem = {
         enabled: false,
         ctx: null,
-        
+
         init() {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             if (!AudioContext) return;
-            
+
             this.ctx = new AudioContext();
             this.enabled = localStorage.getItem('soundEnabled') === 'true';
             this.updateIcon();
         },
-        
+
         play(type) {
             if (!this.enabled || !this.ctx) return;
-            
+
             if (this.ctx.state === 'suspended') {
                 this.ctx.resume();
             }
-            
+
             const osc = this.ctx.createOscillator();
             const gain = this.ctx.createGain();
-            
+
             osc.connect(gain);
             gain.connect(this.ctx.destination);
-            
-            switch(type) {
+
+            switch (type) {
                 case 'click':
                     osc.frequency.value = 800;
                     osc.type = 'sine';
@@ -822,7 +822,7 @@ Type 'help' for available commands or ask naturally about anything!`;
                     break;
             }
         },
-        
+
         playNote(freq) {
             if (!this.ctx) return;
             const osc = this.ctx.createOscillator();
@@ -836,7 +836,7 @@ Type 'help' for available commands or ask naturally about anything!`;
             osc.start();
             osc.stop(this.ctx.currentTime + 0.3);
         },
-        
+
         toggle() {
             this.enabled = !this.enabled;
             localStorage.setItem('soundEnabled', this.enabled);
@@ -844,7 +844,7 @@ Type 'help' for available commands or ask naturally about anything!`;
             if (this.enabled) this.play('success');
             return this.enabled;
         },
-        
+
         updateIcon() {
             const btn = document.getElementById('sound-btn');
             if (btn) {
@@ -866,20 +866,20 @@ Type 'help' for available commands or ask naturally about anything!`;
     function initParticles() {
         const canvas = document.getElementById('particles');
         if (!canvas) return;
-        
+
         const ctx = canvas.getContext('2d');
         let particles = [];
         let mouse = { x: null, y: null, radius: 150 };
-        
+
         function resize() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
-        
+
         function createParticles() {
             particles = [];
             const count = Math.min(60, Math.floor(window.innerWidth / 25));
-            
+
             for (let i = 0; i < count; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
@@ -895,41 +895,41 @@ Type 'help' for available commands or ask naturally about anything!`;
                 particles[i].originalY = particles[i].y;
             }
         }
-        
+
         canvas.addEventListener('mousemove', (e) => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
         });
-        
+
         canvas.addEventListener('mouseleave', () => {
             mouse.x = null;
             mouse.y = null;
         });
-        
+
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+
             particles.forEach(p => {
                 if (mouse.x !== null) {
                     const dx = p.x - mouse.x;
                     const dy = p.y - mouse.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-                    
+
                     if (dist < mouse.radius) {
                         const force = (mouse.radius - dist) / mouse.radius;
                         p.x += dx * force * 0.03;
                         p.y += dy * force * 0.03;
                     }
                 }
-                
+
                 p.x += p.vx;
                 p.y += p.vy;
-                
+
                 if (p.x < 0) p.x = canvas.width;
                 if (p.x > canvas.width) p.x = 0;
                 if (p.y < 0) p.y = canvas.height;
                 if (p.y > canvas.height) p.y = 0;
-                
+
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(99, 102, 241, ${p.opacity})`;
@@ -938,13 +938,13 @@ Type 'help' for available commands or ask naturally about anything!`;
                 ctx.fill();
                 ctx.shadowBlur = 0;
             });
-            
+
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-                    
+
                     if (dist < 150) {
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
@@ -955,14 +955,14 @@ Type 'help' for available commands or ask naturally about anything!`;
                     }
                 }
             }
-            
+
             requestAnimationFrame(animate);
         }
-        
+
         resize();
         createParticles();
         animate();
-        
+
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
@@ -977,37 +977,37 @@ Type 'help' for available commands or ask naturally about anything!`;
     function initCursor() {
         const cursor = document.querySelector('.cursor');
         const follower = document.querySelector('.cursor-follower');
-        
+
         if (!cursor || !follower) return;
         if (window.matchMedia('(hover: none)').matches) return;
-        
+
         let mouseX = 0, mouseY = 0;
         let cursorX = 0, cursorY = 0;
         let followerX = 0, followerY = 0;
-        
+
         document.addEventListener('mousemove', e => {
             mouseX = e.clientX;
             mouseY = e.clientY;
         });
-        
+
         function animate() {
             cursorX += (mouseX - cursorX) * 0.5;
             cursorY += (mouseY - cursorY) * 0.5;
             cursor.style.left = cursorX + 'px';
             cursor.style.top = cursorY + 'px';
-            
+
             followerX += (mouseX - followerX) * 0.15;
             followerY += (mouseY - followerY) * 0.15;
             follower.style.left = followerX + 'px';
             follower.style.top = followerY + 'px';
-            
+
             requestAnimationFrame(animate);
         }
-        
+
         animate();
-        
+
         const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-tags span, .filter-btn, input, .timeline-item, .suggestion');
-        
+
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursor.classList.add('active');
@@ -1024,14 +1024,14 @@ Type 'help' for available commands or ask naturally about anything!`;
     function initSpotlight() {
         const spotlight = document.getElementById('spotlight');
         if (!spotlight || window.matchMedia('(hover: none)').matches) return;
-        
+
         let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
-        
+
         document.addEventListener('mousemove', (e) => {
             targetX = e.clientX;
             targetY = e.clientY;
         });
-        
+
         function animateSpotlight() {
             currentX += (targetX - currentX) * 0.1;
             currentY += (targetY - currentY) * 0.1;
@@ -1039,7 +1039,7 @@ Type 'help' for available commands or ask naturally about anything!`;
             spotlight.style.top = currentY + 'px';
             requestAnimationFrame(animateSpotlight);
         }
-        
+
         animateSpotlight();
     }
 
@@ -1047,9 +1047,9 @@ Type 'help' for available commands or ask naturally about anything!`;
     function initBackToTop() {
         const btn = document.getElementById('back-to-top');
         if (!btn) return;
-        
+
         let isVisible = false;
-        
+
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 400) {
                 if (!isVisible) {
@@ -1063,7 +1063,7 @@ Type 'help' for available commands or ask naturally about anything!`;
                 }
             }
         });
-        
+
         btn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             AudioSystem.play('success');
@@ -1084,7 +1084,7 @@ Type 'help' for available commands or ask naturally about anything!`;
         isMaximized: false,
         recognition: null,
         isListening: false,
-        
+
         commands: {
             help: `
 ╔══════════════════════════════════════════════════════════╗
@@ -1248,9 +1248,9 @@ Type 'help' for available commands or ask naturally about anything!`;
             this.terminal = document.getElementById('terminal');
             this.input = document.getElementById('term-input');
             this.output = document.getElementById('terminal-output');
-            
+
             if (!this.terminal || !this.input) return;
-            
+
             this.input.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' && !this.isProcessing) {
                     this.execute(this.input.value.trim());
@@ -1266,12 +1266,12 @@ Type 'help' for available commands or ask naturally about anything!`;
                     this.autocomplete();
                 }
             });
-            
+
             document.getElementById('close-terminal')?.addEventListener('click', () => this.close());
             document.getElementById('terminal-btn')?.addEventListener('click', () => this.toggle());
             document.getElementById('terminal-minimize')?.addEventListener('click', () => this.close());
             document.getElementById('terminal-maximize')?.addEventListener('click', () => this.toggleMaximize());
-            
+
             document.addEventListener('keydown', (e) => {
                 if (e.ctrlKey && e.key === '.') {
                     e.preventDefault();
@@ -1281,18 +1281,18 @@ Type 'help' for available commands or ask naturally about anything!`;
                     this.close();
                 }
             });
-            
+
             this.initVoiceRecognition();
             this.initQuickSuggestions();
         },
-        
+
         // ═══════════ VOICE RECOGNITION (DESKTOP & MOBILE FIXED) ═══════════
         initVoiceRecognition() {
             const voiceBtn = document.getElementById('voice-btn');
             if (!voiceBtn) return;
-            
+
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            
+
             if (!SpeechRecognition) {
                 voiceBtn.style.opacity = '0.5';
                 voiceBtn.style.cursor = 'not-allowed';
@@ -1302,37 +1302,37 @@ Type 'help' for available commands or ask naturally about anything!`;
                 });
                 return;
             }
-            
+
             this.recognition = new SpeechRecognition();
             this.recognition.continuous = false;
             this.recognition.interimResults = true;
             this.recognition.lang = 'en-US';
             this.recognition.maxAlternatives = 1;
-            
+
             let finalTranscript = '';
-            
+
             // CRITICAL FIX: Proper mobile detection
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            
+
             console.log('Voice Recognition Mode:', isMobile ? 'MOBILE' : 'DESKTOP');
-            
+
             // ════════════════════════════════════════════════════════
             // MOBILE MODE: Touch Events Only
             // ════════════════════════════════════════════════════════
             if (isMobile) {
                 let touchStartTime = 0;
-                
+
                 voiceBtn.addEventListener('touchstart', (e) => {
                     e.preventDefault();
                     touchStartTime = Date.now();
                 }, { passive: false });
-                
+
                 voiceBtn.addEventListener('touchend', (e) => {
                     e.preventDefault();
                     const touchDuration = Date.now() - touchStartTime;
-                    
+
                     if (touchDuration < 100) return; // Ignore accidental taps
-                    
+
                     if (!this.isListening) {
                         try {
                             finalTranscript = '';
@@ -1342,7 +1342,7 @@ Type 'help' for available commands or ask naturally about anything!`;
                             this.addLine('<span class="term-info">🎤 Listening... Speak now!</span>');
                             this.scrollToBottom();
                             AudioSystem.play('voice');
-                            
+
                             if (navigator.vibrate) {
                                 navigator.vibrate(50);
                             }
@@ -1357,10 +1357,10 @@ Type 'help' for available commands or ask naturally about anything!`;
                         voiceBtn.classList.remove('listening');
                     }
                 }, { passive: false });
-                
+
                 console.log('✅ Mobile touch events registered');
             }
-            
+
             // ════════════════════════════════════════════════════════
             // DESKTOP MODE: Click Events (CRITICAL FIX)
             // ════════════════════════════════════════════════════════
@@ -1368,9 +1368,9 @@ Type 'help' for available commands or ask naturally about anything!`;
                 voiceBtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    
+
                     console.log('🖱️ Desktop click detected, isListening:', this.isListening);
-                    
+
                     if (!this.isListening) {
                         try {
                             finalTranscript = '';
@@ -1380,7 +1380,7 @@ Type 'help' for available commands or ask naturally about anything!`;
                             this.addLine('<span class="term-info">🎤 Listening... Speak now!</span>');
                             this.scrollToBottom();
                             AudioSystem.play('voice');
-                            
+
                             console.log('✅ Voice recognition STARTED (Desktop)');
                         } catch (error) {
                             console.error('Voice start error:', error);
@@ -1395,20 +1395,20 @@ Type 'help' for available commands or ask naturally about anything!`;
                         console.log('🛑 Voice recognition STOPPED (Desktop)');
                     }
                 });
-                
+
                 console.log('✅ Desktop click events registered');
             }
-            
+
             // ════════════════════════════════════════════════════════
             // RECOGNITION EVENT HANDLERS (Same for both)
             // ════════════════════════════════════════════════════════
-            
+
             this.recognition.onstart = () => {
                 this.isListening = true;
                 voiceBtn.classList.add('listening');
                 console.log('🎤 Recognition started');
             };
-            
+
             this.recognition.onresult = (event) => {
                 let interimTranscript = '';
                 for (let i = event.resultIndex; i < event.results.length; i++) {
@@ -1419,42 +1419,42 @@ Type 'help' for available commands or ask naturally about anything!`;
                         interimTranscript += transcript;
                     }
                 }
-                
+
                 if (interimTranscript) {
                     this.input.value = interimTranscript;
                     this.input.placeholder = 'Listening...';
                 }
-                
+
                 console.log('📝 Transcript:', interimTranscript || finalTranscript);
             };
-            
+
             this.recognition.onend = () => {
                 this.isListening = false;
                 voiceBtn.classList.remove('listening');
                 this.input.placeholder = "Type 'help' or ask AI anything...";
-                
+
                 console.log('🛑 Recognition ended, final:', finalTranscript.trim());
-                
+
                 if (finalTranscript.trim()) {
                     this.input.value = finalTranscript.trim();
                     this.addLine(`<span class="term-success">🎤 Heard: "${finalTranscript.trim()}"</span>`);
                     AudioSystem.play('success');
-                    
+
                     setTimeout(() => {
                         this.execute(finalTranscript.trim());
                         this.input.value = '';
                     }, 500);
                 }
             };
-            
+
             this.recognition.onerror = (event) => {
                 this.isListening = false;
                 voiceBtn.classList.remove('listening');
-                
+
                 console.error('❌ Voice error:', event.error);
-                
+
                 let errorMsg = '⚠️ Voice error: ';
-                switch(event.error) {
+                switch (event.error) {
                     case 'not-allowed':
                         errorMsg += 'Microphone access denied. Please enable it in settings.';
                         break;
@@ -1470,19 +1470,19 @@ Type 'help' for available commands or ask naturally about anything!`;
                     default:
                         errorMsg += event.error || 'Unknown error.';
                 }
-                
+
                 this.addLine(`<span class="term-error">${errorMsg}</span>`);
                 AudioSystem.play('error');
                 this.scrollToBottom();
-                
+
                 if (isMobile && window.showMobileNotification) {
                     showMobileNotification(errorMsg.replace('⚠️ Voice error: ', ''), 'error');
                 }
             };
-            
+
             console.log('✅ Voice recognition initialized for', isMobile ? 'MOBILE' : 'DESKTOP');
         },
-        
+
         initQuickSuggestions() {
             document.querySelectorAll('.suggestion').forEach(sug => {
                 sug.addEventListener('click', () => {
@@ -1499,7 +1499,7 @@ Type 'help' for available commands or ask naturally about anything!`;
                 });
             });
         },
-        
+
         toggle() {
             if (this.terminal.classList.contains('terminal-hidden')) {
                 this.open();
@@ -1507,7 +1507,7 @@ Type 'help' for available commands or ask naturally about anything!`;
                 this.close();
             }
         },
-        
+
         open() {
             this.terminal.classList.remove('terminal-hidden');
             setTimeout(() => this.input?.focus(), 100);
@@ -1515,21 +1515,21 @@ Type 'help' for available commands or ask naturally about anything!`;
             const hint = document.querySelector('.terminal-hint-persistent');
             if (hint) hint.classList.add('terminal-open');
         },
-        
+
         close() {
             this.terminal.classList.add('terminal-hidden');
             AudioSystem.play('click');
             const hint = document.querySelector('.terminal-hint-persistent');
             if (hint) hint.classList.remove('terminal-open');
         },
-        
+
         // ═══════════ TERMINAL MAXIMIZE (MOBILE FIXED) ═══════════
         toggleMaximize() {
             this.isMaximized = !this.isMaximized;
             const termWindow = document.querySelector('.terminal-window');
             const icon = document.querySelector('#terminal-maximize i');
             const isMobile = window.innerWidth <= 768;
-            
+
             if (this.isMaximized) {
                 if (isMobile) {
                     termWindow.style.maxWidth = '100vw';
@@ -1556,82 +1556,82 @@ Type 'help' for available commands or ask naturally about anything!`;
                 icon?.classList.replace('fa-compress', 'fa-expand');
             }
             AudioSystem.play('click');
-            
+
             if (navigator.vibrate && isMobile) {
                 navigator.vibrate(30);
             }
         },
-        
+
         navigateHistory(direction) {
             if (this.history.length === 0) return;
-            
+
             this.historyIndex += direction;
-            
+
             if (this.historyIndex < 0) this.historyIndex = 0;
             if (this.historyIndex >= this.history.length) {
                 this.historyIndex = this.history.length;
                 this.input.value = '';
                 return;
             }
-            
+
             this.input.value = this.history[this.historyIndex];
         },
-        
+
         autocomplete() {
             const input = this.input.value.toLowerCase();
-            const commands = ['help', 'about', 'skills', 'projects', 'experience', 'contact', 'social', 
-                            'resume', 'github', 'linkedin', 'email', 'clear', 'sound', 'confetti', 
-                            'matrix', 'exit', 'ai'];
-            
+            const commands = ['help', 'about', 'skills', 'projects', 'experience', 'contact', 'social',
+                'resume', 'github', 'linkedin', 'email', 'clear', 'sound', 'confetti',
+                'matrix', 'exit', 'ai'];
+
             const match = commands.find(cmd => cmd.startsWith(input));
             if (match) {
                 this.input.value = match;
                 AudioSystem.play('click');
             }
         },
-        
+
         async execute(cmd) {
             if (!cmd) return;
-            
+
             this.history.push(cmd);
             this.historyIndex = this.history.length;
-            
+
             this.addLine(`<span class="term-prompt">❯</span> <span class="term-cmd">${this.escapeHtml(cmd)}</span>`);
-            
+
             AudioSystem.play('terminal');
-            
+
             const parts = cmd.split(' ');
             const firstWord = parts[0].toLowerCase();
             const restOfCommand = parts.slice(1).join(' ').trim();
-            
+
             // AI query triggers - treat these as AI queries, not commands
-            const aiTriggers = ['tell', 'give', 'show', 'what', 'how', 'who', 'where', 'when', 'why', 
-                               'can', 'could', 'would', 'should', 'is', 'are', 'does', 'do', 'explain'];
-            
+            const aiTriggers = ['tell', 'give', 'show', 'what', 'how', 'who', 'where', 'when', 'why',
+                'can', 'could', 'would', 'should', 'is', 'are', 'does', 'do', 'explain'];
+
             // Special case: "about" with topic should be AI query, not command
             if (firstWord === 'about' && restOfCommand.length > 0) {
                 await this.handleAI(cmd);
                 return;
             }
-            
+
             // If starts with AI trigger or has question mark, send to AI
             if (aiTriggers.includes(firstWord) || cmd.includes('?')) {
                 await this.handleAI(cmd);
                 return;
             }
-            
+
             // Special handling for "ai" command
             if (firstWord === 'ai' && restOfCommand) {
                 await this.handleAI(restOfCommand);
                 return;
             }
-            
+
             // Check if it's a built-in command
             if (this.commands[firstWord]) {
                 this.addLine(`<pre class="term-response">${this.commands[firstWord]}</pre>`);
             } else {
                 // Handle action commands
-                switch(firstWord) {
+                switch (firstWord) {
                     case 'clear':
                         this.clear();
                         break;
@@ -1677,14 +1677,14 @@ Type 'help' for available commands or ask naturally about anything!`;
                         await this.handleAI(cmd);
                 }
             }
-            
+
             this.scrollToBottom();
         },
-        
+
         async handleAI(query) {
             this.isProcessing = true;
             this.input.disabled = true;
-            
+
             const typingId = 'typing-' + Date.now();
             this.addLine(`<div id="${typingId}" class="term-typing">
                 <span class="typing-dots">
@@ -1692,57 +1692,57 @@ Type 'help' for available commands or ask naturally about anything!`;
                 </span>
                 <span class="typing-text">AI thinking...</span>
             </div>`);
-            
+
             this.scrollToBottom();
-            
+
             try {
                 const response = await GeminiAI.chat(query);
-                
+
                 document.getElementById(typingId)?.remove();
-                
+
                 await this.typewriterEffect(response);
-                
+
                 AudioSystem.play('success');
             } catch (error) {
                 document.getElementById(typingId)?.remove();
                 this.addLine(`<span class="term-error">Error: ${error.message}</span>`);
             }
-            
+
             this.isProcessing = false;
             this.input.disabled = false;
             this.input.focus();
             this.scrollToBottom();
         },
-        
+
         async typewriterEffect(text) {
             const div = document.createElement('div');
             div.className = 'term-ai-response';
             div.innerHTML = '<span class="ai-icon">🤖</span> <span class="ai-text"></span>';
             this.output.appendChild(div);
-            
+
             const textSpan = div.querySelector('.ai-text');
             const chars = text.split('');
-            
+
             for (let i = 0; i < chars.length; i++) {
                 textSpan.textContent += chars[i];
                 this.scrollToBottom();
-                
-                const delay = chars[i] === '.' || chars[i] === '!' || chars[i] === '?' ? 50 : 
-                              chars[i] === ',' ? 30 : 
-                              Math.random() * 15 + 5;
-                
+
+                const delay = chars[i] === '.' || chars[i] === '!' || chars[i] === '?' ? 50 :
+                    chars[i] === ',' ? 30 :
+                        Math.random() * 15 + 5;
+
                 if (i % 5 === 0) AudioSystem.play('typing');
-                
+
                 await new Promise(r => setTimeout(r, delay));
             }
         },
-        
+
         addLine(html) {
             const div = document.createElement('div');
             div.innerHTML = html;
             this.output.appendChild(div);
         },
-        
+
         clear() {
             this.output.innerHTML = `<div class="welcome-box">
                 <div class="welcome-title">👋 Welcome to Shahzeb's AI Portfolio Terminal</div>
@@ -1756,12 +1756,12 @@ Type 'help' for available commands or ask naturally about anything!`;
             GeminiAI.clearHistory();
             this.initQuickSuggestions();
         },
-        
+
         scrollToBottom() {
             const body = document.getElementById('terminal-body');
             if (body) body.scrollTop = body.scrollHeight;
         },
-        
+
         escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
@@ -1779,9 +1779,9 @@ Type 'help' for available commands or ask naturally about anything!`;
             left: 50%;
             transform: translateX(-50%);
             padding: 12px 20px;
-            background: ${type === 'success' ? 'rgba(16, 185, 129, 0.95)' : 
-                         type === 'error' ? 'rgba(239, 68, 68, 0.95)' : 
-                         'rgba(99, 102, 241, 0.95)'};
+            background: ${type === 'success' ? 'rgba(16, 185, 129, 0.95)' :
+                type === 'error' ? 'rgba(239, 68, 68, 0.95)' :
+                    'rgba(99, 102, 241, 0.95)'};
             color: white;
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -1794,7 +1794,7 @@ Type 'help' for available commands or ask naturally about anything!`;
         `;
         notification.textContent = message;
         document.body.appendChild(notification);
-        
+
         setTimeout(() => {
             notification.style.animation = 'slideOutUp 0.3s ease';
             setTimeout(() => notification.remove(), 300);
@@ -1805,7 +1805,7 @@ Type 'help' for available commands or ask naturally about anything!`;
     function fixMobileButtonPositions() {
         const isMobile = window.innerWidth <= 768;
         if (!isMobile) return;
-        
+
         const backToTop = document.getElementById('back-to-top');
         if (backToTop) {
             backToTop.style.cssText = `
@@ -1817,7 +1817,7 @@ Type 'help' for available commands or ask naturally about anything!`;
                 z-index: 9997;
             `;
         }
-        
+
         const terminalBtn = document.getElementById('terminal-btn');
         if (terminalBtn) {
             terminalBtn.style.cssText = `
@@ -1829,7 +1829,7 @@ Type 'help' for available commands or ask naturally about anything!`;
                 z-index: 9997;
             `;
         }
-        
+
         const quickActions = document.querySelector('.quick-actions');
         if (quickActions) {
             quickActions.style.cssText = `
@@ -1845,7 +1845,7 @@ Type 'help' for available commands or ask naturally about anything!`;
     let matrixActive = false;
     let matrixCanvas = null;
     let matrixAnimationId = null;
-    
+
     function toggleMatrix() {
         if (matrixActive) {
             stopMatrix();
@@ -1853,10 +1853,10 @@ Type 'help' for available commands or ask naturally about anything!`;
             startMatrix();
         }
     }
-    
+
     function startMatrix() {
         matrixActive = true;
-        
+
         matrixCanvas = document.createElement('canvas');
         matrixCanvas.id = 'matrix-canvas';
         matrixCanvas.style.cssText = `
@@ -1870,45 +1870,45 @@ Type 'help' for available commands or ask naturally about anything!`;
             opacity: 0.12;
         `;
         document.body.appendChild(matrixCanvas);
-        
+
         const ctx = matrixCanvas.getContext('2d');
         matrixCanvas.width = window.innerWidth;
         matrixCanvas.height = window.innerHeight;
-        
+
         const chars = 'アイウエオカキクケコサシスセソタチツテト0123456789ABCDEF<>{}[]';
         const fontSize = 14;
         const columns = matrixCanvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
-        
+
         function draw() {
             if (!matrixActive) return;
-            
+
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-            
+
             ctx.fillStyle = '#0f0';
             ctx.font = fontSize + 'px monospace';
-            
+
             for (let i = 0; i < drops.length; i++) {
                 const char = chars[Math.floor(Math.random() * chars.length)];
                 ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-                
+
                 if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
                     drops[i] = 0;
                 }
                 drops[i]++;
             }
-            
+
             matrixAnimationId = requestAnimationFrame(draw);
         }
-        
+
         draw();
-        
+
         setTimeout(() => {
             if (matrixActive) stopMatrix();
         }, 10000);
     }
-    
+
     function stopMatrix() {
         matrixActive = false;
         if (matrixAnimationId) {
@@ -1925,14 +1925,14 @@ Type 'help' for available commands or ask naturally about anything!`;
     function triggerConfetti() {
         const canvas = document.getElementById('confetti');
         if (!canvas) return;
-        
+
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        
+
         const particles = [];
         const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
-        
+
         for (let i = 0; i < 150; i++) {
             particles.push({
                 x: Math.random() * canvas.width,
@@ -1945,19 +1945,19 @@ Type 'help' for available commands or ask naturally about anything!`;
                 rotationSpeed: (Math.random() - 0.5) * 12
             });
         }
-        
+
         let frame = 0;
-        
+
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+
             particles.forEach(p => {
                 p.x += p.vx;
                 p.y += p.vy;
                 p.vy += 0.12;
                 p.vx *= 0.99;
                 p.rotation += p.rotationSpeed;
-                
+
                 ctx.save();
                 ctx.translate(p.x, p.y);
                 ctx.rotate(p.rotation * Math.PI / 180);
@@ -1965,14 +1965,14 @@ Type 'help' for available commands or ask naturally about anything!`;
                 ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
                 ctx.restore();
             });
-            
+
             if (++frame < 200) {
                 requestAnimationFrame(animate);
             } else {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
             }
         }
-        
+
         AudioSystem.play('success');
         animate();
     }
@@ -1983,7 +1983,7 @@ Type 'help' for available commands or ask naturally about anything!`;
         hint.className = 'terminal-hint-persistent';
         hint.innerHTML = '<div class="hint-glow"></div><div class="hint-pulse"></div><div class="hint-content"><i class="fas fa-terminal hint-icon"></i><span>Try</span><kbd>Ctrl</kbd><span>+</span><kbd>.</kbd><span>for AI</span></div>';
         document.body.appendChild(hint);
-        
+
         hint.addEventListener('click', () => {
             Terminal.open();
             AudioSystem.play('click');
@@ -1993,16 +1993,16 @@ Type 'help' for available commands or ask naturally about anything!`;
     // ═══════════ MAGNETIC BUTTONS ═══════════
     function initMagneticButtons() {
         const buttons = document.querySelectorAll('.btn, .nav-cta, .social-link');
-        
+
         buttons.forEach(btn => {
             btn.addEventListener('mousemove', (e) => {
                 const rect = btn.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
-                
+
                 btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
             });
-            
+
             btn.addEventListener('mouseleave', () => {
                 btn.style.transform = 'translate(0, 0)';
             });
@@ -2012,11 +2012,11 @@ Type 'help' for available commands or ask naturally about anything!`;
     // ═══════════ PARALLAX FLOATING ELEMENTS ═══════════
     function initParallax() {
         const floatingElements = document.querySelectorAll('.floating-elements .float-item, .floating-elements .float-icon');
-        
+
         document.addEventListener('mousemove', (e) => {
             const x = (e.clientX / window.innerWidth - 0.5) * 2;
             const y = (e.clientY / window.innerHeight - 0.5) * 2;
-            
+
             floatingElements.forEach((el, i) => {
                 const speed = (i + 1) * 10;
                 el.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
@@ -2027,7 +2027,7 @@ Type 'help' for available commands or ask naturally about anything!`;
     // ═══════════ SCROLL REVEAL ═══════════
     function initScrollReveal() {
         const elements = document.querySelectorAll('.section-header, .project-card, .timeline-item, .skill-category, .about-content, .about-image, .contact-card');
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
@@ -2038,7 +2038,7 @@ Type 'help' for available commands or ask naturally about anything!`;
                 }
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        
+
         elements.forEach(el => {
             el.classList.add('reveal-element');
             observer.observe(el);
@@ -2048,7 +2048,7 @@ Type 'help' for available commands or ask naturally about anything!`;
     // ═══════════ SKILL ORBIT ANIMATION ═══════════
     function initSkillOrbit() {
         const skillCategories = document.querySelectorAll('.skill-category');
-        
+
         skillCategories.forEach(category => {
             category.addEventListener('mouseenter', () => {
                 const tags = category.querySelectorAll('.skill-tags span');
@@ -2057,7 +2057,7 @@ Type 'help' for available commands or ask naturally about anything!`;
                     tag.classList.add('pulse');
                 });
             });
-            
+
             category.addEventListener('mouseleave', () => {
                 const tags = category.querySelectorAll('.skill-tags span');
                 tags.forEach(tag => tag.classList.remove('pulse'));
@@ -2072,18 +2072,18 @@ Type 'help' for available commands or ask naturally about anything!`;
         const navMenu = document.getElementById('nav-menu');
         const mobileOverlay = document.getElementById('mobile-overlay');
         const navLinks = document.querySelectorAll('.nav-link');
-        
+
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 50) {
                 navbar?.classList.add('scrolled');
             } else {
                 navbar?.classList.remove('scrolled');
             }
-            
+
             updateScrollProgress();
             updateActiveNavLink();
         });
-        
+
         hamburger?.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu?.classList.toggle('active');
@@ -2091,7 +2091,7 @@ Type 'help' for available commands or ask naturally about anything!`;
             document.body.classList.toggle('menu-open');
             AudioSystem.play('click');
         });
-        
+
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 hamburger?.classList.remove('active');
@@ -2101,7 +2101,7 @@ Type 'help' for available commands or ask naturally about anything!`;
                 AudioSystem.play('click');
             });
         });
-        
+
         mobileOverlay?.addEventListener('click', () => {
             hamburger?.classList.remove('active');
             navMenu?.classList.remove('active');
@@ -2113,27 +2113,27 @@ Type 'help' for available commands or ask naturally about anything!`;
     function updateScrollProgress() {
         const progress = document.getElementById('scroll-progress');
         if (!progress) return;
-        
+
         const scrollTop = window.pageYOffset;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollPercent = (scrollTop / docHeight) * 100;
-        
+
         progress.style.width = scrollPercent + '%';
     }
 
     function updateActiveNavLink() {
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link');
-        
+
         let current = '';
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 100;
             if (window.pageYOffset >= sectionTop) {
                 current = section.getAttribute('id');
             }
         });
-        
+
         navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === '#' + current) {
@@ -2146,23 +2146,23 @@ Type 'help' for available commands or ask naturally about anything!`;
     function initTypingEffect() {
         const typedEl = document.getElementById('typed-text');
         if (!typedEl) return;
-        
+
         const words = ['AI Solutions', 'ML Models', 'Web Apps', 'Data Pipelines', 'Smart Systems'];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
         let isPaused = false;
-        
+
         function type() {
             const currentWord = words[wordIndex];
-            
+
             if (isPaused) {
                 setTimeout(type, 1500);
                 isPaused = false;
                 isDeleting = true;
                 return;
             }
-            
+
             if (isDeleting) {
                 typedEl.textContent = currentWord.substring(0, charIndex - 1);
                 charIndex--;
@@ -2170,9 +2170,9 @@ Type 'help' for available commands or ask naturally about anything!`;
                 typedEl.textContent = currentWord.substring(0, charIndex + 1);
                 charIndex++;
             }
-            
+
             let typeSpeed = isDeleting ? 50 : 100;
-            
+
             if (!isDeleting && charIndex === currentWord.length) {
                 isPaused = true;
             } else if (isDeleting && charIndex === 0) {
@@ -2180,17 +2180,17 @@ Type 'help' for available commands or ask naturally about anything!`;
                 wordIndex = (wordIndex + 1) % words.length;
                 typeSpeed = 300;
             }
-            
+
             setTimeout(type, typeSpeed);
         }
-        
+
         type();
     }
 
     // ═══════════ COUNTER ANIMATION ═══════════
     function initCounters() {
         const counters = document.querySelectorAll('.counter');
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2201,14 +2201,14 @@ Type 'help' for available commands or ask naturally about anything!`;
                 }
             });
         }, { threshold: 0.5 });
-        
+
         counters.forEach(counter => observer.observe(counter));
     }
 
     function animateCounter(element, target) {
         let current = 0;
         const increment = target / 60;
-        
+
         const timer = setInterval(() => {
             current += increment;
             if (current >= target) {
@@ -2224,23 +2224,23 @@ Type 'help' for available commands or ask naturally about anything!`;
     function initCardTilt() {
         const card = document.getElementById('hero-card');
         if (!card) return;
-        
+
         const inner = card.querySelector('.card-inner');
-        
+
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            
+
             const rotateX = (y - centerY) / 10;
             const rotateY = (centerX - x) / 10;
-            
+
             inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
         });
-        
+
         card.addEventListener('mouseleave', () => {
             inner.style.transform = 'rotateX(0) rotateY(0) scale(1)';
         });
@@ -2250,18 +2250,18 @@ Type 'help' for available commands or ask naturally about anything!`;
     function initProjectFilters() {
         const filterBtns = document.querySelectorAll('.filter-btn');
         const projectCards = document.querySelectorAll('.project-card');
-        
+
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
+
                 const filter = btn.getAttribute('data-filter');
                 AudioSystem.play('click');
-                
+
                 projectCards.forEach((card, index) => {
                     const categories = card.getAttribute('data-category') || '';
-                    
+
                     if (filter === 'all' || categories.includes(filter)) {
                         card.style.transitionDelay = `${index * 50}ms`;
                         card.classList.remove('hidden');
@@ -2280,17 +2280,17 @@ Type 'help' for available commands or ask naturally about anything!`;
     function initQuickActions() {
         const mainBtn = document.getElementById('quick-main');
         const menu = document.getElementById('quick-menu');
-        
+
         if (!mainBtn || !menu) return;
-        
+
         mainBtn.addEventListener('click', () => {
             mainBtn.classList.toggle('active');
             menu.classList.toggle('active');
             AudioSystem.play('click');
         });
-        
+
         document.getElementById('sound-btn')?.addEventListener('click', () => AudioSystem.toggle());
-        
+
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.quick-actions')) {
                 mainBtn.classList.remove('active');
@@ -2302,7 +2302,7 @@ Type 'help' for available commands or ask naturally about anything!`;
     // ═══════════ SMOOTH SCROLL ═══════════
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -2317,7 +2317,7 @@ Type 'help' for available commands or ask naturally about anything!`;
         document.querySelectorAll('a, button').forEach(el => {
             el.addEventListener('click', () => AudioSystem.play('click'));
         });
-        
+
         document.querySelectorAll('.project-card, .social-link, .skill-tags span').forEach(el => {
             el.addEventListener('mouseenter', () => AudioSystem.play('hover'));
         });
@@ -2334,7 +2334,7 @@ Type 'help' for available commands or ask naturally about anything!`;
     function initKonamiCode() {
         const pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
         let current = 0;
-        
+
         document.addEventListener('keydown', (e) => {
             if (e.key === pattern[current]) {
                 current++;
@@ -2371,7 +2371,7 @@ Type 'help' for available commands or ask naturally about anything!`;
         window.addEventListener('online', () => {
             showMobileNotification('🟢 Back Online', 'success');
         });
-        
+
         window.addEventListener('offline', () => {
             showMobileNotification('🔴 No Internet', 'error');
         });
@@ -2414,14 +2414,14 @@ Type 'help' for available commands or ask naturally about anything!`;
             console.warn('⚠️ Certificate modal not found in HTML');
             return;
         }
-        
+
         const img = document.getElementById('certificate-image');
         const title = document.getElementById('certificate-title');
         const issuer = document.getElementById('certificate-issuer');
         const date = document.getElementById('certificate-date');
         const close = document.querySelector('.certificate-close');
         const downloadBtn = document.getElementById('download-certificate');
-        
+
         // Certificate data mapping
         const certificates = {
             'nexium': {
@@ -2449,39 +2449,39 @@ Type 'help' for available commands or ask naturally about anything!`;
                 date: 'September 2024'
             }
         };
-        
+
         // Add buttons to timeline items
         const timelineItems = document.querySelectorAll('.timeline-content');
         timelineItems.forEach((item) => {
             const company = item.querySelector('.company')?.textContent.toLowerCase() || '';
             let certKey = null;
-            
+
             if (company.includes('nexium')) certKey = 'nexium';
             else if (company.includes('codealpha')) certKey = 'codealpha';
             else if (company.includes('kashf')) certKey = 'kashf';
             else if (company.includes('technology academy') || company.includes('bright')) certKey = 'bright';
-            
+
             if (certKey && certificates[certKey]) {
                 const btnContainer = document.createElement('div');
                 btnContainer.style.cssText = 'margin-top: 15px;';
-                
+
                 const certBtn = document.createElement('button');
                 certBtn.className = 'view-certificate-btn';
                 certBtn.innerHTML = '<i class="fas fa-certificate"></i> View Certificate';
                 certBtn.setAttribute('aria-label', `View ${certificates[certKey].title} certificate`);
-                
+
                 certBtn.onclick = (e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     showCertificate(certificates[certKey]);
                     AudioSystem.play('success');
                 };
-                
+
                 btnContainer.appendChild(certBtn);
                 item.appendChild(btnContainer);
             }
         });
-        
+
         function showCertificate(cert) {
             // Update modal content
             img.src = `Certificates/${cert.file}`;
@@ -2489,7 +2489,7 @@ Type 'help' for available commands or ask naturally about anything!`;
             title.textContent = cert.title;
             issuer.textContent = cert.issuer;
             date.textContent = cert.date;
-            
+
             // Update download button
             downloadBtn.onclick = () => {
                 const link = document.createElement('a');
@@ -2498,36 +2498,36 @@ Type 'help' for available commands or ask naturally about anything!`;
                 link.click();
                 AudioSystem.play('success');
             };
-            
+
             // Show modal
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
-        
+
         function closeModal() {
             modal.style.display = 'none';
             document.body.style.overflow = '';
         }
-        
+
         // Close button handler
         if (close) {
             close.onclick = closeModal;
         }
-        
+
         // Click outside modal to close
         modal.onclick = (e) => {
             if (e.target === modal) {
                 closeModal();
             }
         };
-        
+
         // ESC key to close
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal.style.display === 'block') {
                 closeModal();
             }
         });
-        
+
         // Prevent modal content clicks from closing modal
         const modalContent = modal.querySelector('.certificate-modal-content');
         if (modalContent) {
@@ -2535,7 +2535,7 @@ Type 'help' for available commands or ask naturally about anything!`;
                 e.stopPropagation();
             };
         }
-        
+
         console.log('✅ Certificate viewer initialized');
     }
 
@@ -2566,13 +2566,13 @@ Type 'help' for available commands or ask naturally about anything!`;
         initPerformanceMonitor();
         fixMobileButtonPositions();
         initCertificateViewer();
-        
+
         window.addEventListener('resize', fixMobileButtonPositions);
-        
+
         window.triggerConfetti = triggerConfetti;
         window.toggleMatrix = toggleMatrix;
         window.Terminal = Terminal;
-        
+
         console.log('%c✨ Portfolio v7.0 - Enhanced AI System!', 'color: #6366f1; font-size: 16px; font-weight: bold;');
         console.log('%cPress Ctrl+. for AI Terminal with comprehensive knowledge', 'color: #10b981; font-size: 12px;');
     }
@@ -2587,6 +2587,168 @@ Type 'help' for available commands or ask naturally about anything!`;
     setTimeout(hidePreloader, 3000);
 
     // ═══════════ EXPOSE TO WINDOW (Optional) ═══════════
+    /* ═══════════ NEW PRODUCTIVE FEATURES ═══════════ */
+
+    // 1. Custom Data-Pulse Cursor
+    function initCustomCursor() {
+        const cursor = document.createElement('div');
+        cursor.className = 'custom-cursor';
+        document.body.appendChild(cursor);
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        const interactiveElements = document.querySelectorAll('a, button, .project-card, .timeline-item, .info-card');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+    }
+
+    // 2. Stats Counter Animation
+    function initStatsCounter() {
+        const stats = document.querySelectorAll('.stat-number');
+        const observerOptions = { threshold: 0.5 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const countTo = parseInt(target.getAttribute('data-target'));
+                    let count = 0;
+                    const duration = 2000;
+                    const increment = countTo / (duration / 16);
+
+                    const updateCount = () => {
+                        count += increment;
+                        if (count < countTo) {
+                            target.innerText = Math.floor(count);
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            target.innerText = countTo;
+                        }
+                    };
+                    updateCount();
+                    observer.unobserve(target);
+                }
+            });
+        }, observerOptions);
+
+        stats.forEach(stat => observer.observe(stat));
+    }
+
+    // 3. Project Detail Modals
+    function initProjectModals() {
+        const modal = document.getElementById('project-modal');
+        const closeBtn = document.getElementById('modal-close');
+        const cards = document.querySelectorAll('.project-card');
+
+        const title = document.getElementById('modal-title');
+        const desc = document.getElementById('modal-desc');
+        const tech = document.getElementById('modal-tech');
+        const github = document.getElementById('modal-github');
+
+        cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Prevent trigger if clicking the GitHub link directly
+                if (e.target.closest('.project-overlay')) return;
+
+                const projectName = card.querySelector('h3').innerText;
+                const projectData = PORTFOLIO_DATA.projects.find(p => p.name === projectName) || {};
+
+                title.innerText = projectName;
+                desc.innerText = projectData.description || "Detailed project analysis and ML implementation.";
+                tech.innerHTML = card.querySelector('.project-tech').innerHTML;
+                github.href = card.querySelector('.project-overlay').href;
+
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) closeBtn.click();
+        });
+    }
+
+    // 4. Skills Radar Chart (SVG Based)
+    function initSkillsRadar() {
+        const container = document.getElementById('skills-radar');
+        if (!container) return;
+
+        const skills = [
+            { name: 'Machine Learning', value: 95 },
+            { name: 'NLP & LLMs', value: 90 },
+            { name: 'Full Stack AI', value: 85 },
+            { name: 'Data Engineering', value: 88 },
+            { name: 'Deep Learning', value: 92 },
+            { name: 'Cloud/MLOps', value: 80 }
+        ];
+
+        const size = 400;
+        const radius = size / 2 - 50;
+        const centerX = size / 2;
+        const centerY = size / 2;
+        const angleStep = (Math.PI * 2) / skills.length;
+
+        let svgContent = `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">`;
+
+        // Draw Grid Rings
+        for (let i = 1; i <= 5; i++) {
+            const r = (radius / 5) * i;
+            let points = "";
+            for (let j = 0; j < skills.length; j++) {
+                const angle = j * angleStep - Math.PI / 2;
+                points += `${centerX + Math.cos(angle) * r},${centerY + Math.sin(angle) * r} `;
+            }
+            svgContent += `<polygon points="${points}" class="radar-grid" />`;
+        }
+
+        // Draw Axes
+        skills.forEach((skill, j) => {
+            const angle = j * angleStep - Math.PI / 2;
+            const x = centerX + Math.cos(angle) * radius;
+            const y = centerY + Math.sin(angle) * radius;
+            svgContent += `<line x1="${centerX}" y1="${centerY}" x2="${x}" y2="${y}" class="radar-axis" />`;
+
+            // Labels
+            const labelX = centerX + Math.cos(angle) * (radius + 30);
+            const labelY = centerY + Math.sin(angle) * (radius + 20);
+            svgContent += `<text x="${labelX}" y="${labelY}" text-anchor="middle" class="radar-label">${skill.name}</text>`;
+        });
+
+        // Draw Data Area
+        let dataPoints = "";
+        skills.forEach((skill, j) => {
+            const angle = j * angleStep - Math.PI / 2;
+            const r = (radius * skill.value) / 100;
+            dataPoints += `${centerX + Math.cos(angle) * r},${centerY + Math.sin(angle) * r} `;
+        });
+        svgContent += `<polygon points="${dataPoints}" class="radar-area" />`;
+
+        svgContent += `</svg>`;
+        container.innerHTML = svgContent;
+    }
+
+    // Initialize all new features
+    document.addEventListener('DOMContentLoaded', () => {
+        initCustomCursor();
+        initStatsCounter();
+        initProjectModals();
+        initSkillsRadar();
+
+        if (window.initNeuralBackground) {
+            window.initNeuralBackground('neural-canvas');
+        }
+    });
+
     window.CertificateViewer = {
         init: initCertificateViewer
     };
