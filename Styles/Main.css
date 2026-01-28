@@ -2001,28 +2001,29 @@ button {
 }
 
 .radar-axis {
-    stroke: rgba(255, 255, 255, 0.1);
+    stroke: rgba(255, 255, 255, 0.2);
     stroke-width: 1;
 }
 
 .radar-grid {
     fill: none;
-    stroke: rgba(255, 255, 255, 0.05);
+    stroke: rgba(255, 255, 255, 0.15);
     stroke-width: 1;
 }
 
 .radar-area {
-    fill: rgba(var(--primary-rgb), 0.2);
+    fill: rgba(212, 255, 51, 0.2);
     stroke: var(--primary);
     stroke-width: 3;
-    filter: drop-shadow(0 0 10px rgba(var(--primary-rgb), 0.3));
+    filter: drop-shadow(0 0 10px rgba(212, 255, 51, 0.4));
 }
 
 .radar-label {
-    fill: var(--text-secondary);
-    font-size: 12px;
+    fill: #ffffff;
+    font-size: 13px;
     font-family: var(--font-mono);
     text-transform: uppercase;
+    font-weight: 500;
 }
 
 /* ═══════════ SKILLS SECTION ═══════════ */
