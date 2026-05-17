@@ -1,6 +1,3 @@
-// Browser-safe environment config
-window.ENV = window.ENV || {};
-window.CONFIG = {
-  GEMINI_API_KEY: window.ENV.GEMINI_API_KEY || '',
-  GROQ_API_KEY:   window.ENV.GROQ_API_KEY   || ''
-};
+// IMPORTANT: Add config.js to .gitignore — never commit this file
+// Get your key from https://aistudio.google.com/app/apikey
+window.GEMINI_API_KEY = "PASTE_YOUR_GEMINI_KEY_HERE";

@@ -7,165 +7,61 @@
 
     // ═══════════ COMPREHENSIVE PORTFOLIO DATA (For AI Context) ═══════════
     const PORTFOLIO_DATA = {
-        // PERSONAL INFORMATION
         name: "Shahzeb Faisal",
         title: "Data Scientist & Full Stack AI Developer",
-        subtitle: "Data Scientist & Full Stack AI Developer",
-        location: "Lahore, Pakistan",
+        location: "Lahore, Pakistan (Remote/Hybrid OK)",
         email: "shahzebfaisal5649@gmail.com",
         phone: "+92 302 0418510",
+        whatsapp: "https://wa.me/923020418510",
         github: "https://github.com/ShahzebFaisal5649",
         linkedin: "https://www.linkedin.com/in/shahzeb-faisal-8b9190321/",
-        huggingface: "https://huggingface.co/ShahzebFaisal5649",
-        kaggle: "https://www.kaggle.com/shahzebfaisal5649",
-
-        status: "Open to Work",
-        languages: ["English", "Urdu"],
-
-        // EDUCATION
+        status: "Open to Work — Available from June 2026",
         education: {
-            university: "FAST National University of Computer & Emerging Sciences (NUCES)",
-            location: "Lahore Campus",
-            degree: "Bachelor of Science in Data Science",
-            period: "2021 – 2025",
+            degree: "BS Data Science",
+            university: "FAST NUCES Lahore",
+            period: "2021–2025",
             status: "Graduated",
-            focus_areas: ["Machine Learning", "Deep Learning", "NLP", "Big Data Analytics"],
-            description: "One of Pakistan's top technology universities, known for excellence in computer science and data science education"
+            focus: ["Machine Learning", "Deep Learning", "NLP", "Big Data Analytics"]
         },
-
-        // RESEARCH EXPERIENCE
-        research: {
-            position: "Research Assistant",
-            institution: "FAST NUCES Lahore",
+        current_role: {
+            title: "Research Assistant",
+            org: "FAST NUCES Lahore",
             supervisor: "Dr. Esha Tur Razia Babar",
-            period: "2024 - Present",
             topic: "LLM-based Conversational Chatbots",
-            focus: "Exploring persona-based architectures and bias mitigation in large language models",
-            technologies: ["LLMs", "NLP", "Python", "Transformers", "Research Methodologies"],
-            description: "Conducting cutting-edge research on conversational AI systems with focus on making them more reliable and unbiased"
+            period: "2024–Present",
+            description: "Exploring persona-based architectures and bias mitigation in large language models"
         },
-
-        // DETAILED PROFESSIONAL EXPERIENCE
         experience: [
             {
-                title: "Research Assistant",
-                company: "FAST NUCES Lahore",
-                period: "2024 - Present",
-                type: "Research",
-                current: true,
-                supervisor: "Dr. Esha Tur Razia Babar",
-                description: "Researching LLM-based conversational chatbots with focus on persona-based architectures and bias mitigation.",
-                responsibilities: [
-                    "Conducting research on large language model architectures",
-                    "Exploring bias mitigation techniques in conversational AI",
-                    "Developing persona-based chatbot systems"
-                ],
-                technologies: ["LLMs", "NLP", "Python", "Transformers"],
-                achievements: ["Contributing to cutting-edge research in conversational AI"]
+                role: "Research Assistant", org: "FAST NUCES", period: "2024–Present", current: true,
+                tech: ["LLMs", "NLP", "Python", "Transformers", "RAG"],
+                responsibilities: ["Researching LLM-based conversational chatbots", "Exploring persona-based architectures", "Bias mitigation in language models"]
             },
             {
-                title: "AI-First Web Development Intern",
-                company: "Nexium",
-                period: "January 2025",
-                type: "Internship",
-                description: "Developed AI-powered web applications with GPT-4 integration.",
-                responsibilities: [
-                    "Built AI-powered Resume Tailor using GPT-4 API",
-                    "Developed full-stack applications using Next.js 15",
-                    "Implemented NLP-based text summarization features"
-                ],
-                technologies: ["Next.js 15", "GPT-4", "TypeScript", "Supabase", "Tailwind CSS"],
-                achievements: [
-                    "Achieved 30% accuracy improvement in resume-job matching",
-                    "Developed 3 production-ready AI applications"
-                ],
-                github: "https://github.com/ShahzebFaisal5649"
+                role: "AI-First Web Dev Intern", org: "Nexium", period: "Jul–Aug 2025",
+                tech: ["Next.js 15", "GPT-4", "TypeScript", "Supabase", "Tailwind"],
+                achievement: "30% resume-job matching accuracy improvement",
+                responsibilities: ["Built AI-powered Resume Tailor with GPT-4", "Developed Blog Summarizer with NLP", "Built QuoteGen AI app"]
             },
             {
-                title: "Software Development Trainee",
-                company: "Technology Academy (BRIGHT Network)",
-                period: "September 2024",
-                type: "Training Program",
+                role: "Software Dev Trainee", org: "Bright Network (Technology Academy)", period: "Sep 2024",
                 program: "Couch to Coder 2024",
-                description: "Completed intensive software development training focusing on coding fundamentals.",
-                technologies: ["Python", "JavaScript", "Git"],
-                achievements: ["Successfully completed Couch to Coder 2024", "Earned certification"]
+                tech: ["Python", "JavaScript", "Git"],
+                responsibilities: ["Completed intensive software development training", "Project-based learning", "Earned certified completion"]
             },
             {
-                title: "Data Science Intern",
-                company: "CodeAlpha",
-                period: "June - July 2024",
-                type: "Internship",
-                description: "Developed predictive models and automated data pipelines.",
-                responsibilities: [
-                    "Developed predictive models using ML algorithms",
-                    "Built automated data pipelines"
-                ],
-                technologies: ["Python", "Pandas", "Scikit-Learn", "ML"],
-                achievements: [
-                    "Improved decision-making accuracy by 25%",
-                    "Reduced data processing time by 30%"
-                ]
+                role: "Data Science Intern", org: "CodeAlpha", period: "Jun–Jul 2024",
+                tech: ["Python", "Pandas", "Scikit-Learn", "ML"],
+                achievement: "25% decision-making improvement, 30% pipeline speed increase",
+                responsibilities: ["Developed predictive models", "Built automated data pipelines", "Performed data analysis and visualization"]
             },
             {
-                title: "Data & Software Intern",
-                company: "Kashf Foundation",
-                period: "July - August 2024",
-                type: "Internship",
-                description: "Built compliance dashboards and optimized database systems.",
-                responsibilities: [
-                    "Developed real-time compliance dashboard",
-                    "Optimized SQL database queries"
-                ],
-                technologies: ["SQL", "SQL Server", "Android", "Analytics"],
-                achievements: ["Reduced SQL query response time by 40%"]
+                role: "Data & Software Intern", org: "Kashf Foundation", period: "Jul–Aug 2024",
+                tech: ["SQL", "SQL Server", "Android", "Dashboard", "Analytics"],
+                achievement: "40% SQL query response time reduction",
+                responsibilities: ["Built real-time compliance dashboard with KPI monitoring", "Optimized SQL queries", "Enhanced Android app UI/UX with Material Design"]
             }
         ],
-
-        // COMPREHENSIVE SKILLS
-        skills: {
-            programming_languages: {
-                proficient: ["Python", "JavaScript", "TypeScript", "SQL"],
-                familiar: ["C++", "Solidity", "HTML/CSS"]
-            },
-            ml_ai_frameworks: {
-                primary: ["TensorFlow", "PyTorch", "Scikit-Learn", "Keras"],
-                specialized: ["Transformers", "Hugging Face", "OpenAI API", "LangChain"],
-                techniques: ["Computer Vision", "Deep Learning", "Neural Networks", "CNN", "LSTM"]
-            },
-            nlp_llms: {
-                models: ["GPT-4", "BERT", "Llama", "RAG"],
-                libraries: ["spaCy", "NLTK", "Transformers"],
-                applications: ["Text Generation", "Sentiment Analysis", "Text Summarization", "Chatbots"]
-            },
-            web_development: {
-                frontend: ["React", "Next.js 15", "Tailwind CSS", "Bootstrap"],
-                backend: ["Node.js", "Express.js", "REST APIs"],
-                full_stack: ["Next.js", "MERN Stack", "TypeScript"]
-            },
-            data_science: {
-                libraries: ["Pandas", "NumPy", "Matplotlib", "Seaborn"],
-                tools: ["Jupyter", "Apache Spark", "ETL Pipelines"],
-                techniques: ["Data Analysis", "Data Visualization", "Big Data"]
-            },
-            databases: {
-                sql: ["PostgreSQL", "MySQL", "SQL Server"],
-                nosql: ["MongoDB", "Supabase"]
-            },
-            cloud_devops: {
-                platforms: ["Azure", "Vercel"],
-                tools: ["Git/GitHub", "Docker", "Azure Bicep"],
-                practices: ["Version Control", "CI/CD", "Infrastructure as Code"]
-            },
-            blockchain: {
-                platforms: ["Ethereum"],
-                languages: ["Solidity"],
-                tools: ["Web3.js", "Truffle", "Smart Contracts"],
-                applications: ["DApps", "Decentralized Voting"]
-            }
-        },
-
-        // DETAILED PROJECTS
         projects: [
             {
                 name: "Nexium Resume Tailor",
@@ -360,7 +256,7 @@
 
     // ═══════════ ENHANCED GEMINI AI INTEGRATION ═══════════
     const GeminiAI = {
-        apiKey: (window.ENV && window.ENV.GEMINI_API_KEY) ? window.ENV.GEMINI_API_KEY : '',
+        apiKey: window.GEMINI_API_KEY || '',
         apiUrl: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
         conversationHistory: [],
 
@@ -875,8 +771,69 @@ Type 'help' for available commands or ask naturally about anything!`;
 
     // ═══════════ PRELOADER ═══════════
     function hidePreloader() {
-        document.body.classList.add('loaded');
-        setTimeout(initParticles, 100);
+        const preloader = document.getElementById('preloader');
+        const logo = document.getElementById('preloader-logo');
+        const scan = document.getElementById('preloader-scan');
+        const counter = document.getElementById('preloader-counter');
+        const splitTop = document.querySelector('.split-top');
+        const splitBottom = document.querySelector('.split-bottom');
+
+        if (!preloader) {
+            document.body.classList.add('loaded');
+            setTimeout(initParticles, 100);
+            return;
+        }
+
+        let skipped = false;
+        function skip() {
+            if (skipped) return;
+            skipped = true;
+            splitTop.style.transform = 'translateY(-100%)';
+            splitBottom.style.transform = 'translateY(100%)';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+                document.body.classList.add('loaded');
+                initParticles();
+                document.dispatchEvent(new CustomEvent('preloaderDone'));
+            }, 500);
+        }
+
+        preloader.addEventListener('click', skip);
+
+        // Phase 1: Logo fade in
+        setTimeout(() => {
+            if (skipped) return;
+            logo.style.opacity = '1';
+            logo.style.transform = 'scale(1)';
+            logo.classList.add('shine');
+        }, 100);
+
+        // Phase 2: Scan and counter
+        setTimeout(() => {
+            if (skipped) return;
+            scan.style.opacity = '1';
+            scan.style.animation = 'scan-line 0.7s linear';
+            
+            let count = 0;
+            const int = setInterval(() => {
+                if (skipped) { clearInterval(int); return; }
+                count += 5;
+                counter.innerText = count + '%';
+                if (count >= 100) clearInterval(int);
+            }, 30);
+        }, 800);
+
+        // Phase 3: Logo scale up
+        setTimeout(() => {
+            if (skipped) return;
+            logo.style.transform = 'scale(1.3)';
+        }, 1500);
+
+        // Phase 4: Split reveal
+        setTimeout(() => {
+            if (skipped) return;
+            skip();
+        }, 2500);
     }
 
     // ═══════════ PARTICLES ═══════════
@@ -1113,8 +1070,13 @@ Type 'help' for available commands or ask naturally about anything!`;
 ║  skills     - View technical skills                       ║
 ║  projects   - List all projects                           ║
 ║  experience - View work experience                        ║
+║  repos      - List all featured GitHub projects           ║
+║  live       - Show only deployed/live projects            ║
+║  research   - Current LLM research details                ║
+║  stats      - Portfolio statistics                        ║
 ║  contact    - Get contact information                     ║
 ║  social     - Social media links                          ║
+║  hire       - Availability, contact, WhatsApp             ║
 ║                                                           ║
 ║  AI ASSISTANT                                             ║
 ║  ────────────                                             ║
@@ -1703,6 +1665,91 @@ Type 'help' for available commands or ask naturally about anything!`;
                         window.open('https://www.kaggle.com/shahzebfaisal5649', '_blank');
                         this.addLine('<span class="term-success">📊 Opening Kaggle...</span>');
                         break;
+                    case 'repos':
+                        let reposOutput = `<div class="terminal-section">
+                            <div class="t-title">📦 GitHub Repositories (${PORTFOLIO_DATA.projects.length} featured)</div>
+                            ${PORTFOLIO_DATA.projects.map(p =>
+                                `<div class="t-item">
+                                    <span class="t-gold">${p.name}</span> 
+                                    <span class="t-muted">[${p.tech.slice(0, 3).join(', ')}]</span>
+                                    ${p.live ? `<a href="${p.live}" target="_blank" class="t-link">🌐 Live</a>` : ''}
+                                    <a href="${p.github}" target="_blank" class="t-link">GitHub →</a>
+                                 </div>`
+                            ).join('')}
+                            <div class="t-muted">Type 'live' to see only deployed projects</div>
+                        </div>`;
+                        this.addLine(reposOutput);
+                        break;
+                    case 'live':
+                        const liveProjects = PORTFOLIO_DATA.projects.filter(p => p.live);
+                        let liveOutput = `<div class="terminal-section">
+                            <div class="t-title">🌐 Live Deployed Projects (${liveProjects.length})</div>
+                            ${liveProjects.map(p =>
+                                `<div class="t-item">
+                                    <span class="t-gold">${p.name}</span><br>
+                                    <span class="t-muted">Stack: ${p.tech.join(', ')}</span><br>
+                                    <a href="${p.live}" target="_blank" class="t-link">→ ${p.live}</a>
+                                 </div>`
+                            ).join('')}
+                        </div>`;
+                        this.addLine(liveOutput);
+                        break;
+                    case 'hire':
+                        let hireOutput = `<div class="terminal-section">
+                            <div class="t-title">💼 Hire Shahzeb Faisal</div>
+                            <div class="t-item"><span class="t-gold">Status:</span> ${PORTFOLIO_DATA.status}</div>
+                            <div class="t-item"><span class="t-gold">Location:</span> ${PORTFOLIO_DATA.location}</div>
+                            <div class="t-item"><span class="t-gold">Email:</span> <a href="mailto:${PORTFOLIO_DATA.email}" class="t-link">${PORTFOLIO_DATA.email}</a></div>
+                            <div class="t-item"><span class="t-gold">LinkedIn:</span> <a href="${PORTFOLIO_DATA.linkedin}" target="_blank" class="t-link">View Profile →</a></div>
+                            <div class="t-item"><span class="t-gold">WhatsApp:</span> <a href="${PORTFOLIO_DATA.whatsapp}" target="_blank" class="t-link">Chat Now →</a></div>
+                            <div class="t-muted">Open to: Full-time / Contract / Remote / Hybrid</div>
+                        </div>`;
+                        this.addLine(hireOutput);
+                        break;
+                    case 'research':
+                        let researchOutput = `<div class="terminal-section">
+                            <div class="t-title">🔬 Research Work</div>
+                            <div class="t-item"><span class="t-gold">Position:</span> ${PORTFOLIO_DATA.current_role.title}</div>
+                            <div class="t-item"><span class="t-gold">Institution:</span> ${PORTFOLIO_DATA.current_role.org}</div>
+                            <div class="t-item"><span class="t-gold">Supervisor:</span> ${PORTFOLIO_DATA.current_role.supervisor}</div>
+                            <div class="t-item"><span class="t-gold">Topic:</span> ${PORTFOLIO_DATA.current_role.topic}</div>
+                            <div class="t-item"><span class="t-gold">Focus:</span> ${PORTFOLIO_DATA.current_role.description}</div>
+                            <div class="t-item"><span class="t-gold">Period:</span> ${PORTFOLIO_DATA.current_role.period}</div>
+                        </div>`;
+                        this.addLine(researchOutput);
+                        break;
+                    case 'stats':
+                        let statsOutput = `<div class="terminal-section">
+                            <div class="t-title">📊 Portfolio Stats</div>
+                            <div class="t-item"><span class="t-gold">Projects:</span> ${PORTFOLIO_DATA.stats.projects}+</div>
+                            <div class="t-item"><span class="t-gold">Live Apps:</span> ${PORTFOLIO_DATA.stats.live_apps}</div>
+                            <div class="t-item"><span class="t-gold">Internships:</span> ${PORTFOLIO_DATA.stats.internships}</div>
+                            <div class="t-item"><span class="t-gold">Research Positions:</span> ${PORTFOLIO_DATA.stats.research_positions}</div>
+                            <div class="t-item"><span class="t-gold">GitHub Commits:</span> ${PORTFOLIO_DATA.stats.github_commits}</div>
+                        </div>`;
+                        this.addLine(statsOutput);
+                        break;
+                    case 'ai':
+                        const aiQuery = cmd.replace(/^ai\s*/i, '').trim();
+                        if (!aiQuery) {
+                            this.addLine(`<div class="t-muted">Usage: ai &lt;your question&gt;<br>Example: ai what projects has Shahzeb built?</div>`);
+                        } else {
+                            this.addLine(`<div class="t-muted">🤖 Asking Gemini...</div>`);
+                            (async () => {
+                                try {
+                                    const ctx = buildSystemContext(JSON.parse(sessionStorage.getItem('gh_repos_ai') || '[]'));
+                                    const history = [
+                                        { role: 'user', parts: [{ text: ctx }] },
+                                        { role: 'model', parts: [{ text: 'Understood. I am ready to answer questions about Shahzeb Faisal.' }] },
+                                        { role: 'user', parts: [{ text: aiQuery }] }
+                                    ];
+                                    const reply = await askGemini(history);
+                                    this.addLine(`<div class="t-item"><span class="t-gold">Gemini:</span> ${reply}</div>`);
+                                } catch(e) {
+                                    this.addLine(`<div class="t-error">AI unavailable. Email: shahzebfaisal5649@gmail.com</div>`);
+                                }
+                            })();
+                        }
                         break;
                     default:
                         // If not a command, treat as AI query
@@ -2170,7 +2217,7 @@ Type 'help' for available commands or ask naturally about anything!`;
         const typedEl = document.getElementById('typed-text');
         if (!typedEl) return;
 
-        const words = ['AI Solutions', 'ML Models', 'NLP Systems', 'Web Apps', 'Data Pipelines', 'Smart Agents'];
+        const words = ["Data Scientist", "Full Stack AI Developer", "ML Engineer", "LLM Researcher"];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -2180,7 +2227,7 @@ Type 'help' for available commands or ask naturally about anything!`;
             const currentWord = words[wordIndex];
 
             if (isPaused) {
-                setTimeout(type, 1500);
+                setTimeout(type, 2000);
                 isPaused = false;
                 isDeleting = true;
                 return;
@@ -2194,14 +2241,14 @@ Type 'help' for available commands or ask naturally about anything!`;
                 charIndex++;
             }
 
-            let typeSpeed = isDeleting ? 50 : 100;
+            let typeSpeed = isDeleting ? 40 : 80;
 
             if (!isDeleting && charIndex === currentWord.length) {
                 isPaused = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 300;
+                typeSpeed = 200;
             }
 
             setTimeout(type, typeSpeed);
@@ -2214,26 +2261,39 @@ Type 'help' for available commands or ask naturally about anything!`;
     // ═══════════ 3D CARD TILT ═══════════
     function initCardTilt() {
         const card = document.getElementById('hero-card');
-        if (!card) return;
+        if (card) {
+            const inner = card.querySelector('.card-inner');
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                if (inner) inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                if (inner) inner.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+            });
+        }
 
-        const inner = card.querySelector('.card-inner');
-
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-
-            inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            inner.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+        // Project cards tilt
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(pCard => {
+            pCard.addEventListener('mousemove', (e) => {
+                const rect = pCard.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                pCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            pCard.addEventListener('mouseleave', () => {
+                pCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            });
         });
     }
 
@@ -2252,8 +2312,13 @@ Type 'help' for available commands or ask naturally about anything!`;
 
                 projectCards.forEach((card, index) => {
                     const categories = card.getAttribute('data-category') || '';
+                    const isLive = card.getAttribute('data-live') === 'true';
 
-                    if (filter === 'all' || categories.includes(filter)) {
+                    const matchFilter = filter === 'all' || 
+                                       (filter === 'live' && isLive) || 
+                                       (filter !== 'live' && categories.includes(filter));
+
+                    if (matchFilter) {
                         card.style.transitionDelay = `${index * 50}ms`;
                         card.classList.remove('hidden');
                         card.classList.add('show');
@@ -2806,7 +2871,37 @@ Type 'help' for available commands or ask naturally about anything!`;
         });
     }
 
+    
+    // ═══════════ DOT NAVIGATION ═══════════
+    function initDotNav() {
+        const sections = document.querySelectorAll('section');
+        const dotItems = document.querySelectorAll('.dot-nav-item');
+        
+        if (dotItems.length === 0) return;
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            dotItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    }
+
     function init() {
+        // Disable Zoom In/Out
+        document.addEventListener('wheel', e => { if (e.ctrlKey) e.preventDefault(); }, { passive: false });
+        document.addEventListener('keydown', e => { if (e.ctrlKey && ['+','-','=','0'].includes(e.key)) e.preventDefault(); });
 
         // Restore saved theme
         const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
@@ -2820,6 +2915,7 @@ Type 'help' for available commands or ask naturally about anything!`;
         initCardTilt();
         initProjectFilters();
         initStatusStrip();
+        initDotNav();
         initScrollReveal();
         initCursor();
         initSpotlight();

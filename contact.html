@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Contact | Shahzeb Faisal</title>
+    <!-- Optimized Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Styles/Main.css">
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        body {
+            background: var(--black);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+        }
+        .contact-page {
+            padding: 100px 0 60px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .info-card {
+            background: rgba(10,10,10,0.9);
+            border: 1px solid rgba(201,168,76,0.2);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .info-icon {
+            font-size: 2rem;
+            color: var(--gold-primary);
+        }
+        .info-text h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-primary);
+            margin-bottom: 5px;
+        }
+        .info-text p {
+            color: var(--text-secondary);
+        }
+        .contact-form {
+            background: rgba(10,10,10,0.9);
+            border: 1px solid rgba(201,168,76,0.2);
+            padding: 40px;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(201,168,76,0.2);
+            border-radius: 4px;
+            color: white;
+            font-family: inherit;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--gold-primary);
+            outline: none;
+            background: rgba(255,255,255,0.08);
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: opacity 0.3s;
+        }
+        .whatsapp-btn:hover {
+            opacity: 0.9;
+        }
+        .success-state {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        .success-state i {
+            font-size: 4rem;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar and Navigation handled by Scripts/Sidebar.js -->
+
+    <div class="contact-page">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Contact Me</h2>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Left Column: Info -->
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <p><a href="mailto:shahzebfaisal5649@gmail.com" style="color: inherit;">shahzebfaisal5649@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-phone"></i></div>
+                        <div class="info-text">
+                            <h4>Phone</h4>
+                            <p><a href="tel:+923020418510" style="color: inherit;">+92 302 0418510</a></p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-text">
+                            <h4>Location</h4>
+                            <p>Lahore, Pakistan</p>
+                        </div>
+                    </div>
+
+                    <!-- Availability -->
+                    <div style="margin-top: 30px; text-align: center;">
+                        <span style="display: inline-flex; align-items: center; gap: 10px; color: var(--gold-primary);">
+                            <span style="width: 10px; height: 10px; background: #25D366; border-radius: 50%; display: inline-block;"></span>
+                            Open to Remote/Hybrid Opportunities
+                        </span>
+                    </div>
+
+                    <!-- Map Placeholder -->
+                    <div style="margin-top: 30px; height: 200px; background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                        <i class="fas fa-map-marked-alt" style="font-size: 2rem; margin-right: 10px;"></i>
+                        Map Placeholder (Lahore, Pakistan)
+                    </div>
+                </div>
+
+                <!-- Right Column: Form -->
+                <div class="contact-right">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject">
+                                <option>General Inquiry</option>
+                                <option>Project Proposal</option>
+                                <option>Job Opportunity</option>
+                                <option>Collaboration</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" required></textarea>
+                            <div style="text-align: right; font-size: 0.8rem; color: var(--text-muted);" id="charCount">0 / 500</div>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; background: var(--gold-primary); color: var(--black); font-weight: 600;">Send Message</button>
+                    </form>
+
+                    <div class="success-state" id="successState">
+                        <i class="fas fa-check-circle"></i>
+                        <h3 style="font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 10px;">Message Sent!</h3>
+                        <p style="color: var(--text-secondary);">I'll reply within 24 hours.</p>
+                    </div>
+
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/923020418510?text=Hi%20Shahzeb%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect!" class="whatsapp-btn" style="width: 100%; justify-content: center;">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+
+                    <!-- Calendly Placeholder -->
+                    <a href="#" class="btn" style="width: 100%; margin-top: 20px; background: transparent; border: 1px solid var(--gold-primary); color: var(--gold-primary); text-align: center; display: block;">
+                        📅 Book a Call
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="Scripts/config.js"></script>
+    <script src="Scripts/contact.js"></script> <!-- Load placeholders -->
+    <script src="Scripts/Cursor.js"></script>
+    <script src="Scripts/Sidebar.js"></script>
+    <script>
+        // Inline script for form handling
+        const form = document.getElementById('contactForm');
+        const successState = document.getElementById('successState');
+        const messageInput = document.getElementById('message');
+        const charCount = document.getElementById('charCount');
+
+        messageInput.addEventListener('input', () => {
+            const len = messageInput.value.length;
+            charCount.innerText = `${len} / 500`;
+            if (len > 500) {
+                messageInput.value = messageInput.value.substring(0, 500);
+                charCount.innerText = `500 / 500`;
+            }
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // EmailJS logic would go here
+            // For now, simulate success
+            form.style.display = 'none';
+            successState.style.display = 'block';
+            
+            // Reset form
+            form.reset();
+            charCount.innerText = `0 / 500`;
+        });
+    </script>
+</body>
+</html>

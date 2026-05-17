@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <meta name="description"
         content="Shahzeb Faisal — Data Scientist & Full Stack AI Developer. ML Engineer, NLP specialist, Next.js 15, React, Node.js, TypeScript, LLMs, and production AI applications from Lahore, Pakistan.">
     <meta name="keywords" content="Data Scientist, Full Stack AI Developer, MERN Stack, Next.js 15, React, Node.js, TypeScript, LLMs, Shahzeb Faisal">
@@ -32,7 +32,7 @@
 
     <!-- Optimized Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome - Deferred -->
@@ -78,12 +78,41 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="boot-terminal">
-            <div id="boot-output"></div>
-            <span id="boot-cursor">_</span>
+    <!-- Cinematic Preloader -->
+    <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000000; z-index: 10000; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer;">
+        <style>
+            #preloader-logo.shine {
+                position: relative;
+                overflow: hidden;
+            }
+            #preloader-logo.shine::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
+                transform: rotate(45deg);
+                animation: shine-sweep 1s ease;
+            }
+            @keyframes shine-sweep {
+                0% { left: -100%; }
+                100% { left: 100%; }
+            }
+            @keyframes scan-line {
+                0% { top: 0; opacity: 1; }
+                100% { top: 100%; opacity: 0; }
+            }
+        </style>
+        <div class="preloader-content" style="text-align: center; position: relative;">
+            <img src="Images/SF_logo.png" id="preloader-logo" alt="SF Logo" style="width: 120px; height: auto; opacity: 0; transform: scale(0.5); transition: all(0.8s) ease;">
+            <div id="preloader-scan" style="position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: #C9A84C; opacity: 0;"></div>
+            <div id="preloader-counter" style="font-family: 'JetBrains Mono', monospace; color: #C9A84C; margin-top: 20px; font-size: 1.2rem;">0%</div>
         </div>
+        <!-- Split screens -->
+        <div class="split-top" style="position: fixed; top: 0; left: 0; width: 100%; height: 50%; background: #000000; z-index: -1; transition: transform 0.5s ease;"></div>
+        <div class="split-bottom" style="position: fixed; bottom: 0; left: 0; width: 100%; height: 50%; background: #000000; z-index: -1; transition: transform 0.5s ease;"></div>
     </div>
 
     <!-- Particles Canvas -->
@@ -92,6 +121,16 @@
     <!-- Custom Cursor -->
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
+
+    <!-- Dot Navigation -->
+    <div class="dot-nav" id="dot-nav">
+        <a href="#home" class="dot-nav-item active" data-label="Home"></a>
+        <a href="#about" class="dot-nav-item" data-label="About"></a>
+        <a href="#projects" class="dot-nav-item" data-label="Projects"></a>
+        <a href="#experience" class="dot-nav-item" data-label="Experience"></a>
+        <a href="#skills" class="dot-nav-item" data-label="Skills"></a>
+        <a href="#contact" class="dot-nav-item" data-label="Contact"></a>
+    </div>
 
     <!-- Back to Top Button -->
     <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to Top">
@@ -184,34 +223,7 @@
         <button class="status-strip-close" id="status-strip-close" aria-label="Dismiss">×</button>
     </div>
 
-    <!-- Navigation -->
-    <header id="navbar">
-        <nav class="nav-container">
-            <a href="#home" class="logo">
-                <span class="logo-text">SF</span>
-            </a>
-
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#certifications" class="nav-link">Certs</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-
-            <div class="nav-right">
-                <a href="resume.pdf" class="nav-cta" download>
-                    <span>Resume</span>
-                    <i class="fas fa-download"></i>
-                </a>
-                <button class="hamburger" id="hamburger" aria-label="Menu">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </nav>
-    </header>
+    <!-- Sidebar and Navigation handled by Scripts/Sidebar.js -->
 
     <!-- Vertical Social Sidebar -->
     <aside class="social-sidebar">
@@ -398,26 +410,11 @@
                 <div class="about-main-centered">
                     <!-- Profile with Water Ring -->
                     <div class="about-image-centered">
-                        <div class="profile-img-container">
-                            <img src="Images/profile-pic.png" alt="Shahzeb Faisal" class="profile-img">
-                            <div class="water-ring">
-                                <svg class="water-text" viewBox="0 0 500 500">
-                                    <defs>
-                                        <path id="water-path"
-                                            d="M 250, 250 m -220, 0 a 220,220 0 1,1 440,0 a 220,220 0 1,1 -440,0">
-                                        </path>
-                                    </defs>
-                                    <text fill="#ffffff" font-family="var(--font-mono)" font-size="18"
-                                        font-weight="600">
-                                        <textPath xlink:href="#water-path" startOffset="0%">
-                                            DATA SCIENTIST AND FULL STACK AI DEVELOPER • DATA SCIENTIST AND FULL STACK AI
-                                            DEVELOPER •
-                                        </textPath>
-                                    </text>
-                                </svg>
+                        <div class="hex-frame">
+                            <div class="hex-inner">
+                                <img src="Images/profile-pic.png" alt="Shahzeb Faisal" class="profile-img">
+                                <div class="scan-line"></div>
                             </div>
-                            <!-- Second Water Ring for liquid effect -->
-                            <div class="water-ring-outer"></div>
                         </div>
                     </div>
 
@@ -496,8 +493,8 @@
                         <span class="stat-label">Years Experience</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number" data-target="7">0</span>
-                        <span class="stat-label">Days to Ship DesignCustomBox</span>
+                        <span class="stat-number" data-target="500">0</span>+
+                        <span class="stat-label">GitHub Stars</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number" data-target="40">0</span>
@@ -523,6 +520,7 @@
                     <button class="filter-btn" data-filter="web">Web Dev</button>
                     <button class="filter-btn" data-filter="data">Data Science</button>
                     <button class="filter-btn" data-filter="blockchain">Blockchain</button>
+                    <button class="filter-btn" data-filter="live">Live</button>
                 </div>
 
                 <div class="projects-view-toggle">
@@ -553,417 +551,278 @@
 
                 <!-- Projects Grid -->
                 <div class="projects-grid" id="projects-grid">
-                    <!-- Project 1 - Featured -->
-                    <article class="project-card featured" data-category="web">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fas fa-cube"></i>
+                    <!-- Project 1 -->
+                    <article class="project-card" data-category="web" data-live="true">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-header-gold">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="project-meta">
+                                        <span class="year">2025</span>
+                                        <span class="type">Full-Stack / 3D</span>
+                                    </div>
+                                    <h3>DesignCustomBox</h3>
+                                    <p>Live 3D custom packaging e-commerce with real-time WebGL configurator, Stripe checkout...</p>
+                                    <div class="project-tech">
+                                        <span>React 18</span><span>Three.js</span><span>MongoDB</span>
+                                    </div>
+                                </div>
                             </div>
-                            <span class="badge-live">Live</span>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2025</span>
-                                <span class="type">Full-Stack / 3D</span>
-                            </div>
-                            <h3>DesignCustomBox</h3>
-                            <p>Live 3D custom packaging e-commerce with real-time WebGL configurator, Stripe checkout, Google OAuth, Gemini AI chat, and full admin CMS — shipped solo in 7 days.</p>
-                            <div class="project-tech">
-                                <span>React 18</span>
-                                <span>Three.js</span>
-                                <span>MongoDB</span>
-                                <span>Stripe</span>
-                                <span>Gemini AI</span>
-                            </div>
-                             <div style="margin-top: 15px;">
-                                <a href="https://designcustombox.com" target="_blank" rel="noopener" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i> View Live
-                                </a>
+                            <div class="card-back">
+                                <h3>Tech Details</h3>
+                                <p>Shipped solo in 7 days. Features full admin CMS, Gemini AI chat, and Google OAuth.</p>
+                                <div class="card-links">
+                                    <a href="https://designcustombox.com" target="_blank" rel="noopener" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
+                                </div>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Project 2 - Featured -->
-                    <article class="project-card featured" data-category="ml web">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fas fa-brain"></i>
+                    <!-- Project 2 -->
+                    <article class="project-card" data-category="ml web" data-live="true">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-header-gold">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="project-meta">
+                                        <span class="year">2025</span>
+                                        <span class="type">AI Platform</span>
+                                    </div>
+                                    <h3>Nexium Resume Tailor</h3>
+                                    <p>AI-powered resume optimization using GPT-4 — smart parsing, ATS scoring, job matching.</p>
+                                    <div class="project-tech">
+                                        <span>Next.js 15</span><span>GPT-4</span><span>TypeScript</span>
+                                    </div>
+                                </div>
                             </div>
-                            <span class="featured-badge">Featured</span>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2025</span>
-                                <span class="type">AI Platform</span>
-                            </div>
-                            <h3>Nexium Resume Tailor</h3>
-                            <p>AI-powered resume optimization using GPT-4 — smart parsing, ATS scoring, job matching. 30% accuracy improvement, 1000+ users in production.</p>
-                            <div class="project-tech">
-                                <span>Next.js 15</span>
-                                <span>GPT-4</span>
-                                <span>TypeScript</span>
-                                <span>Supabase</span>
-                                <span>PWA</span>
-                            </div>
-                            <div style="margin-top: 15px; display: flex; gap: 15px;">
-                                <a href="https://nexium-resume-tailor.vercel.app" target="_blank" rel="noopener" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i> View Live
-                                </a>
-                                <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Grand_Project" target="_blank" rel="noopener" class="project-link">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
+                            <div class="card-back">
+                                <h3>Tech Details</h3>
+                                <p>30% accuracy improvement, 1000+ users in production. PWA support.</p>
+                                <div class="card-links">
+                                    <a href="https://nexium-shahzeb-faisal-grand-project.vercel.app" target="_blank" rel="noopener" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
+                                    <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Grand_Project" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                </div>
                             </div>
                         </div>
                     </article>
 
                     <!-- Project 3 -->
-                    <article class="project-card" data-category="ml web">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fas fa-file-alt"></i>
+                    <article class="project-card" data-category="ml web" data-live="true">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-header-gold">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="project-meta">
+                                        <span class="year">2025</span>
+                                        <span class="type">NLP App</span>
+                                    </div>
+                                    <h3>Blog Summarizer</h3>
+                                    <p>Full-stack AI app — web scraping, NLP summarization, Urdu translation.</p>
+                                    <div class="project-tech">
+                                        <span>Next.js 15</span><span>MongoDB</span><span>NLP</span>
+                                    </div>
+                                </div>
                             </div>
-                            <span class="badge-live">Live</span>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2025</span>
-                                <span class="type">NLP App</span>
-                            </div>
-                            <h3>Blog Summarizer</h3>
-                            <p>Full-stack AI app — web scraping, NLP summarization, Urdu translation, dual database (Supabase + MongoDB). 10,000+ articles processed.</p>
-                            <div class="project-tech">
-                                <span>Next.js 15</span>
-                                <span>MongoDB</span>
-                                <span>NLP</span>
-                                <span>Supabase</span>
-                            </div>
-                            <div style="margin-top: 15px; display: flex; gap: 15px;">
-                                <a href="https://nexium-blog-summariser.vercel.app" target="_blank" rel="noopener" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i> View Live
-                                </a>
-                                <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign2" target="_blank" rel="noopener" class="project-link">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
+                            <div class="card-back">
+                                <h3>Tech Details</h3>
+                                <p>Dual database (Supabase + MongoDB). 10,000+ articles processed.</p>
+                                <div class="card-links">
+                                    <a href="https://nexium-shahzeb-faisal-assign2.vercel.app" target="_blank" rel="noopener" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
+                                    <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign2" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                </div>
                             </div>
                         </div>
                     </article>
 
                     <!-- Project 4 -->
                     <article class="project-card" data-category="ml web">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fas fa-microphone-alt"></i>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-header-gold">
+                                    <i class="fas fa-microphone-alt"></i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="project-meta">
+                                        <span class="year">2025</span>
+                                        <span class="type">AI / Voice</span>
+                                    </div>
+                                    <h3>AI Voice Assistant</h3>
+                                    <p>Voice-driven reservation system with STT/TTS APIs, NLP intent understanding.</p>
+                                    <div class="project-tech">
+                                        <span>Next.js 15</span><span>Django</span><span>PostgreSQL</span>
+                                    </div>
+                                </div>
                             </div>
-                            <span class="featured-badge" style="background:var(--accent-pink);">FYP</span>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2025</span>
-                                <span class="type">AI / Voice</span>
-                            </div>
-                            <h3>AI Voice Assistant – Restaurant Booking</h3>
-                            <p>Voice-driven reservation system with STT/TTS APIs, NLP intent understanding, and a restaurant manager dashboard with real-time table availability.</p>
-                            <div class="project-tech">
-                                <span>Next.js 15</span>
-                                <span>Django REST</span>
-                                <span>PostgreSQL</span>
-                                <span>NLP</span>
-                                <span>STT/TTS</span>
-                            </div>
-                            <div style="margin-top: 15px;">
-                                <a href="https://github.com/ShahzebFaisal5649" target="_blank" rel="noopener" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
-                                    <i class="fab fa-github"></i> View GitHub
-                                </a>
+                            <div class="card-back">
+                                <h3>Tech Details</h3>
+                                <p>Restaurant manager dashboard with real-time table availability.</p>
+                                <div class="card-links">
+                                    <a href="https://github.com/ShahzebFaisal5649" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                </div>
                             </div>
                         </div>
                     </article>
 
                     <!-- Project 5 -->
-                    <article class="project-card" data-category="web">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fas fa-quote-left"></i>
+                    <article class="project-card" data-category="web" data-live="true">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-header-gold">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="project-meta">
+                                        <span class="year">2025</span>
+                                        <span class="type">Web App</span>
+                                    </div>
+                                    <h3>QuoteGen AI</h3>
+                                    <p>AI-powered quote generator with topic-based LLM generation, WCAG 2.1 AA accessibility.</p>
+                                    <div class="project-tech">
+                                        <span>Next.js 15</span><span>TypeScript</span><span>Tailwind</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2025</span>
-                                <span class="type">Web App</span>
-                            </div>
-                            <h3>QuoteGen AI</h3>
-                            <p>AI-powered quote generator with topic-based LLM generation, WCAG 2.1 AA accessibility, and server-side rendering.</p>
-                            <div class="project-tech">
-                                <span>Next.js 15</span>
-                                <span>TypeScript</span>
-                                <span>Tailwind</span>
-                            </div>
-                            <div style="margin-top: 15px; display: flex; gap: 15px;">
-                                <a href="https://quotegen-ai.vercel.app" target="_blank" rel="noopener" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i> View Live
-                                </a>
-                                <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign1" target="_blank" rel="noopener" class="project-link">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
+                            <div class="card-back">
+                                <h3>Tech Details</h3>
+                                <p>Server-side rendering. High accessibility score.</p>
+                                <div class="card-links">
+                                    <a href="https://nexium-shahzeb-faisal-assign1.vercel.app" target="_blank" rel="noopener" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
+                                    <a href="https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Assign1" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                </div>
                             </div>
                         </div>
                     </article>
 
                     <!-- Project 6 -->
                     <article class="project-card" data-category="data ml">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fas fa-satellite"></i>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-header-gold">
+                                    <i class="fas fa-satellite"></i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="project-meta">
+                                        <span class="year">2024</span>
+                                        <span class="type">Data Science</span>
+                                    </div>
+                                    <h3>Environmental Analysis</h3>
+                                    <p>Satellite imagery analysis using NDVI to monitor deforestation and urban sprawl.</p>
+                                    <div class="project-tech">
+                                        <span>Python</span><span>NDVI</span><span>GDAL</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2024</span>
-                                <span class="type">Data Science</span>
-                            </div>
-                            <h3>Environmental Analysis</h3>
-                            <p>Satellite imagery analysis using NDVI to monitor deforestation and urban sprawl. 90% detection accuracy over 500+ sq km.</p>
-                            <div class="project-tech">
-                                <span>Python</span>
-                                <span>NDVI</span>
-                                <span>GDAL</span>
-                                <span>Rasterio</span>
-                            </div>
-                            <div style="margin-top: 15px;">
-                                <a href="https://github.com/ShahzebFaisal5649/Environmental_Impact_Analysis_using_Satellite_Data" target="_blank" rel="noopener" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
-                                    <i class="fab fa-github"></i> View GitHub
-                                </a>
+                            <div class="card-back">
+                                <h3>Tech Details</h3>
+                                <p>90% detection accuracy over 500+ sq km. Uses Rasterio.</p>
+                                <div class="card-links">
+                                    <a href="https://github.com/ShahzebFaisal5649/Environmental_Impact_Analysis_using_Satellite_Data" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                </div>
                             </div>
                         </div>
                     </article>
 
                     <!-- Project 7 -->
                     <article class="project-card" data-category="data">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fas fa-city"></i>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-header-gold">
+                                    <i class="fas fa-city"></i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="project-meta">
+                                        <span class="year">2025</span>
+                                        <span class="type">Big Data</span>
+                                    </div>
+                                    <h3>Smart City Management</h3>
+                                    <p>Real-time data pipeline processing 13.5M+ vehicle registrations.</p>
+                                    <div class="project-tech">
+                                        <span>Python</span><span>Pandas</span><span>Pipeline</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2025</span>
-                                <span class="type">Big Data</span>
-                            </div>
-                            <h3>Smart City Management</h3>
-                            <p>Real-time data pipeline processing 13.5M+ vehicle registrations with 98.75% data quality score and 40% query optimization.</p>
-                            <div class="project-tech">
-                                <span>Python</span>
-                                <span>Pandas</span>
-                                <span>Pipeline</span>
-                            </div>
-                            <div style="margin-top: 15px;">
-                                <a href="https://github.com/ShahzebFaisal5649/smart-city-management-system" target="_blank" rel="noopener" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
-                                    <i class="fab fa-github"></i> View GitHub
-                                </a>
+                            <div class="card-back">
+                                <h3>Tech Details</h3>
+                                <p>98.75% data quality score and 40% query optimization.</p>
+                                <div class="card-links">
+                                    <a href="https://github.com/ShahzebFaisal5649/smart-city-management-system" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                </div>
                             </div>
                         </div>
                     </article>
 
                     <!-- Project 8 -->
                     <article class="project-card" data-category="blockchain web">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fab fa-ethereum"></i>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-header-gold">
+                                    <i class="fab fa-ethereum"></i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="project-meta">
+                                        <span class="year">2025</span>
+                                        <span class="type">Blockchain</span>
+                                    </div>
+                                    <h3>Election DApp</h3>
+                                    <p>Decentralized voting on Ethereum — immutable vote recording, zero tampering.</p>
+                                    <div class="project-tech">
+                                        <span>Solidity</span><span>Web3.js</span><span>React</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2025</span>
-                                <span class="type">Blockchain</span>
-                            </div>
-                            <h3>Election DApp</h3>
-                            <p>Decentralized voting on Ethereum — immutable vote recording, zero tampering, automated counting with real-time results dashboard.</p>
-                            <div class="project-tech">
-                                <span>Solidity</span>
-                                <span>Web3.js</span>
-                                <span>Truffle</span>
-                                <span>React</span>
-                            </div>
-                            <div style="margin-top: 15px;">
-                                <a href="https://github.com/ShahzebFaisal5649/election-dapp" target="_blank" rel="noopener" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
-                                    <i class="fab fa-github"></i> View GitHub
-                                </a>
+                            <div class="card-back">
+                                <h3>Tech Details</h3>
+                                <p>Automated counting with real-time results dashboard. Uses Truffle.</p>
+                                <div class="card-links">
+                                    <a href="https://github.com/ShahzebFaisal5649/election-dapp" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                </div>
                             </div>
                         </div>
                     </article>
 
                     <!-- Project 9 -->
                     <article class="project-card" data-category="ml">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fas fa-image"></i>
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-header-gold">
+                                    <i class="fas fa-image"></i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="project-meta">
+                                        <span class="year">2024</span>
+                                        <span class="type">Deep Learning</span>
+                                    </div>
+                                    <h3>Image Captioning LSTM</h3>
+                                    <p>CNN-LSTM architecture with attention mechanism generating image captions.</p>
+                                    <div class="project-tech">
+                                        <span>TensorFlow</span><span>ResNet50</span><span>LSTM</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2024</span>
-                                <span class="type">Deep Learning</span>
-                            </div>
-                            <h3>Image Captioning LSTM</h3>
-                            <p>CNN-LSTM architecture with attention mechanism generating image captions. BLEU-4 score: 0.875, 92% validation accuracy.</p>
-                            <div class="project-tech">
-                                <span>TensorFlow</span>
-                                <span>ResNet50</span>
-                                <span>LSTM</span>
-                                <span>Keras</span>
-                            </div>
-                            <div style="margin-top: 15px;">
-                                <a href="https://github.com/ShahzebFaisal5649/Visual-Description-Generator-For-Images-Data" target="_blank" rel="noopener" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
-                                    <i class="fab fa-github"></i> View GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 10 -->
-                    <article class="project-card" data-category="web data">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fas fa-user-graduate"></i>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2024</span>
-                                <span class="type">Full-Stack</span>
-                            </div>
-                            <h3>Edu Connect</h3>
-                            <p>Real-time tutor-student matching platform — WebSocket chat, role-based auth, session scheduling, subject matching. Built for 1000+ concurrent users.</p>
-                            <div class="project-tech">
-                                <span>React</span>
-                                <span>Node.js</span>
-                                <span>MySQL</span>
-                                <span>Socket.io</span>
-                            </div>
-                            <div style="margin-top: 15px;">
-                                <a href="https://github.com/ShahzebFaisal5649/DB_Lab_Project" target="_blank" rel="noopener" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
-                                    <i class="fab fa-github"></i> View GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 11 -->
-                    <article class="project-card" data-category="web">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fas fa-dumbbell"></i>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2024</span>
-                                <span class="type">Web App</span>
-                            </div>
-                            <h3>FLEX GYM Website</h3>
-                            <p>Smart gym platform with workout tracker, nutrition panel, and AI chatbot trainer.</p>
-                            <div class="project-tech">
-                                <span>HTML/CSS</span>
-                                <span>Tailwind</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div style="margin-top: 15px;">
-                                <a href="https://github.com/ShahzebFaisal5649/GYM-Website" target="_blank" rel="noopener" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
-                                    <i class="fab fa-github"></i> View GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 12 -->
-                    <article class="project-card" data-category="web">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fas fa-film"></i>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2024</span>
-                                <span class="type">Web App</span>
-                            </div>
-                            <h3>Movie Showcase</h3>
-                            <p>Responsive movie browser with TMDb API integration, advanced filtering, and infinite scrolling.</p>
-                            <div class="project-tech">
-                                <span>Bootstrap 5</span>
-                                <span>TMDb API</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div style="margin-top: 15px;">
-                                <a href="https://github.com/ShahzebFaisal5649/Movie-Showcase" target="_blank" rel="noopener" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
-                                    <i class="fab fa-github"></i> View GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 13 -->
-                    <article class="project-card" data-category="web">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2024</span>
-                                <span class="type">E-Commerce</span>
-                            </div>
-                            <h3>E-Shop Website</h3>
-                            <p>Full e-commerce platform with cart, user auth, admin panel, and SQL Server transactions.</p>
-                            <div class="project-tech">
-                                <span>PHP</span>
-                                <span>SQL Server</span>
-                                <span>Bootstrap</span>
-                            </div>
-                            <div style="margin-top: 15px;">
-                                <a href="https://github.com/ShahzebFaisal5649/E-Shop" target="_blank" rel="noopener" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
-                                    <i class="fab fa-github"></i> View GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 14 -->
-                    <article class="project-card" data-category="data">
-                        <div class="project-image">
-                            <div class="project-preview">
-                                <i class="fas fa-cloud"></i>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-meta">
-                                <span class="year">2024</span>
-                                <span class="type">DevOps / IaC</span>
-                            </div>
-                            <h3>Azure Bicep Templates</h3>
-                            <p>Automated cloud infrastructure deployment using modular, secure Azure Bicep templates to minimize configuration errors.</p>
-                            <div class="project-tech">
-                                <span>Azure</span>
-                                <span>Bicep</span>
-                                <span>IaC</span>
-                                <span>CLI</span>
-                            </div>
-                            <div style="margin-top: 15px;">
-                                <a href="https://github.com/ShahzebFaisal5649/Bicep-Shahzeb-Ass" target="_blank" rel="noopener" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
-                                    <i class="fab fa-github"></i> View GitHub
-                                </a>
+                            <div class="card-back">
+                                <h3>Tech Details</h3>
+                                <p>BLEU-4 score: 0.875, 92% validation accuracy. Uses Keras.</p>
+                                <div class="card-links">
+                                    <a href="https://github.com/ShahzebFaisal5649/Visual-Description-Generator-For-Images-Data" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Code</a>
+                                </div>
                             </div>
                         </div>
                     </article>
                 </div>
 
                 <div class="projects-cta">
-                    <a href="https://github.com/ShahzebFaisal5649?tab=repositories" target="_blank" rel="noopener"
-                        class="btn btn-secondary">
-                        <span>View All on GitHub</span>
-                        <i class="fab fa-github"></i>
+                    <a href="projects.html" class="btn btn-secondary">
+                        <span>View All Projects</span>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+
             </div>
         </section>
 
@@ -984,11 +843,7 @@
                                 <h3>MERN Stack Developer</h3>
                                 <span class="company">NEXTSTAC</span>
                             </div>
-                            <span class="date current">
-                                <span style="display:inline-block;width:7px;height:7px;border-radius:50%;
-                                background:#10b981;margin-right:6px;animation:pulse 2s infinite"></span>
-                                Jan 15, 2025 – Present
-                            </span>
+                            <span class="date current">Jan 15, 2025 – Present</span>
                             </div>
                             <p>Building production full-stack AI applications. Engineered DesignCustomBox
                             (designcustombox.com) — a 3D WebGL custom packaging e-commerce platform with real-time
@@ -1083,9 +938,8 @@
                 <div class="github-activity">
                     <h3><i class="fab fa-github"></i> GitHub Contributions</h3>
                     <div class="github-chart-wrapper">
-                        <img src="https://ghchart.rshah.org/6366f1/ShahzebFaisal5649"
-                            alt="GitHub Contribution Chart" class="github-chart" loading="lazy" width="800"
-                            height="150">
+                        <img src="https://ghchart.rshah.org/C9A84C/ShahzebFaisal5649"
+                            alt="GitHub Contribution Chart" class="github-chart" loading="lazy">
                     </div>
                 </div>
                 </div>
@@ -1277,33 +1131,100 @@
                     </div>
                 </div>
 
-                <div class="skill-bars-container">
+                <div class="skill-bars-container" style="text-align: center;">
                   <h3 class="skill-bars-title">Proficiency Overview</h3>
-                  <div class="skill-bars-grid">
-                    <div class="skill-bar-item" data-skill="React / Next.js"></div>
-                    <div class="skill-bar-item" data-skill="Node.js / Express"></div>
-                    <div class="skill-bar-item" data-skill="Three.js / WebGL"></div>
-                    <div class="skill-bar-item" data-skill="TypeScript"></div>
-                    <div class="skill-bar-item" data-skill="Python / ML"></div>
-                    <div class="skill-bar-item" data-skill="MongoDB / SQL"></div>
-                    <div class="skill-bar-item" data-skill="AI / LLM APIs"></div>
-                    <div class="skill-bar-item" data-skill="UI/UX Design"></div>
-                  </div>
+                  <canvas id="radar-chart" width="400" height="400" style="max-width: 100%;"></canvas>
                 </div>
 
-                <div class="stack-chart-container">
+                <div class="stack-chart-container" style="text-align: center;">
                   <h3 class="skill-bars-title">Stack Distribution</h3>
-                  <div class="stack-chart-inner">
-                    <div id="stack-distribution"></div>
-                    <div class="stack-legend">
-                      <div class="legend-item"><span style="background:#d4ff33"></span>Frontend · 40%</div>
-                      <div class="legend-item"><span style="background:#10b981"></span>Backend · 30%</div>
-                      <div class="legend-item"><span style="background:#3b82f6"></span>AI / ML · 20%</div>
-                      <div class="legend-item"><span style="background:#f59e0b"></span>DevOps · 10%</div>
-                    </div>
+                  <canvas id="donut-chart" width="300" height="300" style="max-width: 100%;"></canvas>
+                  <div class="stack-legend" style="display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap;">
+                    <div class="legend-item"><span style="background:var(--gold-primary); width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;"></span>Frontend 40%</div>
+                    <div class="legend-item"><span style="background:var(--gold-dark); width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;"></span>Backend 30%</div>
+                    <div class="legend-item"><span style="background:var(--gold-light); width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;"></span>AI/ML 20%</div>
+                    <div class="legend-item"><span style="background:var(--gold-shine); width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;"></span>DevOps 10%</div>
                   </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS SECTION -->
+        <section id="certs" class="certs">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Achievements</span>
+                    <h2 class="section-title">Certifications</h2>
+                </div>
+                <div class="certs-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                    <div class="cert-card" style="background: rgba(10,10,10,0.9); border: 1px solid rgba(201,168,76,0.2); padding: 20px; border-radius: 8px; text-align: center;">
+                        <div class="cert-icon" style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;"><i class="fas fa-certificate"></i></div>
+                        <h3 style="font-family: 'Cinzel', serif; color: var(--gold-primary);">Nexium</h3>
+                        <p style="color: var(--text-secondary);">AI-First Web Development</p>
+                        <button class="btn btn-secondary view-cert-btn" data-cert="nexium" style="margin-top: 15px;">View Certificate</button>
+                    </div>
+                    <div class="cert-card" style="background: rgba(10,10,10,0.9); border: 1px solid rgba(201,168,76,0.2); padding: 20px; border-radius: 8px; text-align: center;">
+                        <div class="cert-icon" style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;"><i class="fas fa-certificate"></i></div>
+                        <h3 style="font-family: 'Cinzel', serif; color: var(--gold-primary);">Kashf Foundation</h3>
+                        <p style="color: var(--text-secondary);">Data Analysis Intern</p>
+                        <button class="btn btn-secondary view-cert-btn" data-cert="kashf" style="margin-top: 15px;">View Certificate</button>
+                    </div>
+                    <div class="cert-card" style="background: rgba(10,10,10,0.9); border: 1px solid rgba(201,168,76,0.2); padding: 20px; border-radius: 8px; text-align: center;">
+                        <div class="cert-icon" style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;"><i class="fas fa-certificate"></i></div>
+                        <h3 style="font-family: 'Cinzel', serif; color: var(--gold-primary);">Bright Network</h3>
+                        <p style="color: var(--text-secondary);">Technology Internship</p>
+                        <button class="btn btn-secondary view-cert-btn" data-cert="bright" style="margin-top: 15px;">View Certificate</button>
+                    </div>
+                    <div class="cert-card" style="background: rgba(10,10,10,0.9); border: 1px solid rgba(201,168,76,0.2); padding: 20px; border-radius: 8px; text-align: center;">
+                        <div class="cert-icon" style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;"><i class="fas fa-certificate"></i></div>
+                        <h3 style="font-family: 'Cinzel', serif; color: var(--gold-primary);">CodeAlpha</h3>
+                        <p style="color: var(--text-secondary);">Machine Learning Intern</p>
+                        <button class="btn btn-secondary view-cert-btn" data-cert="codealpha" style="margin-top: 15px;">View Certificate</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECH STACK SECTION -->
+        <section id="tools" class="tools">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Stack</span>
+                    <h2 class="section-title">Tech Stack & Tools</h2>
+                </div>
+                <div class="tools-grid" style="display: flex; flex-direction: column; gap: 40px;">
+                    <div class="tools-row">
+                        <h4 style="font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 15px;">Languages</h4>
+                        <div class="tools-list" style="display: flex; gap: 20px; flex-wrap: wrap;">
+                            <div class="tool-icon" data-level="90%" style="position: relative; cursor: pointer; text-align: center;">
+                                <i class="fab fa-python" style="font-size: 3rem; color: var(--gold-primary);"></i>
+                                <span style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">Python</span>
+                            </div>
+                            <div class="tool-icon" data-level="85%" style="position: relative; cursor: pointer; text-align: center;">
+                                <i class="fab fa-js" style="font-size: 3rem; color: var(--gold-primary);"></i>
+                                <span style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">JavaScript</span>
+                            </div>
+                            <div class="tool-icon" data-level="80%" style="position: relative; cursor: pointer; text-align: center;">
+                                <i class="fab fa-js-square" style="font-size: 3rem; color: var(--gold-primary);"></i>
+                                <span style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">TypeScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tools-row">
+                        <h4 style="font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 15px;">Frameworks</h4>
+                        <div class="tools-list" style="display: flex; gap: 20px; flex-wrap: wrap;">
+                            <div class="tool-icon" data-level="85%" style="position: relative; cursor: pointer; text-align: center;">
+                                <i class="fab fa-react" style="font-size: 3rem; color: var(--gold-primary);"></i>
+                                <span style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">React</span>
+                            </div>
+                            <div class="tool-icon" data-level="80%" style="position: relative; cursor: pointer; text-align: center;">
+                                <i class="fab fa-node-js" style="font-size: 3rem; color: var(--gold-primary);"></i>
+                                <span style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">Node.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1425,57 +1346,29 @@
                     </div>
                 </div>
             </div>
+        <!-- "Hire Me" Spotlight Section -->
+        <section id="hire-me" class="hire-me-section" style="background: rgba(5,5,5,0.8); backdrop-filter: blur(10px); padding: 80px 0; border-top: 1px solid rgba(201,168,76,0.2); text-align: center;">
+            <div class="container">
+                <div class="hire-content" style="max-width: 600px; margin: 0 auto;">
+                    <span class="section-tag">Opportunity</span>
+                    <h2 class="section-title" style="margin: 15px 0;">Let's Build Something Extraordinary</h2>
+                    <p class="section-desc" style="color: #E0E0E0; margin-bottom: 30px;">I am currently open to full-time roles, contracts, and collaborations starting June 2026. If you are looking for an AI developer who can bridge the gap between complex data and beautiful user experiences, let's talk.</p>
+                    <div class="hire-buttons" style="display: flex; justify-content: center; gap: 20px;">
+                        <a href="mailto:shahzebfaisal5649@gmail.com" class="btn btn-primary">
+                            <span>Email Me</span>
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://wa.me/923020418510" target="_blank" class="btn btn-secondary" style="border: 1px solid #C9A84C; color: #C9A84C; background: transparent; padding: 12px 24px; border-radius: 8px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.3s ease;">
+                            <span>WhatsApp</span>
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-social">
-                <!-- GitHub -->
-                <a href="https://github.com/ShahzebFaisal5649" target="_blank" rel="noopener" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-
-                <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/shahzeb-faisal-8b9190321/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-
-                <!-- Email -->
-                <a href="mailto:shahzebfaisal5649@gmail.com" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-
-                <!-- HuggingFace (SVG) -->
-                <a href="https://huggingface.co/ShahzebFaisal5649" target="_blank" rel="noopener" aria-label="HuggingFace">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-2.5 6.5a1 1 0 110 2 1 1 0 010-2zm5 0a1 1 0 110 2 1 1 0 010-2zm-5.5 4.5h6s-.5 3-3 3-3-3-3-3z" fill="currentColor"/>
-                    </svg>
-                </a>
-
-                <!-- Kaggle (SVG) -->
-                <a href="https://www.kaggle.com/shahzebfaisal5649" target="_blank" rel="noopener" aria-label="Kaggle">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.235.118-.353.354-.353h2.431c.234 0 .351.118.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.12.034.234-.036.336l-7.132 7.003 7.967 10.23c.072.072.11.181.117.312"/>
-                    </svg>
-                </a>
-
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 Shahzeb Faisal. Built with vanilla JS + Three.js.</p>
-                <div class="perf-badge" title="Google Lighthouse Performance Score">
-                    <i class="fas fa-bolt"></i>
-                    <span>Lighthouse</span>
-                    <strong>98</strong>
-                </div>
-                <p class="shortcut-hint">
-                    <kbd>Ctrl</kbd>+<kbd>.</kbd> AI terminal &nbsp;|&nbsp;
-                    <kbd>Ctrl</kbd>+<kbd>K</kbd> command palette
-                </p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer handled by Scripts/Sidebar.js -->
 
     <!-- Project Modal -->
     <div class="modal-overlay" id="project-modal">
@@ -1534,10 +1427,15 @@
     <div class="spotlight" id="spotlight"></div>
 
     <!-- Scripts -->
+    <script src="Scripts/config.js"></script>
+    <script src="Scripts/Cursor.js"></script>
+    <script src="Scripts/Sidebar.js"></script>
+    <script src="Scripts/GeminiChat.js"></script>
     <script src="Scripts/ModelFiles.js" defer></script>
     <script src="Scripts/env.local.js" onerror="window.ENV={}"></script>
     <script src="Scripts/Main.js" defer></script>
     <script src="Scripts/NeuralBackground.js" defer></script>
+    <script src="Scripts/SkillsCharts.js" defer></script>
 
     <!-- ═══════════════════════════════════════════════════════════
      CERTIFICATE MODAL - Add this before </body> in index.html

@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   NeuralBackground.js - Interactive ML-Themed Visualization
+   NeuralBackground.js - 3D Neural Network with Three.js
    ═══════════════════════════════════════════════════════════ */
 
 class NeuralBackground {
@@ -7,122 +7,90 @@ class NeuralBackground {
         this.canvas = document.getElementById(canvasId);
         if (!this.canvas) return;
 
-        // Disable on mobile/tablet for performance
-        const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        if (isMobile) {
-            this.canvas.style.display = 'none';
-            return;
-        }
-
-        this.ctx = this.canvas.getContext('2d');
-        this.particles = [];
-        this.mouse = { x: null, y: null, radius: 150 };
-        this.numberOfParticles = 40;
-
         this.init();
         this.animate();
         this.handleResize();
-        this.handleMouse();
     }
 
     init() {
-        this.resize();
-        this.particles = [];
-        for (let i = 0; i < this.numberOfParticles; i++) {
-            this.particles.push(new Particle(this.canvas.width, this.canvas.height));
+        const width = this.canvas.parentElement.offsetWidth;
+        const height = this.canvas.parentElement.offsetHeight;
+
+        this.scene = new THREE.Scene();
+        this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+        this.camera.position.z = 400;
+
+        this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, alpha: true, antialias: true });
+        this.renderer.setSize(width, height);
+        this.renderer.setPixelRatio(window.devicePixelRatio);
+
+        this.group = new THREE.Group();
+        this.scene.add(this.group);
+
+        // Create nodes
+        const nodeCount = 100;
+        const geometry = new THREE.SphereGeometry(2, 8, 8);
+        const material = new THREE.MeshBasicMaterial({ color: 0xC9A84C });
+
+        this.nodes = [];
+        for (let i = 0; i < nodeCount; i++) {
+            const mesh = new THREE.Mesh(geometry, material);
+            mesh.position.set(
+                (Math.random() - 0.5) * 600,
+                (Math.random() - 0.5) * 600,
+                (Math.random() - 0.5) * 600
+            );
+            this.group.add(mesh);
+            this.nodes.push(mesh);
         }
+
+        // Create lines
+        const lineMaterial = new THREE.LineBasicMaterial({ color: 0xC9A84C, transparent: true, opacity: 0.2 });
+        const lineGeometry = new THREE.BufferGeometry();
+        const positions = [];
+
+        for (let i = 0; i < nodeCount; i++) {
+            for (let j = i + 1; j < nodeCount; j++) {
+                const dist = this.nodes[i].position.distanceTo(this.nodes[j].position);
+                if (dist < 100) {
+                    positions.push(
+                        this.nodes[i].position.x, this.nodes[i].position.y, this.nodes[i].position.z,
+                        this.nodes[j].position.x, this.nodes[j].position.y, this.nodes[j].position.z
+                    );
+                }
+            }
+        }
+
+        lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        const lineSegments = new THREE.LineSegments(lineGeometry, lineMaterial);
+        this.group.add(lineSegments);
     }
 
-    resize() {
-        this.canvas.width = this.canvas.parentElement.offsetWidth;
-        this.canvas.height = this.canvas.parentElement.offsetHeight;
+    animate() {
+        requestAnimationFrame(() => this.animate());
+
+        this.group.rotation.y += 0.001;
+        this.group.rotation.x += 0.0005;
+
+        // Pulse nodes
+        const time = Date.now() * 0.002;
+        this.nodes.forEach((node, i) => {
+            const scale = 1 + Math.sin(time + i) * 0.3;
+            node.scale.set(scale, scale, scale);
+        });
+
+        this.renderer.render(this.scene, this.camera);
     }
 
     handleResize() {
         window.addEventListener('resize', () => {
-            this.resize();
-            this.init();
+            const width = this.canvas.parentElement.offsetWidth;
+            const height = this.canvas.parentElement.offsetHeight;
+            this.camera.aspect = width / height;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(width, height);
         });
-    }
-
-    handleMouse() {
-        window.addEventListener('mousemove', (e) => {
-            const rect = this.canvas.getBoundingClientRect();
-            this.mouse.x = e.clientX - rect.left;
-            this.mouse.y = e.clientY - rect.top;
-        });
-
-        window.addEventListener('mouseleave', () => {
-            this.mouse.x = null;
-            this.mouse.y = null;
-        });
-    }
-
-    animate() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        for (let i = 0; i < this.particles.length; i++) {
-            this.particles[i].update(this.canvas.width, this.canvas.height, this.mouse);
-            this.particles[i].draw(this.ctx);
-
-            // Draw connections
-            for (let j = i; j < this.particles.length; j++) {
-                const dx = this.particles[i].x - this.particles[j].x;
-                const dy = this.particles[i].y - this.particles[j].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < 120) {
-                    const opacity = 1 - (distance / 120);
-                    this.ctx.beginPath();
-                    this.ctx.strokeStyle = `rgba(212, 255, 51, ${opacity * 0.2})`;
-                    this.ctx.lineWidth = 1;
-                    this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
-                    this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
-                    this.ctx.stroke();
-                }
-            }
-        }
-        requestAnimationFrame(() => this.animate());
     }
 }
 
-class Particle {
-    constructor(width, height) {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = (Math.random() - 0.5) * 1.5;
-        this.speedY = (Math.random() - 0.5) * 1.5;
-    }
-
-    update(width, height, mouse) {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        // Bounce off walls
-        if (this.x > width || this.x < 0) this.speedX *= -1;
-        if (this.y > height || this.y < 0) this.speedY *= -1;
-
-        // Mouse interaction
-        if (mouse.x !== null && mouse.y !== null) {
-            const dx = mouse.x - this.x;
-            const dy = mouse.y - this.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < mouse.radius) {
-                const force = (mouse.radius - distance) / mouse.radius;
-                this.x -= dx * force * 0.02;
-                this.y -= dy * force * 0.02;
-            }
-        }
-    }
-
-    draw(ctx) {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(212, 255, 51, 0.6)';
-        ctx.fill();
-    }
-}
-
-// Global initialization helper
 window.initNeuralBackground = (id) => new NeuralBackground(id);

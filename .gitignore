@@ -6,3 +6,5 @@ Scripts/env.local.js
 index.html.backup
 Scripts/TerminalFunction.js.backup
 .vercel
+
+Scripts/config.js

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Experience | Shahzeb Faisal</title>
+    <!-- Optimized Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Styles/Main.css">
+    <style>
+        body {
+            background: var(--black);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+        }
+        .exp-page {
+            padding: 100px 0 60px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: rgba(201,168,76,0.2);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+            width: 50%;
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--gold-primary);
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            z-index: 2;
+            box-shadow: 0 0 10px var(--gold-primary);
+        }
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -8px;
+        }
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -8px;
+        }
+        .timeline-content {
+            background: rgba(10,10,10,0.9);
+            border: 1px solid rgba(201,168,76,0.2);
+            padding: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .timeline-content:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-3px);
+        }
+        .date-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border: 1px solid var(--gold-primary);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--gold-primary);
+            margin-bottom: 10px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .role-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-primary);
+            margin-bottom: 5px;
+        }
+        .company-name {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .details-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            text-align: left;
+        }
+        .timeline-content.active .details-panel {
+            max-height: 200px; /* Adjust as needed */
+            margin-top: 15px;
+        }
+        .tech-pills span {
+            display: inline-block;
+            background: rgba(201,168,76,0.1);
+            color: var(--gold-primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin: 2px;
+        }
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 20px;
+                text-align: left !important;
+            }
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            .timeline-dot {
+                left: 12px !important;
+                right: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar and Navigation handled by Scripts/Sidebar.js -->
+
+    <div class="exp-page">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+                <span class="section-tag">Career Path</span>
+                <h2 class="section-title">Work Experience</h2>
+            </div>
+
+            <div class="timeline">
+                <!-- 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content" onclick="this.classList.toggle('active')">
+                        <span class="date-badge">2024–Present</span>
+                        <h3 class="role-title">Research Assistant</h3>
+                        <div class="company-name">FAST NUCES</div>
+                        <div class="details-panel">
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Researching LLM-based conversational chatbots under Dr. Esha Tur Razia Babar.</p>
+                            <div class="tech-pills" style="margin-top: 10px;">
+                                <span>LLMs</span><span>Python</span><span>RAG</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content" onclick="this.classList.toggle('active')">
+                        <span class="date-badge">Jul–Aug 2025</span>
+                        <h3 class="role-title">AI-First Web Dev Intern</h3>
+                        <div class="company-name">Nexium</div>
+                        <div class="details-panel">
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Developed AI-integrated web applications using modern frontend frameworks.</p>
+                            <div class="tech-pills" style="margin-top: 10px;">
+                                <span>React</span><span>Node.js</span><span>OpenAI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content" onclick="this.classList.toggle('active')">
+                        <span class="date-badge">Sep 2024</span>
+                        <h3 class="role-title">Software Dev Trainee</h3>
+                        <div class="company-name">Bright Network</div>
+                        <div class="details-panel">
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Intensive training on software engineering principles and full-stack development.</p>
+                            <div class="tech-pills" style="margin-top: 10px;">
+                                <span>Java</span><span>Spring</span><span>SQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content" onclick="this.classList.toggle('active')">
+                        <span class="date-badge">Jun–Jul 2024</span>
+                        <h3 class="role-title">Data Science Intern</h3>
+                        <div class="company-name">CodeAlpha</div>
+                        <div class="details-panel">
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Worked on machine learning models and data visualization projects.</p>
+                            <div class="tech-pills" style="margin-top: 10px;">
+                                <span>Python</span><span>Scikit-Learn</span><span>Pandas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content" onclick="this.classList.toggle('active')">
+                        <span class="date-badge">Jul–Aug 2024</span>
+                        <h3 class="role-title">Data & Software Intern</h3>
+                        <div class="company-name">Kashf Foundation</div>
+                        <div class="details-panel">
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Analyzed operational data and assisted in software maintenance.</p>
+                            <div class="tech-pills" style="margin-top: 10px;">
+                                <span>Excel</span><span>Python</span><span>MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content" onclick="this.classList.toggle('active')">
+                        <span class="date-badge">2021–2025</span>
+                        <h3 class="role-title">BS Data Science</h3>
+                        <div class="company-name">FAST NUCES</div>
+                        <div class="details-panel">
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Graduated with a focus on machine learning, statistics, and big data.</p>
+                            <div class="tech-pills" style="margin-top: 10px;">
+                                <span>Degree</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GitHub Heatmap -->
+            <div style="margin-top: 60px; text-align: center;">
+                <h3 style="font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 20px;">Code Contributions</h3>
+                <div style="background: rgba(10,10,10,0.9); padding: 20px; border-radius: 8px; border: 1px solid rgba(201,168,76,0.2); display: inline-block;">
+                    <img src="https://ghchart.rshah.org/C9A84C/ShahzebFaisal5649" alt="GitHub Contributions" style="max-width: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="Scripts/config.js"></script>
+    <script src="Scripts/Cursor.js"></script>
+    <script src="Scripts/Sidebar.js"></script>
+</body>
+</html>

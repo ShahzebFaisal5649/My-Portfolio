@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Skills | Shahzeb Faisal</title>
+    <!-- Optimized Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Styles/Main.css">
+    <style>
+        body {
+            background: var(--black);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+        }
+        .skills-page {
+            padding: 100px 0 60px;
+        }
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .chart-container {
+            background: rgba(10,10,10,0.9);
+            border: 1px solid rgba(201,168,76,0.2);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .chart-container h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            background: rgba(10,10,10,0.9);
+            border: 1px solid rgba(201,168,76,0.2);
+        }
+        .skills-table th, .skills-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(201,168,76,0.1);
+        }
+        .skills-table th {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-primary);
+            cursor: pointer;
+            background: rgba(201,168,76,0.05);
+        }
+        .skills-table th:hover {
+            background: rgba(201,168,76,0.1);
+        }
+        .skills-table th.sorted-asc::after { content: ' ↑'; }
+        .skills-table th.sorted-desc::after { content: ' ↓'; }
+        .skills-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+        .sorted-col {
+            background: rgba(201,168,76,0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar and Navigation handled by Scripts/Sidebar.js -->
+
+    <div class="skills-page">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+                <span class="section-tag">Competencies</span>
+                <h2 class="section-title">Technical Skills</h2>
+            </div>
+
+            <div class="charts-grid">
+                <!-- Section 1: Radar Chart -->
+                <div class="chart-container">
+                    <h3>Skill Proficiency</h3>
+                    <canvas id="radarChart" width="400" height="400"></canvas>
+                </div>
+
+                <!-- Section 2: Donut Chart -->
+                <div class="chart-container">
+                    <h3>Domain Distribution</h3>
+                    <canvas id="donutChart" width="400" height="400"></canvas>
+                    <div id="donutLegend" style="margin-top: 20px; display: flex; justify-content: center; gap: 15px; font-size: 0.9rem;"></div>
+                </div>
+            </div>
+
+            <!-- Section 3: Full Tech Icon Grid (Placeholder from Part 1 #11) -->
+            <!-- I'll add a simple grid here as requested in Task 11 of Part 1 -->
+            <div class="chart-container" style="margin-bottom: 60px;">
+                <h3>Tech Stack & Tools</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 20px; justify-items: center; margin-top: 20px;">
+                    <!-- Placeholder icons -->
+                    <div title="Python"><i class="fab fa-python" style="font-size: 2.5rem; color: var(--gold-primary);"></i></div>
+                    <div title="JavaScript"><i class="fab fa-js" style="font-size: 2.5rem; color: var(--gold-primary);"></i></div>
+                    <div title="React"><i class="fab fa-react" style="font-size: 2.5rem; color: var(--gold-primary);"></i></div>
+                    <div title="Node.js"><i class="fab fa-node-js" style="font-size: 2.5rem; color: var(--gold-primary);"></i></div>
+                    <div title="HTML5"><i class="fab fa-html5" style="font-size: 2.5rem; color: var(--gold-primary);"></i></div>
+                    <div title="CSS3"><i class="fab fa-css3-alt" style="font-size: 2.5rem; color: var(--gold-primary);"></i></div>
+                    <div title="Git"><i class="fab fa-git-alt" style="font-size: 2.5rem; color: var(--gold-primary);"></i></div>
+                    <div title="Database"><i class="fas fa-database" style="font-size: 2.5rem; color: var(--gold-primary);"></i></div>
+                </div>
+            </div>
+
+            <!-- Section 4: Sortable Table -->
+            <div class="chart-container">
+                <h3>Detailed Skills List</h3>
+                <table class="skills-table" id="skillsTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)">Skill</th>
+                            <th onclick="sortTable(1)">Category</th>
+                            <th onclick="sortTable(2)">Level</th>
+                            <th onclick="sortTable(3)">Years</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Python</td><td>Backend/AI</td><td>Expert</td><td>4</td></tr>
+                        <tr><td>JavaScript</td><td>Frontend</td><td>Expert</td><td>3</td></tr>
+                        <tr><td>React</td><td>Frontend</td><td>Advanced</td><td>2</td></tr>
+                        <tr><td>Node.js</td><td>Backend</td><td>Intermediate</td><td>2</td></tr>
+                        <tr><td>TensorFlow</td><td>AI/ML</td><td>Advanced</td><td>2</td></tr>
+                        <tr><td>SQL</td><td>Backend</td><td>Advanced</td><td>3</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="Scripts/config.js"></script>
+    <script src="Scripts/Cursor.js"></script>
+    <script src="Scripts/Sidebar.js"></script>
+    <!-- Custom Script for Charts and Table -->
+    <script src="Scripts/SkillsPage.js"></script>
+</body>
+</html>
