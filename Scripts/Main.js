@@ -1092,8 +1092,6 @@ Type 'help' for available commands or ask naturally about anything!`;
 ║  github     - Open GitHub profile                         ║
 ║  linkedin   - Open LinkedIn profile                       ║
 ║  email      - Send an email                               ║
-║  huggingface- Open HuggingFace profile                    ║
-║  kaggle     - Open Kaggle profile                         ║
 ║                                                           ║
 ║  UTILITIES                                                ║
 ║  ─────────                                                ║
@@ -1565,7 +1563,7 @@ Type 'help' for available commands or ask naturally about anything!`;
         autocomplete() {
             const input = this.input.value.toLowerCase();
             const commands = ['help', 'about', 'skills', 'projects', 'experience', 'contact', 'social',
-                'resume', 'github', 'linkedin', 'email', 'huggingface', 'kaggle', 'clear', 'sound', 'confetti',
+                'resume', 'github', 'linkedin', 'email', 'clear', 'sound', 'confetti',
                 'matrix', 'exit', 'ai'];
 
             const match = commands.find(cmd => cmd.startsWith(input));
@@ -1656,14 +1654,6 @@ Type 'help' for available commands or ask naturally about anything!`;
                     case 'email':
                         window.location.href = 'mailto:shahzebfaisal5649@gmail.com';
                         this.addLine('<span class="term-success">📧 Opening email client...</span>');
-                        break;
-                    case 'huggingface':
-                        window.open('https://huggingface.co/ShahzebFaisal5649', '_blank');
-                        this.addLine('<span class="term-success">🤗 Opening HuggingFace...</span>');
-                        break;
-                    case 'kaggle':
-                        window.open('https://www.kaggle.com/shahzebfaisal5649', '_blank');
-                        this.addLine('<span class="term-success">📊 Opening Kaggle...</span>');
                         break;
                     case 'repos':
                         let reposOutput = `<div class="terminal-section">
@@ -3240,38 +3230,6 @@ Type 'help' for available commands or ask naturally about anything!`;
                 }
             },
             {
-                id: 'toggle-theme',
-                title: 'Change Color Theme',
-                desc: 'Cycle through cyberpunk colors (lime, cyber, neon, gold, crimson)',
-                icon: 'fa-palette',
-                shortcut: 'T',
-                action: () => {
-                    const themes = [
-                        { name: "lime", primary: "#d4ff33", rgb: "212, 255, 51" },
-                        { name: "cyber", primary: "#00f2fe", rgb: "0, 242, 254" },
-                        { name: "neon", primary: "#ff0080", rgb: "255, 0, 128" },
-                        { name: "gold", primary: "#ffd700", rgb: "255, 215, 0" },
-                        { name: "crimson", primary: "#ff4757", rgb: "255, 71, 87" }
-                    ];
-                    
-                    const currentPrimary = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
-                    let nextIndex = 0;
-                    for (let i = 0; i < themes.length; i++) {
-                        if (themes[i].primary.toLowerCase() === currentPrimary.toLowerCase() || 
-                            currentPrimary.toLowerCase().includes(themes[i].name)) {
-                            nextIndex = (i + 1) % themes.length;
-                            break;
-                        }
-                    }
-                    const nextTheme = themes[nextIndex];
-                    document.documentElement.style.setProperty("--primary", nextTheme.primary);
-                    document.documentElement.style.setProperty("--primary-rgb", nextTheme.rgb);
-                    if (window.showToast) {
-                        window.showToast(`Theme changed to: ${nextTheme.name.toUpperCase()}`);
-                    }
-                }
-            },
-            {
                 id: 'download-resume',
                 title: 'Download Resume',
                 desc: 'Get a clean PDF copy of my professional CV',
@@ -3427,8 +3385,7 @@ Type 'help' for available commands or ask naturally about anything!`;
         
         // Also bind the theme button in navigation/radial menu to the action
         document.getElementById('theme-btn')?.addEventListener('click', () => {
-            const changeThemeAction = commands.find(c => c.id === 'toggle-theme')?.action;
-            if (changeThemeAction) changeThemeAction();
+            if (window.showToast) window.showToast('Theme switching is disabled.');
         });
     }
 
