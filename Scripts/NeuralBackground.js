@@ -7,6 +7,13 @@ class NeuralBackground {
         this.canvas = document.getElementById(canvasId);
         if (!this.canvas) return;
 
+        // Disable on mobile/tablet for performance
+        const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (isMobile) {
+            this.canvas.style.display = 'none';
+            return;
+        }
+
         this.ctx = this.canvas.getContext('2d');
         this.particles = [];
         this.mouse = { x: null, y: null, radius: 150 };

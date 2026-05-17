@@ -1,13 +1,6 @@
-// Environment variables loader
-const CONFIG = {
-    GROQ_API_KEY: process.env.GROQ_API_KEY || "YOUR_GROQ_API_KEY_HERE"
+// Browser-safe environment config
+window.ENV = window.ENV || {};
+window.CONFIG = {
+  GEMINI_API_KEY: window.ENV.GEMINI_API_KEY || '',
+  GROQ_API_KEY:   window.ENV.GROQ_API_KEY   || ''
 };
-
-// For browser environments, we'll set this from a separate script
-if (typeof window !== 'undefined') {
-    window.CONFIG = CONFIG;
-}
-
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = CONFIG;
-}

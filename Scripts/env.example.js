@@ -1,5 +1,7 @@
-// Browser environment variables
-// This file should be ignored in production and loaded from server
+// Copy to Scripts/env.local.js and fill in. Never commit env.local.js
 window.ENV = {
-    GROQ_API_KEY: "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"
+  GEMINI_API_KEY: 'your-gemini-key-here',
+  EMAILJS_PUBLIC: 'your-emailjs-public-key',
+  EMAILJS_SERVICE: 'your-emailjs-service-id',
+  EMAILJS_TEMPLATE: 'your-emailjs-template-id'
 };

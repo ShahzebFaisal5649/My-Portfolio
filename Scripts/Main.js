@@ -9,13 +9,16 @@
     const PORTFOLIO_DATA = {
         // PERSONAL INFORMATION
         name: "Shahzeb Faisal",
-        title: "Data Scientist & ML Engineer",
-        subtitle: "AI/ML Engineer & Full-Stack AI Developer",
+        title: "Data Scientist & Full Stack AI Developer",
+        subtitle: "Data Scientist & Full Stack AI Developer",
         location: "Lahore, Pakistan",
         email: "shahzebfaisal5649@gmail.com",
         phone: "+92 302 0418510",
         github: "https://github.com/ShahzebFaisal5649",
         linkedin: "https://www.linkedin.com/in/shahzeb-faisal-8b9190321/",
+        huggingface: "https://huggingface.co/ShahzebFaisal5649",
+        kaggle: "https://www.kaggle.com/shahzebfaisal5649",
+
         status: "Open to Work",
         languages: ["English", "Urdu"],
 
@@ -24,7 +27,7 @@
             university: "FAST National University of Computer & Emerging Sciences (NUCES)",
             location: "Lahore Campus",
             degree: "Bachelor of Science in Data Science",
-            period: "2021 - 2025",
+            period: "2021 – 2025",
             status: "Graduated",
             focus_areas: ["Machine Learning", "Deep Learning", "NLP", "Big Data Analytics"],
             description: "One of Pakistan's top technology universities, known for excellence in computer science and data science education"
@@ -63,7 +66,7 @@
             {
                 title: "AI-First Web Development Intern",
                 company: "Nexium",
-                period: "July - August 2025",
+                period: "January 2025",
                 type: "Internship",
                 description: "Developed AI-powered web applications with GPT-4 integration.",
                 responsibilities: [
@@ -335,7 +338,7 @@
 
         // STATISTICS
         stats: {
-            projects: 16,
+            projects: 12,
             technologies: 30,
             internships: 4,
             certifications: 4,
@@ -357,7 +360,7 @@
 
     // ═══════════ ENHANCED GEMINI AI INTEGRATION ═══════════
     const GeminiAI = {
-        apiKey: 'AIzaSyDlU5GZPlxMCegciZS3Jyab0z0wym8WynY',
+        apiKey: (window.ENV && window.ENV.GEMINI_API_KEY) ? window.ENV.GEMINI_API_KEY : '',
         apiUrl: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
         conversationHistory: [],
 
@@ -375,7 +378,7 @@ Research Assistant under Dr. Esha Tur Razia Babar researching LLM-based conversa
 
 EXPERIENCE:
 1. Research Assistant at FAST NUCES (2024-Present) - LLM chatbots research
-2. AI-First Web Dev Intern at Nexium (Jul-Aug 2025) - Built AI apps, achieved 30% accuracy improvement
+2. AI-First Web Dev Intern at Nexium (January 2025) - Built AI apps, achieved 30% accuracy improvement
 3. Data Science Intern at CodeAlpha (Jun-Jul 2024) - 25% decision accuracy improvement
 4. Data & Software Intern at Kashf Foundation (Jul-Aug 2024) - 40% query optimization
 5. Software Dev Trainee at Technology Academy BRIGHT (Sep 2024) - Certified completion
@@ -431,7 +434,7 @@ CERTIFICATIONS:
 3. Data & Software Internship - Kashf Foundation (Jul-Aug 2024)
 4. Couch to Coder 2024 - Technology Academy BRIGHT (Sep 2024)
 
-STATS: 16+ Projects | 30 Technologies | 4 Internships | 4 Certifications | 500+ GitHub Contributions
+STATS: 12+ Projects | 30 Technologies | 4 Internships | 4 Certifications | 500+ GitHub Contributions
 
 RESPONSE RULES:
 ✅ Always include GitHub links when discussing projects
@@ -526,7 +529,7 @@ Remember: Be helpful, cite achievements with numbers, always include GitHub link
 
             // ═══════════ BIO/ABOUT SHAHZEB - CHECK FIRST ═══════════
             if ((q.includes('about shahzeb') || q.includes('who is shahzeb') || (q.includes('shahzeb') && q.includes('faisal'))) && !q.includes('project')) {
-                return `Shahzeb Faisal is a Data Scientist & ML Engineer from Lahore, Pakistan. Graduated with BS Data Science from FAST NUCES (2021-2025), one of Pakistan's top tech universities. Currently Research Assistant researching LLM chatbots under Dr. Esha Tur Razia Babar. Completed 4 internships (Nexium, CodeAlpha, Kashf, BRIGHT) with proven results: 30% accuracy improvements, 40% optimizations. Built 16+ projects across AI/ML, web development, data science, blockchain. Expertise: Python, JavaScript, TensorFlow, GPT-4, NLP, Next.js, React. OPEN TO WORK - Available immediately for AI/ML, Data Science, and Full-Stack roles! Contact: shahzebfaisal5649@gmail.com | LinkedIn: linkedin.com/in/shahzeb-faisal-8b9190321`;
+                return `Shahzeb Faisal is a Full Stack AI Developer from Lahore, Pakistan. Graduated with BS Data Science from FAST NUCES (2021-2025), one of Pakistan's top tech universities. Currently Research Assistant researching LLM chatbots under Dr. Esha Tur Razia Babar. Completed 4 internships (Nexium, CodeAlpha, Kashf, BRIGHT) with proven results: 30% accuracy improvements, 40% optimizations. Built 12+ projects across AI/ML, web development, data science, blockchain. Expertise: Python, JavaScript, TensorFlow, GPT-4, NLP, Next.js, React. OPEN TO WORK - Available immediately for AI/ML, Data Science, and Full-Stack roles! Contact: shahzebfaisal5649@gmail.com | LinkedIn: linkedin.com/in/shahzeb-faisal-8b9190321`;
             }
 
             // ═══════════ BLOCKCHAIN EXPERIENCE ═══════════
@@ -596,7 +599,7 @@ All demonstrate strong ML/AI capabilities with measurable results!`;
 
             // ═══════════ INTERNSHIP/EXPERIENCE QUERIES ═══════════
             if ((q.includes('nexium') || q.includes('ai-first') || q.includes('ai first')) && q.includes('intern')) {
-                return `Shahzeb's AI-First Web Development Internship at Nexium (July-August 2025) was his most recent experience. He built the Resume Tailor using GPT-4 API achieving 30% accuracy improvement in resume-job matching. Developed 3 production-ready AI applications: Resume Tailor, Blog Summarizer, and QuoteGen AI. Technologies used: Next.js 15, GPT-4, TypeScript, Supabase, Tailwind CSS. All projects on GitHub: github.com/ShahzebFaisal5649`;
+                return `Shahzeb's AI-First Web Development Internship at Nexium (January 2025) was his most recent experience. He built the Resume Tailor using GPT-4 API achieving 30% accuracy improvement in resume-job matching. Developed 3 production-ready AI applications: Resume Tailor, Blog Summarizer, and QuoteGen AI. Technologies used: Next.js 15, GPT-4, TypeScript, Supabase, Tailwind CSS. All projects on GitHub: github.com/ShahzebFaisal5649`;
             }
             if (q.includes('codealpha') && q.includes('intern')) {
                 return `At CodeAlpha (June-July 2024), Shahzeb worked as a Data Science Intern developing predictive models using machine learning algorithms. Achievements: Improved decision-making accuracy by 25%, built automated data pipelines reducing processing time by 30%. Technologies: Python, Pandas, NumPy, Scikit-Learn, Jupyter Notebooks. Earned certification upon completion.`;
@@ -609,7 +612,7 @@ All demonstrate strong ML/AI capabilities with measurable results!`;
             }
             if (q.includes('each intern') || q.includes('all intern') || (q.includes('detail') && q.includes('intern'))) {
                 return `Shahzeb's 4 Internships in detail:
-1. Nexium (Jul-Aug 2025) - AI-First Web Dev: Built Resume Tailor with GPT-4 (30% accuracy↑), developed 3 AI apps
+1. Nexium (January 2025) - AI-First Web Dev: Built Resume Tailor with GPT-4 (30% accuracy↑), developed 3 AI apps
 2. CodeAlpha (Jun-Jul 2024) - Data Science: Predictive models, 25% decision accuracy↑, 30% faster processing
 3. Kashf Foundation (Jul-Aug 2024) - Data & Software: Compliance dashboard, 40% query optimization
 4. Technology Academy BRIGHT (Sep 2024) - Software Dev Training: Couch to Coder program, certified completion
@@ -647,6 +650,8 @@ Total: 30+ technologies mastered across all domains!`;
 📱 Phone: +92 302 0418510
 💼 LinkedIn: https://linkedin.com/in/shahzeb-faisal-8b9190321
 🐙 GitHub: https://github.com/ShahzebFaisal5649
+🤗 HuggingFace: https://huggingface.co/ShahzebFaisal5649
+🏆 Kaggle: https://www.kaggle.com/ShahzebFaisal5649
 📍 Location: Lahore, Pakistan
 💼 Status: OPEN TO WORK - Available immediately (June 2026 onwards)
 Seeking: Full-time positions, internships, research roles in AI/ML, Data Science, Full-Stack Development
@@ -656,10 +661,23 @@ Work Preferences: Remote, Hybrid, or On-site in Lahore`;
                 return `Shahzeb's LinkedIn: https://linkedin.com/in/shahzeb-faisal-8b9190321 - Connect with him to discuss opportunities in AI/ML, Data Science, or Full-Stack Development. He's currently OPEN TO WORK and available immediately!`;
             }
             if (q.includes('github')) {
-                return `Shahzeb's GitHub: https://github.com/ShahzebFaisal5649 - Check out his 16+ projects including AI/ML applications (Resume Tailor, Image Captioning), web apps (FLEX GYM, Edu Connect), blockchain DApps (Election), and more. 500+ contributions and counting!`;
+                return `Shahzeb's GitHub: https://github.com/ShahzebFaisal5649 - Check out his 12+ projects including AI/ML applications (Resume Tailor, Image Captioning), web apps (FLEX GYM, Edu Connect), blockchain DApps (Election), and more. 500+ contributions and counting!`;
             }
-            if (q.includes('hire') || q.includes('available') || q.includes('open to work')) {
-                return `YES! Shahzeb is OPEN TO WORK and available immediately (June 2026 onwards). With 16+ projects, 4 internships, 4 certifications, and proven results (30% accuracy improvements, 40% optimization gains, 98.75% data quality), he brings strong AI/ML and full-stack development skills. Contact: shahzebfaisal5649@gmail.com or LinkedIn: linkedin.com/in/shahzeb-faisal-8b9190321. Seeking full-time, internships, research positions. Based in Lahore, open to remote/hybrid/on-site.`;
+            if (q.includes('cgpa') || q.includes('grade') || q.includes('gpa') || q.includes('academic') || q.includes('performance') || q.includes('result')) {
+                return `Shahzeb maintained strong academic performance throughout his BS Data Science at FAST NUCES Lahore (2021–2025). His coursework spanned Machine Learning, Deep Learning, NLP, Big Data Analytics, Database Systems, and Software Engineering — all of which directly power his 12+ production projects.`;
+            }
+            if (q.includes('research') || q.includes('publication') || q.includes('paper') || q.includes('thesis') || q.includes('babar')) {
+                return `Shahzeb is working as a Research Assistant under Dr. Esha Tur Razia Babar at FAST NUCES Lahore. His research is focused on LLM chatbots, specifically exploring persona-based architectures and developing techniques for bias mitigation in AI conversational systems.`;
+            }
+            if (q.includes('huggingface') || q.includes('kaggle') || q.includes('social') || q.includes('profile')) {
+                return `Shahzeb's professional social and coding profiles:
+🤗 HuggingFace: https://huggingface.co/ShahzebFaisal5649
+🏆 Kaggle: https://www.kaggle.com/ShahzebFaisal5649
+🐙 GitHub: https://github.com/ShahzebFaisal5649
+💼 LinkedIn: https://linkedin.com/in/shahzeb-faisal-8b9190321`;
+            }
+            if (q.includes('availability') || q.includes('hire') || q.includes('available') || q.includes('open to work') || q.includes('freelance') || q.includes('job')) {
+                return `YES! Shahzeb is OPEN TO WORK and available immediately (June 2026 onwards). With 12+ projects, 4 internships, 4 certifications, and proven results (30% accuracy improvements, 40% optimization gains, 98.75% data quality), he brings strong AI/ML and full-stack development skills. Contact: shahzebfaisal5649@gmail.com or LinkedIn: linkedin.com/in/shahzeb-faisal-8b9190321. Seeking full-time, internships, research positions. Based in Lahore, open to remote/hybrid/on-site.`;
             }
 
             // ═══════════ RESUME DOWNLOAD ═══════════
@@ -671,17 +689,17 @@ This will download his updated resume as PDF. You can also view his complete por
             // ═══════════ EXPERIENCE QUERIES ═══════════
             if (q.includes('experience') || q.includes('background') || q.includes('intern')) {
                 return `Shahzeb has 1+ year professional experience across 4 internships:
-1️⃣ Nexium (Jul-Aug 2025) - AI-First Web Dev: Built Resume Tailor with GPT-4, achieved 30% accuracy improvement, developed 3 production AI apps
+1️⃣ Nexium (January 2025) - AI-First Web Dev: Built Resume Tailor with GPT-4, achieved 30% accuracy improvement, developed 3 production AI apps
 2️⃣ CodeAlpha (Jun-Jul 2024) - Data Science: Predictive models, 25% decision accuracy improvement, automated pipelines
 3️⃣ Kashf Foundation (Jul-Aug 2024) - Data & Software: Compliance dashboard, 40% SQL query optimization
 4️⃣ Technology Academy BRIGHT (Sep 2024) - Software Dev Training: Couch to Coder certification
 Currently: Research Assistant at FAST NUCES researching LLM chatbots (2024-Present)
-Total: 4 certifications earned, 16+ projects completed`;
+Total: 4 certifications earned, 12+ projects completed`;
             }
 
             // ═══════════ PROJECT LISTING QUERIES ═══════════
             if (q.includes('project') || q.includes('work') || q.includes('portfolio')) {
-                return `Shahzeb's 16+ Projects:
+                return `Shahzeb's 12+ Projects:
 🤖 AI/ML: Nexium Resume Tailor (GPT-4, 30%↑), Blog Summarizer (NLP, 85%), Image Captioning (0.875 BLEU), Smart City (13.5M records, 98.75% quality)
 🌐 Web: Edu Connect (500+ users), FLEX GYM (fitness tracker), Movie Showcase (TMDb API), QuoteGen AI, E-Shop (e-commerce)
 ⛓️ Blockchain: Election DApp (100% integrity), Real Estate DApp
@@ -690,7 +708,7 @@ All projects on GitHub: https://github.com/ShahzebFaisal5649
 Ask about any specific project for details!`;
             }
             if (q.includes('how many') || q.includes('total project')) {
-                return `Shahzeb has completed 16+ production projects across multiple domains: AI/ML (5 projects), Web Development (6 projects), Blockchain (2 projects), Data Science (3 projects). Key achievements: 30% accuracy improvements, 98.75% data quality scores, 0.875 BLEU scores, 500+ users. All available on GitHub: github.com/ShahzebFaisal5649. Which project would you like to know more about?`;
+                return `Shahzeb has completed 12+ production projects across multiple domains: AI/ML (5 projects), Web Development (6 projects), Blockchain (2 projects), Data Science (3 projects). Key achievements: 30% accuracy improvements, 98.75% data quality scores, 0.875 BLEU scores, 500+ users. All available on GitHub: github.com/ShahzebFaisal5649. Which project would you like to know more about?`;
             }
 
             // ═══════════ CERTIFICATION QUERIES ═══════════
@@ -706,7 +724,7 @@ All certificates are verified and showcase his expertise in AI/ML, Data Science,
             // ═══════════ STATISTICS QUERIES ═══════════
             if (q.includes('stat') || q.includes('achievement') || q.includes('number')) {
                 return `Shahzeb's Key Statistics:
-📊 16+ Projects Completed
+📊 12+ Projects Completed
 💻 30+ Technologies Mastered
 🎓 4 Internships (1+ year experience)
 🏆 4 Professional Certifications
@@ -717,16 +735,15 @@ All certificates are verified and showcase his expertise in AI/ML, Data Science,
 
             // ═══════════ DEFAULT/HELLO RESPONSES ═══════════
             if (q.includes('hello') || q.includes('hi ') || q === 'hi' || q.includes('hey')) {
-                return `Hey there! 👋 I'm Shahzeb's AI portfolio assistant. I can tell you about his 16+ projects (Resume Tailor, Smart City, FLEX GYM, Movie Showcase, Election DApp, etc.), 4 internships (Nexium, CodeAlpha, Kashf, BRIGHT), skills (ML/AI, Web, Data Science, Blockchain), research work at FAST NUCES, or how to contact him. What would you like to know?`;
+                return `Hey there! 👋 I'm Shahzeb's AI portfolio assistant. I can tell you about his 12+ projects (Resume Tailor, Smart City, FLEX GYM, Movie Showcase, Election DApp, etc.), 4 internships (Nexium, CodeAlpha, Kashf, BRIGHT), skills (ML/AI, Web, Data Science, Blockchain), research work at FAST NUCES, or how to contact him. What would you like to know?`;
             }
 
             // ═══════════ FINAL FALLBACK ═══════════
             return `I can help you learn about Shahzeb's portfolio! Try asking about:
 📋 Specific Projects: Nexium Resume Tailor, Smart City, FLEX GYM, Movie Showcase, Election DApp, Image Captioning, Edu Connect, Blog Summarizer, QuoteGen AI, E-Shop, Azure Bicep, Environmental Analysis
 💼 Experience: His 4 internships (Nexium, CodeAlpha, Kashf, BRIGHT) or current research work
-🎓 Education: BS Data Science from FAST NUCES, research on LLM chatbots
+🎓 Education: BS Data Science from FAST NUCES, research on LLM chatbots, CGPA/academic performance
 🛠️ Skills: Python, JavaScript, ML/AI, NLP, Web Development, Data Science, Blockchain
-📞 Contact: Email, LinkedIn, GitHub, phone
 💾 Resume: How to download his CV
 Type 'help' for available commands or ask naturally about anything!`;
         },
@@ -1113,6 +1130,8 @@ Type 'help' for available commands or ask naturally about anything!`;
 ║  github     - Open GitHub profile                         ║
 ║  linkedin   - Open LinkedIn profile                       ║
 ║  email      - Send an email                               ║
+║  huggingface- Open HuggingFace profile                    ║
+║  kaggle     - Open Kaggle profile                         ║
 ║                                                           ║
 ║  UTILITIES                                                ║
 ║  ─────────                                                ║
@@ -1126,7 +1145,7 @@ Type 'help' for available commands or ask naturally about anything!`;
             about: `
 ╔══════════════════════════════════════════════════════════╗
 ║                    SHAHZEB FAISAL                         ║
-║              Data Scientist & ML Engineer                 ║
+║         Data Scientist & Full Stack AI Developer          ║
 ╠══════════════════════════════════════════════════════════╣
 ║                                                           ║
 ║  🎓 Education:  BS Data Science, FAST-NUCES Lahore        ║
@@ -1138,7 +1157,7 @@ Type 'help' for available commands or ask naturally about anything!`;
 ║  technologies. Experienced in full-stack development,     ║
 ║  data engineering, and blockchain applications.           ║
 ║                                                           ║
-║  🚀 16+ Projects | 30+ Technologies | 1+ Years Experience ║
+║  🚀 12+ Projects | 30+ Technologies | 1+ Years Experience ║
 ║                                                           ║
 ╚══════════════════════════════════════════════════════════╝`,
 
@@ -1199,7 +1218,7 @@ Type 'help' for available commands or ask naturally about anything!`;
 ║     FAST NUCES • Dr. Esha Tur Razia Babar                 ║
 ║     LLM-based conversational chatbots research            ║
 ║                                                           ║
-║  🤖 AI-FIRST WEB DEV INTERN (Jul-Aug 2025)                ║
+║  🤖 AI-FIRST WEB DEV INTERN (January 2025)                ║
 ║     Nexium • 30% accuracy improvement in AI matching      ║
 ║                                                           ║
 ║  📊 DATA SCIENCE INTERN (Jun-Jul 2024)                    ║
@@ -1228,6 +1247,8 @@ Type 'help' for available commands or ask naturally about anything!`;
 ║  • Type 'email' to open email client                      ║
 ║  • Type 'linkedin' to view profile                        ║
 ║  • Type 'github' to see code repositories                 ║
+║  • Type 'huggingface' to see ML models                    ║
+║  • Type 'kaggle' to see datasets                          ║
 ║                                                           ║
 ╚══════════════════════════════════════════════════════════╝`,
 
@@ -1236,9 +1257,11 @@ Type 'help' for available commands or ask naturally about anything!`;
 ║                     SOCIAL LINKS                          ║
 ╠══════════════════════════════════════════════════════════╣
 ║                                                           ║
-║  🐙 GitHub:   github.com/ShahzebFaisal5649               ║
-║  💼 LinkedIn: linkedin.com/in/shahzeb-faisal-8b9190321   ║
-║  📧 Email:    shahzebfaisal5649@gmail.com                ║
+║  🐙 GitHub:      github.com/ShahzebFaisal5649            ║
+║  💼 LinkedIn:    linkedin.com/in/shahzeb-faisal-8b9190321║
+║  📧 Email:       shahzebfaisal5649@gmail.com             ║
+║  🤗 HuggingFace: huggingface.co/ShahzebFaisal5649        ║
+║  📊 Kaggle:      kaggle.com/shahzebfaisal5649            ║
 ║                                                           ║
 ║  Type the platform name to open it directly!              ║
 ╚══════════════════════════════════════════════════════════╝`
@@ -1580,7 +1603,7 @@ Type 'help' for available commands or ask naturally about anything!`;
         autocomplete() {
             const input = this.input.value.toLowerCase();
             const commands = ['help', 'about', 'skills', 'projects', 'experience', 'contact', 'social',
-                'resume', 'github', 'linkedin', 'email', 'clear', 'sound', 'confetti',
+                'resume', 'github', 'linkedin', 'email', 'huggingface', 'kaggle', 'clear', 'sound', 'confetti',
                 'matrix', 'exit', 'ai'];
 
             const match = commands.find(cmd => cmd.startsWith(input));
@@ -1672,6 +1695,15 @@ Type 'help' for available commands or ask naturally about anything!`;
                         window.location.href = 'mailto:shahzebfaisal5649@gmail.com';
                         this.addLine('<span class="term-success">📧 Opening email client...</span>');
                         break;
+                    case 'huggingface':
+                        window.open('https://huggingface.co/ShahzebFaisal5649', '_blank');
+                        this.addLine('<span class="term-success">🤗 Opening HuggingFace...</span>');
+                        break;
+                    case 'kaggle':
+                        window.open('https://www.kaggle.com/shahzebfaisal5649', '_blank');
+                        this.addLine('<span class="term-success">📊 Opening Kaggle...</span>');
+                        break;
+                        break;
                     default:
                         // If not a command, treat as AI query
                         await this.handleAI(cmd);
@@ -1695,17 +1727,29 @@ Type 'help' for available commands or ask naturally about anything!`;
 
             this.scrollToBottom();
 
+            // 10-second timeout
+            const timeoutPromise = new Promise((_, reject) =>
+                setTimeout(() => reject(new Error('timeout')), 10000)
+            );
+
             try {
-                const response = await GeminiAI.chat(query);
-
+                const response = await Promise.race([GeminiAI.chat(query), timeoutPromise]);
                 document.getElementById(typingId)?.remove();
-
                 await this.typewriterEffect(response);
-
                 AudioSystem.play('success');
             } catch (error) {
                 document.getElementById(typingId)?.remove();
-                this.addLine(`<span class="term-error">Error: ${error.message}</span>`);
+
+                // Always show a useful fallback, never a raw error
+                const fallback = GeminiAI.getFallbackResponse(query);
+                const isTimeout = error.message === 'timeout';
+                const prefix = isTimeout
+                    ? '<span class="term-warning">⏱️ AI took too long — here\'s what I know:</span><br><br>'
+                    : '<span class="term-warning">⚡ Using offline mode:</span><br><br>';
+
+                this.addLine(prefix);
+                await this.typewriterEffect(fallback);
+                AudioSystem.play('success');
             }
 
             this.isProcessing = false;
@@ -1801,45 +1845,6 @@ Type 'help' for available commands or ask naturally about anything!`;
         }, 2500);
     }
 
-    // ═══════════ MOBILE BUTTON POSITIONING FIX ═══════════
-    function fixMobileButtonPositions() {
-        const isMobile = window.innerWidth <= 768;
-        if (!isMobile) return;
-
-        const backToTop = document.getElementById('back-to-top');
-        if (backToTop) {
-            backToTop.style.cssText = `
-                position: fixed;
-                bottom: 140px;
-                right: 20px;
-                width: 48px;
-                height: 48px;
-                z-index: 9997;
-            `;
-        }
-
-        const terminalBtn = document.getElementById('terminal-btn');
-        if (terminalBtn) {
-            terminalBtn.style.cssText = `
-                position: fixed;
-                bottom: 80px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                z-index: 9997;
-            `;
-        }
-
-        const quickActions = document.querySelector('.quick-actions');
-        if (quickActions) {
-            quickActions.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                z-index: 9998;
-            `;
-        }
-    }
 
     // ═══════════ MATRIX RAIN EFFECT ═══════════
     let matrixActive = false;
@@ -2043,6 +2048,24 @@ Type 'help' for available commands or ask naturally about anything!`;
             el.classList.add('reveal-element');
             observer.observe(el);
         });
+
+        // Add skill level bars on section enter
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('.skill-tags span[data-level]').forEach((span, i) => {
+                            const level = span.getAttribute('data-level') || '70';
+                            span.style.setProperty('--skill-level', level + '%');
+                            setTimeout(() => span.classList.add('skill-active'), i * 40);
+                        });
+                        skillObserver.disconnect();
+                    }
+                });
+            }, { threshold: 0.2 });
+            skillObserver.observe(skillsSection);
+        }
     }
 
     // ═══════════ SKILL ORBIT ANIMATION ═══════════
@@ -2147,7 +2170,7 @@ Type 'help' for available commands or ask naturally about anything!`;
         const typedEl = document.getElementById('typed-text');
         if (!typedEl) return;
 
-        const words = ['AI Solutions', 'ML Models', 'Web Apps', 'Data Pipelines', 'Smart Systems'];
+        const words = ['AI Solutions', 'ML Models', 'NLP Systems', 'Web Apps', 'Data Pipelines', 'Smart Agents'];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -2187,38 +2210,6 @@ Type 'help' for available commands or ask naturally about anything!`;
         type();
     }
 
-    // ═══════════ COUNTER ANIMATION ═══════════
-    function initCounters() {
-        const counters = document.querySelectorAll('.counter');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    const target = parseInt(counter.getAttribute('data-target'));
-                    animateCounter(counter, target);
-                    observer.unobserve(counter);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        counters.forEach(counter => observer.observe(counter));
-    }
-
-    function animateCounter(element, target) {
-        let current = 0;
-        const increment = target / 60;
-
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                element.textContent = target;
-                clearInterval(timer);
-            } else {
-                element.textContent = Math.floor(current);
-            }
-        }, 33);
-    }
 
     // ═══════════ 3D CARD TILT ═══════════
     function initCardTilt() {
@@ -2278,6 +2269,19 @@ Type 'help' for available commands or ask naturally about anything!`;
 
     // ═══════════ QUICK ACTIONS ═══════════
     function initQuickActions() {
+        document.getElementById('theme-btn')?.addEventListener('click', () => {
+            const isDark = !document.documentElement.hasAttribute('data-theme') ||
+                           document.documentElement.getAttribute('data-theme') === 'dark';
+            const newTheme = isDark ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('portfolio-theme', newTheme);
+
+            const icon = document.querySelector('#theme-btn i');
+            if (icon) icon.className = newTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+
+            AudioSystem.play('click');
+        });
+
         const mainBtn = document.getElementById('quick-main');
         const menu = document.getElementById('quick-menu');
 
@@ -2357,12 +2361,116 @@ Type 'help' for available commands or ask naturally about anything!`;
     }
 
     // ═══════════ KEYBOARD SHORTCUTS ═══════════
-    function initKeyboardShortcuts() {
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.key === 'k') {
-                e.preventDefault();
-                document.getElementById('quick-main')?.click();
+    function initCommandPalette() {
+        const overlay = document.getElementById('cmd-palette');
+        const searchInput = document.getElementById('cmd-search');
+        const results = document.getElementById('cmd-results');
+        if (!overlay || !searchInput) return;
+
+        const commands = [
+            { label: 'Go to Home', icon: 'fa-home', action: () => scrollTo('#home'), group: 'Navigate' },
+            { label: 'Go to About', icon: 'fa-user', action: () => scrollTo('#about'), group: 'Navigate' },
+            { label: 'Go to Projects', icon: 'fa-code', action: () => scrollTo('#projects'), group: 'Navigate' },
+            { label: 'Go to Experience', icon: 'fa-briefcase', action: () => scrollTo('#experience'), group: 'Navigate' },
+            { label: 'Go to Certifications', icon: 'fa-certificate', action: () => scrollTo('#certifications'), group: 'Navigate' },
+            { label: 'Go to Skills', icon: 'fa-brain', action: () => scrollTo('#skills'), group: 'Navigate' },
+            { label: 'Go to Contact', icon: 'fa-envelope', action: () => scrollTo('#contact'), group: 'Navigate' },
+            { label: 'Download Resume', icon: 'fa-file-pdf', action: () => { const a=document.createElement('a'); a.href='resume.pdf'; a.download='Shahzeb_Faisal_Resume.pdf'; a.click(); triggerConfetti(); }, group: 'Actions' },
+            { label: 'Open AI Terminal', icon: 'fa-terminal', action: () => Terminal.open(), group: 'Actions' },
+            { label: 'Toggle Theme', icon: 'fa-moon', action: () => document.getElementById('theme-btn')?.click(), group: 'Actions' },
+            { label: 'Toggle Sound', icon: 'fa-volume-up', action: () => AudioSystem.toggle(), group: 'Actions' },
+            { label: 'Trigger Confetti 🎉', icon: 'fa-star', action: () => triggerConfetti(), group: 'Fun' },
+            { label: 'Matrix Mode', icon: 'fa-terminal', action: () => toggleMatrix(), group: 'Fun' },
+            { label: 'Open GitHub Profile', icon: 'fa-github', action: () => window.open('https://github.com/ShahzebFaisal5649','_blank'), group: 'Links', fab: true },
+            { label: 'Open LinkedIn Profile', icon: 'fa-linkedin', action: () => window.open('https://www.linkedin.com/in/shahzeb-faisal-8b9190321/','_blank'), group: 'Links', fab: true },
+            { label: 'Send Email', icon: 'fa-envelope', action: () => window.location.href='mailto:shahzebfaisal5649@gmail.com', group: 'Links' },
+        ];
+
+        let selectedIndex = 0;
+        let filtered = [...commands];
+
+        function scrollTo(id) {
+            document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function open() {
+            overlay.classList.add('active');
+            overlay.setAttribute('aria-hidden', 'false');
+            searchInput.value = '';
+            renderResults('');
+            setTimeout(() => searchInput.focus(), 50);
+            document.body.style.overflow = 'hidden';
+            AudioSystem.play('terminal');
+        }
+
+        function close() {
+            overlay.classList.remove('active');
+            overlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            AudioSystem.play('click');
+        }
+
+        function renderResults(query) {
+            const q = query.toLowerCase().trim();
+            filtered = q ? commands.filter(c => c.label.toLowerCase().includes(q) || c.group.toLowerCase().includes(q)) : commands;
+            selectedIndex = 0;
+
+            if (filtered.length === 0) {
+                results.innerHTML = '<div class="cmd-empty">No results for "' + query + '"</div>';
+                return;
             }
+
+            let html = '';
+            let lastGroup = '';
+            filtered.forEach((cmd, i) => {
+                if (cmd.group !== lastGroup) {
+                    html += `<div class="cmd-group-label">${cmd.group}</div>`;
+                    lastGroup = cmd.group;
+                }
+                const fabClass = cmd.fab ? 'fab' : 'fas';
+                html += `<div class="cmd-item ${i === 0 ? 'selected' : ''}" data-index="${i}">
+                    <i class="${fabClass} fa-${cmd.icon} cmd-item-icon"></i>
+                    <span>${cmd.label}</span>
+                </div>`;
+            });
+            results.innerHTML = html;
+
+            results.querySelectorAll('.cmd-item').forEach((item, i) => {
+                item.addEventListener('mouseenter', () => setSelected(i));
+                item.addEventListener('click', () => { execute(i); close(); });
+            });
+        }
+
+        function setSelected(i) {
+            selectedIndex = Math.max(0, Math.min(i, filtered.length - 1));
+            results.querySelectorAll('.cmd-item').forEach((el, idx) => {
+                el.classList.toggle('selected', idx === selectedIndex);
+            });
+            results.querySelector('.cmd-item.selected')?.scrollIntoView({ block: 'nearest' });
+        }
+
+        function execute(i) {
+            filtered[i]?.action();
+        }
+
+        searchInput.addEventListener('input', (e) => renderResults(e.target.value));
+
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                overlay.classList.contains('active') ? close() : open();
+                return;
+            }
+            if (!overlay.classList.contains('active')) return;
+
+            if (e.key === 'Escape') { close(); return; }
+            if (e.key === 'ArrowDown') { e.preventDefault(); setSelected(selectedIndex + 1); }
+            if (e.key === 'ArrowUp') { e.preventDefault(); setSelected(selectedIndex - 1); }
+            if (e.key === 'Enter') { execute(selectedIndex); close(); }
+        });
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) close();
         });
     }
 
@@ -2539,14 +2647,179 @@ Type 'help' for available commands or ask naturally about anything!`;
         console.log('✅ Certificate viewer initialized');
     }
 
+    // ═══════════ CONTACT FORM INITIALIZATION ═══════════
+    function initContactForm() {
+        const form = document.getElementById('contact-form');
+        const status = document.getElementById('cf-status');
+        const submitBtn = document.getElementById('cf-submit');
+
+        if (!form || typeof emailjs === 'undefined') {
+            console.warn('Contact form or EmailJS not found');
+            return;
+        }
+
+        // Initialize EmailJS if public key is available
+        const publicKey = window.ENV?.EMAILJS_PUBLIC;
+        if (publicKey && publicKey !== 'PASTE_YOUR_EMAILJS_PUBLIC_KEY') {
+            emailjs.init(publicKey);
+        } else {
+            console.warn('EmailJS public key not configured in env.local.js');
+        }
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Basic validation
+            const name = document.getElementById('cf-name').value.trim();
+            const email = document.getElementById('cf-email').value.trim();
+            const message = document.getElementById('cf-message').value.trim();
+            
+            if (!name || !email || !message) {
+                status.textContent = "Please fill out all fields.";
+                status.className = "form-status error";
+                return;
+            }
+
+            const serviceId = window.ENV?.EMAILJS_SERVICE;
+            const templateId = window.ENV?.EMAILJS_TEMPLATE;
+
+            if (!serviceId || serviceId === 'PASTE_YOUR_EMAILJS_SERVICE_ID' || !templateId || templateId === 'PASTE_YOUR_EMAILJS_TEMPLATE_ID') {
+                status.textContent = "Form is not fully configured yet.";
+                status.className = "form-status error";
+                return;
+            }
+
+            // Loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            status.textContent = "";
+
+            const params = {
+                user_name: name,
+                user_email: email,
+                message: message
+            };
+
+            emailjs.send(serviceId, templateId, params)
+                .then(function() {
+                    status.textContent = "Message sent successfully!";
+                    status.className = "form-status success";
+                    form.reset();
+                    submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+                    submitBtn.disabled = false;
+                    
+                    if (window.triggerConfetti) {
+                        window.triggerConfetti();
+                    }
+                    if (window.AudioSystem && typeof window.AudioSystem.play === 'function') {
+                        window.AudioSystem.play('success');
+                    }
+                }, function(error) {
+                    console.error('EmailJS Error:', error);
+                    status.textContent = "Failed to send message. Please try again later.";
+                    status.className = "form-status error";
+                    submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+                    submitBtn.disabled = false;
+                });
+        });
+        console.log('✅ Contact form initialized');
+    }
+
     // ═══════════ INITIALIZE EVERYTHING ═══════════
+    
+    // ═══════════ STATUS STRIP ═══════════
+    function initStatusStrip() {
+        const strip = document.getElementById('status-strip');
+        const closeBtn = document.getElementById('status-strip-close');
+        if (!strip || !closeBtn) return;
+
+        // Hide if user already dismissed this session
+        if (sessionStorage.getItem('status-strip-closed')) {
+            strip.classList.add('hidden');
+            return;
+        }
+
+        closeBtn.addEventListener('click', () => {
+            strip.style.transition = 'opacity 0.3s';
+            strip.style.opacity = '0';
+            setTimeout(() => strip.classList.add('hidden'), 300);
+            sessionStorage.setItem('status-strip-closed', '1');
+        });
+    }
+
+    // ═══════════ PROJECT PREVIEWS ═══════════
+    function initProjectPreviews() {
+        const previewColors = {
+            'ml web': { bg: '#0d1117', accent: '#cbff00', lang: 'TypeScript' },
+            'web': { bg: '#0d1117', accent: '#61DAFB', lang: 'JavaScript' },
+            'data ml': { bg: '#0a0f1e', accent: '#06b6d4', lang: 'Python' },
+            'data': { bg: '#0a0f1e', accent: '#3776AB', lang: 'Python' },
+            'blockchain web': { bg: '#0d0d1a', accent: '#627EEA', lang: 'Solidity' },
+            'ml': { bg: '#0a0f1e', accent: '#FF6F00', lang: 'Python/TF' },
+            'web data': { bg: '#0d1117', accent: '#61DAFB', lang: 'React' }
+        };
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            const preview = card.querySelector('.project-preview');
+            if (!preview) return;
+
+            const category = card.getAttribute('data-category') || 'web';
+            const colors = previewColors[category] || previewColors['web'];
+            const projectName = card.querySelector('h3')?.textContent || '';
+            const techTags = [...card.querySelectorAll('.project-tech span')].map(s => s.textContent).slice(0, 3);
+
+            preview.style.cssText = `
+                background: ${colors.bg};
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-end;
+                padding: 1rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 11px;
+                color: rgba(255,255,255,0.6);
+                line-height: 1.6;
+                border-radius: 8px 8px 0 0;
+            `;
+
+            preview.innerHTML = `
+                <div style="margin-bottom:auto;color:${colors.accent};font-size:10px;opacity:0.6">
+                    // ${projectName}
+                </div>
+                <div>
+                    <span style="color:${colors.accent}">const</span>
+                    <span style="color:#fff"> project</span>
+                    <span style="color:rgba(255,255,255,0.4)"> = {</span>
+                </div>
+                <div style="padding-left:12px">
+                    <span style="color:rgba(255,255,255,0.5)">lang:</span>
+                    <span style="color:#a8daff"> '${colors.lang}'</span><span style="color:rgba(255,255,255,0.3)">,</span>
+                </div>
+                <div style="padding-left:12px">
+                    <span style="color:rgba(255,255,255,0.5)">stack:</span>
+                    <span style="color:#ffd700"> ['${techTags.join("','")}']</span>
+                </div>
+                <div>
+                    <span style="color:rgba(255,255,255,0.4)">}</span>
+                </div>
+            `;
+        });
+    }
+
     function init() {
+
+        // Restore saved theme
+        const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        const themeIcon = document.querySelector('#theme-btn i');
+        if (themeIcon) themeIcon.className = savedTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
         AudioSystem.init();
         initNavigation();
         initTypingEffect();
-        initCounters();
+        initStatsCounter(); // Correct statistics animator
         initCardTilt();
         initProjectFilters();
+        initStatusStrip();
         initScrollReveal();
         initCursor();
         initSpotlight();
@@ -2561,13 +2834,28 @@ Type 'help' for available commands or ask naturally about anything!`;
         initResumeConfetti();
         initSmoothScroll();
         initKonamiCode();
-        initKeyboardShortcuts();
+
         initNetworkStatus();
         initPerformanceMonitor();
-        fixMobileButtonPositions();
-        initCertificateViewer();
 
-        window.addEventListener('resize', fixMobileButtonPositions);
+        initCertificateViewer();
+        initProjectModals();
+        initProjectPreviews();
+        if (window.initSkillsRadar) window.initSkillsRadar();
+        if (window.initStackDistribution) window.initStackDistribution();
+        fetchGitHubStats();
+        initCommandPalette();
+        initContactForm();
+
+        document.querySelector('.scroll-indicator')?.addEventListener('click', () => {
+            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        if (window.initNeuralBackground) {
+            window.initNeuralBackground('neural-canvas');
+        }
+
+
 
         window.triggerConfetti = triggerConfetti;
         window.toggleMatrix = toggleMatrix;
@@ -2589,28 +2877,10 @@ Type 'help' for available commands or ask naturally about anything!`;
     // ═══════════ EXPOSE TO WINDOW (Optional) ═══════════
     /* ═══════════ NEW PRODUCTIVE FEATURES ═══════════ */
 
-    // 1. Custom Data-Pulse Cursor
-    function initCustomCursor() {
-        const cursor = document.createElement('div');
-        cursor.className = 'custom-cursor';
-        document.body.appendChild(cursor);
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        const interactiveElements = document.querySelectorAll('a, button, .project-card, .timeline-item, .info-card');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-    }
-
     // 2. Stats Counter Animation
     function initStatsCounter() {
         const stats = document.querySelectorAll('.stat-number');
-        const observerOptions = { threshold: 0.5 };
+        const observerOptions = { threshold: 0.15 };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -2649,19 +2919,51 @@ Type 'help' for available commands or ask naturally about anything!`;
         const desc = document.getElementById('modal-desc');
         const tech = document.getElementById('modal-tech');
         const github = document.getElementById('modal-github');
+        const achContainer = document.getElementById('modal-achievements-container');
 
         cards.forEach(card => {
             card.addEventListener('click', (e) => {
-                // Prevent trigger if clicking the GitHub link directly
                 if (e.target.closest('.project-overlay')) return;
 
                 const projectName = card.querySelector('h3').innerText;
-                const projectData = PORTFOLIO_DATA.projects.find(p => p.name === projectName) || {};
+                const pd = PORTFOLIO_DATA.projects.find(p => p.name === projectName) || {};
 
                 title.innerText = projectName;
-                desc.innerText = projectData.description || "Detailed project analysis and ML implementation.";
-                tech.innerHTML = card.querySelector('.project-tech').innerHTML;
-                github.href = card.querySelector('.project-overlay').href;
+
+                // Use long_description if available, fall back to description
+                desc.innerHTML = pd.long_description
+                    ? `<p>${pd.long_description}</p>`
+                    : `<p>${pd.description || 'No description available.'}</p>`;
+
+                // Add achievements list if available
+                if (pd.achievements && pd.achievements.length > 0) {
+                    desc.innerHTML += `
+                        <div class="modal-achievements">
+                            <h4>Key Achievements</h4>
+                            <ul>${pd.achievements.map(a => `<li><i class="fas fa-check-circle"></i> ${a}</li>`).join('')}</ul>
+                        </div>`;
+                }
+
+                tech.innerHTML = card.querySelector('.project-tech')?.innerHTML || '';
+                github.href = pd.github || card.querySelector('.project-overlay')?.href || '#';
+                github.style.display = pd.github ? 'inline-flex' : 'none';
+
+                // Add demo link if it exists
+                const existingDemo = modal.querySelector('#modal-demo');
+                if (pd.demo_url) {
+                    if (!existingDemo) {
+                        const demoBtn = document.createElement('a');
+                        demoBtn.id = 'modal-demo';
+                        demoBtn.className = 'btn btn-secondary';
+                        demoBtn.target = '_blank';
+                        demoBtn.innerHTML = '<i class="fas fa-external-link-alt"></i> Live Demo';
+                        document.querySelector('.modal-links').appendChild(demoBtn);
+                    }
+                    modal.querySelector('#modal-demo').href = pd.demo_url;
+                    modal.querySelector('#modal-demo').style.display = 'inline-flex';
+                } else if (existingDemo) {
+                    existingDemo.style.display = 'none';
+                }
 
                 modal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
@@ -2737,20 +3039,796 @@ Type 'help' for available commands or ask naturally about anything!`;
         container.innerHTML = svgContent;
     }
 
-    // Initialize all new features
-    document.addEventListener('DOMContentLoaded', () => {
-        initCustomCursor();
-        initStatsCounter();
-        initProjectModals();
-        initSkillsRadar();
+    // 5. Live GitHub Stats
+    async function fetchGitHubStats() {
+        const username = 'ShahzebFaisal5649';
 
-        if (window.initNeuralBackground) {
-            window.initNeuralBackground('neural-canvas');
+        // Update all elements with class "github-stat-[field]"
+        const setVal = (cls, val) => {
+            document.querySelectorAll('.' + cls).forEach(el => {
+                el.textContent = val;
+                el.classList.add('loaded');
+            });
+        };
+
+        try {
+            const [userRes, reposRes] = await Promise.all([
+                fetch(`https://api.github.com/users/${username}`),
+                fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
+            ]);
+
+            if (userRes.ok) {
+                const user = await userRes.json();
+                setVal('github-stat-repos', user.public_repos + '+');
+                setVal('github-stat-followers', user.followers + '+');
+            }
+
+            if (reposRes.ok) {
+                const repos = await reposRes.json();
+                const stars = repos.reduce((sum, r) => sum + r.stargazers_count, 0);
+                setVal('github-stat-stars', stars || '—');
+            }
+
+            // Contributions approximation (GitHub doesn't expose this in REST)
+            setVal('github-stat-contributions', '500+');
+
+        } catch (err) {
+            console.warn('GitHub API unavailable, using static values');
+            setVal('github-stat-repos', '12+');
+            setVal('github-stat-followers', '—');
+            setVal('github-stat-stars', '—');
+            setVal('github-stat-contributions', '500+');
         }
-    });
+    }
+
+    // 6. Interactive Command Palette (Ctrl+K)
+    function initCommandPalette() {
+        const palette = document.getElementById('command-palette');
+        const searchInput = document.getElementById('palette-search');
+        const resultsContainer = document.getElementById('palette-results');
+
+        if (!palette || !searchInput || !resultsContainer) return;
+
+        let activeIndex = 0;
+        let filteredCommands = [];
+
+        const commands = [
+            {
+                id: 'scroll-projects',
+                title: 'Go to Projects',
+                desc: 'Browse my deployed ML models, web apps, and data engineering projects',
+                icon: 'fa-project-diagram',
+                shortcut: '↵',
+                action: () => {
+                    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                }
+            },
+            {
+                id: 'scroll-experience',
+                title: 'Go to Experience',
+                desc: 'View my professional career timeline and achievements',
+                icon: 'fa-history',
+                shortcut: '↵',
+                action: () => {
+                    document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
+                }
+            },
+            {
+                id: 'scroll-skills',
+                title: 'Go to Skills',
+                desc: 'Analyze my technology stack, radar chart, and distribution',
+                icon: 'fa-brain',
+                shortcut: '↵',
+                action: () => {
+                    document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
+                }
+            },
+            {
+                id: 'scroll-contact',
+                title: 'Go to Contact',
+                desc: 'Get in touch for opportunities, collaboration, or consultation',
+                icon: 'fa-envelope',
+                shortcut: '↵',
+                action: () => {
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }
+            },
+            {
+                id: 'toggle-terminal',
+                title: 'Open Terminal',
+                desc: 'Access the data science CLI with Llama-3.3 AI chatbot',
+                icon: 'fa-terminal',
+                shortcut: 'Ctrl+.',
+                action: () => {
+                    Terminal.open();
+                }
+            },
+            {
+                id: 'toggle-theme',
+                title: 'Change Color Theme',
+                desc: 'Cycle through cyberpunk colors (lime, cyber, neon, gold, crimson)',
+                icon: 'fa-palette',
+                shortcut: 'T',
+                action: () => {
+                    const themes = [
+                        { name: "lime", primary: "#d4ff33", rgb: "212, 255, 51" },
+                        { name: "cyber", primary: "#00f2fe", rgb: "0, 242, 254" },
+                        { name: "neon", primary: "#ff0080", rgb: "255, 0, 128" },
+                        { name: "gold", primary: "#ffd700", rgb: "255, 215, 0" },
+                        { name: "crimson", primary: "#ff4757", rgb: "255, 71, 87" }
+                    ];
+                    
+                    const currentPrimary = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+                    let nextIndex = 0;
+                    for (let i = 0; i < themes.length; i++) {
+                        if (themes[i].primary.toLowerCase() === currentPrimary.toLowerCase() || 
+                            currentPrimary.toLowerCase().includes(themes[i].name)) {
+                            nextIndex = (i + 1) % themes.length;
+                            break;
+                        }
+                    }
+                    const nextTheme = themes[nextIndex];
+                    document.documentElement.style.setProperty("--primary", nextTheme.primary);
+                    document.documentElement.style.setProperty("--primary-rgb", nextTheme.rgb);
+                    if (window.showToast) {
+                        window.showToast(`Theme changed to: ${nextTheme.name.toUpperCase()}`);
+                    }
+                }
+            },
+            {
+                id: 'download-resume',
+                title: 'Download Resume',
+                desc: 'Get a clean PDF copy of my professional CV',
+                icon: 'fa-file-pdf',
+                shortcut: 'D',
+                action: () => {
+                    const link = document.createElement('a');
+                    link.href = 'resume.pdf';
+                    link.download = 'Shahzeb_Faisal_Resume.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    if (window.showToast) {
+                        window.showToast('Starting Resume Download...');
+                    }
+                }
+            },
+            {
+                id: 'toggle-music',
+                title: 'Toggle Ambient Audio',
+                desc: 'Turn background sci-fi sounds and clicks ON or OFF',
+                icon: 'fa-volume-up',
+                shortcut: 'S',
+                action: () => {
+                    AudioSystem.toggle();
+                    const state = AudioSystem.muted ? 'MUTED' : 'ON';
+                    if (window.showToast) {
+                        window.showToast(`Ambient Audio: ${state}`);
+                    }
+                }
+            }
+        ];
+
+        function renderResults() {
+            resultsContainer.innerHTML = '';
+            filteredCommands.forEach((cmd, index) => {
+                const item = document.createElement('div');
+                item.className = `palette-item ${index === activeIndex ? 'active' : ''}`;
+                item.innerHTML = `
+                    <i class="fas ${cmd.icon}"></i>
+                    <div class="palette-item-info">
+                        <span class="palette-item-title">${cmd.title}</span>
+                        <span class="palette-item-desc">${cmd.desc}</span>
+                    </div>
+                    <span class="palette-item-shortcut">${cmd.shortcut}</span>
+                `;
+
+                item.addEventListener('mouseenter', () => {
+                    activeIndex = index;
+                    updateSelection();
+                });
+
+                item.addEventListener('click', () => {
+                    cmd.action();
+                    closePalette();
+                });
+
+                resultsContainer.appendChild(item);
+            });
+            
+            if (filteredCommands.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div style="padding: 24px; text-align: center; color: rgba(255,255,255,0.4); font-family: 'Outfit', sans-serif;">
+                        <i class="fas fa-search" style="font-size: 24px; margin-bottom: 8px;"></i>
+                        <p>No commands match your query</p>
+                    </div>
+                `;
+            }
+        }
+
+        function updateSelection() {
+            const items = resultsContainer.querySelectorAll('.palette-item');
+            items.forEach((item, index) => {
+                if (index === activeIndex) {
+                    item.classList.add('active');
+                    item.scrollIntoView({ block: 'nearest' });
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        function filterCommands(query) {
+            const lowerQuery = query.toLowerCase().trim();
+            filteredCommands = commands.filter(cmd => 
+                cmd.title.toLowerCase().includes(lowerQuery) || 
+                cmd.desc.toLowerCase().includes(lowerQuery)
+            );
+            activeIndex = 0;
+            renderResults();
+        }
+
+        function openPalette() {
+            palette.style.display = 'flex';
+            searchInput.value = '';
+            filterCommands('');
+            document.body.style.overflow = 'hidden';
+            AudioSystem.play('terminal');
+            setTimeout(() => searchInput.focus(), 50);
+        }
+
+        function closePalette() {
+            palette.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            AudioSystem.play('click');
+        }
+
+        // Global keybinds
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                if (palette.style.display === 'none') {
+                    openPalette();
+                } else {
+                    closePalette();
+                }
+            }
+
+            if (palette.style.display === 'flex') {
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    closePalette();
+                } else if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    activeIndex = (activeIndex + 1) % filteredCommands.length;
+                    updateSelection();
+                    AudioSystem.play('click');
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    activeIndex = (activeIndex - 1 + filteredCommands.length) % filteredCommands.length;
+                    updateSelection();
+                    AudioSystem.play('click');
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (filteredCommands[activeIndex]) {
+                        filteredCommands[activeIndex].action();
+                        closePalette();
+                    }
+                }
+            }
+        });
+
+        // Click outside or overlay
+        palette.addEventListener('click', (e) => {
+            if (e.target === palette) {
+                closePalette();
+            }
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            filterCommands(e.target.value);
+        });
+        
+        // Also bind the theme button in navigation/radial menu to the action
+        document.getElementById('theme-btn')?.addEventListener('click', () => {
+            const changeThemeAction = commands.find(c => c.id === 'toggle-theme')?.action;
+            if (changeThemeAction) changeThemeAction();
+        });
+    }
 
     window.CertificateViewer = {
         init: initCertificateViewer
     };
+
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   PART 5 — All new features appended below existing IIFE
+═══════════════════════════════════════════════════════════════ */
+(function () {
+    'use strict';
+
+    // ─────────────────────────────────────────────
+    // BLOCK 1 — Console Easter Egg
+    // ─────────────────────────────────────────────
+    const asciiArt = `
+%c
+ ███████╗██╗  ██╗ █████╗ ██╗  ██╗███████╗███████╗██████╗
+ ██╔════╝██║  ██║██╔══██╗██║  ██║╚══███╔╝██╔════╝██╔══██╗
+ ███████╗███████║███████║███████║  ███╔╝ █████╗  ██████╔╝
+ ╚════██║██╔══██║██╔══██║██╔══██║ ███╔╝  ██╔══╝  ██╔══██╗
+ ███████║██║  ██║██║  ██║██║  ██║███████╗███████╗██████╔╝
+ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚═════╝
+`;
+    console.log(asciiArt, 'color: #d4ff33; font-weight: bold; font-family: monospace;');
+    console.log('%cFull Stack AI Developer | FAST NUCES Lahore', 'color: #d4ff33; font-size: 14px; font-weight: bold;');
+    console.log('%c📧 shahzebfaisal5649@gmail.com  |  🐙 github.com/ShahzebFaisal5649', 'color: #aaa; font-size: 12px;');
+    console.log('%c💼 OPEN TO WORK — Available immediately (June 2026)', 'color: #10b981; font-size: 13px; font-weight: bold;');
+    console.log('%c🎮 TIP: Try the Konami code on this page ↑↑↓↓←→←→BA', 'color: #888; font-size: 11px;');
+
+    // ─────────────────────────────────────────────
+    // BLOCK 0 — Toast Notification Engine
+    // ─────────────────────────────────────────────
+    function showToast(msg, duration) {
+        duration = duration || 3000;
+        let container = document.getElementById('toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toast-container';
+            document.body.appendChild(container);
+        }
+        const toast = document.createElement('div');
+        toast.className = 'toast-notification';
+        toast.textContent = msg;
+        container.appendChild(toast);
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => { toast.classList.add('visible'); });
+        });
+        setTimeout(() => {
+            toast.classList.remove('visible');
+            setTimeout(() => toast.remove(), 400);
+        }, duration);
+    }
+    window.showToast = showToast;
+
+    // ─────────────────────────────────────────────
+    // BLOCK 0B — Mobile Nav Guard & ScrollTrigger Refresh
+    // ─────────────────────────────────────────────
+    // Side-dot nav: skip creation on mobile
+    const _origSideDots = window.initSideDotNav;
+    if (typeof _origSideDots === 'function') {
+        window.initSideDotNav = function () {
+            if (window.innerWidth < 768) return;
+            _origSideDots();
+        };
+    }
+
+    // Refresh ScrollTrigger after preloader finishes
+    document.addEventListener('preloaderDone', function () {
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+        }
+        // Kick off hero scramble
+        const heroHeading = document.querySelector('.hero-title, .hero h1, #hero h1');
+        if (heroHeading && window.scrambleText) {
+            window.scrambleText(heroHeading);
+        }
+    });
+
+    // ─────────────────────────────────────────────
+    // BLOCK 2 — Cursor Particle Trail (desktop only)
+    // ─────────────────────────────────────────────
+    if (window.matchMedia('(pointer: fine)').matches) {
+        const particles = [];
+        const PARTICLE_COUNT = 15;
+        let mouseX = 0, mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            const p = document.createElement('div');
+            p.className = 'cursor-particle';
+            p.style.cssText = `left:${mouseX}px;top:${mouseY}px;`;
+            document.body.appendChild(p);
+            particles.push(p);
+            requestAnimationFrame(() => { p.classList.add('active'); });
+            setTimeout(() => {
+                p.classList.remove('active');
+                setTimeout(() => p.remove(), 400);
+            }, 600);
+            if (particles.length > PARTICLE_COUNT) {
+                const old = particles.shift();
+                if (old && old.parentNode) old.remove();
+            }
+        });
+    }
+
+    // ─────────────────────────────────────────────
+    // BLOCK 3 — Title Glitch Scramble on Scroll
+    // ─────────────────────────────────────────────
+    const GLITCH_CHARS = '!<>-_\\/[]{}—=+*^?#@|~ABCDEFabcdef0123456789';
+    function scrambleHeading(el) {
+        if (el.dataset.scrambled) return;
+        el.dataset.scrambled = '1';
+        const original = el.textContent;
+        let frame = 0;
+        const totalFrames = 20;
+        const interval = setInterval(() => {
+            frame++;
+            el.textContent = original.split('').map((ch, i) => {
+                if (ch === ' ') return ' ';
+                if (frame / totalFrames > i / original.length) return ch;
+                return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+            }).join('');
+            if (frame >= totalFrames) {
+                clearInterval(interval);
+                el.textContent = original;
+            }
+        }, 40);
+    }
+
+    const headingObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                scrambleHeading(entry.target);
+                headingObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.6 });
+
+    document.querySelectorAll('section h2').forEach(h => headingObserver.observe(h));
+
+    // ─────────────────────────────────────────────
+    // BLOCK 4 — 3D Card Flip
+    // ─────────────────────────────────────────────
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', function (e) {
+            if (e.target.closest('a')) return; // let links work normally
+            this.classList.toggle('flipped');
+        });
+
+        card.addEventListener('mousemove', function (e) {
+            if (this.classList.contains('flipped')) return;
+            const rect = this.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width - 0.5) * 18;
+            const y = ((e.clientY - rect.top) / rect.height - 0.5) * -18;
+            this.style.transform = `perspective(800px) rotateY(${x}deg) rotateX(${y}deg) translateZ(8px)`;
+            this.classList.add('is-tilting');
+        });
+
+        card.addEventListener('mouseleave', function () {
+            this.style.transform = '';
+            this.classList.remove('is-tilting');
+        });
+    });
+
+    // ─────────────────────────────────────────────
+    // BLOCK 5 — Scroll-Linked Background Color Morph
+    // ─────────────────────────────────────────────
+    const colorMap = [
+        { selector: '#hero',       color: '#0b0b0b' },
+        { selector: '#about',      color: '#0d0f0b' },
+        { selector: '#skills',     color: '#0b0d0f' },
+        { selector: '#projects',   color: '#0f0b0b' },
+        { selector: '#experience', color: '#0b0b10' },
+        { selector: '#contact',    color: '#0b100b' },
+    ];
+
+    colorMap.forEach(({ selector, color }) => {
+        const el = document.querySelector(selector);
+        if (!el || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        ScrollTrigger.create({
+            trigger: el,
+            start: 'top center',
+            end: 'bottom center',
+            onEnter: () => gsap.to(document.body, { backgroundColor: color, duration: 1.2, ease: 'power2.out' }),
+            onEnterBack: () => gsap.to(document.body, { backgroundColor: color, duration: 1.2, ease: 'power2.out' }),
+        });
+    });
+
+    // ─────────────────────────────────────────────
+    // BLOCK 6 — Skill Proficiency Counters
+    // ─────────────────────────────────────────────
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const bar = entry.target;
+            const target = parseInt(bar.dataset.level || bar.getAttribute('style')?.match(/(\d+)%/)?.[1] || 0, 10);
+            const label = bar.closest('.skill-item')?.querySelector('.skill-percentage, .skill-level');
+            let current = 0;
+            const step = Math.ceil(target / 50);
+            const tick = setInterval(() => {
+                current = Math.min(current + step, target);
+                if (label) label.textContent = current + '%';
+                bar.style.width = current + '%';
+                if (current >= target) clearInterval(tick);
+            }, 20);
+            counterObserver.unobserve(bar);
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.skill-bar, .skill-progress').forEach(bar => counterObserver.observe(bar));
+
+    // ─────────────────────────────────────────────
+    // BLOCK 7 — Film Grain Overlay (Optimized Tiled Pattern)
+    // ─────────────────────────────────────────────
+    (function initFilmGrain() {
+        const canvas = document.createElement('canvas');
+        canvas.id = 'film-grain';
+        canvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9998;opacity:0.035;';
+        document.body.appendChild(canvas);
+
+        const ctx = canvas.getContext('2d');
+        function resize() { 
+            canvas.width = window.innerWidth; 
+            canvas.height = window.innerHeight; 
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        // Pre-render a few small noise patterns (150x150 px) at startup
+        const patternSize = 150;
+        const patterns = [];
+        for (let f = 0; f < 6; f++) {
+            const pCanvas = document.createElement('canvas');
+            pCanvas.width = patternSize;
+            pCanvas.height = patternSize;
+            const pCtx = pCanvas.getContext('2d');
+            const imgData = pCtx.createImageData(patternSize, patternSize);
+            const data = imgData.data;
+            for (let i = 0; i < data.length; i += 4) {
+                const v = Math.random() * 255 | 0;
+                data[i] = data[i + 1] = data[i + 2] = v;
+                data[i + 3] = 35; // Alpha opacity of grain
+            }
+            pCtx.putImageData(imgData, 0, 0);
+            patterns.push(pCanvas);
+        }
+
+        let frameIndex = 0;
+        function grain() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const pattern = ctx.createPattern(patterns[frameIndex], 'repeat');
+            if (pattern) {
+                ctx.fillStyle = pattern;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+            frameIndex = (frameIndex + 1) % patterns.length;
+            setTimeout(() => {
+                requestAnimationFrame(grain);
+            }, 50); // 20 FPS for natural cinematic grain
+        }
+
+        if (document.readyState === 'complete') {
+            grain();
+        } else {
+            window.addEventListener('load', grain);
+        }
+    })();
+
+    // ─────────────────────────────────────────────
+    // BLOCK 8 — Konami Code Easter Egg
+    // ─────────────────────────────────────────────
+    const KONAMI = [38,38,40,40,37,39,37,39,66,65];
+    let konamiIdx = 0;
+    document.addEventListener('keydown', function (e) {
+        if (e.keyCode === KONAMI[konamiIdx]) {
+            konamiIdx++;
+            if (konamiIdx === KONAMI.length) {
+                konamiIdx = 0;
+                showToast('🎮 KONAMI CODE ACTIVATED! You found the secret!', 4000);
+                // Spin the hero sphere if available
+                if (window.heroMesh) {
+                    if (typeof gsap !== 'undefined') {
+                        gsap.to(window.heroMesh.rotation, { y: window.heroMesh.rotation.y + Math.PI * 6, duration: 2, ease: 'power2.out' });
+                    }
+                }
+                // Confetti burst
+                confettiBurst();
+                // Terminal log
+                const termOutput = document.getElementById('terminal-output');
+                if (termOutput) {
+                    const msg = document.createElement('p');
+                    msg.style.color = '#d4ff33';
+                    msg.textContent = '> [SYSTEM]: Konami sequence detected. Welcome, developer. 🎉';
+                    termOutput.appendChild(msg);
+                    termOutput.scrollTop = termOutput.scrollHeight;
+                }
+            }
+        } else {
+            konamiIdx = 0;
+        }
+    });
+
+    function confettiBurst() {
+        const colors = ['#d4ff33','#10b981','#ff0055','#fff','#7c3aed'];
+        for (let i = 0; i < 80; i++) {
+            const dot = document.createElement('div');
+            dot.style.cssText = `
+                position:fixed;
+                width:8px;height:8px;border-radius:50%;
+                background:${colors[i % colors.length]};
+                left:${Math.random()*100}vw;top:${Math.random()*40 + 10}vh;
+                pointer-events:none;z-index:99999;
+                animation:confetti-fall 1.5s ease-out forwards;
+            `;
+            document.body.appendChild(dot);
+            setTimeout(() => dot.remove(), 1600);
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // BLOCK 10 — Project Search Bar
+    // ─────────────────────────────────────────────
+    const searchInput = document.getElementById('project-search-input');
+    const searchClear = document.getElementById('search-clear-btn');
+    const searchCount = document.getElementById('search-results-count');
+
+    function filterProjects(query) {
+        const q = query.trim().toLowerCase();
+        const cards = document.querySelectorAll('.project-card');
+        let visible = 0;
+        cards.forEach(card => {
+            const text = (card.innerText + ' ' + (card.dataset.category || '') + ' ' + (card.dataset.tech || '')).toLowerCase();
+            const match = !q || text.includes(q);
+            card.classList.toggle('search-hidden', !match);
+            if (match) visible++;
+            // unflip when filtering
+            if (!match) card.classList.remove('flipped');
+        });
+        if (searchCount) {
+            searchCount.textContent = q ? `${visible} of ${cards.length} projects` : '';
+        }
+        if (searchClear) searchClear.style.display = q ? 'flex' : 'none';
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', () => filterProjects(searchInput.value));
+        searchInput.addEventListener('keydown', e => { if (e.key === 'Escape') { searchInput.value = ''; filterProjects(''); } });
+    }
+    if (searchClear) {
+        searchClear.addEventListener('click', () => { searchInput.value = ''; filterProjects(''); searchInput.focus(); });
+    }
+
+    // ─────────────────────────────────────────────
+    // BLOCK 11 — Copy Email to Clipboard
+    // ─────────────────────────────────────────────
+    const copyEmailBtn = document.getElementById('copy-email-btn');
+    if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', function () {
+            const email = this.dataset.email || 'shahzebfaisal5649@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                this.innerHTML = '<i class="fas fa-check"></i>';
+                this.style.borderColor = '#10b981';
+                this.style.color = '#10b981';
+                showToast('📋 Email copied to clipboard!');
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-copy"></i>';
+                    this.style.borderColor = '';
+                    this.style.color = '';
+                }, 2500);
+            }).catch(() => showToast('Could not copy — please copy manually.'));
+        });
+    }
+
+    // ─────────────────────────────────────────────
+    // BLOCK 13 — Stack Distribution Chart (SVG-based)
+    // ─────────────────────────────────────────────
+    function initStackDistribution() {
+        const container = document.getElementById('stack-distribution');
+        if (!container) return;
+
+        const data = [
+            { label: 'Frontend', value: 40, color: '#cbff00' },
+            { label: 'Backend', value: 30, color: '#6366f1' },
+            { label: 'AI / ML', value: 20, color: '#06b6d4' },
+            { label: 'DevOps', value: 10, color: '#f59e0b' }
+        ];
+
+
+        const size = 220;
+        const cx = size / 2;
+        const cy = size / 2;
+        const r = 80;
+        const innerR = 45;
+
+        let startAngle = -Math.PI / 2;
+        let svgSlices = '';
+        let svgLabels = '';
+
+        data.forEach((d, i) => {
+            const angle = (d.value / 100) * 2 * Math.PI;
+            const endAngle = startAngle + angle;
+            const midAngle = startAngle + angle / 2;
+
+            const x1 = cx + r * Math.cos(startAngle);
+            const y1 = cy + r * Math.sin(startAngle);
+            const x2 = cx + r * Math.cos(endAngle);
+            const y2 = cy + r * Math.sin(endAngle);
+            const xi1 = cx + innerR * Math.cos(startAngle);
+            const yi1 = cy + innerR * Math.sin(startAngle);
+            const xi2 = cx + innerR * Math.cos(endAngle);
+            const yi2 = cy + innerR * Math.sin(endAngle);
+            const largeArc = angle > Math.PI ? 1 : 0;
+
+            svgSlices += `<path d="M ${xi1} ${yi1} L ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2} L ${xi2} ${yi2} A ${innerR} ${innerR} 0 ${largeArc} 0 ${xi1} ${yi1} Z"
+                fill="${d.color}" opacity="0.85" class="pie-slice" data-index="${i}" />`;
+
+            if (d.value >= 15) {
+                const lx = cx + (r + 18) * Math.cos(midAngle);
+                const ly = cy + (r + 18) * Math.sin(midAngle);
+                svgLabels += `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle"
+                    style="fill:rgba(255,255,255,0.85);font-size:11px;font-family:JetBrains Mono,monospace">${d.value}%</text>`;
+            }
+
+            startAngle = endAngle;
+        });
+
+        container.innerHTML = `
+            <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" style="overflow:visible">
+                ${svgSlices}
+                ${svgLabels}
+                <circle cx="${cx}" cy="${cy}" r="${innerR - 2}" fill="rgba(0,0,0,0.5)" />
+                <text x="${cx}" y="${cy - 6}" text-anchor="middle" style="fill:#cbff00;font-size:13px;font-weight:600;font-family:JetBrains Mono,monospace">Stack</text>
+                <text x="${cx}" y="${cy + 10}" text-anchor="middle" style="fill:rgba(255,255,255,0.6);font-size:10px;font-family:JetBrains Mono,monospace">Mix</text>
+            </svg>`;
+    }
+
+    // ─────────────────────────────────────────────
+    // BLOCK 14 — Grid / Timeline View Toggle
+    // ─────────────────────────────────────────────
+    const viewGrid     = document.getElementById('view-grid');
+    const viewTimeline = document.getElementById('view-timeline');
+    const projectsGrid = document.getElementById('projects-grid');
+
+    if (viewGrid && viewTimeline && projectsGrid) {
+        viewGrid.addEventListener('click', () => {
+            projectsGrid.classList.remove('timeline-view');
+            viewGrid.classList.add('active');
+            viewTimeline.classList.remove('active');
+        });
+
+        viewTimeline.addEventListener('click', () => {
+            projectsGrid.classList.add('timeline-view');
+            viewTimeline.classList.add('active');
+            viewGrid.classList.remove('active');
+            document.querySelectorAll('.project-card.flipped').forEach(c => c.classList.remove('flipped'));
+        });
+    }
+
+    // ─────────────────────────────────────────────
+    // BLOCK 15 — Mobile Swipe Gestures on Project Cards
+    // ─────────────────────────────────────────────
+    if ('ontouchstart' in window) {
+        document.querySelectorAll('.project-card').forEach(card => {
+            let touchStartX = 0, touchStartY = 0;
+
+            card.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+
+            card.addEventListener('touchend', (e) => {
+                const dx = e.changedTouches[0].clientX - touchStartX;
+                const dy = e.changedTouches[0].clientY - touchStartY;
+                if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+
+                const liveLink   = card.querySelector('a[href]:not([href*="github"])')?.href;
+                const githubLink = card.querySelector('a[href*="github"]')?.href;
+
+                if (dx < 0 && githubLink) {
+                    window.open(githubLink, '_blank');
+                    showToast('Opening GitHub ↗');
+                } else if (dx > 0 && liveLink) {
+                    window.open(liveLink, '_blank');
+                    showToast('Opening Live Site ↗');
+                }
+            }, { passive: true });
+        });
+    }
+
+    // Expose functions required by init()
+    window.initStackDistribution = typeof initStackDistribution !== 'undefined' ? initStackDistribution : null;
+    window.initSkillsRadar = typeof initSkillsRadar !== 'undefined' ? initSkillsRadar : null;
 
 })();
