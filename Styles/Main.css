@@ -7005,14 +7005,31 @@ body {
 
 /* ═══ Homepage Certifications Preview Grid ═══ */
 .certs-preview-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  gap: 24px !important;
+  margin-top: 40px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 200px !important;
+  width: 100% !important;
 }
+
+.certs-preview-grid .cert-card {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+}
+
+.certs-preview-grid .cert-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 60px rgba(201,168,76,0.2) !important;
+}
+
 @media (max-width: 600px) {
   .skills-preview-grid { grid-template-columns: 1fr; }
-  .certs-preview-grid  { grid-template-columns: 1fr; }
+  .certs-preview-grid  { grid-template-columns: 1fr !important; }
 }
 
 /* ═══ Fixed Button Stack — terminal below, chat above ═══ */
