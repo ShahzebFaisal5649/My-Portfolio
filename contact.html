@@ -77,10 +77,33 @@
             color: white;
             font-family: inherit;
         }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             border-color: var(--gold-primary);
+            box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
             outline: none;
-            background: rgba(255,255,255,0.08);
+            background: rgba(201,168,76,0.04);
+            transition: all 0.3s ease;
+        }
+        .map-embed-wrapper {
+            margin-top: 20px;
+            border: 1px solid rgba(201,168,76,0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .contact-social-strip {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .contact-social-strip span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         .whatsapp-btn {
             background: #25D366;
@@ -141,7 +164,7 @@
                         <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="info-text">
                             <h4>Location</h4>
-                            <p>Lahore, Pakistan</p>
+                            <p>Nishat Colony, Lahore, Punjab, Pakistan</p>
                         </div>
                     </div>
 
@@ -153,15 +176,29 @@
                         </span>
                     </div>
 
-                    <!-- Map Placeholder -->
-                    <div style="margin-top: 30px; height: 200px; background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-                        <i class="fas fa-map-marked-alt" style="font-size: 2rem; margin-right: 10px;"></i>
-                        Map Placeholder (Lahore, Pakistan)
+                    <!-- Map Embed -->
+                    <div class="map-embed-wrapper">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.2!2d74.3294!3d31.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sNishat+Colony%2C+Lahore%2C+Punjab%2C+Pakistan!5e0!3m2!1sen!2s!4v1"
+                        width="100%"
+                        height="220"
+                        style="border:0; border-radius: 8px; filter: invert(90%) hue-rotate(180deg) saturate(0.5);"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Nishat Colony, Lahore, Pakistan">
+                      </iframe>
                     </div>
                 </div>
 
                 <!-- Right Column: Form -->
                 <div class="contact-right">
+                    <!-- Social Proof Strip -->
+                    <div class="contact-social-strip">
+                      <span><i class="fas fa-clock"></i> Avg. response: &lt; 24 hrs</span>
+                      <span><i class="fas fa-check-circle"></i> Open to freelance &amp; full-time</span>
+                      <span><i class="fas fa-globe"></i> Available for remote worldwide</span>
+                    </div>
                     <form class="contact-form" id="contactForm">
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -229,17 +266,84 @@
             }
         });
 
+        // Initialize EmailJS dynamically if configured
+        const isEmailJSConfigured = typeof EMAILJS_PUBLIC_KEY !== 'undefined' && 
+                                   EMAILJS_PUBLIC_KEY && 
+                                   !EMAILJS_PUBLIC_KEY.includes('YOUR_PUBLIC_KEY');
+
+        if (isEmailJSConfigured) {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+        }
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // EmailJS logic would go here
-            // For now, simulate success
-            form.style.display = 'none';
-            successState.style.display = 'block';
-            
-            // Reset form
-            form.reset();
-            charCount.innerText = `0 / 500`;
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value;
+            const message = messageInput.value.trim();
+
+            const btn = form.querySelector('[type=submit]');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Securing Connection...';
+            btn.disabled = true;
+
+            // Simple validation
+            if (!name || !email || !message) {
+                alert('Please fill out all fields.');
+                btn.innerHTML = 'Send Message';
+                btn.disabled = false;
+                return;
+            }
+
+            // Simulate loading steps for ultra-premium feel
+            setTimeout(async () => {
+                btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Transmitting Payload...';
+                
+                try {
+                    if (isEmailJSConfigured) {
+                        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                            from_name: name,
+                            from_email: email,
+                            subject: subject,
+                            message: message,
+                        });
+                    } else {
+                        // Fully simulated AJAX fallback
+                        console.log('%c[Contact Form Simulation]', 'color: #c9a84c; font-weight: bold;', {
+                            name, email, subject, message, timestamp: new Date().toISOString()
+                        });
+                        // Save to localStorage for demo persistence
+                        const contacts = JSON.parse(localStorage.getItem('portfolio_contacts') || '[]');
+                        contacts.push({ name, email, subject, message, date: new Date().toLocaleDateString() });
+                        localStorage.setItem('portfolio_contacts', JSON.stringify(contacts));
+                        
+                        await new Promise(resolve => setTimeout(resolve, 1200)); // Smooth loading duration
+                    }
+
+                    // Display success state with custom pre-filled backup button
+                    form.style.display = 'none';
+                    
+                    // Inject a dynamic backup email trigger inside successState just in case
+                    successState.innerHTML = `
+                        <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--gold-primary); margin-bottom: 20px;"></i>
+                        <h3 style="font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 10px;">Message Sent!</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px;">Thank you ${name}. Your message has been successfully logged.</p>
+                        <a href="mailto:shahzebfaisal5649@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Hi Shahzeb, my name is " + name + " (" + email + ").\n\n" + message)}" class="btn" style="background: transparent; border: 1px solid var(--gold-primary); color: var(--gold-primary); display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; padding: 10px 20px; text-decoration: none; justify-content: center; width: 100%;">
+                            <i class="fas fa-envelope-open-text"></i> Open in Mail App (Backup)
+                        </a>
+                    `;
+                    successState.style.display = 'block';
+                    
+                    // Sound feedback (if global sound is active)
+                    if (window.soundManager && typeof window.soundManager.play === 'function') {
+                        window.soundManager.play('success');
+                    }
+                } catch(err) {
+                    console.error('EmailJS Error:', err);
+                    btn.innerHTML = 'Send Message';
+                    btn.disabled = false;
+                    alert('Message transmission failed. Please email me directly at shahzebfaisal5649@gmail.com');
+                }
+            }, 800);
         });
     </script>
 </body>

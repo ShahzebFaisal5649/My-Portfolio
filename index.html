@@ -128,7 +128,6 @@
         <a href="#about" class="dot-nav-item" data-label="About"></a>
         <a href="#projects" class="dot-nav-item" data-label="Projects"></a>
         <a href="#experience" class="dot-nav-item" data-label="Experience"></a>
-        <a href="#skills" class="dot-nav-item" data-label="Skills"></a>
         <a href="#contact" class="dot-nav-item" data-label="Contact"></a>
     </div>
 
@@ -211,16 +210,6 @@
     <!-- Scroll Progress -->
     <div class="scroll-progress" id="scroll-progress"></div>
 
-    <div class="status-strip" id="status-strip">
-        <div class="status-strip-inner">
-            <span class="status-strip-dot"></span>
-            <span class="status-strip-text">
-                Open to roles from <strong>June 2026</strong> &nbsp;·&nbsp;
-                📍 Lahore, Pakistan (Remote/Hybrid OK)
-            </span>
-        </div>
-        <button class="status-strip-close" id="status-strip-close" aria-label="Dismiss">×</button>
-    </div>
 
     <!-- Sidebar and Navigation handled by Scripts/Sidebar.js -->
 
@@ -322,15 +311,21 @@
                 </div>
 
                 <div class="hero-right">
-                    <!-- Profile photo with glow ring -->
-                    <div class="hero-photo-wrapper">
-                        <div class="hero-photo-glow"></div>
-                        <img src="Images/SF_logo.png" alt="SF Logo" class="hero-photo">
-                        <!-- Floating skill orbs -->
-                        <div class="hero-orb orb-1"><i class="fas fa-brain"></i></div>
-                        <div class="hero-orb orb-2"><i class="fab fa-python"></i></div>
-                        <div class="hero-orb orb-3"><i class="fas fa-database"></i></div>
-                        <div class="hero-orb orb-4">⚛</div>
+                    <div class="hero-logo-display" id="hero-logo-display">
+                        <!-- Gold Rays Background -->
+                        <div class="hero-logo-rays">
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                        </div>
+                        <div class="hero-logo-glow-rings">
+                            <div class="glow-ring ring-1"></div>
+                            <div class="glow-ring ring-2"></div>
+                            <div class="glow-ring ring-3"></div>
+                        </div>
+                        <img src="Images/SF_logo.png" alt="SF" class="hero-logo-img" />
                     </div>
                 </div>
             </div>
@@ -341,22 +336,7 @@
             </div>
         </section>
 
-        <!-- TEXT MARQUEE -->
-        <div class="marquee-container">
-            <div class="marquee-content">
-                <span>MERN STACK</span>
-                <span>AI DEVELOPER</span>
-                <span>ML ENGINEER</span>
-                <span>FULL STACK</span>
-                <span>3D / WEBGL</span>
-                <!-- Repeat for infinite loop effect -->
-                <span>MERN STACK</span>
-                <span>AI DEVELOPER</span>
-                <span>ML ENGINEER</span>
-                <span>FULL STACK</span>
-                <span>3D / WEBGL</span>
-            </div>
-        </div>
+
 
         <div id="github-stats-bar">
           <div class="github-stat">
@@ -386,108 +366,96 @@
 
         <!-- ABOUT SECTION -->
         <section id="about" class="about">
-            <div class="container about-container-centered">
-                <div class="section-header">
-                    <span class="section-tag">About Me</span>
-                    <h2 class="section-title">Who I Am</h2>
-                </div>
-
-                <div class="about-main-centered">
-                    <!-- Profile with Water Ring -->
-                    <div class="about-image-centered">
-                        <div class="hex-frame">
-                            <div class="hex-inner">
-                                <img src="Images/profile-pic.png" alt="Shahzeb Faisal" class="profile-img">
-                                <div class="scan-line"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Description & Content Centered -->
-                    <div class="about-content-centered">
-                        <h3 class="about-subtitle">Data Scientist & Full Stack AI Developer from Lahore, Pakistan</h3>
-                        <p class="about-description">
-                            I'm a <strong>BS Data Science graduate from FAST NUCES Lahore (2021 – 2025)</strong>, building
-                            production-grade AI-powered web applications. My expertise spans the full stack — Next.js 15,
-                            React, Node.js, TypeScript — through to LLMs, RAG pipelines, and real-time 3D WebGL experiences.
-                        </p>
-                        <p class="about-description">
-                            Currently working as a <strong>MERN Stack Developer at NEXTSTAC</strong>, where I shipped
-                            <strong>DesignCustomBox</strong> (designcustombox.com) — a live 3D custom packaging e-commerce
-                            platform, built solo in 7 days. Previously interned at <strong>Nexium</strong>,
-                            <strong>CodeAlpha</strong>, and <strong>Kashf Foundation</strong>.
-                        </p>
-
-                        <!-- Info Cards Grid -->
-                        <div class="about-info-centered">
-                            <div class="info-card">
-                                <i class="fas fa-graduation-cap"></i>
-                                <div>
-                                    <span class="info-label">Education</span>
-                                    <span class="info-value">BS Data Science, FAST NUCES</span>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div>
-                                    <span class="info-label">Location</span>
-                                    <span class="info-value">Lahore, Pakistan</span>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <i class="fas fa-envelope"></i>
-                                <div>
-                                    <span class="info-label">Email</span>
-                                    <span class="info-value">shahzebfaisal5649@gmail.com</span>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <i class="fas fa-globe"></i>
-                                <div>
-                                    <span class="info-label">Languages</span>
-                                    <span class="info-value">English, Urdu</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="about-actions-centered">
-                            <a href="#contact" class="btn btn-secondary">
-                                <span>Get In Touch</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                            <a href="resume.pdf" class="btn btn-primary" download="Shahzeb_Faisal_Resume.pdf">
-                                <span>Download CV</span>
-                                <i class="fas fa-download"></i>
-                            </a>
+            <div class="about-grid">
+                <!-- Left Column -->
+                <div class="about-image-col">
+                    <div class="profile-orbit-container">
+                        <!-- Outermost: dashed counter-rotating ring -->
+                        <div class="orbit-ring-outer"></div>
+                        <!-- Middle: SVG rotating text -->
+                        <svg class="orbit-text-svg" viewBox="0 0 500 500">
+                            <defs>
+                                <path id="orbit-path" d="M 250,250 m -210,0 a 210,210 0 1,1 420,0 a 210,210 0 1,1 -420,0" />
+                            </defs>
+                            <g class="orbit-text-group">
+                                <text>
+                                    <textPath href="#orbit-path" startOffset="0%">
+                                        DEVELOPER • DATA SCIENTIST • DEVELOPER • DATA SCIENTIST • 
+                                    </textPath>
+                                </text>
+                            </g>
+                        </svg>
+                        <!-- Pulsating inner glow ring -->
+                        <div class="orbit-ring-inner"></div>
+                        <!-- Profile Image Wrapper -->
+                        <div class="profile-img-wrap">
+                            <img src="Images/profile-pic.png" alt="Shahzeb Faisal" class="profile-img">
+                            <div class="scan-line"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- STATS SECTION -->
-        <section class="stats-section">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="12">0</span>
-                        <span class="stat-label">Projects Deployed</span>
+                <!-- Right Column -->
+                <div class="about-content-col">
+                    <div class="ra-status-badge">
+                        <span class="badge-dot pulse"></span>
+                        <span>MERN STACK DEV @ NEXTSTAC • OPEN TO WORK</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="2">0</span>
-                        <span class="stat-label">Years Experience</span>
+                    <h2 class="section-title" style="text-align: left; margin: 0 0 15px 0;">Who I Am</h2>
+                    <h3 class="about-subtitle" style="margin-bottom: 20px;">Data Scientist & Full Stack AI Developer</h3>
+                    <p class="about-description">
+                        I am a <strong>BS Data Science graduate from FAST NUCES Lahore (2021 – 2025)</strong>, specializing in building production-grade AI-powered web applications and deep-learning solutions.
+                    </p>
+                    <p class="about-description">
+                        Currently working as a <strong>MERN Stack Developer at NEXTSTAC</strong>, where I solo-developed and shipped <strong>DesignCustomBox</strong> (designcustombox.com)—a live 3D custom packaging e-commerce platform—in just 7 days.
+                    </p>
+
+                    <!-- Interactive Tabs/Cards -->
+                    <div class="about-cards-grid">
+                        <div class="about-card active" data-target="education">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h4>Education</h4>
+                        </div>
+                        <div class="about-card" data-target="experience">
+                            <i class="fas fa-briefcase"></i>
+                            <h4>Experience</h4>
+                        </div>
+                        <div class="about-card" data-target="latest-role">
+                            <i class="fas fa-laptop-code"></i>
+                            <h4>Latest Role</h4>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="500">0</span>+
-                        <span class="stat-label">GitHub Stars</span>
+
+                    <!-- Dynamic Detail Display -->
+                    <div class="about-detail-display">
+                        <div class="detail-pane active" id="about-education">
+                            <h4>BS Data Science • FAST NUCES Lahore</h4>
+                            <p>Graduated 2021 – 2025 with deep domain knowledge in Machine Learning, NLP, Deep Learning, and Big Data systems. Strong foundation in software engineering and design patterns.</p>
+                        </div>
+                        <div class="detail-pane" id="about-experience">
+                            <h4>Nexium • Kashf Foundation • CodeAlpha</h4>
+                            <p>AI & Software engineering roles. Improved matching accuracy by 30% at Nexium, optimized database queries by 40% at Kashf, and improved model decision accuracy by 25% at CodeAlpha.</p>
+                        </div>
+                        <div class="detail-pane" id="about-latest-role">
+                            <h4>MERN Stack Developer • NEXTSTAC</h4>
+                            <p>Currently building production full-stack applications. Solo-developed and shipped <strong>DesignCustomBox</strong> (designcustombox.com) — a live 3D custom packaging e-commerce platform — in just 7 days using Next.js 15, Three.js, and Node.js.</p>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="40">0</span>
-                        <span class="stat-label">SQL Query Speed Boost %</span>
+
+                    <div class="about-actions">
+                        <a href="#contact" class="btn btn-secondary">
+                            <span>Get In Touch</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="resume.pdf" class="btn btn-primary" download="Shahzeb_Faisal_Resume.pdf">
+                            <span>Download CV</span>
+                            <i class="fas fa-download"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
+
+
 
         <!-- PROJECTS SECTION -->
         <section id="projects" class="projects">
@@ -811,6 +779,24 @@
             </div>
         </section>
 
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="skills">
+          <div class="container">
+            <div class="section-header">
+              <span class="section-tag">Expertise</span>
+              <h2 class="section-title">Core Skills</h2>
+              <p class="section-desc">A snapshot of my technical stack</p>
+            </div>
+            <div id="homepage-skills-preview" class="skills-preview-grid"></div>
+            <div style="text-align:center; margin-top: 40px;">
+              <a href="skills.html" class="btn btn-secondary">
+                <span>View All Skills</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </section>
+
         <!-- EXPERIENCE SECTION -->
         <section id="experience" class="experience">
             <div class="container">
@@ -931,286 +917,106 @@
             </div>
         </section>
 
+        <!-- CERTIFICATIONS PREVIEW -->
         <section id="certifications" class="certifications">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Credentials</span>
-                    <h2 class="section-title">Certifications</h2>
-                </div>
-                <div class="certs-grid">
-                    <div class="cert-card" data-cert="nexium">
-                        <div class="cert-thumb">
-                            <img src="Certificates/nexium_cert.jpeg" alt="Nexium Certificate" loading="lazy">
-                        </div>
-                        <div class="cert-info">
-                            <h4>AI-First Web Development</h4>
-                            <span class="cert-issuer">Nexium</span>
-                            <span class="cert-date">January 2025</span>
-                        </div>
-                        <button class="view-cert-btn" aria-label="View Nexium certificate">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-
-                    <div class="cert-card" data-cert="codealpha">
-                        <div class="cert-thumb">
-                            <img src="Certificates/codealpha_cert.jpeg" alt="CodeAlpha Certificate" loading="lazy">
-                        </div>
-                        <div class="cert-info">
-                            <h4>Data Science Internship</h4>
-                            <span class="cert-issuer">CodeAlpha</span>
-                            <span class="cert-date">Jun – Jul 2024</span>
-                        </div>
-                        <button class="view-cert-btn" aria-label="View CodeAlpha certificate">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-
-                    <div class="cert-card" data-cert="kashf">
-                        <div class="cert-thumb">
-                            <img src="Certificates/kashf_cert.jpeg" alt="Kashf Certificate" loading="lazy">
-                        </div>
-                        <div class="cert-info">
-                            <h4>Data & Software Internship</h4>
-                            <span class="cert-issuer">Kashf Foundation</span>
-                            <span class="cert-date">Jul – Aug 2024</span>
-                        </div>
-                        <button class="view-cert-btn" aria-label="View Kashf certificate">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-
-                    <div class="cert-card" data-cert="bright">
-                        <div class="cert-thumb">
-                            <img src="Certificates/bright_cert.jpeg" alt="Bright Network Certificate" loading="lazy">
-                        </div>
-                        <div class="cert-info">
-                            <h4>Couch to Coder 2024</h4>
-                            <span class="cert-issuer">BRIGHT Network</span>
-                            <span class="cert-date">September 2024</span>
-                        </div>
-                        <button class="view-cert-btn" aria-label="View Bright Network certificate">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-                </div>
+          <div class="container">
+            <div class="section-header">
+              <span class="section-tag">Achievements</span>
+              <h2 class="section-title">Certifications</h2>
+              <p class="section-desc">Professional credentials earned through real-world internships</p>
             </div>
-        </section>
+            <div class="certs-preview-grid" id="certs-preview-grid">
 
-        <!-- SKILLS SECTION -->
-        <section id="skills" class="skills">
-            <canvas id="neural-canvas"></canvas>
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Expertise</span>
-                    <h2 class="section-title">Skills & Technologies</h2>
+              <!-- Nexium -->
+              <article class="cert-card" onclick="window.location='certs.html'" style="cursor:pointer">
+                <div class="cert-org-badge">
+                  <div class="cert-org-icon"><i class="fas fa-robot"></i></div>
+                  <div class="cert-shimmer"></div>
                 </div>
-
-                <div class="skills-grid">
-                    <!-- Programming Languages -->
-                    <div class="skill-category">
-                        <div class="category-icon"><i class="fas fa-code"></i></div>
-                        <h3>Programming Languages</h3>
-                        <div class="skill-tags">
-                            <span data-level="95">Python</span>
-                            <span data-level="85">JavaScript</span>
-                            <span data-level="80">TypeScript</span>
-                            <span data-level="90">SQL</span>
-                            <span data-level="60">C++</span>
-                            <span data-level="55">Solidity</span>
-                        </div>
-                    </div>
-
-                    <!-- ML & AI Frameworks -->
-                    <div class="skill-category">
-                        <div class="category-icon"><i class="fas fa-brain"></i></div>
-                        <h3>ML & AI Frameworks</h3>
-                        <div class="skill-tags">
-                            <span data-level="90">TensorFlow</span>
-                            <span data-level="85">PyTorch</span>
-                            <span data-level="88">Scikit-Learn</span>
-                            <span data-level="82">Keras</span>
-                            <span data-level="88">Transformers</span>
-                            <span data-level="85">Hugging Face</span>
-                            <span data-level="80">OpenAI</span>
-                            <span data-level="75">LangChain</span>
-                        </div>
-                    </div>
-
-                    <!-- NLP & LLMs -->
-                    <div class="skill-category">
-                        <div class="category-icon"><i class="fas fa-language"></i></div>
-                        <h3>NLP & LLMs</h3>
-                        <div class="skill-tags">
-                            <span data-level="86">GPT-4</span>
-                            <span data-level="82">BERT</span>
-                            <span data-level="89">spaCy</span>
-                            <span data-level="75">NLTK</span>
-                            <span data-level="82">Llama</span>
-                            <span data-level="84">RAG</span>
-                        </div>
-                    </div>
-
-                    <!-- Web Development -->
-                    <div class="skill-category">
-                        <div class="category-icon"><i class="fas fa-globe"></i></div>
-                        <h3>Web Development</h3>
-                        <div class="skill-tags">
-                            <span data-level="91">React</span>
-                            <span data-level="74">Next.js</span>
-                            <span data-level="72">Node.js</span>
-                            <span data-level="88">Express</span>
-                            <span data-level="88">Tailwind CSS</span>
-                            <span data-level="82">REST APIs</span>
-                        </div>
-                    </div>
-
-                    <!-- Data Science -->
-                    <div class="skill-category">
-                        <div class="category-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3>Data Science</h3>
-                        <div class="skill-tags">
-                            <span data-level="86">Pandas</span>
-                            <span data-level="79">NumPy</span>
-                            <span data-level="85">Matplotlib</span>
-                            <span data-level="94">Seaborn</span>
-                            <span data-level="71">Jupyter</span>
-                            <span data-level="85">Apache Spark</span>
-                        </div>
-                    </div>
-
-                    <!-- Cloud & DevOps -->
-                    <div class="skill-category">
-                        <div class="category-icon"><i class="fas fa-cloud"></i></div>
-                        <h3>Cloud & DevOps</h3>
-                        <div class="skill-tags">
-                            <span data-level="73">Git/GitHub</span>
-                            <span data-level="76">Vercel</span>
-                            <span data-level="84">GitHub Actions</span>
-                        </div>
-                    </div>
-
-                    <!-- Databases -->
-                    <div class="skill-category">
-                        <div class="category-icon"><i class="fas fa-database"></i></div>
-                        <h3>Databases</h3>
-                        <div class="skill-tags">
-                            <span data-level="70">MongoDB</span>
-                            <span data-level="91">PostgreSQL</span>
-                            <span data-level="80">MySQL</span>
-                            <span data-level="93">Supabase</span>
-                        </div>
-                    </div>
-
-                    <!-- Blockchain -->
-                    <div class="skill-category">
-                        <div class="category-icon"><i class="fab fa-ethereum"></i></div>
-                        <h3>Blockchain</h3>
-                        <div class="skill-tags">
-                            <span data-level="55">Solidity</span>
-                            <span data-level="95">Web3.js</span>
-                            <span data-level="93">Truffle</span>
-                            <span data-level="91">Ethereum</span>
-                            <span data-level="92">Smart Contracts</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-bars-container" style="text-align: center;">
-                  <h3 class="skill-bars-title">Proficiency Overview</h3>
-                  <canvas id="radar-chart" width="400" height="400" style="max-width: 100%;"></canvas>
-                </div>
-
-                <div class="stack-chart-container" style="text-align: center;">
-                  <h3 class="skill-bars-title">Stack Distribution</h3>
-                  <canvas id="donut-chart" width="300" height="300" style="max-width: 100%;"></canvas>
-                  <div class="stack-legend" style="display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap;">
-                    <div class="legend-item"><span style="background:var(--gold-primary); width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;"></span>Frontend 40%</div>
-                    <div class="legend-item"><span style="background:var(--gold-dark); width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;"></span>Backend 30%</div>
-                    <div class="legend-item"><span style="background:var(--gold-light); width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;"></span>AI/ML 20%</div>
-                    <div class="legend-item"><span style="background:var(--gold-shine); width:12px; height:12px; display:inline-block; border-radius:50%; margin-right:5px;"></span>DevOps 10%</div>
+                <div class="cert-card-body">
+                  <div class="cert-meta-row">
+                    <span class="cert-year">2025</span>
+                    <span class="cert-type">Internship</span>
+                  </div>
+                  <h3 class="cert-org-name">Nexium</h3>
+                  <p class="cert-role">AI-First Web Development</p>
+                  <p class="cert-desc">Built AI-powered Resume Tailor with GPT-4, achieving 30% accuracy improvement.</p>
+                  <div class="cert-tech-pills">
+                    <span>Next.js 15</span><span>GPT-4</span><span>TypeScript</span>
                   </div>
                 </div>
+                <div class="cert-card-footer">
+                  <span class="cert-date"><i class="fas fa-calendar-alt"></i> Jul – Aug 2025</span>
+                  <button class="cert-view-btn" onclick="event.stopPropagation(); window.location='certs.html'">
+                    <i class="fas fa-certificate"></i> View Certificate
+                  </button>
+                </div>
+                <div class="cert-corner-ornament">◆</div>
+              </article>
+
+              <!-- Kashf Foundation -->
+              <article class="cert-card" onclick="window.location='certs.html'" style="cursor:pointer">
+                <div class="cert-org-badge">
+                  <div class="cert-org-icon"><i class="fas fa-database"></i></div>
+                  <div class="cert-shimmer"></div>
+                </div>
+                <div class="cert-card-body">
+                  <div class="cert-meta-row">
+                    <span class="cert-year">2024</span>
+                    <span class="cert-type">Internship</span>
+                  </div>
+                  <h3 class="cert-org-name">Kashf Foundation</h3>
+                  <p class="cert-role">Data &amp; Software Internship</p>
+                  <p class="cert-desc">Optimized operational SQL reporting queries by 40% and designed data intelligence tools.</p>
+                  <div class="cert-tech-pills">
+                    <span>SQL</span><span>Python</span><span>PowerBI</span>
+                  </div>
+                </div>
+                <div class="cert-card-footer">
+                  <span class="cert-date"><i class="fas fa-calendar-alt"></i> Jul – Aug 2024</span>
+                  <button class="cert-view-btn" onclick="event.stopPropagation(); window.location='certs.html'">
+                    <i class="fas fa-certificate"></i> View Certificate
+                  </button>
+                </div>
+                <div class="cert-corner-ornament">◆</div>
+              </article>
+
+              <!-- CodeAlpha -->
+              <article class="cert-card" onclick="window.location='certs.html'" style="cursor:pointer">
+                <div class="cert-org-badge">
+                  <div class="cert-org-icon"><i class="fas fa-chart-line"></i></div>
+                  <div class="cert-shimmer"></div>
+                </div>
+                <div class="cert-card-body">
+                  <div class="cert-meta-row">
+                    <span class="cert-year">2024</span>
+                    <span class="cert-type">Internship</span>
+                  </div>
+                  <h3 class="cert-org-name">CodeAlpha</h3>
+                  <p class="cert-role">Data Science Internship</p>
+                  <p class="cert-desc">Developed predictive ML models improving decision-making accuracy by 25%.</p>
+                  <div class="cert-tech-pills">
+                    <span>Python</span><span>Scikit-Learn</span><span>Pandas</span>
+                  </div>
+                </div>
+                <div class="cert-card-footer">
+                  <span class="cert-date"><i class="fas fa-calendar-alt"></i> Jun – Jul 2024</span>
+                  <button class="cert-view-btn" onclick="event.stopPropagation(); window.location='certs.html'">
+                    <i class="fas fa-certificate"></i> View Certificate
+                  </button>
+                </div>
+                <div class="cert-corner-ornament">◆</div>
+              </article>
 
             </div>
-        </section>
-
-        <!-- CERTIFICATIONS SECTION -->
-        <section id="certs" class="certs">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Achievements</span>
-                    <h2 class="section-title">Certifications</h2>
-                </div>
-                <div class="certs-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-                    <div class="cert-card" style="background: rgba(10,10,10,0.9); border: 1px solid rgba(201,168,76,0.2); padding: 20px; border-radius: 8px; text-align: center;">
-                        <div class="cert-icon" style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;"><i class="fas fa-certificate"></i></div>
-                        <h3 style="font-family: 'Cinzel', serif; color: var(--gold-primary);">Nexium</h3>
-                        <p style="color: var(--text-secondary);">AI-First Web Development</p>
-                        <button class="btn btn-secondary view-cert-btn" data-cert="nexium" style="margin-top: 15px;">View Certificate</button>
-                    </div>
-                    <div class="cert-card" style="background: rgba(10,10,10,0.9); border: 1px solid rgba(201,168,76,0.2); padding: 20px; border-radius: 8px; text-align: center;">
-                        <div class="cert-icon" style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;"><i class="fas fa-certificate"></i></div>
-                        <h3 style="font-family: 'Cinzel', serif; color: var(--gold-primary);">Kashf Foundation</h3>
-                        <p style="color: var(--text-secondary);">Data Analysis Intern</p>
-                        <button class="btn btn-secondary view-cert-btn" data-cert="kashf" style="margin-top: 15px;">View Certificate</button>
-                    </div>
-                    <div class="cert-card" style="background: rgba(10,10,10,0.9); border: 1px solid rgba(201,168,76,0.2); padding: 20px; border-radius: 8px; text-align: center;">
-                        <div class="cert-icon" style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;"><i class="fas fa-certificate"></i></div>
-                        <h3 style="font-family: 'Cinzel', serif; color: var(--gold-primary);">Bright Network</h3>
-                        <p style="color: var(--text-secondary);">Technology Internship</p>
-                        <button class="btn btn-secondary view-cert-btn" data-cert="bright" style="margin-top: 15px;">View Certificate</button>
-                    </div>
-                    <div class="cert-card" style="background: rgba(10,10,10,0.9); border: 1px solid rgba(201,168,76,0.2); padding: 20px; border-radius: 8px; text-align: center;">
-                        <div class="cert-icon" style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;"><i class="fas fa-certificate"></i></div>
-                        <h3 style="font-family: 'Cinzel', serif; color: var(--gold-primary);">CodeAlpha</h3>
-                        <p style="color: var(--text-secondary);">Machine Learning Intern</p>
-                        <button class="btn btn-secondary view-cert-btn" data-cert="codealpha" style="margin-top: 15px;">View Certificate</button>
-                    </div>
-                </div>
+            <div style="text-align:center; margin-top: 40px;">
+              <a href="certs.html" class="btn btn-primary" id="show-more-certs">
+                <i class="fas fa-trophy"></i>
+                <span>View All Certifications</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
-        </section>
-
-        <!-- TECH STACK SECTION -->
-        <section id="tools" class="tools">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Stack</span>
-                    <h2 class="section-title">Tech Stack & Tools</h2>
-                </div>
-                <div class="tools-grid" style="display: flex; flex-direction: column; gap: 40px;">
-                    <div class="tools-row">
-                        <h4 style="font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 15px;">Languages</h4>
-                        <div class="tools-list" style="display: flex; gap: 20px; flex-wrap: wrap;">
-                            <div class="tool-icon" data-level="90%" style="position: relative; cursor: pointer; text-align: center;">
-                                <i class="fab fa-python" style="font-size: 3rem; color: var(--gold-primary);"></i>
-                                <span style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">Python</span>
-                            </div>
-                            <div class="tool-icon" data-level="85%" style="position: relative; cursor: pointer; text-align: center;">
-                                <i class="fab fa-js" style="font-size: 3rem; color: var(--gold-primary);"></i>
-                                <span style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">JavaScript</span>
-                            </div>
-                            <div class="tool-icon" data-level="80%" style="position: relative; cursor: pointer; text-align: center;">
-                                <i class="fab fa-js-square" style="font-size: 3rem; color: var(--gold-primary);"></i>
-                                <span style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">TypeScript</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tools-row">
-                        <h4 style="font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 15px;">Frameworks</h4>
-                        <div class="tools-list" style="display: flex; gap: 20px; flex-wrap: wrap;">
-                            <div class="tool-icon" data-level="85%" style="position: relative; cursor: pointer; text-align: center;">
-                                <i class="fab fa-react" style="font-size: 3rem; color: var(--gold-primary);"></i>
-                                <span style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">React</span>
-                            </div>
-                            <div class="tool-icon" data-level="80%" style="position: relative; cursor: pointer; text-align: center;">
-                                <i class="fab fa-node-js" style="font-size: 3rem; color: var(--gold-primary);"></i>
-                                <span style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">Node.js</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </section>
 
         <!-- CONTACT SECTION WITH MAP - FAST NUCES LOCATION -->
@@ -1365,19 +1171,7 @@
         </div>
     </div>
 
-    <!-- Command Palette Modal (Ctrl+K) -->
-    <div id="command-palette" class="palette-overlay" style="display: none;">
-        <div class="palette-modal">
-            <div class="palette-header">
-                <i class="fas fa-terminal palette-search-icon"></i>
-                <input type="text" id="palette-search" placeholder="Search commands (e.g. projects, resume, theme...)" autocomplete="off">
-                <span class="palette-esc-hint">ESC</span>
-            </div>
-            <div class="palette-results" id="palette-results">
-                <!-- Injected via JavaScript -->
-            </div>
-        </div>
-    </div>
+
 
     <!-- Confetti Canvas -->
     <canvas id="confetti"></canvas>
@@ -1433,23 +1227,35 @@
         <span>Ambient Mode ON</span>
     </div>
 
-    <div id="cmd-palette" class="cmd-palette-overlay" aria-hidden="true" role="dialog" aria-label="Command Palette">
-        <div class="cmd-palette-modal">
-            <div class="cmd-search-wrapper">
-                <i class="fas fa-search cmd-search-icon"></i>
-                <input type="text" id="cmd-search" placeholder="Search commands, sections..." autocomplete="off" spellcheck="false" aria-label="Search commands">
-                <kbd class="cmd-esc-hint">ESC</kbd>
-            </div>
-            <div class="cmd-results" id="cmd-results"></div>
-            <div class="cmd-footer-hint">
-                <span><kbd>↑↓</kbd> Navigate</span>
-                <span><kbd>↵</kbd> Select</span>
-                <span><kbd>ESC</kbd> Close</span>
-            </div>
-        </div>
-    </div>
+
 
     <script src="Scripts/HeroAnimations.js"></script>
+
+    <script>
+    /* ── Homepage Skills Preview Populator ── */
+    (function populateSkillsPreview() {
+      const container = document.getElementById('homepage-skills-preview');
+      if (!container) return;
+
+      const categories = [
+        { icon: '🧠', label: 'AI / ML',       pills: ['Python','TensorFlow','PyTorch','Scikit-Learn','NLP','LLMs'] },
+        { icon: '🌐', label: 'Full Stack',     pills: ['Next.js 15','React','Node.js','Express','TypeScript'] },
+        { icon: '📊', label: 'Data Science',   pills: ['Pandas','NumPy','Apache Spark','ETL','PowerBI'] },
+        { icon: '💾', label: 'Databases',      pills: ['MongoDB','MySQL','PostgreSQL','SQL Server','Supabase'] },
+        { icon: '⛓️', label: 'Blockchain',     pills: ['Solidity','Web3.js','Ethereum','Truffle','Smart Contracts'] },
+        { icon: '☁️', label: 'Cloud & DevOps', pills: ['Azure','Docker','Git','Vercel','CI/CD'] },
+      ];
+
+      container.innerHTML = categories.map(cat => `
+        <div class="skill-category-card reveal">
+          <h4>${cat.icon} ${cat.label}</h4>
+          <div class="skill-pills">
+            ${cat.pills.map(p => `<span class="skill-pill">${p}</span>`).join('')}
+          </div>
+        </div>
+      `).join('');
+    })();
+    </script>
 </body>
 
 </html>

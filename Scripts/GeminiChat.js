@@ -1,40 +1,76 @@
-// API Setup
-const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${window.GEMINI_API_KEY}`;
+// API Setup — dynamic endpoint so key is always current
+function getGeminiEndpoint() {
+  const key = (window.ENV && window.ENV.GEMINI_API_KEY)
+    ? window.ENV.GEMINI_API_KEY
+    : window.GEMINI_API_KEY;
+  return `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`;
+}
+
+function getActiveKey() {
+  return (window.ENV && window.ENV.GEMINI_API_KEY)
+    ? window.ENV.GEMINI_API_KEY
+    : window.GEMINI_API_KEY;
+}
 
 async function askGemini(history) {
+  const key = getActiveKey();
+  if (!key || key === 'PASTE_YOUR_GEMINI_KEY_HERE') {
+    return "The AI chat is not configured yet. Please contact Shahzeb directly at shahzebfaisal5649@gmail.com or via WhatsApp.";
+  }
   try {
-    const response = await fetch(GEMINI_ENDPOINT, {
+    const response = await fetch(getGeminiEndpoint(), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ contents: history })
     });
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({}));
+      console.error('Gemini API error:', errData);
+      return "I'm having trouble connecting right now. Please reach out directly at shahzebfaisal5649@gmail.com.";
+    }
     const data = await response.json();
-    return data.candidates?.[0]?.content?.parts?.[0]?.text || "I couldn't generate a response.";
+    return data.candidates?.[0]?.content?.parts?.[0]?.text
+      || "I couldn't generate a response. Try rephrasing your question.";
   } catch (error) {
-      console.error("Gemini API Error:", error);
-      return "Sorry, I am having trouble connecting to my brain right now.";
+    console.error("Gemini API Error:", error);
+    return "Network error. Please check your connection or contact Shahzeb directly.";
   }
 }
 
 function buildSystemContext(githubRepos) {
-  return `You are an AI assistant embedded in Shahzeb Faisal's professional portfolio website. Your job is to help visitors — especially recruiters, interviewers, and collaborators — learn about Shahzeb's skills, projects, experience, and availability.
+  return `You are an AI assistant embedded in Shahzeb Faisal's portfolio website.
+Help visitors — especially recruiters, interviewers, and collaborators — learn about Shahzeb.
 
-IMPORTANT RULES:
-- Only answer questions about Shahzeb's professional profile.
-- If asked something unrelated, politely redirect: "I'm here to tell you about Shahzeb's work! Ask me anything about his projects, skills, or experience."
+CRITICAL RULES:
+- NEVER mention "Research Assistant", "Dr. Esha Tur Razia", or any research role.
+- Shahzeb has ZERO research experience. If asked about research, say he focuses on production engineering.
+- Only answer about Shahzeb's professional profile. Redirect unrelated questions politely.
 - Be enthusiastic, professional, and specific. Use bullet points for lists.
-- He is NOT employed at NEXTSTAC, DesignCustomBox, or any company not listed below.
-- He is currently a Research Assistant at FAST NUCES (active).
-- He is open to work FROM June 2026.
-- He has 3 live deployed apps on Vercel.
+- He is open to work from June 2026.
 
-PORTFOLIO DATA:
-${JSON.stringify(window.PORTFOLIO_DATA || {}, null, 2)}
+CURRENT ROLE: MERN Stack Developer at NEXTSTAC
+- Solo-built DesignCustomBox (designcustombox.com) in 7 days
+- Full stack: Next.js 15, Three.js, MongoDB, Node.js, TypeScript
+
+EXPERIENCE:
+1. MERN Stack Dev @ NEXTSTAC (2025–Present): Built DesignCustomBox 3D e-commerce platform
+2. AI-First Web Dev Intern @ Nexium (Jul–Aug 2025): Built AI Resume Tailor with GPT-4, +30% accuracy
+3. Data & Software Intern @ Kashf Foundation (Jul–Aug 2024): SQL optimization, +40% query speed
+4. Data Science Intern @ CodeAlpha (Jun 2024): ML model improvements, +25% decision accuracy
+
+EDUCATION: BS Data Science, FAST NUCES Lahore, 2021–2025
+
+TOP SKILLS: Python, Next.js 15, React, Node.js, MongoDB, TypeScript, TensorFlow, PyTorch,
+            scikit-learn, NLP, LLMs, Three.js, SQL, PowerBI, Docker
+
+GITHUB: https://github.com/ShahzebFaisal5649
+LINKEDIN: https://www.linkedin.com/in/shahzeb-faisal-8b9190321/
+EMAIL: shahzebfaisal5649@gmail.com
+WHATSAPP: +92 302 0418510
+LOCATION: Nishat Colony, Lahore, Pakistan
 
 LIVE GITHUB REPOSITORIES:
-${JSON.stringify(githubRepos, null, 2)}
-
-When asked about projects, always mention the live URL if available. When asked about availability, always mention WhatsApp and email. Be his best advocate.`;
+${JSON.stringify(githubRepos, null, 2)}`;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const style = `
         <style>
         .ai-chat-btn {
-          position: fixed; bottom: 30px; right: 30px; width: 56px; height: 56px;
+          position: fixed; bottom: 90px; right: 24px; width: 56px; height: 56px;
           border-radius: 50%; background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
           display: flex; align-items: center; justify-content: center;
           cursor: pointer; z-index: 9000; box-shadow: 0 4px 20px rgba(201,168,76,0.4);
@@ -55,35 +91,38 @@ document.addEventListener('DOMContentLoaded', () => {
           background: #ef4444; border-radius: 50%; border: 2px solid var(--black);
         }
         .ai-chat-panel {
-          position: fixed; bottom: 100px; right: 30px; width: 380px; height: 520px;
+          position: fixed; bottom: 156px; right: 24px; width: 380px; height: 520px;
           background: rgba(5,5,5,0.95); backdrop-filter: blur(20px);
           border: 1px solid rgba(201,168,76,0.4); border-radius: 16px;
           display: flex; flex-direction: column; z-index: 9001;
           animation: slideUp 0.3s ease; overflow: hidden;
+          font-family: 'Outfit', sans-serif;
         }
         .ai-chat-panel.hidden { display: none; }
         @keyframes slideUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
         .chat-header {
           background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
           padding: 16px 20px; display: flex; align-items: center; gap: 10px;
-          font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--black);
+          font-family: 'Cinzel', serif; font-size: 0.88rem; color: var(--black);
+          font-weight: 700; letter-spacing: 1px;
         }
         .chat-header button { margin-left: auto; background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--black); }
-        .chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-        .msg-user { align-self: flex-end; background: linear-gradient(135deg,var(--gold-dark),var(--gold-primary)); color: var(--black); padding: 10px 14px; border-radius: 18px 18px 4px 18px; max-width: 80%; font-size: 0.85rem; }
-        .msg-ai { align-self: flex-start; background: rgba(255,255,255,0.05); border: 1px solid var(--border-gold); color: var(--white-soft); padding: 10px 14px; border-radius: 18px 18px 18px 4px; max-width: 85%; font-size: 0.85rem; line-height: 1.5; }
+        .chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; font-family: 'Outfit', sans-serif; }
+        .msg-user { align-self: flex-end; background: linear-gradient(135deg,var(--gold-dark),var(--gold-primary)); color: var(--black); padding: 10px 14px; border-radius: 18px 18px 4px 18px; max-width: 80%; font-size: 0.85rem; font-family: 'Outfit', sans-serif; font-weight: 500; }
+        .msg-ai { align-self: flex-start; background: rgba(255,255,255,0.05); border: 1px solid var(--border-gold); color: var(--white-soft); padding: 10px 14px; border-radius: 18px 18px 18px 4px; max-width: 85%; font-size: 0.85rem; line-height: 1.6; font-family: 'Outfit', sans-serif; letter-spacing: 0.2px; }
+        .msg-ai code { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; background: rgba(201, 168, 76, 0.1); padding: 2px 5px; border-radius: 4px; color: var(--gold-primary); border: 1px solid rgba(201,168,76,0.2); }
         .typing-dots { display: flex; gap: 4px; padding: 10px 14px; }
         .typing-dots span { width: 6px; height: 6px; background: var(--gold-primary); border-radius: 50%; animation: bounce 1s infinite; }
         .typing-dots span:nth-child(2) { animation-delay: 0.15s; }
         .typing-dots span:nth-child(3) { animation-delay: 0.3s; }
         @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
         .chat-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border-gold); }
-        .chat-input-row input { flex:1; background: rgba(255,255,255,0.05); border: 1px solid var(--border-gold); color: var(--white); padding: 10px 14px; border-radius: 8px; font-family: 'Outfit',sans-serif; outline:none; }
+        .chat-input-row input { flex:1; background: rgba(255,255,255,0.05); border: 1px solid var(--border-gold); color: var(--white); padding: 10px 14px; border-radius: 8px; font-family: 'Outfit',sans-serif; outline:none; font-size: 0.85rem; }
         .chat-input-row button { width:40px; height:40px; border-radius:8px; background:var(--gold-primary); border:none; cursor:pointer; color:var(--black); }
-        .chip { background: rgba(201,168,76,0.1); border: 1px solid var(--border-gold); color: var(--gold-primary); padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; cursor: pointer; font-family: 'Outfit',sans-serif; transition: all 0.2s; }
+        .chip { background: rgba(201,168,76,0.1); border: 1px solid var(--border-gold); color: var(--gold-primary); padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; cursor: pointer; font-family: 'Outfit',sans-serif; transition: all 0.2s; font-weight: 500; }
         .chip:hover { background: rgba(201,168,76,0.2); }
         .chat-disclaimer { font-size: 0.6rem; text-align: center; color: var(--text-muted); padding: 6px; font-family: 'Outfit',sans-serif; }
-        @media(max-width:480px) { .ai-chat-panel{width:calc(100vw - 20px);right:10px;bottom:90px;} }
+        @media(max-width:480px) { .ai-chat-panel{width:calc(100vw - 20px);right:10px;bottom:144px;} .ai-chat-btn{bottom:80px;right:14px;} }
         </style>
         `;
         
@@ -183,13 +222,14 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
     }
 
-    chatBtn.addEventListener('click', async () => {
+    window.toggleGeminiChat = async () => {
         chatPanel.classList.toggle('hidden');
         document.querySelector('.chat-notif-dot')?.remove();
         if (conversationHistory.length === 0) {
             await initChat();
         }
-    });
+    };
+    chatBtn.addEventListener('click', window.toggleGeminiChat);
 
     chatClose.addEventListener('click', () => {
         chatPanel.classList.add('hidden');
@@ -227,10 +267,43 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') handleSend();
     });
 
+    function formatMarkdown(text) {
+        // Basic HTML encoding
+        let html = text
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+        
+        // Bold formatting: **text** -> <strong>text</strong>
+        html = html.replace(/\*\*(.*?)\*\*/g, '<strong style="color: var(--gold-primary);">$1</strong>');
+        
+        // Bullet points: * content or - content
+        let lines = html.split('\n');
+        lines = lines.map(line => {
+            let trimmed = line.trim();
+            if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+                let content = trimmed.substring(2);
+                return `<li style="margin-left: 15px; margin-bottom: 6px; color: var(--text-secondary);">${content}</li>`;
+            }
+            return line;
+        });
+        html = lines.join('\n');
+        
+        // Double returns to margins, single returns to breaks
+        html = html.replace(/\n\n/g, '<div style="margin-bottom: 10px;"></div>');
+        html = html.replace(/\n/g, '<br>');
+        
+        return html;
+    }
+
     function appendMessage(text, role) {
         const div = document.createElement('div');
         div.className = role === 'user' ? 'msg-user' : 'msg-ai';
-        div.innerText = text;
+        if (role === 'ai') {
+            div.innerHTML = formatMarkdown(text);
+        } else {
+            div.innerText = text;
+        }
         chatMessages.appendChild(div);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }

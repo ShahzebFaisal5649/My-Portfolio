@@ -193,7 +193,7 @@ function initScrollAnimations() {
                 stagger: 0.2,
                 scrollTrigger: {
                     trigger: section,
-                    start: 'top 80%',
+                    start: 'top 90%',
                 }
             });
         }

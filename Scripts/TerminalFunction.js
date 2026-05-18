@@ -147,7 +147,6 @@ function BootSequence() {
     ScrollOffset = Math.min(OutputsText.split("\n").length - 1, ScrollOffset);
 }
 
-// Data Science focused file system
 const FileSystem = {
     "root": {
         type: "directory", contents: {
@@ -162,16 +161,9 @@ const FileSystem = {
                 }
             },
 
-            "research": {
-                type: "directory", contents: {
-                    "llm_chatbots.txt": { type: "file", content: "Researching LLM-based conversational chatbots\nat FAST NUCES Lahore under Dr. Esha Tur Razia.\nFocus: Persona-based architectures & bias mitigation." },
-                    "publications.txt": { type: "file", content: "Forthcoming research on LLM ethics and\nmultimodal interaction patterns." },
-                }
-            },
+            "about.txt": { type: "file", content: "Shahzeb Faisal\nData Scientist & MERN Stack Developer\n\nSpecialized in building intelligent systems\nusing GPT-4, Transformers, Next.js, and Three.js.\n\nStats:\n- 16+ Projects\n- 30% Inference Optimization\n- 98.7% Data Quality Score\n\nLocation: Lahore, Pakistan" },
 
-            "about.txt": { type: "file", content: "Shahzeb Faisal\nData Scientist & ML Engineer\n\nSpecialized in building intelligent systems\nusing GPT-4, Transformers, and Big Data.\n\nStats:\n- 16+ Projects\n- 30% Inference Optimization\n- 98.7% Data Quality Score\n\nLocation: Lahore, Pakistan" },
-
-            "experience.txt": { type: "file", content: "Professional Journey:\n- 1 Year of experience in production ML systems\n- Research Assistant | FAST NUCES\n- AI Web Dev Intern | Nexium\n- Data Science Intern | CodeAlpha\n- Data & Software Intern | Kashf Foundation" },
+            "experience.txt": { type: "file", content: "Professional Journey:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n- MERN Stack Developer | NEXTSTAC (2025–Present)\n  → Solo-shipped DesignCustomBox in 7 days\n  → Stack: Next.js 15, Three.js, MongoDB, Node.js\n- AI Web Dev Intern | Nexium (Jul–Aug 2025)\n  → Built AI Resume Tailor with GPT-4\n  → Achievement: +30% matching accuracy\n- Data & Software Intern | Kashf Foundation (Jul–Aug 2024)\n  → SQL query optimization: +40% performance\n- Data Science Intern | CodeAlpha (Jun 2024)\n  → ML model tuning: +25% decision accuracy\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" },
 
             "dataviz.exe": { type: "executable", content: "dataviz" },
         }
@@ -424,8 +416,7 @@ async function ExecuteCommand() {
             OutputsText += "Models Deployed: 12\n";
             OutputsText += "Accuracy Average: 91.7%\n";
             OutputsText += "Data Processed: 2.1TB\n";
-            OutputsText += "GitHub Stars: 89\n";
-            OutputsText += "HuggingFace Downloads: 1.2K\n\n";
+            OutputsText += "GitHub Stars: 89\n\n";
             break;
 
         case "models":
@@ -438,7 +429,45 @@ async function ExecuteCommand() {
 
         case "help":
             if (Arguments.length) { OutputsText += "\nError: 'help' doesn't accept any arguments\n\n"; }
-            else { OutputsText += "\n📚 DataSci Terminal Commands\n\nNavigation:\nLS/DIR     List directory contents\nCD         Change directory ('..' = back, '/' = root)\nOPEN       Open files and launch programs\nCLEAR      Clear terminal output\n\nData Science:\nAI [query] Chat with DataSci AI assistant\nSTATS      Show portfolio statistics\nMODELS     List available ML models\nDATA       Show dataset information\n\nPress ESC to exit programs | TAB for autocomplete\n\n"; }
+            else { OutputsText += "\n📚 DataSci Terminal Commands\n\nNavigation:\nLS/DIR     List directory contents\nCD         Change directory ('..' = back, '/' = root)\nOPEN       Open files and launch programs\nCLEAR      Clear terminal output\n\nInformation:\nABOUT      Show about info\nLIVE       Show live deployed projects\nCONTACT    Show contact details\nSTACK      Show tech stack\nNEXTSTAC   Show NEXTSTAC role details\n\nData Science:\nAI [query] Chat with DataSci AI assistant\nSTATS      Show portfolio statistics\nMODELS     List available ML models\nDATA       Show dataset information\n\nPress ESC to exit programs | TAB for autocomplete\n\n"; }
+            break;
+
+        case "about":
+            OutputsText += "\n👤 About Shahzeb Faisal\n";
+            OutputsText += "MERN Stack Developer & Data Scientist\n";
+            OutputsText += "Currently working as a MERN Stack Developer at NEXTSTAC, building production AI-powered web platforms. Solo-developed and shipped DesignCustomBox in 7 days.\n\n";
+            break;
+
+        case "live":
+            OutputsText += "\n🌐 Deployed Projects:\n";
+            OutputsText += "1. DesignCustomBox — 3D Custom Packaging E-Commerce Platform\n";
+            OutputsText += "   URL: https://designcustombox.com\n";
+            OutputsText += "2. Resume Tailor — AI Resume Optimization Platform\n";
+            OutputsText += "   URL: https://github.com/ShahzebFaisal5649/Nexium_Shahzeb_Faisal_Grand_Project\n";
+            OutputsText += "3. smart-city-management-system — Big Data City Management Platform\n";
+            OutputsText += "   URL: https://github.com/ShahzebFaisal5649/smart-city-management-system\n\n";
+            break;
+
+        case "contact":
+            OutputsText += "\n📞 Contact Details:\n";
+            OutputsText += "Email: shahzebfaisal5649@gmail.com\n";
+            OutputsText += "WhatsApp: +92 302 0418510\n";
+            OutputsText += "LinkedIn: https://www.linkedin.com/in/shahzeb-faisal-8b9190321/\n\n";
+            break;
+
+        case "stack":
+            OutputsText += "\n💻 Tech Stack by Category:\n";
+            OutputsText += "Frontend:  Next.js 15, React, HTML5, CSS3, JavaScript, TypeScript, Three.js\n";
+            OutputsText += "Backend:   Node.js, Express, REST APIs\n";
+            OutputsText += "Database:  MongoDB, SQL, MySQL, PostgreSQL\n";
+            OutputsText += "AI/ML:     Python, TensorFlow, PyTorch, Scikit-learn, NLP, LLMs, RAG\n";
+            OutputsText += "DevOps/Tools: Docker, Git, PowerBI\n\n";
+            break;
+
+        case "nextstac":
+            OutputsText += "\n🏢 MERN Stack Developer | NEXTSTAC (2025–Present):\n";
+            OutputsText += "Solo-developed and shipped DesignCustomBox (designcustombox.com) — a live 3D custom packaging e-commerce platform — in just 7 days using Next.js 15, Three.js, and Node.js.\n";
+            OutputsText += "Responsible for full-stack architecture, interactive 3D box customizer integration, and live deployment.\n\n";
             break;
 
         case "data":
@@ -482,7 +511,7 @@ async function ExecuteCommand() {
 // Enhanced Autocomplete function
 function AutoComplete() {
     const [Command, ...Arguments] = InputText.split(" ");
-    const CommandsList = ["ls", "dir", "cd", "open", "start", "clear", "ai", "help", "stats", "models", "data"];
+    const CommandsList = ["ls", "dir", "cd", "open", "start", "clear", "ai", "help", "stats", "models", "data", "about", "live", "contact", "stack", "nextstac"];
 
     // Auto completing a command
     if (!Arguments.length) {

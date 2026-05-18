@@ -49,11 +49,11 @@
         }
         .repos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px 60px;
+            grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+            gap: 24px;
+            width: 100%;
+            padding: 0 16px 60px;
+            box-sizing: border-box;
         }
         .repo-card {
             background: rgba(10, 10, 10, 0.9);
@@ -65,7 +65,9 @@
             justify-content: space-between;
             transition: all 0.3s ease;
             overflow: hidden;
-            height: 280px;
+            height: auto;
+            min-height: 220px;
+            word-break: break-word;
         }
         .repo-card h3 {
             overflow: hidden;
@@ -130,6 +132,38 @@
             50% { opacity: 0.3; }
             100% { opacity: 0.6; }
         }
+        .projects-layout {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .filter-sidebar {
+            width: 240px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 900px) {
+            .projects-layout { flex-direction: column; }
+            .filter-sidebar { width: 100%; }
+            .filter-group {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                align-items: center;
+            }
+            .filter-group h4 { width: 100%; margin: 4px 0; }
+            .filter-group label {
+                background: rgba(201,168,76,0.08);
+                border: 1px solid rgba(201,168,76,0.2);
+                border-radius: 20px;
+                padding: 4px 12px;
+                font-size: 0.8rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .search-filter-wrapper { flex-direction: column; }
+            .search-box { min-width: unset; width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -143,48 +177,65 @@
                 <p class="section-desc">Dynamically fetched from GitHub</p>
             </div>
 
-            <div class="search-filter-wrapper">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="repo-search" placeholder="Search repositories...">
-                </div>
-                <div class="filter-container" id="lang-filters">
-                    <button class="filter-btn active" data-lang="all">All</button>
-                </div>
-            </div>
+            <div class="projects-layout" style="margin-top: 30px;">
+                <!-- Left Column: Filter Sidebar -->
+                <aside class="filter-sidebar">
+                  <h3 class="filter-title" style="font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 20px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;"><i class="fas fa-filter"></i> Filters</h3>
 
-            <div class="repos-grid" id="repos-grid">
-                <div class="repo-card skeleton" style="height: 280px;"></div>
-                <div class="repo-card skeleton" style="height: 280px;"></div>
-                <div class="repo-card skeleton" style="height: 280px;"></div>
-                <div class="repo-card skeleton" style="height: 280px;"></div>
-                <div class="repo-card skeleton" style="height: 280px;"></div>
-                <div class="repo-card skeleton" style="height: 280px;"></div>
-                <div class="repo-card skeleton" style="height: 280px;"></div>
-                <div class="repo-card skeleton" style="height: 280px;"></div>
+                  <div class="filter-group">
+                    <h4>Status</h4>
+                    <label><input type="checkbox" value="live"> <span class="live-dot"></span> Has Live Demo</label>
+                    <label><input type="checkbox" value="starred"> ⭐ Has Stars</label>
+                  </div>
+
+                  <div class="filter-group">
+                    <h4>Category</h4>
+                    <label><input type="checkbox" value="ml">       🤖 AI / ML</label>
+                    <label><input type="checkbox" value="web">      🌐 Web Dev</label>
+                    <label><input type="checkbox" value="data">     📊 Data Science</label>
+                    <label><input type="checkbox" value="blockchain">⛓️ Blockchain</label>
+                    <label><input type="checkbox" value="cloud">    ☁️ Cloud / DevOps</label>
+                  </div>
+
+                  <div class="filter-group">
+                    <h4>Language</h4>
+                    <!-- Dynamically populated from fetched repos -->
+                    <div id="language-filters" style="display: flex; flex-direction: column;"></div>
+                  </div>
+
+                  <div class="filter-group">
+                    <h4>Year</h4>
+                    <label><input type="checkbox" value="2025"> 2025</label>
+                    <label><input type="checkbox" value="2024"> 2024</label>
+                  </div>
+
+                  <button class="clear-filters-btn" id="clear-filters">
+                    <i class="fas fa-times"></i> Clear All Filters
+                  </button>
+                </aside>
+
+                <!-- Right Column: Content -->
+                <div class="projects-main" style="flex: 1; width: 100%;">
+                    <div class="search-filter-wrapper" style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;">
+                        <div class="search-box" style="flex: 1; min-width: 250px; position: relative;">
+                            <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--gold-primary);"></i>
+                            <input type="text" id="repo-search" placeholder="Search repositories..." style="width: 100%; padding: 12px 12px 12px 45px; background: rgba(10,10,10,0.9); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; color: white;">
+                        </div>
+                        <div class="result-count" id="result-count" style="font-size: 0.9rem; color: var(--text-muted); font-family: 'Space Grotesk', sans-serif;"></div>
+                    </div>
+
+                    <div class="repos-grid" id="repos-grid">
+                        <div class="repo-card skeleton" style="height: 280px;"></div>
+                        <div class="repo-card skeleton" style="height: 280px;"></div>
+                        <div class="repo-card skeleton" style="height: 280px;"></div>
+                        <div class="repo-card skeleton" style="height: 280px;"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-social">
-                <a href="https://github.com/ShahzebFaisal5649" target="_blank" rel="noopener" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/shahzeb-faisal-8b9190321/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="mailto:shahzebfaisal5649@gmail.com" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 Shahzeb Faisal. Built with vanilla JS + Three.js.</p>
-            </div>
-        </div>
-    </footer>
+
 
     <!-- Scripts -->
     <script src="Scripts/config.js"></script>
@@ -197,7 +248,6 @@
 
         const grid = document.getElementById('repos-grid');
         const searchInput = document.getElementById('repo-search');
-        const filtersContainer = document.getElementById('lang-filters');
         let allRepos = [];
 
         async function fetchRepos() {
@@ -206,6 +256,7 @@
                 allRepos = JSON.parse(cached);
                 renderReposLazy(allRepos);
                 renderFilters(allRepos);
+                updateResultCount(allRepos.length);
                 return;
             }
 
@@ -215,6 +266,7 @@
                 sessionStorage.setItem('gh_repos', JSON.stringify(allRepos));
                 renderReposLazy(allRepos);
                 renderFilters(allRepos);
+                updateResultCount(allRepos.length);
             } catch (err) {
                 grid.innerHTML = '<p style="color: red; text-align: center;">Failed to load repositories.</p>';
             }
@@ -279,36 +331,46 @@
         }
 
         function fillCard(front, back, repo) {
-            const title = repo.name.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+            const cardData = {
+              name:        repo.name.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+              description: repo.description || 'No description provided.',
+              language:    repo.language    || 'Unknown',
+              stars:       repo.stargazers_count,
+              forks:       repo.forks_count,
+              topics:      repo.topics      || [],
+              homepage:    repo.homepage    || null,
+              updated:     new Date(repo.updated_at).toLocaleDateString('en-GB', { year:'numeric', month:'short', day:'numeric' }),
+              githubUrl:   repo.html_url,
+            };
             
             front.innerHTML = `
                 <div class="repo-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
                     <div class="repo-header" style="position: relative;">
-                        <h3>${title}</h3>
-                        <i class="fas fa-pencil-alt edit-icon" style="position: absolute; top: 0; right: 0; color: var(--gold-primary); cursor: pointer;" onclick="event.stopPropagation(); editDesc('${repo.name}', '${repo.description || ''}')"></i>
+                        <h3>${cardData.name}</h3>
                     </div>
-                    <p class="repo-desc" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">${repo.description || 'No description provided.'}</p>
+                    <p class="repo-desc" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">${cardData.description}</p>
                     <div class="repo-meta">
-                        <span><span class="lang-dot" style="background: ${getLangColor(repo.language)}"></span>${repo.language || 'Unknown'}</span>
-                        <span>⭐ ${repo.stargazers_count}</span>
-                        <span>🍴 ${repo.forks_count}</span>
+                        <span><span class="lang-dot" style="background: ${getLangColor(cardData.language)}"></span>${cardData.language}</span>
+                        <span>⭐ ${cardData.stars}</span>
+                        <span>🍴 ${cardData.forks}</span>
                     </div>
                 </div>
             `;
 
-            const topics = repo.topics ? repo.topics.map(t => `<span class="topic-tag" style="background: rgba(201,168,76,0.1); color: var(--gold-primary); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">${t}</span>`).join(' ') : 'No topics';
-            const updatedDate = new Date(repo.updated_at).toLocaleDateString();
+            const topicsHTML = cardData.topics.length > 0 
+                ? cardData.topics.map(t => `<span class="topic-tag" style="background: rgba(201,168,76,0.1); color: var(--gold-primary); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">${t}</span>`).join(' ') 
+                : 'No topics';
 
             back.innerHTML = `
-                <div class="repo-card back-face" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="repo-card back-face" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
                     <div>
                         <h4 style="font-family: 'Cinzel', serif; color: var(--gold-primary); margin-bottom: 10px;">Topics</h4>
-                        <div style="display: flex; flex-wrap: wrap; gap: 5px;">${topics}</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 5px;">${topicsHTML}</div>
                     </div>
-                    <div style="margin-top: 10px; font-size: 0.8rem; color: var(--text-muted);">Last updated: ${updatedDate}</div>
+                    <div style="margin-top: 10px; font-size: 0.8rem; color: var(--text-muted);">Last updated: ${cardData.updated}</div>
                     <div class="repo-links" style="display: flex; gap: 10px;">
-                        <a href="${repo.html_url}" target="_blank" class="repo-btn" style="flex: 1; text-align: center;"><i class="fab fa-github"></i> GitHub</a>
-                        ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="repo-btn outline" style="flex: 1; text-align: center; background: transparent; border: 1px solid var(--gold-primary); color: var(--gold-primary);">Live Demo</a>` : ''}
+                        <a href="${cardData.githubUrl}" target="_blank" class="repo-btn" style="flex: 1; text-align: center;"><i class="fab fa-github"></i> GitHub</a>
+                        ${cardData.homepage ? `<a href="${cardData.homepage}" target="_blank" class="repo-btn outline" style="flex: 1; text-align: center; background: transparent; border: 1px solid var(--gold-primary); color: var(--gold-primary);">Live Demo</a>` : ''}
                     </div>
                 </div>
             `;
@@ -453,39 +515,73 @@
         }
 
         function renderFilters(repos) {
-            const staticLangs = ['All', 'JavaScript', 'TypeScript', 'Python', 'HTML', 'Jupyter Notebook', 'C++', 'Other'];
-            filtersContainer.innerHTML = '';
-            staticLangs.forEach(lang => {
-                const btn = document.createElement('button');
-                btn.className = 'filter-btn' + (lang === 'All' ? ' active' : '');
-                btn.innerText = lang;
-                btn.dataset.lang = lang.toLowerCase();
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('#lang-filters .filter-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    filterRepos();
-                });
-                filtersContainer.appendChild(btn);
+            const languages = [...new Set(repos.map(r => r.language).filter(Boolean))];
+            const langContainer = document.getElementById('language-filters');
+            langContainer.innerHTML = '';
+            languages.forEach(lang => {
+                const label = document.createElement('label');
+                label.innerHTML = `<input type="checkbox" value="${lang}"> ${lang}`;
+                label.querySelector('input').addEventListener('change', applyFilters);
+                langContainer.appendChild(label);
             });
         }
 
-        function filterRepos() {
-            const activeBtn = document.querySelector('#lang-filters .filter-btn.active');
-            const lang = activeBtn.dataset.lang;
-            const search = searchInput.value.toLowerCase();
+        function applyFilters() {
+            const activeFilters = {
+                status:   [...document.querySelectorAll('.filter-group input[value="live"]:checked, .filter-group input[value="starred"]:checked')].map(el => el.value),
+                category: [...document.querySelectorAll('.filter-group input[value="ml"]:checked, .filter-group input[value="web"]:checked, .filter-group input[value="data"]:checked, .filter-group input[value="blockchain"]:checked, .filter-group input[value="cloud"]:checked')].map(el => el.value),
+                language: [...document.querySelectorAll('#language-filters input:checked')].map(el => el.value),
+                year:     [...document.querySelectorAll('.filter-group input[value="2025"]:checked, .filter-group input[value="2024"]:checked')].map(el => el.value),
+            };
+
+            const searchTerm = document.getElementById('repo-search')?.value.toLowerCase() || '';
+
+            const REPO_CATEGORIES = {
+                'Nexium_Shahzeb_Faisal_Grand_Project': ['ml','web'],
+                'Nexium_Shahzeb_Faisal_Assign2':       ['ml','web'],
+                'Nexium_Shahzeb_Faisal_Assign1':       ['web'],
+                'Environmental_Impact_Analysis_using_Satellite_Data': ['data','ml'],
+                'smart-city-management-system':        ['data'],
+                'election-dapp':                       ['blockchain','web'],
+                'Visual-Description-Generator-For-Images-Data': ['ml'],
+                'GYM-Website':                         ['web'],
+                'Movie-Showcase':                      ['web'],
+                'DB_Lab_Project':                      ['web','data'],
+                'Bicep-Shahzeb-Ass':                   ['cloud'],
+                'E-Shop':                              ['web'],
+            };
 
             const filtered = allRepos.filter(repo => {
-                const matchLang = lang === 'all' || 
-                                  (lang === 'other' && !['javascript', 'typescript', 'python', 'html', 'jupyter notebook', 'c++'].includes(repo.language ? repo.language.toLowerCase() : '')) ||
-                                  (repo.language && repo.language.toLowerCase() === lang);
-                const matchSearch = repo.name.toLowerCase().includes(search) || (repo.description && repo.description.toLowerCase().includes(search));
-                return matchLang && matchSearch;
+                const repoCategories = REPO_CATEGORIES[repo.name] || [];
+                const repoYear = new Date(repo.updated_at).getFullYear().toString();
+
+                if (searchTerm && !repo.name.toLowerCase().includes(searchTerm) && !(repo.description || '').toLowerCase().includes(searchTerm)) return false;
+                if (activeFilters.status.includes('live')    && !repo.homepage)            return false;
+                if (activeFilters.status.includes('starred') && repo.stargazers_count < 1) return false;
+                if (activeFilters.category.length && !activeFilters.category.some(c => repoCategories.includes(c))) return false;
+                if (activeFilters.language.length && !activeFilters.language.includes(repo.language)) return false;
+                if (activeFilters.year.length     && !activeFilters.year.includes(repoYear))          return false;
+                return true;
             });
 
             renderReposLazy(filtered);
+            updateResultCount(filtered.length);
         }
 
-        searchInput.addEventListener('input', filterRepos);
+        function updateResultCount(count) {
+            const countEl = document.getElementById('result-count');
+            if (countEl) {
+                countEl.textContent = `${count} repository${count === 1 ? '' : 'ies'} found`;
+            }
+        }
+
+        // Attach listeners
+        document.querySelectorAll('.filter-sidebar input').forEach(el => el.addEventListener('change', applyFilters));
+        document.getElementById('clear-filters').addEventListener('click', () => {
+            document.querySelectorAll('.filter-sidebar input').forEach(el => el.checked = false);
+            applyFilters();
+        });
+        searchInput.addEventListener('input', applyFilters);
 
         fetchRepos();
     </script>
